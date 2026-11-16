@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.3 - Stories, Threads e Novos Formatos | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores PURPLE */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-purple-400 { color: #7c3aed; }
+
+    /* Light mode - outras cores de trilha no nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="../trilha3/index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400 font-medium">Modulo 3.3</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-purple-500/20 text-purple-400 text-sm font-semibold rounded-full mb-6">
+        MODULO 3.3 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        📱 Stories, Threads e <span class="text-purple-400">Novos Formatos</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Domine Stories estrategicos, Threads em 2026, Lives e os novos recursos da Meta para diversificar seu conteudo e ampliar alcance.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Secoes</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">~25</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Pratico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Producao</div>
+          <div class="text-sm text-neutral-400">Foco</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEUDO PRINCIPAL -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Stories Estrategicos</h2>
+          <p class="text-neutral-400 mt-1">Transforme Stories de conteudo passivo em maquina de engajamento</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Frequencia e Interacao</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-2xl font-bold text-purple-400 mb-2">5-10/dia</div>
+              <p class="text-sm text-neutral-400">Frequencia ideal de Stories. Menos de 5 = pouca presenca. Mais de 10 = fadiga do espectador. O ponto ideal mantem voce no topo do feed sem cansar.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Stickers de Interacao</div>
+              <ul class="text-sm text-neutral-400 space-y-1">
+                <li><strong class="text-neutral-300">Enquetes:</strong> Escolha binaria, resposta rapida</li>
+                <li><strong class="text-neutral-300">Perguntas:</strong> Resposta aberta, gera conteudo</li>
+                <li><strong class="text-neutral-300">Quiz:</strong> Testa conhecimento, gamifica</li>
+                <li><strong class="text-neutral-300">Contagem regressiva:</strong> Cria urgencia</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sequencia narrativa -->
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Sequencia Narrativa de 5 Telas</h3>
+          <div class="grid grid-cols-5 gap-2 text-center text-sm">
+            <div class="bg-dark-800 rounded-lg p-3">
+              <div class="text-purple-400 font-bold mb-1">1</div>
+              <p class="text-neutral-400 text-xs">Gancho / Pergunta</p>
+            </div>
+            <div class="bg-dark-800 rounded-lg p-3">
+              <div class="text-purple-400 font-bold mb-1">2</div>
+              <p class="text-neutral-400 text-xs">Contexto / Problema</p>
+            </div>
+            <div class="bg-dark-800 rounded-lg p-3">
+              <div class="text-purple-400 font-bold mb-1">3</div>
+              <p class="text-neutral-400 text-xs">Conteudo / Solucao</p>
+            </div>
+            <div class="bg-dark-800 rounded-lg p-3">
+              <div class="text-purple-400 font-bold mb-1">4</div>
+              <p class="text-neutral-400 text-xs">Enquete / Quiz</p>
+            </div>
+            <div class="bg-dark-800 rounded-lg p-3">
+              <div class="text-purple-400 font-bold mb-1">5</div>
+              <p class="text-neutral-400 text-xs">CTA / Link</p>
+            </div>
+          </div>
+          <p class="text-neutral-300 text-sm mt-3">Nao apenas poste Stories - crie uma sequencia narrativa que leve o espectador do interesse a acao. Cada tela deve ter um proposito e levar a proxima.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Threads em 2026</h2>
+          <p class="text-neutral-400 mt-1">Novidades e oportunidades na plataforma de texto da Meta</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Novidades 2026</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="font-semibold text-neutral-100 mb-2">Anuncios Globais</h4>
+              <p class="text-sm text-neutral-400">Threads agora suporta anuncios: Carousel, Advantage+ Catalog e App Install Ads. Oportunidade de ser early adopter antes da saturacao.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="font-semibold text-neutral-100 mb-2">Dear Algo</h4>
+              <p class="text-sm text-neutral-400">Recurso que permite personalizar seu feed escrevendo instrucoes ao algoritmo. Efeito dura 3 dias. Exemplo: "Quero ver mais conteudo sobre marketing digital e IA".</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="font-semibold text-neutral-100 mb-2">Trending Topics</h4>
+              <p class="text-sm text-neutral-400">Topicos em tendencia disponivel nos EUA e se expandindo globalmente. Oportunidade de surfar tendencias antes dos concorrentes.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="font-semibold text-neutral-100 mb-2">Mini-game Basketball</h4>
+              <p class="text-sm text-neutral-400">Jogos interativos nos DMs do Threads. Indica que a Meta esta investindo em engajamento de comunidade e gamificacao.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Estrategia para Threads</h3>
+          <p class="text-neutral-300 text-sm">Threads e a plataforma de texto da Meta. O conteudo que funciona la e diferente do Instagram: opinioes fortes, debates, perguntas abertas e conteudo de comunidade. Use Threads para construir autoridade textual e direcionar trafego para seu Instagram. Poste 3-5x por dia com conteudo provocativo e conversacional.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">Lives Estrategicas</h2>
+          <p class="text-neutral-400 mt-1">O formato com maior alcance organico no Facebook em 2026</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Principios da Live de Sucesso</h3>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm shrink-0">1</span>
+              <div>
+                <h4 class="font-semibold text-neutral-100">Comece com Valor Imediato</h4>
+                <p class="text-sm text-neutral-400 mt-1">Nao espere "todo mundo chegar". Comece entregando conteudo nos primeiros 30 segundos. Quem entra depois pode assistir o replay. Quem esta ao vivo quer valor agora.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm shrink-0">2</span>
+              <div>
+                <h4 class="font-semibold text-neutral-100">Estrutura em 3 Blocos</h4>
+                <p class="text-sm text-neutral-400 mt-1">Lives com estrutura tem 3x mais retencao. Bloco 1: Conteudo principal (10-15 min). Bloco 2: Exemplos praticos (10-15 min). Bloco 3: Perguntas e respostas (10-15 min).</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm shrink-0">3</span>
+              <div>
+                <h4 class="font-semibold text-neutral-100">Maior Alcance Organico</h4>
+                <p class="text-sm text-neutral-400 mt-1">No Facebook, Lives tem o maior alcance organico de todos os formatos em 2026. O Instagram tambem prioriza Lives no feed e envia notificacoes automaticas para seguidores.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Dica de Retencao</h3>
+          <p class="text-neutral-300 text-sm">Anuncie a Live com 24-48h de antecedencia usando Stories com sticker de contagem regressiva. Durante a Live, peca para os espectadores compartilharem nos Stories. Apos a Live, edite os melhores momentos em Reels curtos para maximizar o alcance do conteudo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">AI Transitions e Novos Recursos</h2>
+          <p class="text-neutral-400 mt-1">Recursos de IA generativa para Stories e novos recursos da Meta</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+            <h3 class="text-purple-400 font-semibold mb-3">IA Generativa para Stories</h3>
+            <p class="text-neutral-300 text-sm mb-3">A Meta lancou ferramentas de IA generativa diretamente no editor de Stories. Voce pode gerar fundos, stickers e efeitos visuais usando prompts de texto. Isso acelera a producao e permite criar visuais unicos sem habilidade de design.</p>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Como usar:</strong> No editor de Stories, toque em "AI" e descreva o fundo ou efeito desejado. A IA gera opcoes em segundos.</p>
+            </div>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+            <h3 class="text-purple-400 font-semibold mb-3">Novo Story Composer</h3>
+            <p class="text-neutral-300 text-sm mb-3">Interface redesenhada para criar Stories mais rapidamente. Novos layouts pre-definidos, fontes e ferramentas de edicao. O "Video creator" foi renomeado para "Reel creator" para alinhar com a estrategia de conteudo da Meta.</p>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Meta AI Support Assistant:</strong> Assistente de IA integrado que responde duvidas sobre recursos e melhores praticas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Transicoes com IA</h3>
+          <p class="text-neutral-300 text-sm">AI Transitions sao efeitos de transicao gerados por IA entre Stories consecutivos. Em vez de cortes secos, a IA cria transicoes fluidas e criativas que mantem o espectador engajado. Disponivel no editor de Stories, essas transicoes aumentam o tempo de visualizacao e a taxa de conclusao da sequencia de Stories.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Collabs e Posts Colaborativos</h2>
+          <p class="text-neutral-400 mt-1">Multiplique seu alcance com conteudo colaborativo</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Como Funciona o Recurso Collab</h3>
+          <div class="space-y-3 text-sm text-neutral-300">
+            <p>O recurso <strong class="text-neutral-100">"Collab"</strong> do Instagram permite convidar outro perfil para co-autorar um post. O conteudo aparece no feed de <strong class="text-neutral-100">ambas as audiencias</strong>, duplicando instantaneamente o alcance potencial.</p>
+            <p>O post mostra os dois nomes de perfil, e todas as metricas (likes, comentarios, saves) sao compartilhadas. E como se voce publicasse diretamente para a audiencia do parceiro.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-600">
+            <div class="text-2xl font-bold text-purple-400 mb-2">2-4/mes</div>
+            <p class="text-neutral-300 text-sm">Frequencia ideal de collabs para acelerar crescimento. Mais que isso pode parecer forcado. Escolha parceiros com audiencia complementar, nao concorrente.</p>
+          </div>
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-600">
+            <div class="text-purple-400 font-semibold mb-2">Partnership Ads</div>
+            <p class="text-neutral-300 text-sm">Para parcerias pagas (publis), e obrigatorio usar Partnership Ads. O recurso garante transparencia e esta em conformidade com as diretrizes da Meta e legislacao.</p>
+          </div>
+        </div>
+
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Estrategia de Collab</h3>
+          <p class="text-neutral-300 text-sm">Identifique 10-15 perfis do seu nicho com audiencia similar ou complementar. Comece interagindo genuinamente por 2-3 semanas antes de propor o collab. Ofereca valor claro: o que o parceiro ganha com a colaboracao? Crie conteudo que beneficie ambas as audiencias igualmente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Formatos Comparados</h2>
+          <p class="text-neutral-400 mt-1">Quando usar cada formato para maximizar resultados</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Tabela Comparativa de Formatos</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="border-b border-dark-600">
+                  <th class="text-left py-3 px-4 text-purple-400 font-semibold">Formato</th>
+                  <th class="text-left py-3 px-4 text-purple-400 font-semibold">Melhor Para</th>
+                  <th class="text-left py-3 px-4 text-purple-400 font-semibold">Frequencia</th>
+                </tr>
+              </thead>
+              <tbody class="text-neutral-300">
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4 font-semibold text-neutral-100">Reel</td>
+                  <td class="py-3 px-4">Crescimento e alcance de novos seguidores</td>
+                  <td class="py-3 px-4">5-7x/semana</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4 font-semibold text-neutral-100">Carrossel</td>
+                  <td class="py-3 px-4">Engajamento, saves e educacao</td>
+                  <td class="py-3 px-4">2-3x/semana</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4 font-semibold text-neutral-100">Stories</td>
+                  <td class="py-3 px-4">Relacionamento e interacao diaria</td>
+                  <td class="py-3 px-4">5-10/dia</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4 font-semibold text-neutral-100">Live</td>
+                  <td class="py-3 px-4">Alcance organico maximo (especialmente no Facebook)</td>
+                  <td class="py-3 px-4">1-2x/semana</td>
+                </tr>
+                <tr class="border-b border-dark-700">
+                  <td class="py-3 px-4 font-semibold text-neutral-100">Post Texto</td>
+                  <td class="py-3 px-4">Debate, opinioes e engajamento via comentarios</td>
+                  <td class="py-3 px-4">1-2x/semana</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-semibold text-neutral-100">Threads</td>
+                  <td class="py-3 px-4">Comunidade, conversas e autoridade textual</td>
+                  <td class="py-3 px-4">3-5x/dia</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Estrategia Multi-Formato</h3>
+          <p class="text-neutral-300 text-sm">Nao dependa de um unico formato. Use Reels para atrair, carrosseis para educar, Stories para conectar, Lives para converter e Threads para construir comunidade. Cada formato atende um objetivo diferente no funil de relacionamento com sua audiencia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold text-center mb-6">Resumo do Modulo 3.3</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Stories</div>
+          <p class="text-sm text-neutral-400">5-10/dia com enquetes, quiz e sequencia narrativa de 5 telas</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Threads</div>
+          <p class="text-sm text-neutral-400">Anuncios globais, Dear Algo, Trending Topics</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Lives</div>
+          <p class="text-sm text-neutral-400">Maior alcance organico, estrutura em 3 blocos</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">IA Generativa</div>
+          <p class="text-sm text-neutral-400">AI Transitions e novo Story Composer</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Collabs</div>
+          <p class="text-sm text-neutral-400">2-4/mes, Partnership Ads obrigatorio para publis</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Multi-Formato</div>
+          <p class="text-sm text-neutral-400">Cada formato = objetivo diferente no funil</p>
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <a href="modulo-3-2.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          ← Anterior: Carrosseis
+        </a>
+        <a href="modulo-3-4.html" class="inline-flex items-center px-6 py-3 bg-purple-500/20 text-purple-400 font-semibold rounded-lg hover:bg-purple-500/30 transition-colors">
+          Proximo: Prompts de IA para Criadores →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 - Curso completo de Instagram e Meta Ads</p>
+      <p class="mt-1">Conteudo exclusivo <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

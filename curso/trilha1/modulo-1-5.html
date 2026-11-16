@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.5 - Erros que Matam seu Alcance | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400 transition-colors">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.5</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full mb-6 border border-emerald-500/30">
+        MODULO 1.5
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        ❌ Erros que Matam <span class="text-emerald-400">seu Alcance</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Os 6 erros mais comuns que destroem o alcance organico — e como evitar cada um deles. Pare de sabotar seu proprio conteudo.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">~25</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Basico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Pratica</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- TOPICO 1 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">1</div>
+        <h2 class="text-2xl font-bold">🔗 Links na Legenda</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Colocar links clicaveis na legenda (ou pedir para sair da plataforma) e um dos erros mais comuns e mais penalizados. O algoritmo quer manter o usuario dentro da plataforma o maximo de tempo possivel. Posts que direcionam para fora recebem distribuicao drasticamente menor.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Por que Links Penalizam</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          A Meta ganha dinheiro quando usuarios ficam na plataforma consumindo conteudo (e vendo anuncios). Quando voce direciona alguem para um site externo, voce esta tirando um usuario da plataforma — e isso e exatamente o oposto do que o algoritmo quer. O sistema detecta URLs na legenda e CTAs como "clique no link" e reduz automaticamente a distribuicao desse post.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Impacto Real</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Posts com link na legenda:</strong> ate 50% menos alcance em comparacao com posts sem link</li>
+          <li>• <strong>CTAs "clique no link":</strong> reducao de 30-40% na distribuicao</li>
+          <li>• <strong>Links nos Stories:</strong> menor penalizacao (Stories ja sao mais privados)</li>
+          <li>• <strong>Instagram nao torna links clicaveis</strong> na legenda — e inutil alem de penalizado</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Solucoes Alternativas</h3>
+        <div class="space-y-3 text-neutral-300 text-sm">
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">✅</span>
+            <span><strong>"Link na bio"</strong> — direcione para o link da bio sem incluir URL na legenda</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">✅</span>
+            <span><strong>"Manda um DM com a palavra X"</strong> — automacao via ManyChat ou manual</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">✅</span>
+            <span><strong>"Comenta [palavra] que eu mando"</strong> — gera engajamento E direciona</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">✅</span>
+            <span><strong>Link nos Stories</strong> — menor penalizacao, mas use com moderacao</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Usar "link na bio" como CTA</li>
+            <li>• Criar automacao de DM para links</li>
+            <li>• Usar comentarios para direcionar</li>
+            <li>• Reservar links para Stories (com moderacao)</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Colocar URLs na legenda de posts</li>
+            <li>• "Clique no link" como CTA principal</li>
+            <li>• Compartilhar links em todos os posts</li>
+            <li>• Colocar link na legenda de Reels</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">2</div>
+        <h2 class="text-2xl font-bold">🏷️ Marca d'Agua e Reciclagem</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Repostar conteudo de outras plataformas com marca d'agua visivel e um dos erros mais graves. A Meta investe pesadamente em deteccao automatica e penaliza severamente conteudo reciclado. Em 2026, o sistema esta mais sofisticado do que nunca.
+      </p>
+
+      <!-- Box Alerta -->
+      <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-red-400 font-bold text-lg mb-3">⚠️ Alerta: Penalizacoes Severas</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Logo do TikTok:</strong> detectado automaticamente — ate 80% menos alcance</li>
+          <li>• <strong>Marca d'agua CapCut gratuito:</strong> detectada como conteudo nao-premium</li>
+          <li>• <strong>Reincidencia:</strong> penalizacao cumulativa — afeta TODOS os posts futuros</li>
+          <li>• <strong>Fingerprint digital:</strong> mesmo sem marca visivel, o hash do video pode ser identificado</li>
+        </ul>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Como Evitar Completamente</h3>
+        <div class="space-y-3 text-neutral-300 text-sm">
+          <p>• <strong>CapCut Premium:</strong> assine a versao premium (sem marca d'agua) ou use VN, InShot, ou editor nativo</p>
+          <p>• <strong>Multiplas plataformas:</strong> grave uma vez, exporte separadamente para cada rede</p>
+          <p>• <strong>Nunca baixe do TikTok:</strong> use o arquivo original do seu celular</p>
+          <p>• <strong>Verificacao:</strong> antes de postar, assista o video completo procurando marcas d'agua</p>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Editores Seguros (Sem Marca d'Agua)</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-dark-600">
+            <p class="text-emerald-400 font-semibold text-sm">CapCut Pro</p>
+            <p class="text-neutral-500 text-xs">Pago, sem marca</p>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-dark-600">
+            <p class="text-emerald-400 font-semibold text-sm">VN Video</p>
+            <p class="text-neutral-500 text-xs">Gratuito, sem marca</p>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-dark-600">
+            <p class="text-emerald-400 font-semibold text-sm">InShot Pro</p>
+            <p class="text-neutral-500 text-xs">Pago, sem marca</p>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-dark-600">
+            <p class="text-emerald-400 font-semibold text-sm">DaVinci Resolve</p>
+            <p class="text-neutral-500 text-xs">Gratuito, desktop</p>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-dark-600">
+            <p class="text-emerald-400 font-semibold text-sm">Editor do Instagram</p>
+            <p class="text-neutral-500 text-xs">Nativo, sem marca</p>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-dark-600">
+            <p class="text-emerald-400 font-semibold text-sm">Canva Pro</p>
+            <p class="text-neutral-500 text-xs">Pago, sem marca</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Usar editores sem marca d'agua</li>
+            <li>• Exportar do arquivo original</li>
+            <li>• Verificar video antes de publicar</li>
+            <li>• Criar conteudo nativo para cada plataforma</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Baixar video do TikTok para repostar</li>
+            <li>• Usar CapCut gratuito (marca d'agua)</li>
+            <li>• Repostar conteudo de outras contas</li>
+            <li>• Ignorar verificacao pre-publicacao</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">3</div>
+        <h2 class="text-2xl font-bold">🎯 Inconsistencia de Nicho</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        O algoritmo aprende sobre o que seu perfil "e" com base nos temas do seu conteudo. Se voce posta sobre culinaria na segunda, fitness na terca, financas na quarta e viagens na quinta, o algoritmo nao sabe para quem recomendar seu conteudo. Resultado: alcance fragmentado e crescimento lento.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Regra 80/20 de Nicho</h3>
+        <p class="text-neutral-300 leading-relaxed mb-4">
+          Mantenha 80% do seu conteudo dentro de 2-3 temas centrais do seu nicho. Os outros 20% podem ser conteudo pessoal, bastidores, ou temas adjacentes que humanizam sua marca. Isso permite que o algoritmo entenda claramente "do que se trata" o seu perfil e recomende para o publico certo.
+        </p>
+        <div class="bg-dark-700 rounded-lg p-4 border border-dark-600">
+          <p class="text-emerald-400 font-semibold mb-2">Exemplo para um perfil de culinaria saudavel:</p>
+          <ul class="text-neutral-300 text-sm space-y-1">
+            <li>• <strong>Tema 1 (40%):</strong> Receitas rapidas e saudaveis</li>
+            <li>• <strong>Tema 2 (25%):</strong> Dicas de nutricao e ingredientes</li>
+            <li>• <strong>Tema 3 (15%):</strong> Organizacao de cozinha e meal prep</li>
+            <li>• <strong>Pessoal (20%):</strong> Bastidores, vida pessoal, erros na cozinha</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Impacto da Inconsistencia</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Perfis consistentes:</strong> 3x mais chance de serem recomendados no Explorar</li>
+          <li>• <strong>Perfis inconsistentes:</strong> alcance 60% menor em media</li>
+          <li>• <strong>Tempo para o algoritmo "entender" seu nicho:</strong> 15-30 posts consistentes</li>
+          <li>• <strong>Mudanca de nicho:</strong> pode levar 2-3 meses para reestabelecer alcance</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Defina seus 2-3 pilares de conteudo ANTES de comecar a postar. Escreva em um papel: "Meu perfil fala sobre X, Y e Z". Toda vez que for criar um conteudo, pergunte: "Isso se encaixa em X, Y ou Z?". Se nao, nao poste — ou guarde para os 20% pessoais. Consistencia e o que faz o algoritmo confiar em voce.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Definir 2-3 pilares de conteudo</li>
+            <li>• Manter 80% dentro desses pilares</li>
+            <li>• Usar 20% para conteudo pessoal/bastidores</li>
+            <li>• Ser consistente por pelo menos 30 posts</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Postar sobre temas aleatorios sem conexao</li>
+            <li>• Mudar de nicho toda semana</li>
+            <li>• Misturar temas pessoais com profissionais sem proporcao</li>
+            <li>• Postar sobre tendencias que nao tem nada a ver com seu nicho</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">4</div>
+        <h2 class="text-2xl font-bold">🤐 Abandono Pos-Publicacao</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Um dos erros mais silenciosos e devastadores: publicar o conteudo e desaparecer. Nao responder comentarios nas primeiras 2 horas mata o momentum do post. O algoritmo interpreta falta de interacao do criador como sinal de que o conteudo nao e importante nem para quem o publicou.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Janela de Ouro de 2 Horas</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Como vimos no Modulo 1.1, as primeiras 2 horas definem o destino do post. Mas nao basta postar e esperar — voce precisa estar ATIVO nesse periodo. Cada comentario que voce responde conta como engajamento adicional e sinaliza ao algoritmo que ha conversa acontecendo. Um post com 10 comentarios e 10 respostas do criador tem 20 interacoes — o dobro do engajamento.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Impacto do Abandono</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Posts com respostas do criador nos primeiros 30min:</strong> 2.5x mais alcance</li>
+          <li>• <strong>Posts sem resposta na primeira hora:</strong> perdem ~40% do alcance potencial</li>
+          <li>• <strong>Cada resposta do criador:</strong> conta como +1 interacao para o algoritmo</li>
+          <li>• <strong>Respostas longas do criador:</strong> peso extra (mais de 4 palavras)</li>
+          <li>• <strong>Compartilhar nos Stories apos postar:</strong> +30-40% de alcance inicial</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Checklist Pos-Publicacao</h3>
+        <div class="space-y-2 text-neutral-300 text-sm">
+          <div class="flex items-start gap-2">
+            <span class="text-primary">1.</span>
+            <span><strong>Imediatamente:</strong> compartilhe o post nos Stories com enquete ou pergunta</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary">2.</span>
+            <span><strong>Primeiros 15min:</strong> responda os primeiros comentarios com substancia</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary">3.</span>
+            <span><strong>Primeiros 30min:</strong> faca perguntas nos comentarios para gerar conversa</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary">4.</span>
+            <span><strong>Primeira hora:</strong> continue respondendo e interagindo</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary">5.</span>
+            <span><strong>2 horas:</strong> ultima rodada de respostas — ok sair depois disso</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Ficar online por 2h apos postar</li>
+            <li>• Responder TODOS os comentarios com substancia</li>
+            <li>• Compartilhar nos Stories imediatamente</li>
+            <li>• Postar quando voce TEM tempo de interagir</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Postar e fechar o app</li>
+            <li>• Responder comentarios 24h depois</li>
+            <li>• Postar quando voce nao tem tempo de interagir</li>
+            <li>• Responder so com emojis ou "obrigado"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">5</div>
+        <h2 class="text-2xl font-bold">#️⃣ Hashtags Erradas</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Em 2026, a estrategia de hashtags mudou completamente. Usar 30 hashtags genericas nao funciona mais. O ideal e 3-5 hashtags de nicho, especificas e relevantes. Hashtags com bilhoes de posts (#love, #instagood) diluem seu conteudo num oceano — voce precisa de lagoas onde pode se destacar.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Nova Estrategia de Hashtags em 2026</h3>
+        <p class="text-neutral-300 leading-relaxed mb-4">
+          Hashtags em 2026 funcionam mais como categorias de busca do que como ferramentas de descoberta. O algoritmo as usa para entender o TEMA do seu conteudo, nao para distribuir. Por isso, a relevancia e mais importante que o volume. Use hashtags que descrevam precisamente o que esta no conteudo.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+          <div class="bg-dark-700 rounded-lg p-3 border border-emerald-500/30">
+            <p class="text-emerald-400 font-semibold mb-1">✅ Hashtags de Nicho (100K-2M posts)</p>
+            <p class="text-neutral-400">#receitasaudavel #fitnessiniciante #marketingdigitaldicas</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-red-500/30">
+            <p class="text-red-400 font-semibold mb-1">❌ Hashtags Genericas (1B+ posts)</p>
+            <p class="text-neutral-400">#love #instagood #photooftheday #beautiful</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre Hashtags em 2026</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Quantidade ideal:</strong> 3-5 hashtags por post (nao 30)</li>
+          <li>• <strong>Volume ideal:</strong> hashtags com 100K-2M de posts (nicho especifico)</li>
+          <li>• <strong>Hashtags genericas:</strong> nenhum impacto mensuravel no alcance</li>
+          <li>• <strong>Hashtags de nicho:</strong> +15-20% de alcance via busca</li>
+          <li>• <strong>Hashtags banidas/restritas:</strong> podem penalizar o post inteiro — verifique</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Crie 3 grupos de hashtags para seus temas principais (5 hashtags cada). Rode entre eles a cada post. Pesquise cada hashtag no Instagram antes de usar: veja o volume de posts e se os resultados sao relevantes para seu conteudo. Se a hashtag mostra conteudo completamente diferente do seu, nao use.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Usar 3-5 hashtags de nicho especificas</li>
+            <li>• Pesquisar volume antes de usar (100K-2M)</li>
+            <li>• Criar grupos de hashtags por tema</li>
+            <li>• Variar hashtags entre posts</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Usar 30 hashtags copiadas</li>
+            <li>• Hashtags genericas com bilhoes de posts</li>
+            <li>• Usar as mesmas hashtags em todos os posts</li>
+            <li>• Nao verificar se a hashtag e relevante</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">6</div>
+        <h2 class="text-2xl font-bold">📉 Postar e Desaparecer</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        A consistencia e a base de tudo. Ficar 4+ dias sem postar gera uma penalizacao ao retornar — o algoritmo "esquece" de voce e precisa re-aprender a distribuir seu conteudo. Pior: seguidores engajados perdem o habito de interagir com voce e o engajamento cai quando voce volta.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Regra 80/20 de Publicacao</h3>
+        <p class="text-neutral-300 leading-relaxed mb-4">
+          Mantenha uma frequencia consistente e sustentavel. Melhor postar 3x por semana SEMPRE do que 7x numa semana e sumir na outra. A regra de conteudo 80/20: 80% de conteudo de valor (educativo, informativo, entretenimento) e 20% de conteudo de conversao (CTA, venda, oferta).
+        </p>
+        <div class="bg-dark-700 rounded-lg p-4 border border-dark-600">
+          <p class="text-emerald-400 font-semibold mb-2">Frequencia recomendada por plataforma:</p>
+          <ul class="text-neutral-300 text-sm space-y-1">
+            <li>• <strong>Instagram Feed/Reels:</strong> 3-5 posts por semana</li>
+            <li>• <strong>Instagram Stories:</strong> 3-7 por dia (mais pessoal)</li>
+            <li>• <strong>Facebook:</strong> 3-5 posts por semana</li>
+            <li>• <strong>Maximo sem postar:</strong> 3 dias (acima disso, penalizacao)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre Consistencia</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>4+ dias sem postar:</strong> queda de 25-40% no alcance do proximo post</li>
+          <li>• <strong>1 semana sem postar:</strong> pode levar 3-5 posts para recuperar alcance</li>
+          <li>• <strong>Perfis que postam 4-7x/semana:</strong> 2x mais crescimento que 1-2x/semana</li>
+          <li>• <strong>Consistencia > frequencia:</strong> 3x/semana todo mes > 7x/semana em semanas alternadas</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica: Programacao de Conteudo</h3>
+        <div class="space-y-3 text-neutral-300 text-sm">
+          <p>• <strong>Batch de conteudo:</strong> separe 1 dia por semana para criar 5-7 conteudos de uma vez</p>
+          <p>• <strong>Agendamento:</strong> use o agendamento nativo do Instagram ou ferramentas como Later, Buffer</p>
+          <p>• <strong>Banco de ideias:</strong> mantenha uma lista de 20+ ideias de conteudo sempre atualizada</p>
+          <p>• <strong>Conteudo de emergencia:</strong> tenha 2-3 posts prontos para publicar quando nao tiver tempo</p>
+          <p>• <strong>Regra de ouro:</strong> defina uma frequencia que voce CONSIGA manter por 6 meses</p>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Definir frequencia sustentavel (3-5x/semana)</li>
+            <li>• Programar conteudo com antecedencia</li>
+            <li>• Manter banco de ideias e posts prontos</li>
+            <li>• Seguir regra 80/20 (valor/conversao)</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Ficar 4+ dias sem publicar nada</li>
+            <li>• Postar 7x numa semana e sumir na proxima</li>
+            <li>• Depender de "inspiracao" para criar</li>
+            <li>• Nao ter conteudo de reserva</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-emerald-400">📋 Resumo do Modulo 1.5 — e da Trilha 1</h2>
+
+        <div class="space-y-3 mb-8">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que links na legenda penalizam alcance — uso "link na bio" ou DM</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi que marca d'agua e reciclagem sao severamente penalizados</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Vou manter 80% do conteudo em 2-3 temas centrais do meu nicho</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que preciso ficar ativo nas 2h apos publicar e responder comentarios</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Uso maximo 5 hashtags de nicho especificas (100K-2M posts)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Vou manter consistencia de publicacao (3-5x/semana, sem pausas longas)</span>
+          </label>
+        </div>
+
+        <!-- Resumo Geral da Trilha 1 -->
+        <div class="bg-dark-700 rounded-lg p-6 border border-dark-600 mb-6">
+          <h3 class="text-emerald-400 font-bold text-lg mb-3">🏁 Trilha 1 Completa — O que Voce Aprendeu</h3>
+          <div class="space-y-2 text-neutral-300 text-sm">
+            <p>• <strong>1.1:</strong> A Meta funciona como Interest Media, nao Social Media. UTIS observa comportamento real.</p>
+            <p>• <strong>1.2:</strong> Watch Time (35%) e DM Sends (20%) sao os sinais mais fortes. Likes valem apenas 5%.</p>
+            <p>• <strong>1.3:</strong> Conteudo recomendavel passa por 3 filtros: Retencao, Acao e Originalidade.</p>
+            <p>• <strong>1.4:</strong> Foque em metricas de engajamento real e negocio, nao vaidade. Dashboard semanal.</p>
+            <p>• <strong>1.5:</strong> Evite os 6 erros fatais: links, marca d'agua, inconsistencia, abandono, hashtags erradas, pausas.</p>
+          </div>
+        </div>
+
+        <div class="border-t border-emerald-500/30 pt-6">
+          <p class="text-neutral-400 mb-4">
+            <strong class="text-emerald-400">Proxima Trilha:</strong> Trilha 2 - Estrategia de Conteudo
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="modulo-1-4.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              ← Modulo Anterior
+            </a>
+            <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              ← Voltar para Trilha
+            </a>
+            <a href="../trilha2/index.html" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 rounded-lg transition-colors font-semibold">
+              Trilha 2: Estrategia →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 — Um curso <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    if (html.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

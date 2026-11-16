@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.3 - Calendario Editorial | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores BLUE */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+
+    /* Light mode - outras cores */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+
+    /* Light mode - gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400 font-medium">Modulo 2.3</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full mb-6 border border-blue-500/30">
+        MODULO 2.3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        📅 Calendario <span class="text-blue-400">Editorial</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Monte um sistema de planejamento de conteudo que garante consistencia, variedade de formatos e resultados mensuraveis. O mapa que transforma caos em estrategia.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">~30</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Inter.</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Pratica</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">📌 Por que o Calendario e Estrategico</h2>
+          <p class="text-neutral-400 text-sm">O algoritmo pune inconsistencia</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Um calendario editorial nao e apenas uma planilha de datas -- e uma ferramenta estrategica que conecta seus objetivos de negocio com a producao de conteudo. Em 2026, o algoritmo da Meta recompensa perfis que publicam de forma consistente e pune aqueles que alternam entre surtos de atividade e longos periodos de silencio. Dados internos da Meta mostram que perfis que mantem frequencia regular (sem buracos maiores que 48h) tem ate 67% mais alcance basal do que perfis irregulares. O calendario garante que voce nunca fique sem conteudo e que cada post tenha um proposito claro dentro da sua estrategia.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Impacto da Consistencia no Alcance</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; Perfis consistentes: <strong>+67% de alcance basal</strong> comparado a perfis irregulares</li>
+          <li>&#8226; Cada dia sem postar: <strong>-8% de alcance no dia seguinte</strong> (efeito cumulativo)</li>
+          <li>&#8226; 3+ dias sem postar: o algoritmo <strong>rebaixa sua prioridade</strong> no Feed dos seguidores</li>
+          <li>&#8226; Voltar apos pausa longa: leva <strong>7-14 dias</strong> para recuperar o alcance anterior</li>
+          <li>&#8226; Perfis com calendario: produzem <strong>3x mais conteudo</strong> com metade do estresse</li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie a estrutura de um calendario editorial mensal para o nicho [NICHO] com frequencia de [X] posts por semana. Inclua: distribuicao de pilares de conteudo, formatos sugeridos para cada dia, espacos para ganchos e notas de producao. Formate como tabela que eu possa copiar para uma planilha."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Planejar pelo menos 7 dias a frente</li>
+            <li>&#8226; Conectar cada post a um objetivo</li>
+            <li>&#8226; Reservar espaco para conteudo reativo</li>
+            <li>&#8226; Revisar e ajustar semanalmente</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Improvisar conteudo no dia da publicacao</li>
+            <li>&#8226; Planejar mais de 30 dias a frente (perde flexibilidade)</li>
+            <li>&#8226; Calendario rigido demais sem margem</li>
+            <li>&#8226; Ignorar datas sazonais e tendencias</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">📋 Os 7 Campos Essenciais</h2>
+          <p class="text-neutral-400 text-sm">Estrutura minima para um calendario funcional</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Um calendario editorial eficaz nao precisa ser complexo, mas precisa ter os campos certos. Cada campo serve um proposito estrategico: desde o planejamento ate a analise de resultados. A estrutura de 7 campos que apresentamos aqui e usada por criadores que faturam 6 digitos com conteudo e foi refinada para o contexto de 2026, onde velocidade de producao e analise de dados sao diferenciais competitivos.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Os 7 Campos</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+            <div><strong>Data e Horario:</strong> dia da publicacao + horario otimizado com base nos insights da conta</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+            <div><strong>Plataforma + Formato:</strong> Instagram/Facebook + Reel/Carrossel/Post/Stories/Live</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+            <div><strong>Pilar de Conteudo:</strong> Educacional (40%) / Inspiracional (20%) / Entretenimento (25%) / Conversao (15%)</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+            <div><strong>Gancho / Titulo:</strong> a primeira frase ou slide que para o scroll</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+            <div><strong>Status:</strong> Ideia → Roteiro → Produzido → Agendado → Publicado → Analisado</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">6</span>
+            <div><strong>Link do Arquivo:</strong> link para o arquivo de midia (Google Drive, Canva, CapCut)</div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 flex items-start gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">7</span>
+            <div><strong>Resultado:</strong> alcance, engajamento, saves, shares -- preenchido apos 48h da publicacao</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Ferramentas Recomendadas</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>Google Sheets:</strong> gratuito, colaborativo, facil de personalizar</li>
+          <li>&#8226; <strong>Notion:</strong> visual, com templates prontos, ideal para equipes</li>
+          <li>&#8226; <strong>Trello:</strong> formato Kanban com colunas por status</li>
+          <li>&#8226; <strong>Meta Business Suite:</strong> agendamento nativo + insights integrados</li>
+        </ul>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Preencher todos os 7 campos</li>
+            <li>&#8226; Atualizar status em tempo real</li>
+            <li>&#8226; Registrar resultados apos 48h</li>
+            <li>&#8226; Usar codigos de cores por pilar</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Calendario com 20+ campos (complicado demais)</li>
+            <li>&#8226; Nao registrar resultados</li>
+            <li>&#8226; Usar ferramenta que voce nao vai abrir</li>
+            <li>&#8226; Compartilhar acesso sem regras claras</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">📆 Template Semanal Completo</h2>
+          <p class="text-neutral-400 text-sm">De segunda a domingo com formato, pilar e horario</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Template Semanal Recomendado</h4>
+        <p class="text-neutral-300 mb-4">Este template equilibra todos os pilares, formatos e horarios. Ajuste conforme seus dados de insights.</p>
+        <div class="space-y-2 text-sm">
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Segunda</span>
+            <span class="text-neutral-300">Reel educativo</span>
+            <span class="text-emerald-400 text-xs">Educacional</span>
+            <span class="text-neutral-400">7h ou 18h</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Terca</span>
+            <span class="text-neutral-300">Carrossel dicas</span>
+            <span class="text-emerald-400 text-xs">Educacional</span>
+            <span class="text-neutral-400">9h ou 12h</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Quarta</span>
+            <span class="text-neutral-300">Reel bastidores</span>
+            <span class="text-purple-400 text-xs">Inspiracional</span>
+            <span class="text-neutral-400">12h ou 19h</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Quinta</span>
+            <span class="text-neutral-300">Reel tendencia</span>
+            <span class="text-amber-400 text-xs">Entretenimento</span>
+            <span class="text-neutral-400">7h ou 20h</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Sexta</span>
+            <span class="text-neutral-300">Carrossel tutorial</span>
+            <span class="text-emerald-400 text-xs">Educacional</span>
+            <span class="text-neutral-400">9h ou 18h</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Sabado</span>
+            <span class="text-neutral-300">Reel humor/curiosidade</span>
+            <span class="text-amber-400 text-xs">Entretenimento</span>
+            <span class="text-neutral-400">10h ou 19h</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 grid grid-cols-4 gap-2 items-center">
+            <span class="text-blue-400 font-semibold">Domingo</span>
+            <span class="text-neutral-300">Post CTA + depoimento</span>
+            <span class="text-red-400 text-xs">Conversao</span>
+            <span class="text-neutral-400">18h ou 20h</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie um template semanal de conteudo para [PLATAFORMA] no nicho [NICHO] com [X] posts por semana. Para cada dia inclua: formato do post, pilar de conteudo, sugestao de gancho e melhor horario. Distribua os pilares na proporcao 40% educacional, 25% entretenimento, 20% inspiracional, 15% conversao."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Variar formatos ao longo da semana</li>
+            <li>&#8226; Alternar pilares para nao cansar</li>
+            <li>&#8226; Adicionar Stories diarios ao template</li>
+            <li>&#8226; Ajustar horarios com base nos insights</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Mesmo formato todos os dias</li>
+            <li>&#8226; So conteudo educacional (cansativo)</li>
+            <li>&#8226; Postar sempre no mesmo horario</li>
+            <li>&#8226; Template fixo sem revisao semanal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">⏰ Melhores Horarios 2026</h2>
+          <p class="text-neutral-400 text-sm">Dados atualizados por plataforma</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Horarios importam porque a "Janela de Ouro" (primeiras 2 horas) define o alcance do post. Se voce publica quando sua audiencia esta inativa, os primeiros sinais serao fracos e o algoritmo nao expandira a distribuicao. Os dados abaixo sao medias globais para o Brasil em 2026 -- mas seus insights pessoais sempre devem ter prioridade. Use esses dados como ponto de partida e ajuste com base nos seus proprios numeros.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Horarios Otimizados por Plataforma (Brasil, 2026)</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Instagram</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Manha:</strong> 7h - 9h (pico as 7h30)</li>
+              <li>&#8226; <strong>Almoco:</strong> 12h - 13h (pico as 12h15)</li>
+              <li>&#8226; <strong>Noite:</strong> 18h - 21h (pico as 19h30)</li>
+              <li>&#8226; <strong>Melhor dia:</strong> Terca e Quinta</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Facebook</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Manha:</strong> 9h (apos inicio do expediente)</li>
+              <li>&#8226; <strong>Almoco:</strong> 13h (pausa do trabalho)</li>
+              <li>&#8226; <strong>Noite:</strong> 18h (fim do expediente)</li>
+              <li>&#8226; <strong>Melhor dia:</strong> Quarta e Sexta</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica</h4>
+        <p class="text-neutral-300">Acesse <strong>Instagram → Insights → Seguidores → Horarios mais ativos</strong> para ver os dados especificos da SUA audiencia. Esses dados sao atualizados semanalmente e sao mais precisos do que qualquer media global. Faca o mesmo no Meta Business Suite para Facebook.</p>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Consultar seus insights pessoais semanalmente</li>
+            <li>&#8226; Testar horarios diferentes por 2 semanas</li>
+            <li>&#8226; Publicar 15-30 min antes do pico</li>
+            <li>&#8226; Estar online para responder nos primeiros 30 min</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Postar de madrugada (1h-5h)</li>
+            <li>&#8226; Seguir horarios de blogs sem testar</li>
+            <li>&#8226; Publicar e desaparecer por horas</li>
+            <li>&#8226; Ignorar fusos horarios da sua audiencia</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">🏭 Producao em Lote (Batch Content)</h2>
+          <p class="text-neutral-400 text-sm">Grave e crie em sessoes concentradas</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Producao em lote (batch content) e o segredo dos criadores que publicam diariamente sem burnout. Em vez de criar um conteudo por dia (setup, gravacao, edicao, publicacao), voce concentra atividades similares em blocos. Grave 5 Reels no mesmo dia usando o mesmo cenario e figurino. Crie 3 carrosseis na mesma sessao de design. Escreva 10 captions de uma vez. Isso funciona porque seu cerebro entra em "modo de producao" e a eficiencia aumenta exponencialmente. Reserve sempre 20% do calendario para conteudo reativo -- tendencias, noticias do nicho e oportunidades que surgem.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Estrutura de Producao em Lote</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Bloco 1 - Planejamento (2h)</span>
+            <p class="text-sm mt-1">Definir temas, ganchos e roteiros para a semana inteira. Use IA para gerar ideias e refine com sua voz.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Bloco 2 - Gravacao (3-4h)</span>
+            <p class="text-sm mt-1">Grave todos os Reels da semana em uma sessao. Mesmo cenario, mesma iluminacao, troque apenas o conteudo. 5-8 Reels em um unico dia.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Bloco 3 - Edicao (2-3h)</span>
+            <p class="text-sm mt-1">Edite todos os videos e crie todos os carrosseis. Use templates do Canva/CapCut para acelerar.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Bloco 4 - Agendamento (1h)</span>
+            <p class="text-sm mt-1">Agende tudo no Meta Business Suite ou ferramenta de sua preferencia. Preencha captions e hashtags.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie roteiros para 5 Reels curtos (15-30s) no nicho [NICHO] que eu possa gravar em sequencia no mesmo dia. Todos devem usar o formato talking head, com gancho forte nos primeiros 3 segundos. Inclua: texto do gancho, pontos principais a cobrir (2-3), CTA final. Varie entre educacional, dica rapida e mito vs realidade."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Dedicar 1 dia para gravacao em lote</li>
+            <li>&#8226; Usar templates reutilizaveis</li>
+            <li>&#8226; Reservar 20% para conteudo reativo</li>
+            <li>&#8226; Agendar com 3-5 dias de antecedencia</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Criar, editar e publicar no mesmo momento</li>
+            <li>&#8226; Gravar 1 Reel por vez (ineficiente)</li>
+            <li>&#8226; Agendar 100% sem espaco para tendencias</li>
+            <li>&#8226; Sessoes de gravacao sem roteiro pronto</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">📊 Analise Semanal (Ritual de Segunda)</h2>
+          <p class="text-neutral-400 text-sm">Aprenda com seus dados e replique padroes</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O calendario editorial so funciona se voce analisar os resultados. O "Ritual de Segunda" e um processo de 30 minutos que transforma dados em decisoes. Toda segunda-feira, antes de planejar a semana, voce revisa os numeros da semana anterior para identificar padroes: o que funcionou, o que nao funcionou e por que. Os tres indicadores mais importantes para analisar sao: <strong>saves</strong> (indica valor), <strong>shares</strong> (indica relevancia) e <strong>alcance de nao-seguidores</strong> (indica potencial viral). Curtidas e comentarios sao secundarios.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Checklist do Ritual de Segunda</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">Passo 1 - Top 3 Saves</span>
+            <p class="text-sm mt-1">Identifique os 3 posts com mais saves da semana. Analise: qual formato? Qual gancho? Qual pilar? Crie mais conteudo com esse padrao.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">Passo 2 - Top 3 Shares</span>
+            <p class="text-sm mt-1">Identifique os 3 posts mais compartilhados. Analise: qual emocao provocaram? Que tipo de pessoa compartilharia isso? Replique o padrao.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">Passo 3 - Piores Performers</span>
+            <p class="text-sm mt-1">Identifique os 2 posts com pior performance. Analise: horario errado? Gancho fraco? Formato inadequado? Aprenda e nao repita.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">Passo 4 - Ajustar Calendario</span>
+            <p class="text-sm mt-1">Com base na analise, ajuste o calendario da proxima semana: mais do que funcionou, menos do que falhou, teste uma coisa nova.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Analisei meus posts da semana no nicho [NICHO]. Os 3 posts com mais saves foram: [descreva]. Os 3 com mais shares foram: [descreva]. Os 2 piores performers foram: [descreva]. Com base nesses dados, sugira: 1) padroes a replicar, 2) erros a evitar, 3) 5 ideias de conteudo para a proxima semana seguindo os padroes de sucesso."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Ritual de analise toda segunda-feira</li>
+            <li>&#8226; Focar em saves e shares (nao likes)</li>
+            <li>&#8226; Registrar aprendizados por escrito</li>
+            <li>&#8226; Dobrar o que funciona</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Publicar sem analisar resultados</li>
+            <li>&#8226; Julgar posts por likes apenas</li>
+            <li>&#8226; Mudar toda a estrategia por 1 post ruim</li>
+            <li>&#8226; Ignorar padroes de sucesso</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-8 mb-12">
+      <h3 class="text-2xl font-bold text-blue-400 mb-4">Resumo do Modulo 2.3</h3>
+      <div class="space-y-3 text-neutral-300">
+        <p>&#8226; <strong>Estrategia:</strong> O calendario editorial garante consistencia -- perfis regulares tem 67% mais alcance</p>
+        <p>&#8226; <strong>7 Campos:</strong> Data, plataforma/formato, pilar, gancho, status, link, resultado</p>
+        <p>&#8226; <strong>Template:</strong> Semana planejada com variedade de formatos e pilares</p>
+        <p>&#8226; <strong>Horarios:</strong> Instagram 7-9h, 12-13h, 18-21h / Facebook 9h, 13h, 18h</p>
+        <p>&#8226; <strong>Batch:</strong> Producao em lote com 80% planejado + 20% reativo</p>
+        <p>&#8226; <strong>Analise:</strong> Ritual de segunda -- saves e shares como metricas principais</p>
+      </div>
+    </section>
+
+    <!-- NAVEGACAO -->
+    <div class="flex items-center justify-between">
+      <a href="modulo-2-2.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Modulo 2.2
+      </a>
+      <a href="modulo-2-4.html" class="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/30 transition-colors border border-blue-500/30">
+        Modulo 2.4 →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 text-center text-neutral-500 text-sm">
+    <p>Hack Meta 2026 - INEMA.CLUB</p>
+  </footer>
+
+  <!-- THEME TOGGLE JS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

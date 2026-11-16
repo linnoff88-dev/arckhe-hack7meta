@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.1 - Como o Algoritmo Funciona em 2026 | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores emerald */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400 transition-colors">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.1</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full mb-6 border border-emerald-500/30">
+        MODULO 1.1
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🧠 Como o Algoritmo <span class="text-emerald-400">Funciona em 2026</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Entenda a logica por tras da distribuicao de conteudo no Facebook e Instagram. Descubra como a IA decide quem ve seu conteudo e por que seguidores ja nao sao tudo.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">~30</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Basico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- ============================================ -->
+    <!-- TOPICO 1 -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">1</div>
+        <h2 class="text-2xl font-bold">🔄 De Social Media para Interest Media</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        O Facebook e o Instagram deixaram de ser redes sociais tradicionais. Em 2026, eles funcionam como plataformas de "Interest Media" — o conteudo compete pelo interesse de qualquer pessoa conectada, nao apenas dos seus seguidores. Uma conta com 2.000 seguidores pode alcançar 500.000 pessoas se o conteudo for relevante para um publico amplo. O feed e inteiramente curado por IA, que entende interesses individuais de cada usuario com base em comportamento real.
+      </p>
+
+      <!-- Box Conceito Principal -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Conceito Principal: Interest Media</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Interest Media e o novo paradigma das plataformas da Meta. Em vez de mostrar conteudo baseado em quem voce segue (Social Media), a plataforma mostra conteudo baseado no que voce demonstra interesse atraves do seu comportamento. Isso significa que cada post compete num mercado aberto de atenção — e o algoritmo decide quem ve com base em relevancia, nao em relacionamento. Se seu conteudo e interessante para pessoas que nunca ouviram falar de voce, ele sera distribuido para essas pessoas.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados e Pesquisa</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>50% do feed</strong> de um usuario medio vem de contas que ele NAO segue</li>
+          <li>• <strong>70% dos Reels</strong> assistidos sao de criadores desconhecidos pelo espectador</li>
+          <li>• <strong>Alcance organico medio:</strong> Facebook 2%, Instagram 3-4% dos seguidores</li>
+          <li>• <strong>Queda anual:</strong> alcance organico cai ~12% ao ano desde 2022</li>
+          <li>• <strong>Crescimento:</strong> contas que adotam formato Interest Media crescem 3x mais rapido</li>
+        </ul>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar conteudo compreensivel por qualquer pessoa, sem contexto previo</li>
+            <li>• Pensar em "quem precisa ver isso?" em vez de "meus seguidores vao gostar?"</li>
+            <li>• Usar ganchos universais que despertam curiosidade imediata</li>
+            <li>• Testar temas que atraem publico alem do seu nicho direto</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Assumir que seus seguidores verao tudo que voce posta</li>
+            <li>• Criar conteudo que so faz sentido para quem ja te acompanha</li>
+            <li>• Focar em numero de seguidores como metrica de sucesso</li>
+            <li>• Ignorar o publico nao-seguidor que pode descobrir seu conteudo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TOPICO 2 -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">2</div>
+        <h2 class="text-2xl font-bold">🤖 Modelo UTIS (User True Interest Survey)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Lancado em janeiro de 2026, o UTIS (User True Interest Survey) e o modelo de inteligencia artificial que guia as recomendacoes de Reels no Instagram e Facebook. Diferente dos modelos anteriores, o UTIS observa o comportamento real do usuario — nao o que ele declara gostar, mas o que ele realmente faz. Tempo de pausa, velocidade de rolagem, re-assistencia de videos e envios por DM sao sinais muito mais fortes do que curtidas.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Conceito Principal: UTIS</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          O UTIS representa uma mudanca fundamental: a Meta parou de confiar no que os usuarios dizem e passou a observar o que eles fazem. Se um usuario diz que gosta de fitness mas passa 80% do tempo assistindo videos de culinaria, o UTIS prioriza culinaria no feed dele. Para criadores, isso significa que o conteudo precisa gerar COMPORTAMENTO real (assistir ate o fim, salvar, enviar) e nao apenas acoes superficiais como curtir.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Hierarquia de Sinais do UTIS</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="text-emerald-400 font-bold text-lg w-12">35%</span>
+            <div class="flex-1 bg-emerald-500/20 rounded-full h-4" style="width: 100%"></div>
+            <span class="text-neutral-300 text-sm">Watch Time (tempo de visualizacao)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-blue-400 font-bold text-lg w-12">20%</span>
+            <div class="flex-1 bg-blue-500/20 rounded-full h-4" style="width: 57%"></div>
+            <span class="text-neutral-300 text-sm">Sends (compartilhamentos por DM)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-purple-400 font-bold text-lg w-12">15%</span>
+            <div class="flex-1 bg-purple-500/20 rounded-full h-4" style="width: 43%"></div>
+            <span class="text-neutral-300 text-sm">Saves (salvamentos)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-amber-400 font-bold text-lg w-12">15%</span>
+            <div class="flex-1 bg-amber-500/20 rounded-full h-4" style="width: 43%"></div>
+            <span class="text-neutral-300 text-sm">Comentarios (profundidade)</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-neutral-400 font-bold text-lg w-12">5%</span>
+            <div class="flex-1 bg-neutral-500/20 rounded-full h-4" style="width: 14%"></div>
+            <span class="text-neutral-300 text-sm">Likes (curtidas)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Para otimizar para o UTIS, foque em criar conteudo que as pessoas assistam ate o final (watch time) e queiram enviar para alguem (sends). Antes de postar, pergunte: "Alguem assistiria isso duas vezes?" e "Alguem enviaria isso para um amigo?". Se a resposta for sim para ambas, voce tem um conteudo forte para o algoritmo de 2026.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar ganchos que prendem nos primeiros 2 segundos</li>
+            <li>• Incluir revelacoes ou punchlines que motivam re-assistencia</li>
+            <li>• Produzir conteudo "enviavel" — listas, dicas, comparacoes</li>
+            <li>• Monitorar taxa de retencao e sends no Insights</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Pedir curtidas explicitamente (sinal fraco no UTIS)</li>
+            <li>• Criar conteudo generico que ninguem salvaria</li>
+            <li>• Ignorar a taxa de retencao dos seus Reels</li>
+            <li>• Focar apenas em metricas de vaidade como likes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TOPICO 3 -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">3</div>
+        <h2 class="text-2xl font-bold">📱 Algoritmos por Superficie</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Cada superficie do Instagram e Facebook tem seu proprio sistema de recomendacao. O que funciona no Feed nao necessariamente funciona nos Reels, no Explorar ou nos Stories. Entender as diferencas entre cada superficie e fundamental para adaptar sua estrategia e maximizar o alcance em cada uma delas.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Conceito: Superficies de Distribuicao</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Uma "superficie" e cada local onde o conteudo pode aparecer na plataforma. Cada superficie tem seu proprio algoritmo, otimizado para o tipo de experiencia que o usuario espera naquele contexto. O Feed e mais pessoal, os Reels sao entretenimento, o Explorar e descoberta, e os Stories sao intimidade. Criar conteudo generico para todas as superficies e como usar a mesma roupa para praia, trabalho e casamento.
+        </p>
+      </div>
+
+      <!-- Tabela Comparativa -->
+      <div class="bg-dark-800 border border-dark-600 rounded-xl overflow-hidden mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg p-6 pb-3">📊 Comparativo de Superficies</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left p-4 text-neutral-400 font-semibold">Superficie</th>
+                <th class="text-left p-4 text-neutral-400 font-semibold">Prioridade #1</th>
+                <th class="text-left p-4 text-neutral-400 font-semibold">Prioridade #2</th>
+                <th class="text-left p-4 text-neutral-400 font-semibold">Dica</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-dark-700">
+                <td class="p-4 font-semibold">📰 Feed</td>
+                <td class="p-4 text-emerald-400">Relacionamento + Saves</td>
+                <td class="p-4 text-neutral-300">Shares</td>
+                <td class="p-4 text-neutral-400">Conteudo de valor salvavel</td>
+              </tr>
+              <tr class="border-b border-dark-700">
+                <td class="p-4 font-semibold">🎬 Reels</td>
+                <td class="p-4 text-emerald-400">Watch Time + Rewatch</td>
+                <td class="p-4 text-neutral-300">DM Sends</td>
+                <td class="p-4 text-neutral-400">Gancho forte + retencao alta</td>
+              </tr>
+              <tr class="border-b border-dark-700">
+                <td class="p-4 font-semibold">🔍 Explorar</td>
+                <td class="p-4 text-emerald-400">Originalidade</td>
+                <td class="p-4 text-neutral-300">Relevancia</td>
+                <td class="p-4 text-neutral-400">Conteudo unico e visual</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold">📖 Stories</td>
+                <td class="p-4 text-emerald-400">Visualizacao completa</td>
+                <td class="p-4 text-neutral-300">Respostas</td>
+                <td class="p-4 text-neutral-400">Enquetes + perguntas abertas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Adapte o mesmo tema para diferentes superficies. Um tutorial pode virar: um Reel curto com gancho forte (Reels), um carrossel detalhado salvavel (Feed), um bastidor do processo (Stories) e uma imagem impactante (Explorar). Assim voce maximiza o alcance do mesmo esforço criativo.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Adaptar formato e ritmo para cada superficie</li>
+            <li>• Usar Stories para construir relacionamento e gerar respostas</li>
+            <li>• Focar em watch time para Reels e saves para Feed</li>
+            <li>• Criar conteudo original para aparecer no Explorar</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Postar o mesmo conteudo identico em todas as superficies</li>
+            <li>• Ignorar os Stories (eles alimentam o relacionamento)</li>
+            <li>• Criar Reels sem gancho forte nos primeiros segundos</li>
+            <li>• Nao analisar qual superficie traz mais resultado para voce</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TOPICO 4 -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">4</div>
+        <h2 class="text-2xl font-bold">👥 50% para Desconhecidos</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Metade do conteudo que aparece no feed de um usuario vem de contas que ele nao segue. Isso representa uma oportunidade enorme — e um desafio. Seu conteudo precisa ser compreensivel e atraente para pessoas que nunca viram seu perfil antes. Ao mesmo tempo, o alcance organico entre seguidores continua caindo ano a ano.
+      </p>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados e Percentuais</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>50% do Feed:</strong> conteudo de contas nao seguidas (fonte: Meta Q4 2025)</li>
+          <li>• <strong>Facebook alcance organico:</strong> apenas 2% dos seguidores veem seus posts</li>
+          <li>• <strong>Instagram alcance organico:</strong> 3-4% dos seguidores (queda de 12% ao ano)</li>
+          <li>• <strong>70% dos Reels:</strong> visualizados por nao-seguidores</li>
+          <li>• <strong>Tendencia:</strong> a cada ano, mais do feed e de contas desconhecidas</li>
+        </ul>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Implicacao Estrategica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Se metade do seu publico potencial nunca viu seu perfil, cada post precisa funcionar como um "primeiro encontro". Evite referencias internas ("como eu falei ontem"), piadas internas ou conteudo que exija contexto previo. Cada conteudo deve ser autocontido — compreensivel e valioso por si so, independente de quem esta vendo.
+        </p>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Antes de publicar, mostre o conteudo para alguem que nao te segue e pergunte: "Voce entende a mensagem? Isso te interessaria?". Se a resposta for nao, retrabalhe o conteudo. Um bom teste e mostrar apenas os primeiros 3 segundos do Reel ou a primeira linha do carrossel — se nao gera curiosidade imediata, precisa melhorar.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar conteudo autocontido que funciona sem contexto</li>
+            <li>• Apresentar-se brevemente em conteudos de descoberta</li>
+            <li>• Usar legendas claras e diretas</li>
+            <li>• Pensar cada post como uma "vitrine" para novos publicos</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Usar referencias internas ("como falei ontem...")</li>
+            <li>• Assumir que todos conhecem seu historico</li>
+            <li>• Criar conteudo exclusivo para seguidores fieis</li>
+            <li>• Ignorar que metade do publico e novo a cada post</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TOPICO 5 -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">5</div>
+        <h2 class="text-2xl font-bold">⚡ A Janela de Ouro</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        As primeiras 2 horas apos a publicacao definem o destino do seu conteudo. O algoritmo testa com um grupo pequeno de seguidores e, se a resposta for positiva (alta retencao, saves, sends), escala para um publico maior. Responder comentarios e interagir nessa janela e critico para sinalizar relevancia.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Timeline de Distribuicao</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-right">
+              <span class="text-emerald-400 font-bold text-sm">0-30min</span>
+            </div>
+            <div class="w-3 h-3 bg-emerald-400 rounded-full mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="text-neutral-300 font-semibold">Teste Inicial</p>
+              <p class="text-neutral-400 text-sm">Algoritmo mostra para ~10% dos seguidores mais engajados</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-right">
+              <span class="text-blue-400 font-bold text-sm">30-60min</span>
+            </div>
+            <div class="w-3 h-3 bg-blue-400 rounded-full mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="text-neutral-300 font-semibold">Avaliacao</p>
+              <p class="text-neutral-400 text-sm">Se retencao e engajamento forem bons, expande para mais seguidores</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-right">
+              <span class="text-purple-400 font-bold text-sm">1-2h</span>
+            </div>
+            <div class="w-3 h-3 bg-purple-400 rounded-full mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="text-neutral-300 font-semibold">Escala ou Morte</p>
+              <p class="text-neutral-400 text-sm">Conteudo aprovado vai para Explorar/Reels de nao-seguidores. Reprovado para de ser distribuido.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-16 text-right">
+              <span class="text-amber-400 font-bold text-sm">2-48h</span>
+            </div>
+            <div class="w-3 h-3 bg-amber-400 rounded-full mt-1.5 flex-shrink-0"></div>
+            <div>
+              <p class="text-neutral-300 font-semibold">Distribuicao Ampla</p>
+              <p class="text-neutral-400 text-sm">Conteudo viral pode ser redistribuido por dias. Cada nova onda de engajamento retroalimenta o ciclo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Nos primeiros 30 minutos apos postar, fique online e responda TODOS os comentarios. Cada resposta conta como engajamento adicional e sinaliza ao algoritmo que o conteudo esta gerando conversa. Alem disso, compartilhe o post nos Stories imediatamente para direcionar seus seguidores mais fieis — eles sao seu "grupo de teste" inicial.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre a Janela de Ouro</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>80% do alcance total</strong> e definido nas primeiras 2 horas</li>
+          <li>• <strong>Posts com respostas a comentarios</strong> nos primeiros 30min tem 2.5x mais alcance</li>
+          <li>• <strong>Compartilhar nos Stories</strong> aumenta o alcance inicial em 30-40%</li>
+          <li>• <strong>Melhor horario:</strong> quando seu publico esta mais ativo (verifique no Insights)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TOPICO 6 -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">6</div>
+        <h2 class="text-2xl font-bold">🔮 Tendencias 2026</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        O ecossistema da Meta esta evoluindo rapidamente em 2026. Novas ferramentas de IA, mudancas no sistema de anuncios e novos formatos estao redefinindo como criadores e marcas operam. Ficar atualizado com essas tendencias e a diferenca entre surfar a onda e ser engolido por ela.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Principais Mudancas em 2026</h3>
+        <div class="space-y-4 text-neutral-300">
+          <div>
+            <p class="font-semibold text-emerald-400">🚀 Andromeda para Ads</p>
+            <p class="text-sm">Novo modelo de IA para anuncios que e 100x mais rapido na otimizacao. Reduz custo de aquisicao e melhora segmentacao automatica. Marca o fim dos Lookalike Audiences tradicionais.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-emerald-400">🛍️ IA Shopping (Marco 2026)</p>
+            <p class="text-sm">Compra por IA no Instagram e Facebook. O usuario pergunta "quero um vestido vermelho para casamento" e a IA mostra opcoes de lojas parceiras. Revolucao para e-commerce.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-emerald-400">💬 Dear Algo no Threads</p>
+            <p class="text-sm">Funcionalidade que permite ao usuario dar feedback direto ao algoritmo do Threads. Tendencia que pode migrar para Instagram e Facebook.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-emerald-400">🎬 Reels de 20 Minutos</p>
+            <p class="text-sm">Limite expandido de 90 segundos para 20 minutos. Instagram competindo diretamente com YouTube. Oportunidade para conteudo educativo e narrativas longas.</p>
+          </div>
+          <div>
+            <p class="font-semibold text-emerald-400">🤖 GEM (Generative Ad Model)</p>
+            <p class="text-sm">IA que gera criativos de anuncios automaticamente. Testa centenas de variacoes de texto, imagem e CTA. Criadores que sabem direcionar a IA vao se destacar.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Alerta -->
+      <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-red-400 font-bold text-lg mb-3">⚠️ Alerta: Mudancas que Exigem Atencao</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Fim dos Lookalike Audiences:</strong> se voce depende deles para ads, precisa adaptar AGORA</li>
+          <li>• <strong>Reels longos:</strong> nao significa que todo Reel deve ser longo — formato curto continua forte</li>
+          <li>• <strong>IA Shopping:</strong> descricoes e tags de produtos precisam ser otimizadas para IA</li>
+          <li>• <strong>GEM:</strong> nao substitui estrategia — mas muda a execucao radicalmente</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Nao tente adotar todas as novidades de uma vez. Priorize o que impacta diretamente o seu negocio. Se voce e criador de conteudo, foque em Reels longos e UTIS. Se tem e-commerce, foque em IA Shopping. Se faz ads, entenda o Andromeda e GEM. O principio e: domine uma mudanca antes de partir para a proxima.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- RESUMO FINAL -->
+    <!-- ============================================ -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-emerald-400">📋 Resumo do Modulo 1.1</h2>
+
+        <div class="space-y-3 mb-8">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi que a Meta funciona como Interest Media, nao Social Media</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Compreendi o modelo UTIS e a hierarquia de sinais (Watch Time > Sends > Saves > Comentarios > Likes)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que cada superficie (Feed, Reels, Explorar, Stories) tem algoritmo proprio</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi que 50% do feed e de contas nao seguidas — meu conteudo deve ser autocontido</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que as primeiras 2 horas sao criticas e devo interagir ativamente</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Estou ciente das tendencias 2026: Andromeda, UTIS, IA Shopping, Reels longos, GEM</span>
+          </label>
+        </div>
+
+        <div class="border-t border-emerald-500/30 pt-6">
+          <p class="text-neutral-400 mb-4">
+            <strong class="text-emerald-400">Proximo Modulo:</strong> 1.2 - Os Sinais que Realmente Importam
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              ← Voltar para Trilha
+            </a>
+            <a href="modulo-1-2.html" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 rounded-lg transition-colors font-semibold">
+              Proximo Modulo →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 — Um curso <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    if (html.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

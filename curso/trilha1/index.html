@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 1 - Fundamentos do Algoritmo | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores emerald */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-emerald-400 { color: #059669; }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-purple-400 { color: #7c3aed; }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full mb-6 border border-emerald-500/30">
+        TRILHA 1
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🧠 Fundamentos do <span class="text-emerald-400">Algoritmo</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Entenda como o algoritmo da Meta realmente funciona em 2026. Aprenda os sinais que importam, as metricas corretas e os erros que matam seu alcance.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">5</div>
+          <div class="text-sm text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">30</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">~2.5h</div>
+          <div class="text-sm text-neutral-400">Conteudo</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Basico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- CARDS SIMPLES - GRID 2 COLS -->
+    <h2 class="text-2xl font-bold mb-2 text-center">Modulos da Trilha</h2>
+    <p class="text-neutral-400 text-center mb-12">Clique em um modulo para ir direto ao conteudo</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+      <a href="#modulo-1-1" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-emerald-400 font-bold text-sm">1.1</span>
+          <span class="text-neutral-500 text-sm">~30 min</span>
+        </div>
+        <h3 class="font-bold text-lg group-hover:text-emerald-400 transition-colors">🧠 Como o Algoritmo Funciona em 2026</h3>
+        <p class="text-neutral-400 text-sm mt-2">Entenda a logica por tras da distribuicao de conteudo no Facebook e Instagram</p>
+      </a>
+      <a href="#modulo-1-2" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-emerald-400 font-bold text-sm">1.2</span>
+          <span class="text-neutral-500 text-sm">~25 min</span>
+        </div>
+        <h3 class="font-bold text-lg group-hover:text-emerald-400 transition-colors">📊 Os Sinais que Realmente Importam</h3>
+        <p class="text-neutral-400 text-sm mt-2">Descubra os pesos reais do algoritmo e foque no que gera resultado</p>
+      </a>
+      <a href="#modulo-1-3" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-emerald-400 font-bold text-sm">1.3</span>
+          <span class="text-neutral-500 text-sm">~25 min</span>
+        </div>
+        <h3 class="font-bold text-lg group-hover:text-emerald-400 transition-colors">✨ Conteudo Recomendavel vs Conteudo Comum</h3>
+        <p class="text-neutral-400 text-sm mt-2">O que faz o algoritmo decidir recomendar seu conteudo para milhares de desconhecidos</p>
+      </a>
+      <a href="#modulo-1-4" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-emerald-400 font-bold text-sm">1.4</span>
+          <span class="text-neutral-500 text-sm">~30 min</span>
+        </div>
+        <h3 class="font-bold text-lg group-hover:text-emerald-400 transition-colors">📈 Metricas e KPIs que Importam</h3>
+        <p class="text-neutral-400 text-sm mt-2">Pare de olhar para curtidas. Aprenda a ler os dados que realmente guiam decisoes</p>
+      </a>
+      <a href="#modulo-1-5" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-emerald-500/30 transition-all duration-300 p-6 md:col-span-2">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-emerald-400 font-bold text-sm">1.5</span>
+          <span class="text-neutral-500 text-sm">~25 min</span>
+        </div>
+        <h3 class="font-bold text-lg group-hover:text-emerald-400 transition-colors">❌ Erros que Matam seu Alcance</h3>
+        <p class="text-neutral-400 text-sm mt-2">Os 12 erros mais comuns que destroem seu alcance organico e como corrigir cada um</p>
+      </a>
+    </div>
+
+    <!-- DIVISOR -->
+    <div class="flex items-center gap-4 mb-16">
+      <div class="flex-1 h-px bg-dark-600"></div>
+      <span class="text-neutral-500 text-sm font-semibold uppercase tracking-wider">Conteudo Detalhado</span>
+      <div class="flex-1 h-px bg-dark-600"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODULO 1.1 -->
+    <!-- ============================================================ -->
+    <div id="modulo-1-1" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-emerald-400 font-bold text-lg">1.1</span>
+        <span class="text-neutral-500 text-sm">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">🧠 Como o Algoritmo Funciona em 2026</h2>
+      <p class="text-neutral-400 mb-8">Entenda a logica por tras da distribuicao de conteudo no Facebook e Instagram</p>
+
+      <div class="space-y-3">
+
+        <!-- Topico 1.1.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-1-1')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <div class="flex-1">
+              <span class="font-semibold">🔄 De Social Media para Interest Media</span>
+              <span class="block text-sm text-neutral-400">Como a distribuicao mudou</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-1-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-1-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Ate 2020, o Feed do Instagram e Facebook era dominado por conteudo de pessoas e paginas que voce seguia. Era uma rede social no sentido literal: voce via o que seus amigos e marcas favoritas publicavam. A partir de 2023, a Meta comecou a transformar suas plataformas em "Interest Media" — redes baseadas em interesses. Em marco de 2026, cerca de 50% do conteudo que aparece no Feed de um usuario vem de contas que ele NAO segue. O algoritmo analisa seus interesses, comportamento de navegacao e padroes de engajamento para entregar conteudo relevante de qualquer criador, independente de conexao social.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Essa mudanca e a maior oportunidade da historia para criadores pequenos. Antes, voce precisava construir uma audiencia enorme para ter alcance. Agora, um perfil com 500 seguidores pode ter um Reel visto por 500 mil pessoas se o conteudo for relevante para um interesse especifico. Entender essa transicao e o primeiro passo para parar de pensar em "ganhar seguidores" e comecar a pensar em "criar conteudo que o algoritmo quer distribuir".</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Social Graph vs Interest Graph:</strong> conexoes sociais perderam relevancia para o mapeamento de interesses</li>
+                  <li>• <strong>Unconnected Reach:</strong> alcance entre pessoas que nao seguem voce — hoje representa 50% do Feed</li>
+                  <li>• <strong>Inventory Shift:</strong> a Meta realocou o inventario de distribuicao para priorizar Reels e conteudo recomendado</li>
+                  <li>• <strong>Discovery Engine:</strong> Instagram e Facebook funcionam agora como motores de descoberta, semelhantes ao TikTok</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.1.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-1-2')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div class="flex-1">
+              <span class="font-semibold">🤖 Modelo UTIS - O sistema de IA que decide o que voce ve</span>
+              <span class="block text-sm text-neutral-400">Unified Targeting and Interest System</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-1-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-1-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O UTIS (Unified Targeting and Interest System) e o modelo de inteligencia artificial lancado pela Meta em janeiro de 2026 que unificou os sistemas de recomendacao do Facebook e Instagram. Antes, cada plataforma tinha modelos separados para decidir o que mostrar. O UTIS combina sinais de ambas as plataformas em um unico sistema, usando aprendizado profundo para prever qual conteudo vai gerar mais valor para cada usuario individual. Ele analisa mais de 10.000 sinais por interacao, incluindo tempo de visualizacao, padroes de scroll, historico de compartilhamentos e ate microexpressoes inferidas pelo tempo gasto em cada frame de um video.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Entender o UTIS e entender o "cerebro" por tras de toda distribuicao de conteudo na Meta. Quando voce sabe como o sistema pensa, voce para de adivinhar o que funciona e comeca a criar com precisao. O UTIS prioriza conteudo que gera "sessoes longas" — ou seja, que mantem o usuario na plataforma. Isso muda completamente como voce deve pensar seus CTAs, sua estrutura de video e ate seus horarios de postagem.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Modelo Unificado:</strong> um unico sistema de IA serve Feed, Reels, Stories e Explorar simultaneamente</li>
+                  <li>• <strong>Predicao de Valor:</strong> o UTIS preve o "valor de longo prazo" de cada conteudo para cada usuario</li>
+                  <li>• <strong>Cross-Platform Signals:</strong> sua atividade no Facebook influencia o que voce ve no Instagram e vice-versa</li>
+                  <li>• <strong>Session Optimization:</strong> o objetivo principal e maximizar tempo de sessao, nao apenas engajamento pontual</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.1.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-1-3')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div class="flex-1">
+              <span class="font-semibold">📱 Algoritmos por Superficie</span>
+              <span class="block text-sm text-neutral-400">Feed, Reels, Stories e Explorar funcionam diferente</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-1-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-1-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Embora o UTIS seja o modelo central, cada "superficie" da plataforma (Feed, Reels, Stories, Explorar, Pesquisa) tem parametros e pesos diferentes. O Feed principal prioriza conteudo de contas seguidas misturado com recomendacoes, usando um mix de 50/50 em marco de 2026. Os Reels tem algoritmo proprio focado em retencao nos primeiros 3 segundos e taxa de replay. Stories priorizam relacionamentos proximos — quem interage mais com voce ve seus Stories primeiro. O Explorar e 100% baseado em interesses e funciona como vitrine de descoberta pura.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Publicar o mesmo conteudo em todas as superficies e um erro classico. Cada superficie tem regras diferentes e espera formatos diferentes. Um Reel que funciona no Feed de Reels pode nao performar no Explorar. Um carrossel otimizado para o Feed pode ser ignorado nos Stories. Entender essas diferencas permite que voce adapte seu conteudo para cada superficie e maximize o alcance total. Criadores que dominam pelo menos 2 superficies tem em media 3x mais alcance do que quem foca em apenas uma.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Feed:</strong> mix 50/50 seguidos/recomendados, prioriza conteudo recente (ultimas 24-48h) e engajamento previo</li>
+                  <li>• <strong>Reels:</strong> retencao nos primeiros 3s e decisiva, taxa de replay conta como sinal forte, formato 9:16 vertical obrigatorio</li>
+                  <li>• <strong>Stories:</strong> algoritmo de proximidade — quem troca DMs e reage mais ve primeiro, duracao ideal de 5-7 Stories por dia</li>
+                  <li>• <strong>Explorar:</strong> 100% recomendacao por interesse, melhor porta de entrada para novos seguidores</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.1.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-1-4')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <div class="flex-1">
+              <span class="font-semibold">👥 50% para Desconhecidos</span>
+              <span class="block text-sm text-neutral-400">Metade do Feed vem de contas que voce nao segue</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-1-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-1-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Em marco de 2026, aproximadamente 50% do conteudo exibido no Feed principal do Instagram e Facebook vem de contas que o usuario NAO segue. Essa e uma mudanca drastica em relacao a 2022, quando esse numero era de apenas 15%. A Meta introduziu essa mudanca gradualmente, aumentando 5-10 pontos percentuais a cada trimestre, seguindo o modelo que tornou o TikTok viral. Isso significa que metade de toda a atencao disponivel na plataforma esta aberta para criadores que nunca foram vistos pelo usuario antes.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Esse dado muda completamente a estrategia de crescimento. Antigamente, voce precisava de colaboracoes, ads e sorteios para alcancar novas pessoas. Hoje, o proprio algoritmo faz isso por voce — se seu conteudo for bom o suficiente. Cada post que voce publica tem potencial de alcancar uma audiencia completamente nova, sem gastar um centavo. A chave e criar conteudo que passe nos filtros de recomendacao do algoritmo (retencao, acao e originalidade).</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Alcance organico no Facebook:</strong> apenas 2% dos seguidores veem seus posts organicamente — o resto depende de recomendacao</li>
+                  <li>• <strong>Alcance organico no Instagram:</strong> 3-4% dos seguidores — levemente melhor, mas a tendencia e de queda</li>
+                  <li>• <strong>Suggested Content:</strong> a label "Sugerido para voce" que aparece no Feed e a porta de entrada para novos usuarios</li>
+                  <li>• <strong>Teste de Audiencia:</strong> o algoritmo mostra seu conteudo primeiro para 100-500 pessoas e, se performar bem, expande exponencialmente</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.1.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-1-5')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <div class="flex-1">
+              <span class="font-semibold">⚡ A Janela de Ouro</span>
+              <span class="block text-sm text-neutral-400">As primeiras 2 horas definem o alcance do post</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-1-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-1-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A "Janela de Ouro" sao as primeiras 2 horas apos a publicacao de qualquer conteudo. Nesse periodo, o algoritmo faz um teste inicial mostrando seu post para uma amostra da sua audiencia (geralmente 5-10% dos seguidores + um pequeno grupo de nao-seguidores). O desempenho nessa janela — taxa de retencao, velocidade de engajamento, compartilhamentos — determina se o conteudo sera distribuido para uma audiencia maior ou se sera "enterrado". E como um teste de admissao: se voce passa, ganha acesso a distribuicao massiva.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Saber da Janela de Ouro muda como voce planeja sua publicacao. Voce precisa estar online e ativo nos primeiros 120 minutos: respondendo comentarios, reagindo a DMs, interagindo com sua audiencia. Cada resposta que voce da gera uma notificacao que traz o usuario de volta ao seu post, inflando os sinais de engajamento. Alem disso, o horario de postagem passa a ser estrategico — voce deve publicar quando sua audiencia esta mais ativa para maximizar o engajamento inicial.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Velocity Score:</strong> a velocidade com que o engajamento chega nos primeiros minutos e um multiplicador de distribuicao</li>
+                  <li>• <strong>Teste Inicial:</strong> 5-10% da audiencia ve primeiro — o desempenho com esse grupo decide tudo</li>
+                  <li>• <strong>Resposta Ativa:</strong> responder comentarios nos primeiros 30 minutos pode aumentar o alcance em ate 40%</li>
+                  <li>• <strong>Cascata de Distribuicao:</strong> se o post passa no teste inicial, entra em ondas: seguidores > amigos de seguidores > recomendacao aberta</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.1.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-1-6')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <div class="flex-1">
+              <span class="font-semibold">🔮 Tendencias 2026</span>
+              <span class="block text-sm text-neutral-400">Andromeda, IA Shopping e o futuro da distribuicao</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-1-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-1-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O algoritmo Andromeda e o sistema de IA da Meta focado especificamente em anuncios e conteudo comercial. Lancado em fases desde 2024, em 2026 ele trabalha em conjunto com o UTIS para criar uma experiencia onde conteudo organico e pago se misturam de forma quase imperceptivel. Alem disso, o IA Shopping integrou inteligencia artificial diretamente na experiencia de compra: usuarios podem ver um produto em um Reel e comprar sem sair do app, com recomendacoes personalizadas por IA. A tendencia clara e que criadores que dominam conteudo organico terao vantagem tambem em conteudo pago.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">O futuro da monetizacao nas redes da Meta passa pela integracao entre conteudo organico e comercial. Criadores que entendem como o Andromeda funciona conseguem criar anuncios que parecem conteudo nativo, gerando CPMs mais baixos e conversoes mais altas. Alem disso, o IA Shopping abre oportunidades para monetizacao direta via produto, sem precisar de loja propria. Quem entender essas tendencias agora vai estar anos a frente quando elas se tornarem padrao.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Andromeda:</strong> IA para ads que blende conteudo pago com organico — os melhores anuncios parecem posts normais</li>
+                  <li>• <strong>IA Shopping:</strong> compra integrada via IA — o usuario ve, pergunta e compra sem sair da plataforma</li>
+                  <li>• <strong>Creator Commerce:</strong> criadores como canal de vendas direto, com comissoes de ate 10% por venda</li>
+                  <li>• <strong>Conteudo Hibrido:</strong> a fronteira entre organico e pago esta desaparecendo — domine os dois</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botoes -->
+      <div class="flex items-center gap-3 mt-6 justify-start">
+        <button onclick="openModal('modal-1-1')" class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30">
+          Ver em Modal
+        </button>
+        <a href="modulo-1-1.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg text-sm font-semibold hover:bg-dark-600 transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODULO 1.2 -->
+    <!-- ============================================================ -->
+    <div id="modulo-1-2" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-emerald-400 font-bold text-lg">1.2</span>
+        <span class="text-neutral-500 text-sm">~25 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">📊 Os Sinais que Realmente Importam</h2>
+      <p class="text-neutral-400 mb-8">Descubra os pesos reais do algoritmo e foque no que gera resultado</p>
+
+      <div class="space-y-3">
+
+        <!-- Topico 1.2.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-2-1')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <div class="flex-1">
+              <span class="font-semibold">⚖️ Hierarquia de Sinais</span>
+              <span class="block text-sm text-neutral-400">Watch time 35%, sends 20%, likes apenas 5%</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-2-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-2-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O algoritmo da Meta atribui pesos diferentes para cada tipo de interacao. Em marco de 2026, a hierarquia confirmada e: Watch Time (tempo de visualizacao) representa 35% do peso total, seguido por Sends/Shares (compartilhamentos diretos) com 20%, Saves (salvamentos) com 15%, Comments (comentarios) com 10%, Profile Visits (visitas ao perfil) com 10%, e Likes (curtidas) com apenas 5%. Restam 5% para sinais menores como screenshot, replay e follow apos ver o conteudo. Essa distribuicao mostra que o algoritmo valoriza acoes de alto esforco sobre acoes passivas.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">A maioria dos criadores ainda otimiza para curtidas — que representam apenas 5% do peso. E como estudar para a materia errada na prova. Quando voce entende a hierarquia real, voce redesenha completamente sua estrategia de conteudo. Em vez de criar posts "curtia-veis" (bonitos, simples, rasos), voce cria conteudo que mantem a pessoa assistindo (watch time), que ela quer enviar para alguem (sends) e que ela salva para ver depois (saves). Isso muda tudo: do formato ao tipo de gancho, da estrutura do video ao CTA final.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Watch Time (35%):</strong> tempo total e proporcao assistida — um video de 30s assistido ate o fim vale mais que um de 60s visto pela metade</li>
+                  <li>• <strong>Sends (20%):</strong> compartilhamentos via DM — "enviar para" e o sinal mais poderoso de relevancia</li>
+                  <li>• <strong>Saves (15%):</strong> indica conteudo de referencia que o usuario quer rever</li>
+                  <li>• <strong>Likes (5%):</strong> a metrica mais visivel e a menos importante para o algoritmo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.2.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-2-2')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div class="flex-1">
+              <span class="font-semibold">💬 Compartilhamentos Diretos</span>
+              <span class="block text-sm text-neutral-400">O sinal mais poderoso do algoritmo</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-2-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-2-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Os "sends" ou compartilhamentos diretos via DM sao quando um usuario pega seu conteudo e envia para outra pessoa especifica. Esse sinal representa 20% do peso do algoritmo porque indica algo poderoso: a pessoa nao so gostou do conteudo, mas pensou em alguem especifico que tambem iria gostar. E um ato intencional que requer esforco — muito diferente de um duplo-toque casual. Adam Mosseri, head do Instagram, confirmou publicamente que "sends per reach" (compartilhamentos por alcance) e a metrica que a equipe mais observa internamente.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Quando voce entende que sends sao o segundo sinal mais importante, voce comeca a criar conteudo pensando "para quem minha audiencia enviaria isso?". Isso muda a natureza do que voce produz. Conteudo altamente compartilhavel geralmente se encaixa em categorias especificas: humor relatable, informacao util e urgente, listas e compilacoes, conteudo que valida uma opiniao, ou conteudo que expressa algo que a pessoa sente mas nao consegue articular. Um unico send pode gerar uma reacao em cadeia se a pessoa que recebe tambem compartilhar.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Sends per Reach:</strong> a formula e (compartilhamentos DM / alcance total) x 100 — meta minima de 2%, excelente acima de 5%</li>
+                  <li>• <strong>Efeito Cadeia:</strong> cada send pode gerar novo engajamento, criando um loop viral organico</li>
+                  <li>• <strong>Conteudo "Tag Someone":</strong> posts que fazem a pessoa pensar "preciso mandar isso pra fulano" sao ouro</li>
+                  <li>• <strong>DM como Canal:</strong> 70% dos compartilhamentos no Instagram acontecem via DM, nao via Stories ou Feed</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.2.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-2-3')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div class="flex-1">
+              <span class="font-semibold">🔖 Saves: O Termometro de Valor</span>
+              <span class="block text-sm text-neutral-400">Por que salvamentos indicam conteudo de referencia</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-2-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-2-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O salvamento (save) ocorre quando um usuario clica no icone de bookmark para guardar seu conteudo em uma colecao pessoal. Com peso de 15% no algoritmo, e o terceiro sinal mais importante. O salvamento indica que o conteudo tem valor de longo prazo — a pessoa quer rever, consultar ou aplicar aquela informacao depois. Para o algoritmo, isso e um indicador de que o conteudo e "evergreen" (sempre relevante) e merece ser distribuido para mais pessoas que tenham interesses similares.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Posts com alta taxa de salvamento tendem a ter vida util mais longa no algoritmo. Enquanto um post com muitas curtidas pode morrer em 24 horas, um post com muitos saves continua sendo distribuido por semanas. Isso cria um efeito composto: seu conteudo antigo continua gerando alcance enquanto voce publica conteudo novo. Tipos de conteudo que geram mais saves: tutoriais passo-a-passo, listas de ferramentas, templates, dicas acionaveis, infograficos com dados e checklists.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Taxa de Salvamento:</strong> (saves / alcance) x 100 — meta minima de 1.5%, excelente acima de 3%</li>
+                  <li>• <strong>Conteudo de Referencia:</strong> tutoriais, listas, templates e checklists sao os formatos que mais geram saves</li>
+                  <li>• <strong>CTA de Save:</strong> pedir para salvar funciona — "Salva esse post pra consultar depois" aumenta saves em ate 30%</li>
+                  <li>• <strong>Efeito Evergreen:</strong> posts com muitos saves continuam sendo recomendados por semanas, diferente de posts virais por likes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.2.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-2-4')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <div class="flex-1">
+              <span class="font-semibold">💭 Comentarios com Profundidade</span>
+              <span class="block text-sm text-neutral-400">Mais de 4 palavras valem mais que 100 curtidas</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-2-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-2-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Nem todo comentario e igual para o algoritmo. O sistema de IA da Meta analisa a profundidade dos comentarios usando processamento de linguagem natural (NLP). Um comentario com mais de 4 palavras, que demonstra reflexao ou engajamento real, tem peso significativamente maior do que emojis isolados ou respostas genericas como "amei!" ou "top!". Comentarios que geram threads (respostas do criador que levam a mais respostas do usuario) sao ainda mais valiosos porque aumentam o tempo de sessao na plataforma.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Isso muda como voce pede engajamento. Em vez de "comente um emoji", voce faz perguntas que exigem reflexao: "Qual desses erros voce ja cometeu?", "Conta sua experiencia com isso", "O que voce faria diferente?". Alem disso, responder comentarios de forma elaborada cria conversas que o algoritmo adora. Um post com 30 comentarios profundos e threads ativas performa melhor que um post com 300 comentarios de emoji. A qualidade do engajamento supera a quantidade.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>NLP Analysis:</strong> o algoritmo usa IA para avaliar se um comentario e substantivo ou superficial</li>
+                  <li>• <strong>Thread Value:</strong> uma thread com 5+ respostas vale mais que 50 comentarios isolados</li>
+                  <li>• <strong>Perguntas Abertas:</strong> CTAs que pedem opiniao ou experiencia geram comentarios mais longos e valiosos</li>
+                  <li>• <strong>Resposta do Criador:</strong> responder cada comentario com contexto adicional dobra o valor daquela interacao</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.2.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-2-5')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <div class="flex-1">
+              <span class="font-semibold">⏱️ Retencao nos 3 Primeiros Segundos</span>
+              <span class="block text-sm text-neutral-400">O filtro que decide tudo nos Reels</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-2-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-2-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Nos Reels, os primeiros 3 segundos sao o filtro mais critico do algoritmo. Se o usuario passa do seu video (swipe) antes de 3 segundos, o algoritmo registra isso como um sinal negativo forte. A taxa de retencao nos 3 primeiros segundos determina se o Reel sera testado com uma audiencia maior. Em media, 65% dos usuarios decidem se vao assistir ou nao nos primeiros 1.5 segundos. Isso significa que o "gancho" — visual ou verbal — precisa ser absolutamente irresistivel nos frames iniciais.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">A maioria dos Reels morre nos primeiros 3 segundos. Nao importa se o conteudo e incrivel no segundo 15 — se ninguem chega la, o algoritmo nunca vai descobrir. Dominar a arte do gancho inicial e a habilidade mais importante para Reels em 2026. Tecnicas que funcionam: comecar com movimento, usar texto na tela imediatamente, fazer uma pergunta provocativa, mostrar o resultado final primeiro (hook de curiosidade) ou usar um som trending nos primeiros frames. A meta e ter pelo menos 70% de retencao nos 3 primeiros segundos.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>3-Second Rule:</strong> taxa de retencao nos 3s iniciais deve ser minimo 70% para o Reel ter chance de viralizar</li>
+                  <li>• <strong>Hook Visual:</strong> movimento, corte rapido ou texto grande nos primeiros frames segura a atencao</li>
+                  <li>• <strong>Pattern Interrupt:</strong> algo inesperado nos primeiros instantes quebra o ritmo automatico de scroll</li>
+                  <li>• <strong>Sound On vs Off:</strong> 60% dos usuarios assiste sem som — o gancho visual deve funcionar em silencio</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.2.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-2-6')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <div class="flex-1">
+              <span class="font-semibold">📈 Perfil Pequeno vs Grande</span>
+              <span class="block text-sm text-neutral-400">Por que tamanho da conta nao importa mais</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-2-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-2-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Em 2026, o tamanho da conta deixou de ser um fator determinante de alcance. O modelo Interest Media trata cada peca de conteudo de forma independente. Um perfil com 200 seguidores e avaliado pelos mesmos criterios que um com 2 milhoes. O algoritmo nao da "bonus" por ter muitos seguidores — na verdade, contas grandes com seguidores desengajados (comprados ou inativos) podem ter desempenho PIOR porque o teste inicial mostra para seguidores que nao interagem, gerando sinais negativos. A Meta confirmou que nao existe nenhum boost por tamanho de conta.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Essa informacao e libertadora para quem esta comecando. Voce nao precisa "crescer primeiro para ter alcance". Seu proximo Reel pode ser visto por 100 mil pessoas mesmo que voce tenha 300 seguidores. O que importa e a qualidade do conteudo e como ele performa nos testes iniciais do algoritmo. Ao mesmo tempo, isso e um alerta para contas grandes: seguidores nao sao garantia de alcance. Contas com milhoes de seguidores que publicam conteudo fraco tem alcance proporcional menor que nano-criadores publicando conteudo excepcional.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Content-First:</strong> o algoritmo avalia o conteudo, nao o criador — cada post e uma nova chance</li>
+                  <li>• <strong>Seguidores Fantasma:</strong> ter muitos seguidores inativos prejudica o teste inicial do algoritmo</li>
+                  <li>• <strong>Nano-Criadores:</strong> contas com 1-10K seguidores frequentemente tem taxas de engajamento maiores que contas grandes</li>
+                  <li>• <strong>Igualdade de Oportunidade:</strong> o sistema e desenhado para dar chance igual a qualquer peca de conteudo independente do tamanho da conta</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-3 mt-6 justify-start">
+        <button onclick="openModal('modal-1-2')" class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30">
+          Ver em Modal
+        </button>
+        <a href="modulo-1-2.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg text-sm font-semibold hover:bg-dark-600 transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODULO 1.3 -->
+    <!-- ============================================================ -->
+    <div id="modulo-1-3" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-emerald-400 font-bold text-lg">1.3</span>
+        <span class="text-neutral-500 text-sm">~25 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">✨ Conteudo Recomendavel vs Conteudo Comum</h2>
+      <p class="text-neutral-400 mb-8">O que faz o algoritmo decidir recomendar seu conteudo para milhares de desconhecidos</p>
+
+      <div class="space-y-3">
+
+        <!-- Topico 1.3.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-3-1')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <div class="flex-1">
+              <span class="font-semibold">🎯 Os 3 Filtros de Recomendacao</span>
+              <span class="block text-sm text-neutral-400">Retencao, Acao e Originalidade</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-3-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-3-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Para que seu conteudo seja recomendado para nao-seguidores (aqueles 50% do Feed), ele precisa passar por 3 filtros sequenciais. Primeiro, Retencao: o conteudo precisa manter as pessoas assistindo — minimo de 40% de retencao para videos, dwell time acima de 8 segundos para carrosseis. Segundo, Acao: o conteudo precisa gerar acoes de alto valor — saves, sends, comentarios longos. Nao basta ser assistido, precisa provocar uma reacao. Terceiro, Originalidade: o conteudo precisa ser original — nao pode ser repost, conteudo reciclado ou copia de outro criador. O sistema de IA detecta conteudo duplicado com precisao de 95%.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Esses 3 filtros sao a diferenca entre ter 200 views (apenas seguidores) ou 200 mil views (recomendacao massiva). Se seu conteudo falha em qualquer um dos 3, ele fica limitado a sua base de seguidores existente — que, como vimos, representa apenas 3-4% de alcance organico no Instagram. Dominar os 3 filtros simultaneamente e o que separa criadores que crescem organicamente de criadores que ficam estagnados. Cada peca de conteudo deve ser pensada para passar nos 3.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Filtro 1 - Retencao:</strong> minimo 40% em videos, ideal 60%+ — carrosseis precisam de 8s+ de dwell time</li>
+                  <li>• <strong>Filtro 2 - Acao:</strong> o conteudo precisa gerar sends, saves ou comentarios — nao basta ser assistido passivamente</li>
+                  <li>• <strong>Filtro 3 - Originalidade:</strong> IA detecta reposts, marca d'agua e conteudo copiado — penalizacao e automatica</li>
+                  <li>• <strong>Sequencia:</strong> os filtros sao aplicados em ordem — se falha no primeiro, nem chega ao segundo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.3.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-3-2')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div class="flex-1">
+              <span class="font-semibold">🚫 Conteudo Reciclado e Penalizado</span>
+              <span class="block text-sm text-neutral-400">Marca d'agua do TikTok mata alcance</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-3-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-3-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A Meta implementou um sistema de deteccao automatica de conteudo reciclado que identifica: marca d'agua de outras plataformas (TikTok, YouTube Shorts, Snapchat), videos repostados de outros criadores, imagens com texto sobreposto copiado de outros posts, e compilacoes de conteudo alheio. Quando detectado, o conteudo nao e removido, mas recebe uma penalizacao severa de distribuicao — podendo ter ate 80% menos alcance do que teria se fosse original. A deteccao usa visao computacional avancada e e precisa o suficiente para identificar ate marca d'agua removida com apps de edicao.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Muitos criadores ainda fazem o "cross-posting direto" — gravam no TikTok com a marca d'agua e repostam no Instagram. Isso e um suicidio algoritmico. O Instagram quer conteudo feito para o Instagram. Mesmo que o conteudo seja seu, se ele tem marca d'agua de outra plataforma, sera penalizado. A solucao e simples: grave o video original sem marca d'agua e publique nativamente em cada plataforma. Use ferramentas como SnapTik ou SaveTok para baixar sem marca d'agua se necessario.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Deteccao por CV:</strong> visao computacional identifica marcas d'agua mesmo parcialmente removidas</li>
+                  <li>• <strong>Penalizacao Silenciosa:</strong> o conteudo nao e removido, apenas tem distribuicao reduzida em ate 80%</li>
+                  <li>• <strong>Cross-Post Correto:</strong> grave sem marca d'agua e publique nativamente em cada plataforma</li>
+                  <li>• <strong>Originalidade Premiada:</strong> conteudo genuinamente original recebe boost de ate 30% na distribuicao</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.3.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-3-3')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div class="flex-1">
+              <span class="font-semibold">🎭 Autenticidade vs Producao Polida</span>
+              <span class="block text-sm text-neutral-400">O que funciona melhor em 2026</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-3-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-3-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Em 2026, ha um paradoxo interessante: conteudo "imperfeito" e autentico frequentemente performa melhor que producoes polidas de estudio. O algoritmo nao mede qualidade tecnica — ele mede engajamento. E conteudo que parece real, filmado com celular, com linguagem natural, gera mais confianca e mais interacoes do que producoes corporativas com iluminacao perfeita. Isso nao significa que qualidade nao importa, mas que "qualidade" agora e definida pela relevancia do conteudo, nao pela resolucao da camera.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Muitos criadores e marcas investem tempo e dinheiro excessivos em producao, acreditando que isso vai melhorar o desempenho. Na realidade, o excesso de producao pode ate prejudicar porque faz o conteudo parecer um anuncio — e usuarios sao treinados a pular anuncios. O equilbrio ideal em 2026 e conteudo com boa estrutura narrativa (gancho, desenvolvimento, CTA) filmado de forma natural e autencitica. O investimento deve ser no roteiro, nao na camera.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Aesthetic Authenticity:</strong> parecer real e mais importante do que parecer profissional</li>
+                  <li>• <strong>UGC Style:</strong> User Generated Content style — conteudo que parece feito pelo usuario, nao pela marca</li>
+                  <li>• <strong>Investimento no Roteiro:</strong> 80% do resultado vem do que voce diz, nao de como voce filma</li>
+                  <li>• <strong>Lo-Fi Content:</strong> conteudo de baixa producao mas alto valor informativo supera videos caros e rasos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.3.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-3-4')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <div class="flex-1">
+              <span class="font-semibold">📐 Formato 9:16 Vertical</span>
+              <span class="block text-sm text-neutral-400">90% do inventario e vertical</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-3-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-3-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O formato vertical 9:16 (1080x1920 pixels) domina 90% do inventario de distribuicao da Meta em 2026. Isso inclui Reels, Stories, e ate o Feed principal que agora prioriza conteudo vertical em tela cheia. Videos horizontais (16:9) e quadrados (1:1) ainda funcionam, mas recebem significativamente menos distribuicao porque nao ocupam a tela inteira do celular — e 92% do uso do Instagram e Facebook acontece em dispositivos moveis. O formato vertical maximiza a area visual e mantem a atencao do usuario por mais tempo.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Publicar conteudo em formato nao-vertical e desperdicar alcance. Um video identico publicado em 9:16 tem, em media, 40% mais alcance do que o mesmo video em 1:1 ou 16:9. Para carrosseis, o formato vertical tambem e superior: slides verticais ocupam mais espaco na tela, gerando mais dwell time e mais engajamento por slide. Se voce ainda produz conteudo quadrado ou horizontal, esta deixando alcance na mesa. A transicao para vertical-first e uma das mudancas mais simples e impactantes que voce pode fazer.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>1080x1920:</strong> resolucao padrao para 9:16 — mantenha elementos importantes na "safe zone" central</li>
+                  <li>• <strong>Mobile-First:</strong> 92% dos usuarios acessam pelo celular — o conteudo deve ser pensado para tela vertical</li>
+                  <li>• <strong>Full-Screen Impact:</strong> conteudo que ocupa a tela inteira gera 40% mais retencao que conteudo com bordas</li>
+                  <li>• <strong>Carrosseis Verticais:</strong> slides 9:16 em carrosseis tem 25% mais engajamento que slides 1:1</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.3.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-3-5')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <div class="flex-1">
+              <span class="font-semibold">🔍 SEO Social</span>
+              <span class="block text-sm text-neutral-400">Instagram e Facebook como mecanismos de busca</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-3-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-3-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Em 2026, o Instagram e o Facebook funcionam como mecanismos de busca para a Geracao Z e Millennials. Cerca de 40% dos jovens entre 18-24 anos usam Instagram como primeiro ponto de pesquisa, antes do Google. A Meta investiu pesadamente em SEO social: legendas, textos em imagens, audio de videos e ate texto sobreposto em Reels sao indexados e pesquisaveis. Isso significa que palavras-chave nas suas legendas, alt-text nas imagens e keywords naturais no seu conteudo falado podem fazer seu conteudo aparecer em buscas relevantes por meses ou anos.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">SEO social e a fonte de trafego mais subestimada da plataforma. Enquanto conteudo viral tem vida curta (24-72h de pico), conteudo otimizado para busca gera trafego consistente por meses. Uma legenda com keywords estrategicas pode trazer novos seguidores todas as semanas sem esforco adicional. Dominar SEO social significa criar um "patrimonio" de conteudo que trabalha para voce 24/7, diferente do modelo de publicar-e-esquecer que a maioria dos criadores pratica.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Keyword Placement:</strong> use palavras-chave nas 3 primeiras linhas da legenda, no nome de usuario e na bio</li>
+                  <li>• <strong>Alt-Text:</strong> adicione texto alternativo descritivo nas imagens — e indexado pela busca do Instagram</li>
+                  <li>• <strong>Audio Transcription:</strong> o que voce fala nos Reels e transcrito e indexado automaticamente pelo algoritmo</li>
+                  <li>• <strong>Conteudo Evergreen:</strong> conteudo otimizado para busca continua gerando alcance organico por meses apos a publicacao</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.3.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-3-6')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <div class="flex-1">
+              <span class="font-semibold">🌟 O Conceito de Conteudo Compartilhavel</span>
+              <span class="block text-sm text-neutral-400">Crie para ser enviado, nao curtido</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-3-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-3-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Conteudo compartilhavel e conteudo criado com a intencao explicita de ser enviado de pessoa para pessoa via DM. Nao e conteudo que voce espera que seja curtido ou comentado — e conteudo que faz o espectador pensar "preciso enviar isso para alguem". Existem 5 categorias de conteudo altamente compartilhavel: humor relatable ("isso e muito eu"), utilidade pratica ("meu amigo precisa saber disso"), validacao social ("fulano precisa ver isso"), emocao ("isso vai fazer ela chorar") e debate ("ele precisa ver o outro lado"). Cada categoria ativa um gatilho diferente de compartilhamento.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Com sends representando 20% do peso do algoritmo, criar conteudo compartilhavel e a segunda estrategia mais eficiente (depois de maximizar watch time). A diferenca entre um post com 1000 curtidas e 10 sends vs um post com 200 curtidas e 100 sends e enorme: o segundo vai ter muito mais alcance. O mindset muda de "como faco as pessoas gostarem do meu post" para "como faco as pessoas quererem ENVIAR meu post para alguem especifico". Essa simples mudanca de perspectiva pode multiplicar seu alcance por 5-10x.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>5 Gatilhos de Share:</strong> humor relatable, utilidade pratica, validacao social, emocao intensa, debate/opiniao</li>
+                  <li>• <strong>Teste do "Enviar Para":</strong> antes de publicar, pergunte: "para quem minha audiencia enviaria isso?"</li>
+                  <li>• <strong>Especificidade:</strong> quanto mais especifico o conteudo, mais compartilhavel — "dicas para mae solo que trabalha de casa" > "dicas de produtividade"</li>
+                  <li>• <strong>Format Fit:</strong> carrosseis (1.92% engajamento) sao mais compartilhaveis que Reels (1.74%) para conteudo educativo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-3 mt-6 justify-start">
+        <button onclick="openModal('modal-1-3')" class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30">
+          Ver em Modal
+        </button>
+        <a href="modulo-1-3.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg text-sm font-semibold hover:bg-dark-600 transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODULO 1.4 -->
+    <!-- ============================================================ -->
+    <div id="modulo-1-4" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-emerald-400 font-bold text-lg">1.4</span>
+        <span class="text-neutral-500 text-sm">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">📈 Metricas e KPIs que Importam</h2>
+      <p class="text-neutral-400 mb-8">Pare de olhar para curtidas. Aprenda a ler os dados que realmente guiam decisoes</p>
+
+      <div class="space-y-3">
+
+        <!-- Topico 1.4.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-4-1')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <div class="flex-1">
+              <span class="font-semibold">🏔️ Piramide das Metricas</span>
+              <span class="block text-sm text-neutral-400">Vaidade vs Engajamento vs Negocio</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-4-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-4-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A Piramide das Metricas organiza todas as metricas de redes sociais em 3 niveis. Na base (mais visivel, menos importante): Metricas de Vaidade — seguidores, curtidas, impressoes. Sao as mais faceis de ver e as que menos impactam resultados reais. No meio: Metricas de Engajamento — saves, sends, comentarios profundos, taxa de retencao, taxa de engajamento por alcance. Essas sao as que o algoritmo observa. No topo (mais dificil de medir, mais valiosas): Metricas de Negocio — cliques no link, leads gerados, conversoes, receita, ROI. Sao as que pagam as contas.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">A maioria dos criadores vive na base da piramide, obsecados com numero de seguidores e curtidas. Isso gera decisoes erradas: comprar seguidores, fazer sorteios que atraem publico desqualificado, criar conteudo populista sem valor. Quando voce sobe na piramide e foca em engajamento real e metricas de negocio, suas decisoes mudam radicalmente. Voce para de perseguir numeros bonitos e comeca a criar conteudo que gera resultado. Um perfil com 5K seguidores e altas metricas de engajamento e negocio vale mais que um com 500K e metricas de vaidade infladas.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Vaidade (base):</strong> seguidores, curtidas, impressoes — bonitas no relatorio, inuteis para o negocio</li>
+                  <li>• <strong>Engajamento (meio):</strong> saves, sends, retencao, comentarios longos — o que o algoritmo realmente mede</li>
+                  <li>• <strong>Negocio (topo):</strong> cliques, leads, vendas, ROI — o que paga as contas</li>
+                  <li>• <strong>Regra 80/20:</strong> gaste 80% do tempo analisando metricas de engajamento e negocio, 20% em vaidade</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.4.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-4-2')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div class="flex-1">
+              <span class="font-semibold">📊 Taxa de Engajamento por Alcance</span>
+              <span class="block text-sm text-neutral-400">Como calcular e qual a meta</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-4-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-4-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A Taxa de Engajamento por Alcance (ERR - Engagement Rate by Reach) e a metrica mais honesta para avaliar o desempenho de um post. A formula e: (Total de interacoes / Alcance) x 100. Diferente da taxa de engajamento por seguidores (que pode ser inflada por seguidores inativos), a ERR mede o percentual de pessoas que viram seu conteudo e de fato interagiram. Em marco de 2026, os benchmarks sao: abaixo de 2% e fraco, 2-4% e na media, 4-6% e bom, e acima de 6% e excelente. Para Reels especificamente, a media e de 1.74% e para carrosseis e de 1.92%.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">A ERR e a unica metrica que permite comparar posts com alcances completamente diferentes de forma justa. Um post que alcancou 1000 pessoas com ERR de 8% e objectively melhor que um que alcancou 10.000 com ERR de 1%, porque o primeiro teve qualidade de conteudo superior. Monitorar ERR permite identificar quais tipos de conteudo realmente ressoam com sua audiencia, independente do alcance que o algoritmo deu. E a metrica que deve guiar sua estrategia de conteudo semanalmente.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Formula:</strong> ERR = (likes + comentarios + saves + sends) / alcance x 100</li>
+                  <li>• <strong>Benchmarks 2026:</strong> &lt;2% fraco, 2-4% medio, 4-6% bom, 6%+ excelente</li>
+                  <li>• <strong>Carrosseis vs Reels:</strong> carrosseis (1.92%) consistentemente superam Reels (1.74%) em ERR</li>
+                  <li>• <strong>Analise Comparativa:</strong> compare posts entre si usando ERR, nao numeros absolutos de likes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.4.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-4-3')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div class="flex-1">
+              <span class="font-semibold">🔖 Taxa de Salvamento e Compartilhamento</span>
+              <span class="block text-sm text-neutral-400">Os KPIs que o algoritmo observa</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-4-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-4-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A Taxa de Salvamento (Save Rate) e a Taxa de Compartilhamento (Send Rate) sao os dois KPIs que mais impactam diretamente a distribuicao algoritmica do seu conteudo. Save Rate = (saves / alcance) x 100. Send Rate = (sends / alcance) x 100. Juntos, saves (15%) e sends (20%) representam 35% do peso do algoritmo — igual ao watch time. Isso significa que esses dois KPIs, combinados, sao tao importantes quanto o tempo de visualizacao. A maioria dos criadores nunca olha para essas metricas, o que e um erro critico.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Quando voce monitora save rate e send rate semanalmente, voce descobre exatamente que tipo de conteudo o algoritmo quer distribuir para voce. Posts com alto save rate sao seu conteudo de referencia — duplique esse formato. Posts com alto send rate sao seu conteudo viral — invista mais nesse estilo. Posts com ambos altos sao seu "conteudo unicornio" — analise o que fizeram de especial e replique a formula. Sem monitorar esses KPIs, voce esta criando no escuro.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Save Rate:</strong> meta minima 1.5%, bom 2-3%, excelente acima de 3%</li>
+                  <li>• <strong>Send Rate:</strong> meta minima 2%, bom 3-5%, excelente acima de 5%</li>
+                  <li>• <strong>Conteudo Unicornio:</strong> posts com save rate E send rate altos — analise e replique a formula</li>
+                  <li>• <strong>Peso Combinado:</strong> saves (15%) + sends (20%) = 35% do algoritmo — igual ao watch time sozinho</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.4.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-4-4')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <div class="flex-1">
+              <span class="font-semibold">⏱️ Retencao de Video</span>
+              <span class="block text-sm text-neutral-400">Meta minima de 40%, ideal acima de 60%</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-4-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-4-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A retencao de video mede que porcentagem do seu video as pessoas assistem em media. Com watch time representando 35% do peso do algoritmo, a retencao e o KPI mais importante para conteudo de video. O Instagram mostra a curva de retencao nos insights de cada Reel, permitindo ver exatamente onde as pessoas desistem. A retencao media ideal depende da duracao: para Reels de 15-30 segundos, a meta e 50-60% de retencao. Para Reels de 60-90 segundos, 35-45% e aceitavel. Abaixo de 30% para qualquer duracao, o algoritmo praticamente enterra o conteudo.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">A curva de retencao e um mapa do tesouro para melhorar seu conteudo. Se a retencao cai drasticamente nos primeiros 3 segundos, seu gancho esta fraco. Se cai no meio, sua estrutura narrativa precisa de melhoria. Se cai antes do final, voce esta alongando demais o video. Cada ponto percentual de retencao a mais pode significar milhares de visualizacoes adicionais. Criadores que analisam a curva de retencao de cada Reel e ajustam sua abordagem consistentemente veem melhorias de 50-100% no alcance em poucas semanas.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Retencao Minima:</strong> 40% para entrar no pool de recomendacao, 60%+ para distribuicao massiva</li>
+                  <li>• <strong>Curva de Retencao:</strong> analise onde as pessoas saem — o ponto de queda revela onde seu conteudo falha</li>
+                  <li>• <strong>Duracao Ideal:</strong> Reels de 15-30s tem retencao media maior, mas Reels de 60-90s geram mais watch time total</li>
+                  <li>• <strong>Loop Effect:</strong> Reels que fazem o usuario assistir de novo (replay) contam como retencao acima de 100%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.4.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-4-5')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <div class="flex-1">
+              <span class="font-semibold">💰 Metricas de Negocio</span>
+              <span class="block text-sm text-neutral-400">Cliques, leads, conversoes e ROI</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-4-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-4-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Metricas de negocio sao os numeros que conectam seu conteudo nas redes sociais a resultados financeiros reais. Incluem: cliques no link da bio (CTA efetivo), leads gerados (emails capturados via landing pages), conversoes (vendas atribuidas ao conteudo), custo por lead (quanto cada seguidor-cliente custa), e ROI (retorno sobre o investimento de tempo e dinheiro). Essas metricas estao no topo da piramide porque, no final, o objetivo de criar conteudo profissional e gerar receita — direta ou indiretamente.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Muitos criadores com centenas de milhares de seguidores nao conseguem gerar receita porque nunca olharam para metricas de negocio. Eles sabem que um Reel teve 1 milhao de views, mas nao sabem quantos cliques gerou no link da bio, quantos leads entraram no funil e quantas vendas resultaram. Sem essa conexao, voce esta fazendo entretenimento, nao negocio. Monitorar metricas de negocio tambem permite calcular quanto vale cada seguidor para voce — e isso muda como voce investe seu tempo e dinheiro.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Click-Through Rate:</strong> (cliques no link / visitas ao perfil) x 100 — meta de 5-10% para bios otimizadas</li>
+                  <li>• <strong>Custo por Lead:</strong> se voce investe 20h/mes, divida o valor da sua hora pelo numero de leads gerados</li>
+                  <li>• <strong>Taxa de Conversao:</strong> (vendas / leads) x 100 — media de 2-5% para produtos digitais via social</li>
+                  <li>• <strong>Atribuicao:</strong> use UTMs, codigos de desconto e perguntas "como conheceu" para rastrear vendas vindas do Instagram</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.4.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-4-6')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <div class="flex-1">
+              <span class="font-semibold">📋 Dashboard Semanal</span>
+              <span class="block text-sm text-neutral-400">As 6 metricas para analisar toda segunda-feira</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-4-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-4-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O Dashboard Semanal e um checklist de 6 metricas que voce deve analisar toda segunda-feira para guiar sua estrategia da semana. As 6 metricas sao: (1) Alcance Total da Semana — comparado com a semana anterior, (2) ERR Media (Taxa de Engajamento por Alcance) — a qualidade geral do conteudo, (3) Melhor Post da Semana por sends — identifica conteudo compartilhavel, (4) Retencao Media de Reels — saude dos seus videos, (5) Novos Seguidores Liquidos — crescimento real descontando unfollows, (6) Cliques no Link da Bio — conexao com objetivos de negocio.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Sem um ritual de analise, voce publica no escuro. O Dashboard Semanal leva apenas 15-20 minutos e fornece clareza total sobre o que funcionou, o que falhou e o que ajustar na proxima semana. Criadores que fazem analise semanal consistente melhoram suas metricas em media 40% em 3 meses, comparados com criadores que nunca olham dados. O segredo nao e analisar todo dia (isso gera ansiedade) nem todo mes (muito lento para ajustar) — e semanalmente, toda segunda-feira, com as 6 metricas certas.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Metrica 1 - Alcance:</strong> tendencia geral — voce esta crescendo, estagnado ou caindo?</li>
+                  <li>• <strong>Metrica 2 - ERR:</strong> qualidade do conteudo — se ERR sobe, o conteudo esta melhorando</li>
+                  <li>• <strong>Metrica 3 - Melhor post por sends:</strong> identifica o formato/tema que mais gera compartilhamentos</li>
+                  <li>• <strong>Metrica 4 - Retencao de Reels:</strong> saude dos seus videos — meta minima 40%, ideal 60%+</li>
+                  <li>• <strong>Metrica 5 - Seguidores liquidos:</strong> crescimento real — novos seguidores menos unfollows</li>
+                  <li>• <strong>Metrica 6 - Cliques no link:</strong> conexao entre redes sociais e objetivos de negocio</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-3 mt-6 justify-start">
+        <button onclick="openModal('modal-1-4')" class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30">
+          Ver em Modal
+        </button>
+        <a href="modulo-1-4.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg text-sm font-semibold hover:bg-dark-600 transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MODULO 1.5 -->
+    <!-- ============================================================ -->
+    <div id="modulo-1-5" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-emerald-400 font-bold text-lg">1.5</span>
+        <span class="text-neutral-500 text-sm">~25 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">❌ Erros que Matam seu Alcance</h2>
+      <p class="text-neutral-400 mb-8">Os 12 erros mais comuns que destroem seu alcance organico e como corrigir cada um</p>
+
+      <div class="space-y-3">
+
+        <!-- Topico 1.5.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-5-1')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">1</span>
+            <div class="flex-1">
+              <span class="font-semibold">🔗 Links na Legenda</span>
+              <span class="block text-sm text-neutral-400">O algoritmo penaliza posts que tiram da plataforma</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-5-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-5-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Colocar links clicaveis na legenda de posts do Instagram e Facebook e uma das formas mais rapidas de matar o alcance. O algoritmo detecta URLs na legenda e reduz a distribuicao do post em ate 50%. A razao e simples: a Meta quer manter usuarios na plataforma. Qualquer conteudo que incentive o usuario a sair (clicar em um link externo) vai contra o objetivo principal do algoritmo. No Facebook, posts com links externos tem alcance organico medio de apenas 1.2%, contra 3.5% de posts sem link. No Instagram, links na legenda nao sao clicaveis, mas o algoritmo ainda detecta e penaliza.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Muitos criadores e marcas colocam links em todos os posts por habito, sem perceber o custo algoritmico. A solucao e usar o link da bio, link nos Stories (sticker), ou o recurso de DM automatica. Em vez de "link na legenda", use "comente LINK que eu envio por DM" — isso gera comentarios (sinal positivo) e mantem o usuario na plataforma (sem penalizacao). Para o Facebook, poste conteudo nativo e coloque o link no primeiro comentario — isso reduz significativamente a penalizacao.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Penalizacao:</strong> links na legenda reduzem alcance em ate 50% no Facebook e prejudicam no Instagram</li>
+                  <li>• <strong>Link na Bio:</strong> alternativa mais segura — use CTAs direcionando para o link da bio</li>
+                  <li>• <strong>DM Automation:</strong> "Comente X para receber" gera engajamento e envia o link por DM</li>
+                  <li>• <strong>Link no Comentario:</strong> no Facebook, colocar o link no primeiro comentario reduz a penalizacao</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.5.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-5-2')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">2</span>
+            <div class="flex-1">
+              <span class="font-semibold">🏷️ Marca d'Agua e Conteudo Reciclado</span>
+              <span class="block text-sm text-neutral-400">Deteccao automatica e penalizacao</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-5-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-5-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O sistema de deteccao da Meta identifica automaticamente conteudo reciclado de outras plataformas ou criadores. Isso inclui: marca d'agua do TikTok (a mais detectada), marca d'agua do YouTube Shorts, conteudo repostado sem modificacao de outros perfis, compilacoes de videos alheios e ate screenshots de tweets ou posts de outras redes. A penalizacao e gradual: primeira vez pode ser leve (20-30% menos alcance), mas reincidencia leva a penalizacoes cada vez mais severas, podendo chegar a shadowban temporario do perfil inteiro.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Esse e um dos erros mais comuns e mais faceis de corrigir. A pratica de baixar videos do TikTok e repostar no Instagram era aceitavel ate 2023, mas em 2026 e ativamente punida. Mesmo que o conteudo seja SEU (voce gravou e postou primeiro no TikTok), se voce baixar com marca d'agua e repostar, sera penalizado. A solucao e sempre gravar e salvar o video original antes de postar em qualquer plataforma, e publicar nativamente em cada rede. Use ferramentas de agendamento que permitem upload nativo simultaneo.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Deteccao Progressiva:</strong> penalizacao aumenta com reincidencia — de -20% a shadowban</li>
+                  <li>• <strong>Marca d'Agua Invisivel:</strong> ate marcas removidas com apps podem ser detectadas pela IA</li>
+                  <li>• <strong>Publicacao Nativa:</strong> sempre publique diretamente na plataforma, nunca via download-reupload</li>
+                  <li>• <strong>Original First:</strong> salve o video original sem marca d'agua antes de postar em qualquer plataforma</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.5.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-5-3')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">3</span>
+            <div class="flex-1">
+              <span class="font-semibold">🎯 Inconsistencia de Nicho</span>
+              <span class="block text-sm text-neutral-400">Postar sobre tudo confunde o algoritmo</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-5-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-5-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">A inconsistencia de nicho acontece quando um perfil publica sobre assuntos completamente diferentes sem conexao entre si. Exemplo: um dia posta receita de bolo, no outro dia sobre marketing digital, depois sobre viagem, e em seguida sobre fitness. O modelo UTIS classifica cada perfil dentro de "clusters de interesse". Quando voce e inconsistente, o algoritmo nao consegue classificar seu perfil e, portanto, nao sabe para quem recomendar seu conteudo. O resultado e que seu conteudo fica limitado aos seus seguidores existentes e nunca entra no pool de recomendacao.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Esse e um dos erros mais silenciosos porque nao gera penalizacao visivel — simplesmente limita seu alcance potencial. Perfis com nicho claro e consistente recebem ate 3x mais recomendacoes do que perfis generalistas. Isso nao significa que voce precisa falar sobre uma unica coisa. Voce pode ter 3-4 pilares de conteudo, desde que estejam conectados por um tema central. Exemplo: um perfil de "produtividade" pode falar sobre rotina, ferramentas, mindset e organizacao — tudo conectado pelo tema central.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Cluster de Interesse:</strong> o algoritmo classifica cada perfil — se nao consegue classificar, nao recomenda</li>
+                  <li>• <strong>3-4 Pilares:</strong> escolha 3-4 subtemas dentro de um nicho principal e alterne entre eles</li>
+                  <li>• <strong>Tema Central:</strong> todos os pilares devem orbitar um tema central que define quem voce e</li>
+                  <li>• <strong>Regra 80/20:</strong> 80% do conteudo no nicho, 20% pessoal/variado — mantem a classificacao e humaniza</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.5.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-5-4')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">4</span>
+            <div class="flex-1">
+              <span class="font-semibold">🤐 Abandono Pos-Publicacao</span>
+              <span class="block text-sm text-neutral-400">Nao responder na janela de ouro</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-5-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-5-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">O abandono pos-publicacao e o habito de postar e desaparecer — nao interagir com comentarios, nao responder DMs, nao participar da conversa que seu proprio conteudo gerou. Nas primeiras 2 horas (a Janela de Ouro), cada resposta que voce da a um comentario gera uma notificacao que traz o usuario de volta ao post. Isso cria um loop de engajamento: voce responde, o usuario recebe notificacao, volta ao post, possivelmente comenta de novo, voce responde novamente. Cada loop inflaciona os sinais de engajamento que o algoritmo monitora.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Dados internos da Meta mostram que criadores que respondem comentarios nos primeiros 30 minutos tem em media 40% mais alcance do que criadores que nao respondem ou respondem horas depois. O algoritmo interpreta a participacao ativa do criador como sinal de que o conteudo e "vivo" e merece mais distribuicao. Alem disso, respostas do criador geram threads (sequencias de comentarios) que sao um dos sinais mais fortes de engajamento real. Publicar e ir dormir e o equivalente a abrir uma loja e sair na hora que os clientes chegam.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Regra dos 30 Minutos:</strong> responda todos os comentarios nos primeiros 30 minutos para maximizar o loop</li>
+                  <li>• <strong>Loop de Engajamento:</strong> resposta > notificacao > retorno > novo comentario > resposta — ciclo positivo</li>
+                  <li>• <strong>DMs Contam:</strong> responder DMs geradas pelo post tambem sinaliza atividade para o algoritmo</li>
+                  <li>• <strong>Presenca Ativa:</strong> esteja online e ativo por pelo menos 2 horas apos cada publicacao</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.5.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-5-5')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">5</span>
+            <div class="flex-1">
+              <span class="font-semibold">#️⃣ Hashtags Erradas ou Excessivas</span>
+              <span class="block text-sm text-neutral-400">Maximo 5 hashtags relevantes em 2026</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-5-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-5-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Em 2026, o papel das hashtags mudou drasticamente. A propria equipe do Instagram recomendou publicamente usar no maximo 3-5 hashtags relevantes por post. Usar 20-30 hashtags (pratica comum ate 2022) agora pode ser visto pelo algoritmo como spam e resultar em penalizacao. Alem disso, hashtags genericas (#love, #instagood, #happy) nao servem para nada porque tem bilhoes de posts e seu conteudo se perde instantaneamente. O algoritmo moderno usa IA para classificar conteudo por tema — as hashtags sao apenas um sinal complementar, nao o principal.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">Muitos criadores ainda perdem tempo pesquisando e inserindo 30 hashtags em cada post, acreditando que isso aumenta o alcance. Na realidade, essa pratica pode estar prejudicando seus resultados. A estrategia correta em 2026 e usar 3-5 hashtags altamente relevantes e especificas para o conteudo. Pense nas hashtags como categorias descritivas, nao como ferramentas de alcance. O alcance vem da qualidade do conteudo e dos sinais de engajamento, nao das hashtags.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Maximo 5:</strong> a recomendacao oficial do Instagram em 2026 e 3-5 hashtags por post</li>
+                  <li>• <strong>Especificas:</strong> #MarketingDigitalParaIniciantes > #Marketing — quanto mais especifica, mais eficaz</li>
+                  <li>• <strong>Descritivas:</strong> use hashtags que descrevem o conteudo do post, nao hashtags populares genericas</li>
+                  <li>• <strong>Hashtags como Categorias:</strong> pense nelas como tags de classificacao, nao como ferramentas de crescimento</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topico 1.5.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t1-5-6')" class="w-full flex items-center gap-3 p-4 hover:bg-dark-700 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold flex items-center justify-center flex-shrink-0">6</span>
+            <div class="flex-1">
+              <span class="font-semibold">📉 Postar e Desaparecer</span>
+              <span class="block text-sm text-neutral-400">A inconsistencia que o algoritmo pune</span>
+            </div>
+            <svg class="w-5 h-5 text-neutral-500 transition-transform" id="arrow-t1-5-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="t1-5-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm">
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">O que e</h4>
+                <p class="text-neutral-300">Postar e desaparecer e o padrao de publicar intensamente por uma semana e depois ficar semanas sem postar. Esse comportamento inconsistente e um dos maiores inimigos do crescimento organico em 2026. O algoritmo favorece criadores consistentes porque eles mantem a plataforma abastecida com conteudo fresco. Quando voce para de postar, o algoritmo interpreta que voce nao e um criador ativo e reduz a distribuicao dos seus proximos posts como forma de "teste" — voce precisa provar novamente que merece alcance. Voltar apos uma pausa longa pode significar 2-3 semanas de alcance reduzido ate reconquistar a confianca do algoritmo.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300">A consistencia nao significa postar todo dia. Significa postar em uma frequencia sustentavel e regular. E melhor postar 3 vezes por semana, toda semana, por 6 meses do que postar todo dia por 2 semanas e desaparecer por um mes. O algoritmo recompensa previsibilidade. Criadores que mantêm um calendario regular de publicacao (mesmo que sejam apenas 3 posts por semana) tem 60% mais alcance medio do que criadores que postam a mesma quantidade total de forma irregular. A chave e encontrar uma frequencia que voce consiga manter indefinidamente.</p>
+              </div>
+              <div>
+                <h4 class="text-emerald-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 space-y-1">
+                  <li>• <strong>Frequencia Sustentavel:</strong> escolha 3-5 posts por semana e mantenha — melhor que 7/dia por 2 semanas</li>
+                  <li>• <strong>Penalidade de Pausa:</strong> pausas longas resultam em 2-3 semanas de alcance reduzido ao voltar</li>
+                  <li>• <strong>Batch Content:</strong> produza conteudo em lotes para manter consistencia mesmo em semanas corridas</li>
+                  <li>• <strong>Agendamento:</strong> use ferramentas de agendamento (Creator Studio, Later, Buffer) para manter regularidade</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="flex items-center gap-3 mt-6 justify-start">
+        <button onclick="openModal('modal-1-5')" class="px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-lg text-sm font-semibold hover:bg-emerald-500/30 transition-colors border border-emerald-500/30">
+          Ver em Modal
+        </button>
+        <a href="modulo-1-5.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg text-sm font-semibold hover:bg-dark-600 transition-colors">
+          Ver Completo
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODALS -->
+  <div id="modal-1-1" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal('modal-1-1')"></div>
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+      <div class="bg-dark-800 rounded-xl w-full max-w-4xl h-[85vh] flex flex-col border border-dark-600">
+        <div class="flex items-center justify-between p-4 border-b border-dark-600">
+          <h3 class="font-bold text-lg">1.1 - Como o Algoritmo Funciona em 2026</h3>
+          <button onclick="closeModal('modal-1-1')" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <iframe src="modulo-1-1.html" class="flex-1 w-full rounded-b-xl"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-1-2" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal('modal-1-2')"></div>
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+      <div class="bg-dark-800 rounded-xl w-full max-w-4xl h-[85vh] flex flex-col border border-dark-600">
+        <div class="flex items-center justify-between p-4 border-b border-dark-600">
+          <h3 class="font-bold text-lg">1.2 - Os Sinais que Realmente Importam</h3>
+          <button onclick="closeModal('modal-1-2')" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <iframe src="modulo-1-2.html" class="flex-1 w-full rounded-b-xl"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-1-3" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal('modal-1-3')"></div>
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+      <div class="bg-dark-800 rounded-xl w-full max-w-4xl h-[85vh] flex flex-col border border-dark-600">
+        <div class="flex items-center justify-between p-4 border-b border-dark-600">
+          <h3 class="font-bold text-lg">1.3 - Conteudo Recomendavel vs Conteudo Comum</h3>
+          <button onclick="closeModal('modal-1-3')" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <iframe src="modulo-1-3.html" class="flex-1 w-full rounded-b-xl"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-1-4" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal('modal-1-4')"></div>
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+      <div class="bg-dark-800 rounded-xl w-full max-w-4xl h-[85vh] flex flex-col border border-dark-600">
+        <div class="flex items-center justify-between p-4 border-b border-dark-600">
+          <h3 class="font-bold text-lg">1.4 - Metricas e KPIs que Importam</h3>
+          <button onclick="closeModal('modal-1-4')" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <iframe src="modulo-1-4.html" class="flex-1 w-full rounded-b-xl"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-1-5" class="fixed inset-0 z-[60] hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal('modal-1-5')"></div>
+    <div class="relative w-full h-full flex items-center justify-center p-4">
+      <div class="bg-dark-800 rounded-xl w-full max-w-4xl h-[85vh] flex flex-col border border-dark-600">
+        <div class="flex items-center justify-between p-4 border-b border-dark-600">
+          <h3 class="font-bold text-lg">1.5 - Erros que Matam seu Alcance</h3>
+          <button onclick="closeModal('modal-1-5')" class="p-2 hover:bg-dark-700 rounded-lg transition-colors">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <iframe src="modulo-1-5.html" class="flex-1 w-full rounded-b-xl"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack do Algoritmo Meta 2026 - <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle Topic
+    function toggleTopic(id) {
+      const el = document.getElementById(id);
+      const arrow = document.getElementById('arrow-' + id);
+      if (el) {
+        el.classList.toggle('active');
+        if (arrow) {
+          arrow.style.transform = el.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Modal
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeModal(id) {
+      const modal = document.getElementById(id);
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // ESC to close modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.fixed.inset-0:not(.hidden)').forEach(modal => {
+          modal.classList.add('hidden');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

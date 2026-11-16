@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.5 - Monetizacao | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores BLUE */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+
+    /* Light mode - outras cores */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+
+    /* Light mode - gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400 font-medium">Modulo 2.5</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full mb-6 border border-blue-500/30">
+        MODULO 2.5
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        💰 <span class="text-blue-400">Monetizacao</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Transforme seguidores em receita. Desde monetizacao nativa da Meta ate produtos proprios, parcerias e funis de conversao completos. O mapa financeiro do criador em 2026.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">~35</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Inter.</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Estrat.</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 - Mentalidade -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">🧠 Mentalidade de Monetizacao</h2>
+          <p class="text-neutral-400 text-sm">2K engajados > 100K dispersos</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">A primeira mudanca de mentalidade: voce NAO precisa de 100 mil seguidores para monetizar. Um perfil com 2.000 seguidores genuinamente engajados pode gerar mais receita do que um com 100.000 seguidores dispersos. A formula da monetizacao nao e "mais seguidores = mais dinheiro". A formula real e: <strong>audiencia qualificada + sistema de conversao + oferta clara = receita</strong>. Criadores que faturam 6 digitos por ano geralmente tem entre 5.000 e 50.000 seguidores -- mas com taxa de engajamento acima de 5% e um funil estruturado.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Os 3 Pilares da Monetizacao</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">1. Audiencia Qualificada</span>
+            <p class="text-sm mt-1">Seguidores que se importam com seu nicho, interagem com seu conteudo e confiam na sua opiniao. Qualidade > quantidade. Taxa de engajamento minima: 3%.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">2. Sistema de Conversao</span>
+            <p class="text-sm mt-1">Um caminho claro que leva o seguidor do conteudo gratuito ate a compra. Pode ser simples (link na bio → pagina de vendas) ou sofisticado (funil com e-mail + WhatsApp).</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">3. Oferta Clara</span>
+            <p class="text-sm mt-1">Um produto ou servico que resolve um problema real do seu publico. Nao precisa ser seu no inicio -- pode ser afiliado. Mas precisa ser algo que voce genuinamente recomendaria.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Sou criador de conteudo no nicho [NICHO] com [X] seguidores e taxa de engajamento de [X%]. Me ajude a identificar: 1) Os 5 maiores problemas que meu publico tem e pagaria para resolver, 2) 3 formatos de produto/servico que eu poderia oferecer com meus conhecimentos atuais, 3) Um funil simples de conversao que eu possa implementar esta semana."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Focar em engajamento, nao numero de seguidores</li>
+            <li>&#8226; Comecar a monetizar com 1.000+ seguidores</li>
+            <li>&#8226; Construir sistema antes de escalar audiencia</li>
+            <li>&#8226; Validar oferta com publico existente</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Esperar 100K seguidores para comecar</li>
+            <li>&#8226; Comprar seguidores (destroi monetizacao)</li>
+            <li>&#8226; Vender algo que voce nao usa/acredita</li>
+            <li>&#8226; Ignorar DMs e comentarios (sao leads)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 - Monetizacao Nativa -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">📱 Monetizacao Nativa da Meta</h2>
+          <p class="text-neutral-400 text-sm">Reels Bonus, Stars e Badges</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">A Meta oferece formas nativas de monetizacao diretamente na plataforma. Em 2026, esses programas estao mais acessiveis e os valores, embora nao sejam fortuna, representam uma receita complementar importante -- especialmente para criadores em crescimento. A monetizacao nativa tambem sinaliza para o algoritmo que voce e um criador "profissional", o que pode influenciar positivamente a distribuicao do seu conteudo. Considere como receita base, nao como estrategia principal de renda.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Programas de Monetizacao da Meta (2026)</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Reels Play Bonus</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Valor:</strong> R$ 1,50 - R$ 10,00 por 1.000 views (varia por regiao e nicho)</li>
+              <li>&#8226; <strong>Requisitos:</strong> Conta profissional, 1.000+ seguidores, conformidade com politicas</li>
+              <li>&#8226; <strong>Dica:</strong> Reels com alta retencao geram mais receita por view</li>
+              <li>&#8226; <strong>Potencial:</strong> Um Reel com 100K views = R$ 150 - R$ 1.000</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Stars (Estrelas)</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Valor:</strong> R$ 0,05 por Star (Meta fica com ~30%)</li>
+              <li>&#8226; <strong>Onde:</strong> Lives, Reels e Stories no Facebook</li>
+              <li>&#8226; <strong>Dica:</strong> Incentive Stars durante Lives com "metas" e agradecimentos</li>
+              <li>&#8226; <strong>Potencial:</strong> Criadores ativos em Lives faturam R$ 500 - R$ 5.000/mes com Stars</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Badges (Instagram Live)</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Valores:</strong> $0,99 / $1,99 / $4,99 por Badge</li>
+              <li>&#8226; <strong>Onde:</strong> Durante Lives no Instagram</li>
+              <li>&#8226; <strong>Dica:</strong> Mencione e agradeca quem comprou -- incentiva outros</li>
+              <li>&#8226; <strong>Potencial:</strong> R$ 100 - R$ 2.000 por Live (depende da audiencia)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica</h4>
+        <p class="text-neutral-300">Para ativar a monetizacao nativa: va em <strong>Configuracoes → Monetizacao</strong> no Instagram ou <strong>Meta Business Suite → Monetizacao</strong> no Facebook. Verifique os requisitos de elegibilidade e ative todos os programas disponiveis para sua regiao. Mesmo que os valores iniciais sejam baixos, eles crescem proporcionalmente ao seu alcance.</p>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Ativar todos os programas disponiveis</li>
+            <li>&#8226; Fazer Lives regularmente (Stars + Badges)</li>
+            <li>&#8226; Otimizar Reels para retencao (mais receita/view)</li>
+            <li>&#8226; Tratar como receita complementar</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Depender exclusivamente de bonus</li>
+            <li>&#8226; Implorar por Stars/Badges</li>
+            <li>&#8226; Criar conteudo so para views (sem valor)</li>
+            <li>&#8226; Violar politicas (perde monetizacao)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 - Parcerias -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">🤝 Parcerias e Publis</h2>
+          <p class="text-neutral-400 text-sm">Tabelas de preco e como fechar contratos</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Parcerias com marcas sao uma das formas mais lucrativas de monetizacao para criadores. Em 2026, marcas estao investindo mais em influenciadores de nicho (nano e micro) do que em celebridades, porque a taxa de conversao e significativamente maior. Voce nao precisa de 1 milhao de seguidores para fechar parcerias -- precisa de uma audiencia engajada e alinhada com o produto. O segredo e tratar parcerias como negocio: tenha um midia kit, defina seus precos e so aceite marcas alinhadas com seu publico.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Tabela de Precos por Tamanho (Brasil, 2026)</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4 grid grid-cols-3 gap-4 items-center">
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Nano</span>
+              <p class="text-xs text-neutral-400">1K - 10K seguidores</p>
+            </div>
+            <div class="text-center">
+              <span class="text-emerald-400 font-bold">R$ 200 - R$ 800</span>
+              <p class="text-xs text-neutral-400">por post/Reel</p>
+            </div>
+            <div class="text-right">
+              <span class="text-neutral-400 text-xs">Eng. medio: 5-8%</span>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 grid grid-cols-3 gap-4 items-center">
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Micro</span>
+              <p class="text-xs text-neutral-400">10K - 50K seguidores</p>
+            </div>
+            <div class="text-center">
+              <span class="text-emerald-400 font-bold">R$ 800 - R$ 3.000</span>
+              <p class="text-xs text-neutral-400">por post/Reel</p>
+            </div>
+            <div class="text-right">
+              <span class="text-neutral-400 text-xs">Eng. medio: 3-6%</span>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 grid grid-cols-3 gap-4 items-center">
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Medio</span>
+              <p class="text-xs text-neutral-400">50K - 200K seguidores</p>
+            </div>
+            <div class="text-center">
+              <span class="text-emerald-400 font-bold">R$ 3.000 - R$ 10.000</span>
+              <p class="text-xs text-neutral-400">por post/Reel</p>
+            </div>
+            <div class="text-right">
+              <span class="text-neutral-400 text-xs">Eng. medio: 2-4%</span>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 grid grid-cols-3 gap-4 items-center">
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Macro</span>
+              <p class="text-xs text-neutral-400">200K+ seguidores</p>
+            </div>
+            <div class="text-center">
+              <span class="text-emerald-400 font-bold">R$ 10.000+</span>
+              <p class="text-xs text-neutral-400">por post/Reel</p>
+            </div>
+            <div class="text-right">
+              <span class="text-neutral-400 text-xs">Eng. medio: 1-3%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie um midia kit profissional para um criador de conteudo no nicho [NICHO] com [X] seguidores e [X%] de engajamento. Inclua: bio profissional, dados demograficos da audiencia (estimados), formatos disponiveis com precos, casos de sucesso anteriores (templates) e informacoes de contato. Formate de forma limpa e profissional."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Criar midia kit profissional</li>
+            <li>&#8226; So aceitar marcas alinhadas ao publico</li>
+            <li>&#8226; Negociar (nunca aceite a primeira oferta)</li>
+            <li>&#8226; Pedir contrato por escrito sempre</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Aceitar qualquer marca por dinheiro</li>
+            <li>&#8226; Trabalhar de graca "pela exposicao"</li>
+            <li>&#8226; Publi que parece publi (conteudo forçado)</li>
+            <li>&#8226; Nao declarar parceria paga (ilegal)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 - Produtos Proprios -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">🎯 Produtos Proprios</h2>
+          <p class="text-neutral-400 text-sm">Infoprodutos, consultoria, templates e funil de preco</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Produtos proprios sao a forma mais escalavel e lucrativa de monetizacao. Diferente de parcerias (que dependem de terceiros) e monetizacao nativa (que depende do algoritmo), seus produtos geram receita que voce controla 100%. O modelo ideal em 2026 e a escada de valor: comece com um produto acessivel que resolve um problema pontual e suba gradualmente ate ofertas premium para clientes mais comprometidos. Voce nao precisa de um curso completo para comecar -- um template, um checklist ou uma consultoria rapida ja sao produtos viaveis.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Escada de Valor - Funil de Produtos</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-emerald-400">
+            <span class="text-emerald-400 font-semibold text-sm">Gratis - Lead Magnet</span>
+            <p class="text-sm mt-1">E-book, checklist, template, mini-curso gratuito. Objetivo: capturar e-mail/WhatsApp. Exemplo: "Checklist dos 7 Hacks do Algoritmo" em troca do e-mail.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-blue-400">
+            <span class="text-blue-400 font-semibold text-sm">R$ 47 - R$ 197 - Produto de Entrada</span>
+            <p class="text-sm mt-1">Mini-curso, pack de templates, workshop gravado. Resolve UM problema especifico. Exemplo: "Pack de 50 Templates de Carrossel" por R$ 97.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-purple-400">
+            <span class="text-purple-400 font-semibold text-sm">R$ 297 - R$ 997 - Produto Principal</span>
+            <p class="text-sm mt-1">Curso completo, programa de grupo, mentoria em grupo. Transformacao mais profunda. Exemplo: "Curso Completo de Estrategia para Instagram" por R$ 497.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+            <span class="text-amber-400 font-semibold text-sm">R$ 1.500+ - Premium</span>
+            <p class="text-sm mt-1">Mentoria individual, consultoria 1:1, mastermind exclusivo. Alto valor, poucos clientes, alto ticket. Exemplo: "Mentoria Individual de 3 meses" por R$ 3.000.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Me ajude a criar uma escada de valor para o nicho [NICHO]. Preciso de: 1) Ideia de lead magnet gratuito que gere leads, 2) Produto de entrada (R$47-197) que resolva um problema pontual, 3) Produto principal (R$297-997) com transformacao completa, 4) Oferta premium (R$1.500+) de alto valor. Para cada nivel, inclua: nome sugerido, descricao, formato e como vende para o proximo nivel."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Validar ideia antes de produzir</li>
+            <li>&#8226; Comecar com produto simples (template/checklist)</li>
+            <li>&#8226; Lead magnet para capturar contatos</li>
+            <li>&#8226; Escada de valor progressiva</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Criar curso de 40h sem validar</li>
+            <li>&#8226; Preco muito baixo (desvaloriza)</li>
+            <li>&#8226; Produto que nao resolve problema real</li>
+            <li>&#8226; Lancar sem pagina de vendas profissional</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 - Afiliados -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">🔗 Marketing de Afiliados</h2>
+          <p class="text-neutral-400 text-sm">Venda produtos de terceiros com comissao</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Marketing de afiliados e a forma mais rapida de comecar a monetizar sem criar produto proprio. Voce indica produtos de terceiros usando um link rastreavel e recebe comissao por cada venda. Em 2026, as principais plataformas brasileiras (Hotmart, Eduzz, Kiwify) oferecem comissoes de 20-60% em produtos digitais. A chave e recomendar apenas produtos que voce genuinamente usa ou usaria -- sua credibilidade e seu maior ativo, e uma indicacao ruim pode destrui-la. O melhor formato para afiliados e conteudo educativo que naturalmente menciona a ferramenta como parte da solucao.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Plataformas e Comissoes</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4 grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Hotmart</span>
+              <p class="text-xs mt-1">Produtos digitais brasileiros. Comissoes: 20-60%. Melhor para cursos e e-books.</p>
+            </div>
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Eduzz</span>
+              <p class="text-xs mt-1">Produtos digitais + fisicos. Comissoes: 20-50%. Boa variedade de nichos.</p>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Kiwify</span>
+              <p class="text-xs mt-1">Plataforma em crescimento. Comissoes: 30-60%. Interface moderna e checkout otimizado.</p>
+            </div>
+            <div>
+              <span class="text-blue-400 font-semibold text-sm">Amazon Associados</span>
+              <p class="text-xs mt-1">Produtos fisicos. Comissoes: 3-10%. Ideal para indicar livros, equipamentos, gadgets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 bg-dark-700 rounded-lg p-4">
+          <span class="text-emerald-400 font-semibold text-sm">Onde colocar seu link de afiliado</span>
+          <ul class="mt-2 space-y-1 text-sm">
+            <li>&#8226; <strong>Link na bio:</strong> Linktree ou pagina propria com links organizados</li>
+            <li>&#8226; <strong>Stories:</strong> Sticker de link (disponivel para todos desde 2023)</li>
+            <li>&#8226; <strong>Caption:</strong> "Link na bio" com CTA especifico</li>
+            <li>&#8226; <strong>DMs automatizadas:</strong> "Comente [PALAVRA] e eu envio o link"</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie 10 ideias de conteudo para promover [PRODUTO AFILIADO] de forma natural no nicho [NICHO]. Cada ideia deve entregar valor real ao publico primeiro e mencionar o produto como parte da solucao (nao como anuncio). Inclua: formato (Reel, carrossel, Stories), gancho, conteudo de valor e como inserir a recomendacao naturalmente."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Recomendar apenas o que voce usa</li>
+            <li>&#8226; Criar conteudo de valor com link afiliado</li>
+            <li>&#8226; Diversificar entre 3-5 produtos</li>
+            <li>&#8226; Ser transparente ("link de afiliado")</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Promover produto que nao conhece</li>
+            <li>&#8226; Spam de links sem valor</li>
+            <li>&#8226; Depender de um unico produto</li>
+            <li>&#8226; Esconder que e link de afiliado</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 - Funil de Conversao -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">🔄 Funil de Conversao Completo</h2>
+          <p class="text-neutral-400 text-sm">Da consciencia a venda em 4 fases</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O funil de conversao e o sistema que transforma desconhecidos em clientes pagantes de forma previsivel e escalavel. Em 2026, o funil nao e mais linear -- e um ecosistema onde cada conteudo tem um papel especifico. O segredo e entender que a maioria das pessoas nao compra na primeira exposicao. Sao necessarios em media 7-12 pontos de contato antes de uma decisao de compra. Seu funil deve cobrir cada etapa dessa jornada, desde "nunca ouvi falar de voce" ate "quero comprar agora".</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">As 4 Fases do Funil</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-blue-400">
+            <span class="text-blue-400 font-semibold">Fase 1 - Consciencia (Topo)</span>
+            <p class="text-sm mt-2"><strong>Objetivo:</strong> Ser descoberto por pessoas que nunca te viram</p>
+            <p class="text-sm"><strong>Formato:</strong> Reel viral, conteudo de entretenimento, tendencias</p>
+            <p class="text-sm"><strong>Metrica:</strong> Alcance de nao-seguidores, novos seguidores</p>
+            <p class="text-sm"><strong>Acao:</strong> Seguir o perfil</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-purple-400">
+            <span class="text-purple-400 font-semibold">Fase 2 - Consideracao (Meio)</span>
+            <p class="text-sm mt-2"><strong>Objetivo:</strong> Construir confianca e autoridade</p>
+            <p class="text-sm"><strong>Formato:</strong> Carrossel educativo, Stories com bastidores, Reel tutorial</p>
+            <p class="text-sm"><strong>Metrica:</strong> Saves, tempo de visualizacao, DMs</p>
+            <p class="text-sm"><strong>Acao:</strong> Salvar, compartilhar, responder Stories</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+            <span class="text-amber-400 font-semibold">Fase 3 - Intencao (Fundo)</span>
+            <p class="text-sm mt-2"><strong>Objetivo:</strong> Capturar lead e iniciar conversa</p>
+            <p class="text-sm"><strong>Formato:</strong> Lead magnet (e-book, checklist), CTA para WhatsApp, Live com oferta</p>
+            <p class="text-sm"><strong>Metrica:</strong> Leads capturados, cliques no link, mensagens</p>
+            <p class="text-sm"><strong>Acao:</strong> Baixar material, entrar na lista, iniciar conversa</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-emerald-400">
+            <span class="text-emerald-400 font-semibold">Fase 4 - Conversao (Venda)</span>
+            <p class="text-sm mt-2"><strong>Objetivo:</strong> Fechar a venda</p>
+            <p class="text-sm"><strong>Formato:</strong> Pagina de vendas, sequencia de e-mails, conversa via WhatsApp</p>
+            <p class="text-sm"><strong>Metrica:</strong> Taxa de conversao, ticket medio, receita</p>
+            <p class="text-sm"><strong>Acao:</strong> Comprar produto/servico</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Desenhe um funil de conversao completo para [PRODUTO/SERVICO] no nicho [NICHO]. Para cada fase (Consciencia, Consideracao, Intencao, Conversao) inclua: 1) Tipo de conteudo a criar, 2) Formato ideal, 3) CTA especifico, 4) Metrica a acompanhar, 5) Exemplo pratico de post. O funil deve funcionar organicamente (sem anuncios pagos)."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Ter conteudo para cada fase do funil</li>
+            <li>&#8226; Capturar e-mail/WhatsApp (nao depender so do Instagram)</li>
+            <li>&#8226; Nutrir leads antes de vender</li>
+            <li>&#8226; Medir conversao em cada etapa</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Tentar vender na primeira interacao</li>
+            <li>&#8226; Depender 100% de uma plataforma</li>
+            <li>&#8226; Funil sem lead magnet (perde leads)</li>
+            <li>&#8226; Nao acompanhar metricas de conversao</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-8 mb-12">
+      <h3 class="text-2xl font-bold text-blue-400 mb-4">Resumo do Modulo 2.5</h3>
+      <div class="space-y-3 text-neutral-300">
+        <p>&#8226; <strong>Mentalidade:</strong> 2K engajados > 100K dispersos. Audiencia qualificada + sistema + oferta = receita</p>
+        <p>&#8226; <strong>Nativa:</strong> Reels Bonus (R$1,50-10/1K views), Stars (R$0,05 cada), Badges ($0,99-$4,99)</p>
+        <p>&#8226; <strong>Parcerias:</strong> Nano R$200-800, Micro R$800-3K, Medio R$3K-10K, Macro R$10K+</p>
+        <p>&#8226; <strong>Produtos:</strong> Lead magnet gratis → Entrada R$47-197 → Principal R$297-997 → Premium R$1.500+</p>
+        <p>&#8226; <strong>Afiliados:</strong> Hotmart/Eduzz/Kiwify com 20-60% de comissao em digitais</p>
+        <p>&#8226; <strong>Funil:</strong> Consciencia (Reel alcance) → Consideracao (carrossel) → Intencao (lead magnet) → Conversao (venda)</p>
+      </div>
+    </section>
+
+    <!-- NAVEGACAO -->
+    <div class="flex items-center justify-between">
+      <a href="modulo-2-4.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Modulo 2.4
+      </a>
+      <a href="index.html" class="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/30 transition-colors border border-blue-500/30">
+        Trilha 2 →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 text-center text-neutral-500 text-sm">
+    <p>Hack Meta 2026 - INEMA.CLUB</p>
+  </footer>
+
+  <!-- THEME TOGGLE JS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

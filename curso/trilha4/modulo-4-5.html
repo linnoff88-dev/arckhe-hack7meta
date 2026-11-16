@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 4.5 - Escalando de 0 a 10K | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores AMBER */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* Light mode - outras cores do nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-green-400 { color: #15803d; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-amber-400 transition-colors">Hack Meta 2026</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-amber-400 transition-colors">Trilha 4</a>
+      <span>/</span>
+      <span class="text-amber-400">Modulo 4.5</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-900 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-400 text-sm font-semibold rounded-full mb-4">
+        MODULO 4.5
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">
+        🚀 Escalando de <span class="text-amber-400">0 a 10K</span>
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-3xl mb-6">
+        O plano completo de 90 dias para sair do zero e chegar a 10.000 seguidores organicamente, com estrategias de crescimento, impulsionamento e monetizacao.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">~35 min</span>
+          <span class="text-neutral-400 text-sm ml-1">de conteudo</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Intermediario</span>
+          <span class="text-neutral-400 text-sm ml-1">nivel</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">6</span>
+          <span class="text-neutral-400 text-sm ml-1">secoes</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Estrategia</span>
+          <span class="text-neutral-400 text-sm ml-1">tipo</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Dias 1-30: Fundacao</h2>
+          <p class="text-neutral-400 mt-1">Consistencia e nicho definido - o algoritmo esta aprendendo sobre voce</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O que acontece nos primeiros 30 dias</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Nos primeiros 30 dias, o algoritmo do Instagram esta "estudando" voce. Cada post que voce publica e um dado que ele usa para entender: qual e seu nicho, quem e seu publico, e para quem mostrar seu conteudo. Por isso, consistencia e foco em UM nicho sao absolutamente essenciais nessa fase.
+          </p>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            Nao desista se os numeros forem baixos. E completamente normal ter 50-200 visualizacoes por post nessa fase. O que importa e manter o ritmo de publicacao e criar conteudo de qualidade.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Metas e acoes da Fase 1</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <p class="text-amber-400 font-bold text-2xl mb-1">0 → 500</p>
+              <p class="text-neutral-300 text-sm">seguidores</p>
+              <p class="text-neutral-500 text-xs mt-2">Meta realista para perfis novos com conteudo consistente</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <p class="text-amber-400 font-bold text-2xl mb-1">1 post/dia</p>
+              <p class="text-neutral-300 text-sm">frequencia minima</p>
+              <p class="text-neutral-500 text-xs mt-2">Alternar entre carrosseis, reels e imagens</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Checklist diario - Fase 1</h3>
+          <div class="space-y-2">
+            <div class="flex items-center space-x-2 bg-dark-700 rounded-lg p-3">
+              <span class="text-neutral-500">&#9744;</span>
+              <span class="text-neutral-300 text-sm">Publicar 1 post no feed (carrossel, reel ou imagem)</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-dark-700 rounded-lg p-3">
+              <span class="text-neutral-500">&#9744;</span>
+              <span class="text-neutral-300 text-sm">Postar 3-5 Stories (conteudo + bastidores + interacao)</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-dark-700 rounded-lg p-3">
+              <span class="text-neutral-500">&#9744;</span>
+              <span class="text-neutral-300 text-sm">Comentar em 10-15 posts de perfis do mesmo nicho</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-dark-700 rounded-lg p-3">
+              <span class="text-neutral-500">&#9744;</span>
+              <span class="text-neutral-300 text-sm">Responder TODOS os comentarios e DMs recebidos</span>
+            </div>
+            <div class="flex items-center space-x-2 bg-dark-700 rounded-lg p-3">
+              <span class="text-neutral-500">&#9744;</span>
+              <span class="text-neutral-300 text-sm">Interagir nos Stories de 5 perfis do nicho</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Dias 31-60: Aceleracao</h2>
+          <p class="text-neutral-400 mt-1">O algoritmo comeca a confiar em voce e distribuir seu conteudo</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O que muda na Fase 2</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Se voce foi consistente nos primeiros 30 dias, algo magico comeca a acontecer: o algoritmo comeca a "confiar" em voce. Seus posts comecam a ser mostrados para pessoas que nao te seguem. Voce nota que o alcance de alguns posts e 2x, 3x ou ate 5x maior que o numero de seguidores.
+          </p>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            Essa e a hora de acelerar. Se antes voce publicava 1 post/dia, agora pode testar 1-2 posts/dia. Se um formato funcionou, produza mais daquele formato. O algoritmo ja sabe para quem mostrar seu conteudo.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Metas e acoes da Fase 2</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <p class="text-amber-400 font-bold text-2xl mb-1">500 → 3K</p>
+              <p class="text-neutral-300 text-sm">seguidores</p>
+              <p class="text-neutral-500 text-xs mt-2">Crescimento acelerado com conteudo validado</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <p class="text-amber-400 font-bold text-2xl mb-1">1-2 posts/dia</p>
+              <p class="text-neutral-300 text-sm">frequencia</p>
+              <p class="text-neutral-500 text-xs mt-2">Mais volume = mais dados para o algoritmo</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Estrategias da Fase 2</h3>
+          <ul class="text-neutral-300 text-sm space-y-3">
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Replicar padroes:</strong> Identifique seus 3 melhores posts e crie variacoes. Mesmo formato, conteudo novo.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Iniciar collabs:</strong> Faca 2-4 collabs por mes com perfis do mesmo nicho e tamanho similar.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Explorar Reels:</strong> Se ainda nao esta fazendo Reels regularmente, comece agora. Reels tem o maior potencial de alcance organico.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Otimizar horarios:</strong> Publique nos 3 horarios que seus Insights mostram como picos de atividade.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">Dias 61-90: Escala</h2>
+          <p class="text-neutral-400 mt-1">Conteudo validado, padroes claros - hora de escalar</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O crescimento exponencial</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Nos dias 61-90, se voce seguiu o plano, o crescimento comeca a ser exponencial. Isso acontece porque: (1) voce tem conteudo suficiente no perfil para convencer visitantes, (2) o algoritmo ja te conhece bem, (3) seus seguidores existentes estao engajados e ajudam a distribuir seu conteudo.
+          </p>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            Essa e a fase onde um unico Reel viral pode trazer 2.000-5.000 seguidores de uma vez. Mas viralizar nao e sorte - e preparacao. Voce esta preparado porque tem 60 dias de conteudo consistente e um perfil otimizado para converter visitantes em seguidores.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Metas da Fase 3</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-amber-400 font-bold text-2xl mb-1">3K → 10K</p>
+              <p class="text-neutral-300 text-sm">seguidores</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-amber-400 font-bold text-2xl mb-1">2+ posts/dia</p>
+              <p class="text-neutral-300 text-sm">frequencia</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-amber-400 font-bold text-2xl mb-1">1o R$</p>
+              <p class="text-neutral-300 text-sm">monetizacao</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Quando o crescimento trava</h3>
+          <p class="text-neutral-300 text-sm">Se chegou no dia 60 e nao esta vendo crescimento, duas coisas podem estar erradas: (1) seu conteudo nao esta gerando saves/shares suficientes - revise a qualidade e os ganchos, ou (2) seu nicho e muito restrito - considere ampliar ligeiramente. Volte ao Modulo 4.4 e faca o diagnostico completo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">5 Estrategias de Crescimento Organico</h2>
+          <p class="text-neutral-400 mt-1">As 5 alavancas que aceleram seu crescimento sem gastar dinheiro</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <div class="space-y-6">
+
+            <!-- Estrategia 1 -->
+            <div class="bg-dark-700 rounded-lg p-5 border-l-4 border-amber-400">
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-amber-400 font-bold text-lg">1.</span>
+                <h4 class="text-neutral-100 font-semibold">Collabs (2-4/mes)</h4>
+              </div>
+              <p class="text-neutral-300 text-sm mb-3">Colaboracoes com perfis do mesmo nicho e tamanho similar. O publico de um se torna publico do outro. Tipos de collab: post colaborativo (aparece nos dois perfis), live juntos, troca de Stories, desafio conjunto.</p>
+              <div class="bg-dark-600 rounded p-3">
+                <p class="text-neutral-400 text-xs"><strong>Como encontrar:</strong> Busque hashtags do seu nicho, encontre perfis com 50-200% do seu tamanho, engaje por 1-2 semanas antes de propor collab.</p>
+              </div>
+            </div>
+
+            <!-- Estrategia 2 -->
+            <div class="bg-dark-700 rounded-lg p-5 border-l-4 border-amber-400">
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-amber-400 font-bold text-lg">2.</span>
+                <h4 class="text-neutral-100 font-semibold">Tendencias (2-4h apos surgir)</h4>
+              </div>
+              <p class="text-neutral-300 text-sm mb-3">Quando uma tendencia surge, voce tem uma janela de 2-4 horas para criar conteudo e surfar a onda. Os primeiros perfis a adaptar uma tendencia ganham mais alcance. Monitore a aba Reels e perfis de trends diariamente.</p>
+              <div class="bg-dark-600 rounded p-3">
+                <p class="text-neutral-400 text-xs"><strong>Regra:</strong> So surfe tendencias que podem ser adaptadas ao seu nicho naturalmente. Tendencia forcada parece desesperada.</p>
+              </div>
+            </div>
+
+            <!-- Estrategia 3 -->
+            <div class="bg-dark-700 rounded-lg p-5 border-l-4 border-amber-400">
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-amber-400 font-bold text-lg">3.</span>
+                <h4 class="text-neutral-100 font-semibold">SEO Social</h4>
+              </div>
+              <p class="text-neutral-300 text-sm mb-3">O Instagram e cada vez mais um mecanismo de busca. Pessoas pesquisam termos na barra de busca e o Instagram mostra perfis e posts relevantes. Otimize para busca:</p>
+              <div class="bg-dark-600 rounded p-3">
+                <ul class="text-neutral-400 text-xs space-y-1">
+                  <li>&#9679; <strong>Bio:</strong> Coloque keywords no nome (nao no @). Ex: "Joao | Marketing Digital"</li>
+                  <li>&#9679; <strong>Legendas:</strong> Use palavras-chave naturalmente nos textos das legendas</li>
+                  <li>&#9679; <strong>Narracao:</strong> Fale as keywords nos Reels - o Instagram transcreve o audio</li>
+                  <li>&#9679; <strong>Alt text:</strong> Adicione texto alternativo nas imagens com keywords relevantes</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Estrategia 4 -->
+            <div class="bg-dark-700 rounded-lg p-5 border-l-4 border-amber-400">
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-amber-400 font-bold text-lg">4.</span>
+                <h4 class="text-neutral-100 font-semibold">Comunidade</h4>
+              </div>
+              <p class="text-neutral-300 text-sm mb-3">Responder TODOS os comentarios e DMs nao e so educacao - e estrategia. Cada resposta e uma interacao que o algoritmo conta. Alem disso, quem recebe resposta se torna fa e volta para engajar nos proximos posts.</p>
+              <div class="bg-dark-600 rounded p-3">
+                <p class="text-neutral-400 text-xs"><strong>Dica:</strong> Responda nos primeiros 60 minutos apos publicar. O engajamento na primeira hora determina como o algoritmo distribui o post.</p>
+              </div>
+            </div>
+
+            <!-- Estrategia 5 -->
+            <div class="bg-dark-700 rounded-lg p-5 border-l-4 border-amber-400">
+              <div class="flex items-center space-x-2 mb-2">
+                <span class="text-amber-400 font-bold text-lg">5.</span>
+                <h4 class="text-neutral-100 font-semibold">Consistencia</h4>
+              </div>
+              <p class="text-neutral-300 text-sm mb-3">Nunca mais de 3 dias sem postar. A consistencia e mais importante que a qualidade individual de cada post. Um post "ok" publicado e melhor que um post "perfeito" que nunca sai do rascunho.</p>
+              <div class="bg-dark-600 rounded p-3">
+                <p class="text-neutral-400 text-xs"><strong>Regra pratica:</strong> Se voce nao tem conteudo novo, reposte seu melhor post antigo com uma legenda atualizada. Melhor que ficar em silencio.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Impulsionamento Estrategico</h2>
+          <p class="text-neutral-400 mt-1">Quando e como investir seus primeiros R$50 em anuncios</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Quando impulsionar</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            NAO impulsione posts que nao performaram organicamente. O impulsionamento e para AMPLIFICAR o que ja funciona, nao para salvar o que nao funciona. A regra e simples:
+          </p>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-amber-400 font-semibold text-sm mb-2">Regra do impulsionamento:</p>
+            <p class="text-neutral-100 text-sm">So impulsione um post que ORGANICAMENTE ja teve performance acima da media (mais saves e shares que seus outros posts).</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Como impulsionar com R$50</h3>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[70px]">Quanto</span>
+              <p class="text-neutral-300 text-sm">R$10-20 por post. Com R$50, voce impulsiona 3-5 posts diferentes.</p>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[70px]">Duracao</span>
+              <p class="text-neutral-300 text-sm">3-5 dias por impulsionamento. Nao coloque tudo em 1 dia.</p>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[70px]">Publico</span>
+              <p class="text-neutral-300 text-sm">Use "Publico semelhante" - o Instagram mostra para pessoas parecidas com quem ja engaja com voce.</p>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[70px]">Objetivo</span>
+              <p class="text-neutral-300 text-sm">Escolha "Mais visitas ao perfil" ou "Mais engajamento". NAO escolha "Mais curtidas" (vaidade).</p>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[70px]">Qual post</span>
+              <p class="text-neutral-300 text-sm">Impulsione o post com mais saves E shares. Esse e o post que mais vai converter visitantes em seguidores.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Expectativa realista</h3>
+          <p class="text-neutral-300 text-sm">Com R$50 bem investidos (em posts que ja funcionam organicamente), voce pode ganhar 200-800 seguidores adicionais. O custo por seguidor varia de R$0,06 a R$0,25 dependendo do nicho e da qualidade do conteudo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Plano Pos-10K</h2>
+          <p class="text-neutral-400 mt-1">Chegou nos 10K? Agora e hora de monetizar e escalar ainda mais</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">3 pilares pos-10K</h3>
+          <div class="space-y-4">
+
+            <div class="bg-dark-700 rounded-lg p-5">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">💰</div>
+                <h4 class="text-neutral-100 font-bold">Monetizacao</h4>
+              </div>
+              <ul class="text-neutral-300 text-sm space-y-2">
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Links nos Stories:</strong> Com 10K+ voce tem link clicavel nos Stories (sticker de link). Use para direcionar para produtos, lead magnets e ofertas.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Produtos digitais:</strong> Crie e venda e-books, cursos, mentorias, templates. Seu conteudo gratuito e a vitrine; o produto pago e a monetizacao.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Parcerias pagas:</strong> Marcas comecam a te procurar para publis. Valor medio: R$200-2.000 por post dependendo do nicho e engajamento.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-dark-700 rounded-lg p-5">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">👥</div>
+                <h4 class="text-neutral-100 font-bold">Comunidade</h4>
+              </div>
+              <ul class="text-neutral-300 text-sm space-y-2">
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Grupo WhatsApp/Telegram VIP:</strong> Crie um grupo exclusivo para seus seguidores mais engajados. Pode ser gratuito (para gerar comunidade) ou pago (para monetizar).</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Lista de e-mail:</strong> Comece a capturar e-mails sistematicamente. E-mail e o canal que voce CONTROLA (diferente do Instagram, onde o algoritmo decide).</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Close friends:</strong> Use a funcao Close Friends para dar conteudo exclusivo e criar senso de pertencimento.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-dark-700 rounded-lg p-5">
+              <div class="flex items-center space-x-3 mb-3">
+                <div class="w-10 h-10 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-lg">🏆</div>
+                <h4 class="text-neutral-100 font-bold">Autoridade</h4>
+              </div>
+              <ul class="text-neutral-300 text-sm space-y-2">
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Posicione-se como referencia:</strong> Nao seja "mais um" no nicho. Tenha uma opiniao propria, uma metodologia, um diferencial claro.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Cases e resultados:</strong> Documente resultados de clientes/alunos. Prova social concreta vale mais que milhares de seguidores.</span>
+                </li>
+                <li class="flex items-start space-x-2">
+                  <span class="text-amber-400 mt-0.5">&#9679;</span>
+                  <span><strong>Proximo objetivo: 50K:</strong> A mesma estrategia que te trouxe ate 10K, multiplicada e refinada, te leva a 50K. Mais volume, mais collabs, mais Reels, mais consistencia.</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">A verdade sobre 10K</h3>
+          <p class="text-neutral-300 text-sm">10K seguidores nao e o destino final - e o comeco real. Com 10K, voce tem prova de conceito de que seu nicho funciona, seu conteudo atrai pessoas e voce consegue crescer. A partir daqui, o crescimento tende a ser mais rapido porque voce ja sabe o que funciona e tem autoridade suficiente para atrair oportunidades.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-amber-900/20 via-dark-800 to-dark-800 rounded-2xl border border-amber-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-4 text-amber-400">Resumo do Modulo 4.5</h2>
+      <p class="text-neutral-300 mb-6">O plano completo de 90 dias para escalar de 0 a 10K seguidores:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Dias 1-30</div>
+          <p class="text-neutral-400 text-sm">Fundacao: 0→500. 1 post/dia, nicho definido</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Dias 31-60</div>
+          <p class="text-neutral-400 text-sm">Aceleracao: 500→3K. 1-2 posts/dia, collabs</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Dias 61-90</div>
+          <p class="text-neutral-400 text-sm">Escala: 3K→10K. Conteudo validado, replicacao</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">5 Estrategias</div>
+          <p class="text-neutral-400 text-sm">Collabs, tendencias, SEO, comunidade, consistencia</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Impulsionamento</div>
+          <p class="text-neutral-400 text-sm">R$50 em posts que ja performam bem</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Pos-10K</div>
+          <p class="text-neutral-400 text-sm">Monetizacao, comunidade e autoridade</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="modulo-4-4.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          &larr; Modulo 4.4
+        </a>
+        <a href="index.html" class="inline-flex items-center px-6 py-3 bg-amber-500/20 text-amber-400 font-semibold rounded-lg hover:bg-amber-500/30 transition-colors">
+          Voltar para Trilha 4
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 &bull; <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

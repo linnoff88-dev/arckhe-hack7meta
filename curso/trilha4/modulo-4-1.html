@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 4.1 - Configurando seu Perfil Profissional | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores AMBER */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* Light mode - outras cores do nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-green-400 { color: #15803d; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-amber-400 transition-colors">Hack Meta 2026</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-amber-400 transition-colors">Trilha 4</a>
+      <span>/</span>
+      <span class="text-amber-400">Modulo 4.1</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-900 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-400 text-sm font-semibold rounded-full mb-4">
+        MODULO 4.1
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">
+        <span class="text-amber-400">Configurando</span> seu Perfil Profissional
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-3xl mb-6">
+        Transforme seu perfil do Instagram em uma vitrine profissional que converte visitantes em seguidores desde o primeiro segundo.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">~25 min</span>
+          <span class="text-neutral-400 text-sm ml-1">de conteudo</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Iniciante</span>
+          <span class="text-neutral-400 text-sm ml-1">nivel</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">6</span>
+          <span class="text-neutral-400 text-sm ml-1">secoes</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Setup</span>
+          <span class="text-neutral-400 text-sm ml-1">tipo</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Foto de Perfil Estrategica</h2>
+          <p class="text-neutral-400 mt-1">A primeira impressao que determina se alguem vai clicar no seu perfil ou passar reto</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Por que a foto importa tanto?</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Sua foto de perfil e a primeira coisa que as pessoas veem. Ela aparece nos comentarios, nos resultados de busca, nas sugestoes de "quem seguir" e em cada interacao que voce faz no Instagram. Uma foto profissional pode aumentar em ate 40% a chance de alguem clicar no seu perfil quando te ve em algum lugar da plataforma.
+          </p>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            O Instagram exibe sua foto em tamanho pequeno (110x110 pixels na maioria dos dispositivos). Isso significa que detalhes muito pequenos se perdem. Voce precisa de uma imagem que funcione bem nesse tamanho reduzido: rosto visivel, cores que se destaquem, fundo limpo.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Elementos de uma foto que converte</h3>
+          <ul class="text-neutral-300 text-sm space-y-3">
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Rosto visivel e centralizado:</strong> Seu rosto deve ocupar 60-70% do enquadramento. Nada de corpo inteiro ou foto de longe.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Fundo limpo ou desfocado:</strong> Fundo branco, cor solida ou desfocado. Evite fundos bagunçados ou com muita informação visual.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Cores consistentes com sua marca:</strong> Se sua identidade visual usa azul, considere uma camisa azul ou fundo azul. Isso cria reconhecimento.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Sorriso natural:</strong> Estudos mostram que fotos com sorriso geram 14% mais engajamento. Um sorriso genuino transmite confiança e acessibilidade.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Boa iluminação:</strong> Luz natural (perto da janela) e a melhor opcao. Evite luzes amareladas ou fotos escuras.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Box Fazer/Evitar -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+            <h3 class="text-green-400 font-semibold mb-3">FAZER</h3>
+            <ul class="text-neutral-300 text-sm space-y-2">
+              <li>&#10003; Rosto centralizado e visivel</li>
+              <li>&#10003; Fundo limpo ou desfocado</li>
+              <li>&#10003; Sorriso natural e genuino</li>
+              <li>&#10003; Iluminação clara e uniforme</li>
+              <li>&#10003; Cores alinhadas com sua marca</li>
+              <li>&#10003; Foto recente (ultimo ano)</li>
+              <li>&#10003; Resolucao alta (minimo 320x320px)</li>
+            </ul>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+            <h3 class="text-red-400 font-semibold mb-3">EVITAR</h3>
+            <ul class="text-neutral-300 text-sm space-y-2">
+              <li>&#10007; Logos muito pequenos (ficam ilegíveis)</li>
+              <li>&#10007; Foto de grupo (quem e voce?)</li>
+              <li>&#10007; Paisagens ou objetos</li>
+              <li>&#10007; Fotos escuras ou pixeladas</li>
+              <li>&#10007; Oculos escuros cobrindo os olhos</li>
+              <li>&#10007; Foto de corpo inteiro (rosto some)</li>
+              <li>&#10007; Fotos muito antigas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Dica pratica</h3>
+          <p class="text-neutral-300 text-sm">Nao precisa de fotografo profissional. Use seu celular com a camera frontal, posicione-se perto de uma janela para ter luz natural, e peça para alguem tirar a foto ou use o timer. Depois, use o app "Remove.bg" para remover o fundo e colocar uma cor solida.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Bio que Converte</h2>
+          <p class="text-neutral-400 mt-1">150 caracteres para convencer alguem a te seguir - cada palavra conta</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">A formula da bio perfeita</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Sua bio tem um unico objetivo: responder em 3 segundos a pergunta "por que eu deveria seguir esse perfil?". Para isso, use a formula comprovada que funciona em qualquer nicho:
+          </p>
+          <div class="bg-dark-700 rounded-lg p-4 mb-4">
+            <p class="text-amber-400 font-mono text-sm font-bold mb-2">FORMULA:</p>
+            <p class="text-neutral-100 font-mono text-sm">[Emoji] Quem sou | O que faco | Para quem | CTA</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-amber-400 font-mono text-sm font-bold mb-2">EXEMPLO:</p>
+            <p class="text-neutral-100 text-sm italic">"📈 Estrategista Digital | Te ensino a crescer no Instagram | Dicas diarias | Link abaixo 👇"</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Mais exemplos por nicho</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-500 text-xs mb-1">Fitness:</p>
+              <p class="text-neutral-300 text-sm">"💪 Personal Trainer | Treinos para emagrecer em casa | Resultados em 30 dias | Treino gratis 👇"</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-500 text-xs mb-1">Culinaria:</p>
+              <p class="text-neutral-300 text-sm">"🍳 Chef caseira | Receitas faceis em 15 min | Para quem odeia cozinhar | Cardapio semanal 👇"</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-500 text-xs mb-1">Financas:</p>
+              <p class="text-neutral-300 text-sm">"💰 Educador Financeiro | Te ajudo a sair das dividas | Dicas praticas todo dia | Planilha gratis 👇"</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-500 text-xs mb-1">Maternidade:</p>
+              <p class="text-neutral-300 text-sm">"👶 Mae de 2 | Dicas de organizacao para maes reais | Sem culpa, sem frescura | Guia gratis 👇"</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Dicas essenciais para a bio</h3>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Maximo 150 caracteres:</strong> O Instagram corta textos longos. Seja direto e objetivo.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Use keywords do nicho:</strong> Se voce e nutricionista, coloque "nutricionista" no nome (nao no @). Isso ajuda a aparecer nas buscas.</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>CTA claro:</strong> Termine com uma acao: "Link abaixo", "Me manda DM", "Baixe o guia gratis".</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-amber-400 mt-0.5">&#9679;</span>
+              <span><strong>Emojis com moderacao:</strong> 1-3 emojis para organizar visualmente. Nao exagere.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Prompt para IA</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-neutral-300 text-sm font-mono">"Crie 5 versoes de bio para Instagram no nicho [NICHO]. Use a formula: quem sou + o que faco + para quem + CTA. Maximo 150 caracteres cada. Inclua emojis estrategicos."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">Link na Bio</h2>
+          <p class="text-neutral-400 mt-1">O unico lugar clicavel do seu perfil - use com inteligencia</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Por que o link na bio e tao importante?</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            O Instagram so permite UM link clicavel no perfil. Esse link e a ponte entre seu conteudo gratuito e sua monetizacao. E por ele que as pessoas vao acessar seu WhatsApp, seu produto, seu lead magnet. Sem um link na bio bem configurado, voce perde 100% das oportunidades de conversao.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Opcoes gratuitas de link na bio</h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="text-neutral-100 font-semibold mb-1">Linktree (linktr.ee)</h4>
+              <p class="text-neutral-300 text-sm">O mais popular. Versao gratuita permite links ilimitados, personalizacao basica e estatisticas simples. Ideal para começar.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="text-neutral-100 font-semibold mb-1">Beacons (beacons.ai)</h4>
+              <p class="text-neutral-300 text-sm">Alternativa ao Linktree com mais opcoes de design gratuitas. Permite incorporar videos, newsletter e ate vender produtos digitais.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="text-neutral-100 font-semibold mb-1">Link direto do WhatsApp</h4>
+              <p class="text-neutral-300 text-sm">Se voce so precisa de um link, use o link direto: <span class="font-mono text-amber-400">wa.me/55SEUNUMERO</span>. Simples, direto e sem intermediarios.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O que incluir no seu link na bio</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl mb-2">📱</div>
+              <p class="text-neutral-100 font-semibold text-sm">WhatsApp</p>
+              <p class="text-neutral-400 text-xs">Canal direto de vendas</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl mb-2">🎁</div>
+              <p class="text-neutral-100 font-semibold text-sm">Lead Magnet</p>
+              <p class="text-neutral-400 text-xs">Material gratuito para captar e-mails</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl mb-2">🛒</div>
+              <p class="text-neutral-100 font-semibold text-sm">Produto Principal</p>
+              <p class="text-neutral-400 text-xs">Pagina de vendas ou checkout</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-2xl mb-2">📚</div>
+              <p class="text-neutral-100 font-semibold text-sm">Conteudo Gratuito</p>
+              <p class="text-neutral-400 text-xs">Blog, YouTube ou canal Telegram</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">5 Destaques Essenciais</h2>
+          <p class="text-neutral-400 mt-1">Os destaques sao a "vitrine" fixa do seu perfil - organize como um profissional</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Os 5 destaques que todo perfil precisa</h3>
+          <p class="text-neutral-300 text-sm mb-4">Destaques sao Stories fixos no topo do seu perfil. Eles ficam visiveis para sempre e funcionam como as "paginas" do seu perfil. Organize-os nesta ordem:</p>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-lg">1.</span>
+              <div>
+                <h4 class="text-neutral-100 font-semibold">Sobre Mim</h4>
+                <p class="text-neutral-300 text-sm">Quem voce e, sua historia, por que criou o perfil. Humaniza e gera conexao. Inclua 5-8 Stories contando sua trajetoria.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-lg">2.</span>
+              <div>
+                <h4 class="text-neutral-100 font-semibold">Depoimentos / Resultados</h4>
+                <p class="text-neutral-300 text-sm">Prints de mensagens de agradecimento, resultados de clientes, antes e depois. Prova social e o que mais convence.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-lg">3.</span>
+              <div>
+                <h4 class="text-neutral-100 font-semibold">Conteudo Gratuito</h4>
+                <p class="text-neutral-300 text-sm">Dicas rapidas, mini-tutoriais, resumos. Mostra seu conhecimento e da uma "amostra" do que voce oferece.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-lg">4.</span>
+              <div>
+                <h4 class="text-neutral-100 font-semibold">Produtos / Servicos</h4>
+                <p class="text-neutral-300 text-sm">O que voce vende, precos, como contratar. Facilite ao maximo para quem quer comprar.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-lg">5.</span>
+              <div>
+                <h4 class="text-neutral-100 font-semibold">FAQ</h4>
+                <p class="text-neutral-300 text-sm">Perguntas frequentes respondidas. Reduz objecoes e economiza tempo respondendo as mesmas perguntas por DM.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Capas dos Destaques</h3>
+          <p class="text-neutral-300 text-sm">Crie capas consistentes no Canva: use o mesmo estilo visual (mesma cor de fundo, mesmo estilo de icone). Busque por "Instagram Highlight Cover" no Canva para encontrar templates prontos. Escolha um template e adapte todas as capas no mesmo estilo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Identidade Visual Basica</h2>
+          <p class="text-neutral-400 mt-1">Consistencia visual gera reconhecimento - e reconhecimento gera confiança</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Os 3 pilares da identidade visual</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🎨</div>
+              <h4 class="text-neutral-100 font-semibold mb-2">2 Cores Principais</h4>
+              <p class="text-neutral-300 text-sm">Uma cor dominante + uma cor de destaque. Use-as em TODOS os posts, Stories e capas de destaque.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">🔤</div>
+              <h4 class="text-neutral-100 font-semibold mb-2">1 Fonte Principal</h4>
+              <p class="text-neutral-300 text-sm">Escolha UMA fonte para titulos e use sempre a mesma. No Canva, fontes como Montserrat, Poppins ou Roboto funcionam bem.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📐</div>
+              <h4 class="text-neutral-100 font-semibold mb-2">3-5 Templates</h4>
+              <p class="text-neutral-300 text-sm">Crie 3-5 templates no Canva que voce reutiliza. Um para carrossel, um para frase, um para dica, etc.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Template recomendado para iniciantes</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-neutral-300 text-sm mb-2">O template mais facil e eficaz para começar:</p>
+            <ul class="text-neutral-300 text-sm space-y-1">
+              <li>&#9679; <strong>Fundo escuro</strong> (preto ou cinza escuro)</li>
+              <li>&#9679; <strong>Texto branco</strong> para o conteudo principal</li>
+              <li>&#9679; <strong>Cor de destaque</strong> para titulos e palavras-chave</li>
+            </ul>
+            <p class="text-neutral-400 text-xs mt-3">Esse formato tem alto contraste, funciona bem no feed e e facil de replicar.</p>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Por que consistencia importa?</h3>
+          <p class="text-neutral-300 text-sm">Quando alguem rola o feed e ve um post com suas cores e estilo, ja sabe que e seu ANTES de ler o nome. Esse reconhecimento instantaneo e o que faz as pessoas pararem de rolar e prestarem atenção no seu conteudo. Perfis sem identidade visual se perdem na multidao.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Checklist de Lancamento</h2>
+          <p class="text-neutral-400 mt-1">Tudo que voce precisa verificar antes de começar a postar e divulgar seu perfil</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-4">Checklist completo de lancamento</h3>
+          <p class="text-neutral-300 text-sm mb-4">Antes de começar a divulgar seu perfil, verifique TODOS os itens abaixo. Nao pule nenhum - cada item impacta diretamente na sua taxa de conversao de visitante para seguidor.</p>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>Foto profissional:</strong> Rosto visivel, fundo limpo, boa iluminacao</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>Bio com CTA:</strong> Formula aplicada (quem sou + o que faco + para quem + CTA)</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>Link na bio:</strong> Linktree/Beacons configurado com WhatsApp e lead magnet</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>5 destaques:</strong> Sobre Mim, Depoimentos, Conteudo, Produtos, FAQ - com capas</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>9 posts iniciais:</strong> Grid 3x3 completo antes de divulgar o perfil</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>Identidade visual:</strong> 2 cores, 1 fonte, 3-5 templates prontos no Canva</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>Nome de usuario:</strong> Sem pontos, numeros ou caracteres confusos. Facil de lembrar e digitar.</span>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-green-400 text-lg">&#10003;</span>
+              <span class="text-neutral-300 text-sm"><strong>Conta profissional:</strong> Alternar para Criador ou Business para acessar Insights</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Importante</h3>
+          <p class="text-neutral-300 text-sm">Nao comece a divulgar seu perfil ate ter completado 100% deste checklist. Os primeiros visitantes do seu perfil sao os mais dificeis de reconquistar se a primeira impressao for ruim. Invista 1-2 dias nessa preparacao - vai valer a pena.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-amber-900/20 via-dark-800 to-dark-800 rounded-2xl border border-amber-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-4 text-amber-400">Resumo do Modulo 4.1</h2>
+      <p class="text-neutral-300 mb-6">Neste modulo voce aprendeu a configurar cada elemento do seu perfil profissional no Instagram:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">📸 Foto</div>
+          <p class="text-neutral-400 text-sm">Rosto visivel, fundo limpo, sorriso natural</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">✏️ Bio</div>
+          <p class="text-neutral-400 text-sm">Formula: quem sou + o que faco + para quem + CTA</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">🔗 Link</div>
+          <p class="text-neutral-400 text-sm">Linktree/Beacons com WhatsApp e lead magnet</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">⭐ Destaques</div>
+          <p class="text-neutral-400 text-sm">5 destaques organizados com capas profissionais</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">🎨 Visual</div>
+          <p class="text-neutral-400 text-sm">2 cores, 1 fonte, templates consistentes</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">📋 Checklist</div>
+          <p class="text-neutral-400 text-sm">8 itens verificados antes de lancar</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="modulo-4-2.html" class="inline-flex items-center px-6 py-3 bg-amber-500/20 text-amber-400 font-semibold rounded-lg hover:bg-amber-500/30 transition-colors">
+          Proximo: Modulo 4.2 &rarr;
+        </a>
+        <a href="index.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          Voltar para Trilha 4
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 &bull; <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

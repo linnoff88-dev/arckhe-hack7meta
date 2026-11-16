@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 4.4 - Analisando Resultados | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores AMBER */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* Light mode - outras cores do nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-green-400 { color: #15803d; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-amber-400 transition-colors">Hack Meta 2026</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-amber-400 transition-colors">Trilha 4</a>
+      <span>/</span>
+      <span class="text-amber-400">Modulo 4.4</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-900 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-400 text-sm font-semibold rounded-full mb-4">
+        MODULO 4.4
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">
+        🔍 Analisando <span class="text-amber-400">Resultados</span>
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-3xl mb-6">
+        Aprenda a ler os dados do Instagram como um profissional. Descubra o que funciona, o que nao funciona e como otimizar sua estrategia.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">~30 min</span>
+          <span class="text-neutral-400 text-sm ml-1">de conteudo</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Iniciante</span>
+          <span class="text-neutral-400 text-sm ml-1">nivel</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">6</span>
+          <span class="text-neutral-400 text-sm ml-1">secoes</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Analise</span>
+          <span class="text-neutral-400 text-sm ml-1">tipo</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Instagram Insights na Pratica</h2>
+          <p class="text-neutral-400 mt-1">Onde encontrar e como interpretar cada metrica do Instagram</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Como acessar o Instagram Insights</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Para acessar os Insights, voce precisa de uma conta Profissional (Criador ou Business). Se ainda nao mudou, va em Configuracoes → Conta → Mudar para conta profissional. Depois, acesse:
+          </p>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-neutral-100 font-mono text-sm">Perfil → Painel Profissional → Insights</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">As 4 secoes do Insights</h3>
+          <div class="space-y-4">
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">1. Visao Geral</h4>
+              <p class="text-neutral-300 text-xs">Resume alcance, interacoes e seguidores dos ultimos 7, 14, 30 ou 90 dias. Use 30 dias para visao mensal.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">2. Contas Alcancadas</h4>
+              <p class="text-neutral-300 text-xs">Quantas contas unicas viram seu conteudo. Mostra de onde vem o alcance: seguidores vs nao-seguidores. Se nao-seguidores e alto, o algoritmo esta distribuindo bem seu conteudo.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">3. Contas Engajadas</h4>
+              <p class="text-neutral-300 text-xs">Quantas contas interagiram (curtida, comentario, save, share). A taxa de engajamento e calculada: (interacoes / alcance) x 100. Acima de 5% e bom. Acima de 10% e excelente.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">4. Seguidores</h4>
+              <p class="text-neutral-300 text-xs">Crescimento de seguidores, demografia (idade, genero, cidade) e horarios de atividade. Use os horarios para saber QUANDO publicar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Dica profissional</h3>
+          <p class="text-neutral-300 text-sm">A metrica mais importante nao e curtidas - e a taxa de saves em relacao ao alcance. Se um post alcancou 1.000 pessoas e teve 50 saves, sua taxa de save e 5% - excelente. Se alcancou 5.000 e teve 20 saves, a taxa e 0.4% - precisa melhorar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Meta Business Suite</h2>
+          <p class="text-neutral-400 mt-1">A ferramenta profissional gratuita da Meta para gerenciar seu conteudo</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O que e o Meta Business Suite</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            O Meta Business Suite e a ferramenta oficial da Meta (dona do Instagram e Facebook) para gerenciar suas redes sociais. E gratuito e oferece funcionalidades que o app do Instagram nao tem: agendamento de posts, relatorios detalhados e visao unificada de Instagram e Facebook.
+          </p>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            Acesse pelo navegador em <span class="text-amber-400 font-mono">business.facebook.com</span> ou baixe o app Meta Business Suite no celular.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Funcionalidades essenciais</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-2xl mb-2">📊</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Dashboard Completo</h4>
+              <p class="text-neutral-400 text-xs">Visao geral de alcance, engajamento e crescimento de seguidores em um unico lugar.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-2xl mb-2">📅</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Agendamento</h4>
+              <p class="text-neutral-400 text-xs">Agende posts e Stories com antecedencia. Planeje a semana toda no domingo e deixe no automatico.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-2xl mb-2">📈</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Relatorios</h4>
+              <p class="text-neutral-400 text-xs">Relatorios detalhados com graficos de performance por periodo. Exporte em PDF para acompanhamento.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-2xl mb-2">🔄</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Comparacao de Periodos</h4>
+              <p class="text-neutral-400 text-xs">Compare esta semana com a anterior, este mes com o anterior. Veja se esta crescendo ou estagnando.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Vantagem do agendamento</h3>
+          <p class="text-neutral-300 text-sm">Agendar posts reduz drasticamente o estresse da criacao de conteudo. Em vez de pensar "o que vou postar hoje?", voce separa 2-3 horas no domingo para planejar e agendar toda a semana. Isso libera sua mente durante a semana para focar em engajamento e interacao.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">Conteudo Campeao</h2>
+          <p class="text-neutral-400 mt-1">Como identificar seus melhores posts e por que saves importam mais que curtidas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Hierarquia das metricas</h3>
+          <p class="text-neutral-300 text-sm mb-4">Nem todas as metricas tem o mesmo peso. Ordene seus posts pela metrica que mais importa:</p>
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-amber-400 font-bold text-lg">1o</span>
+              <div class="flex-1">
+                <p class="text-neutral-100 font-semibold text-sm">Saves (Salvamentos)</p>
+                <p class="text-neutral-400 text-xs">Indicam conteudo tao util que a pessoa quer consultar de novo. Sinal mais forte para o algoritmo.</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-amber-400 font-bold text-lg">2o</span>
+              <div class="flex-1">
+                <p class="text-neutral-100 font-semibold text-sm">Shares (Compartilhamentos)</p>
+                <p class="text-neutral-400 text-xs">A pessoa achou tao bom que mandou para alguem. Gera alcance organico e novos seguidores.</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-amber-400 font-bold text-lg">3o</span>
+              <div class="flex-1">
+                <p class="text-neutral-100 font-semibold text-sm">Comentarios</p>
+                <p class="text-neutral-400 text-xs">Indicam engajamento ativo. Cada comentario e uma interacao que o algoritmo conta.</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3 bg-dark-700 rounded-lg p-3">
+              <span class="text-amber-400 font-bold text-lg">4o</span>
+              <div class="flex-1">
+                <p class="text-neutral-100 font-semibold text-sm">Curtidas</p>
+                <p class="text-neutral-400 text-xs">A metrica mais facil de obter, mas a menos valiosa. Nao ordene seus posts por curtidas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O que analisar no seu post campeao</h3>
+          <p class="text-neutral-300 text-sm mb-4">Quando encontrar seu post com mais saves, responda estas perguntas:</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-100 font-semibold text-xs mb-1">Formato</p>
+              <p class="text-neutral-300 text-xs">Era carrossel, reel ou imagem unica?</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-100 font-semibold text-xs mb-1">Gancho</p>
+              <p class="text-neutral-300 text-xs">Qual foi a primeira frase/slide?</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-100 font-semibold text-xs mb-1">Tema</p>
+              <p class="text-neutral-300 text-xs">Sobre qual assunto especifico?</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-100 font-semibold text-xs mb-1">Horario</p>
+              <p class="text-neutral-300 text-xs">A que horas foi publicado?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">Diagnostico de Queda de Alcance</h2>
+          <p class="text-neutral-400 mt-1">Seu alcance caiu? Descubra por que e como resolver</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Checklist de diagnostico</h3>
+          <p class="text-neutral-300 text-sm mb-4">Se seu alcance caiu, passe por cada item deste checklist. Na maioria dos casos, a causa e uma ou mais destas:</p>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-3">
+              <span class="text-red-400 text-lg flex-shrink-0">&#9888;</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Mudou de nicho?</p>
+                <p class="text-neutral-300 text-xs">Se voce postava sobre fitness e comecou a postar sobre culinaria, o algoritmo fica confuso. Seus seguidores de fitness nao engajam com culinaria, e o alcance despenca.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-3">
+              <span class="text-red-400 text-lg flex-shrink-0">&#9888;</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Parou de postar?</p>
+                <p class="text-neutral-300 text-xs">Se ficou mais de 3 dias sem postar, o algoritmo reduz sua distribuicao. A consistencia e o combustivel do alcance.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-3">
+              <span class="text-red-400 text-lg flex-shrink-0">&#9888;</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Conteudo reciclado?</p>
+                <p class="text-neutral-300 text-xs">Se voce esta repostando conteudo antigo ou de outros perfis sem adaptacao, o Instagram penaliza. Conteudo original sempre performa melhor.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-3">
+              <span class="text-red-400 text-lg flex-shrink-0">&#9888;</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Hashtags penalizadas?</p>
+                <p class="text-neutral-300 text-xs">Algumas hashtags sao "shadowbanned" pelo Instagram. Verifique se alguma hashtag que voce usa esta bloqueada pesquisando-a diretamente no app.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-3">
+              <span class="text-red-400 text-lg flex-shrink-0">&#9888;</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Horario ruim?</p>
+                <p class="text-neutral-300 text-xs">Se voce esta publicando quando seu publico esta dormindo, o post nao recebe engajamento inicial e o algoritmo nao distribui.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-3">
+              <span class="text-red-400 text-lg flex-shrink-0">&#9888;</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Formato nao otimizado?</p>
+                <p class="text-neutral-300 text-xs">Se voce so posta imagens estaticas e seu publico engaja mais com Reels, esta perdendo alcance. Teste formatos diferentes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Metodo de Replicacao</h2>
+          <p class="text-neutral-400 mt-1">Encontre o padrao nos seus melhores posts e replique sistematicamente</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Passo a passo do metodo</h3>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</div>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Liste seus 3 melhores posts (por saves)</p>
+                <p class="text-neutral-300 text-xs">Va nos Insights de cada post e ordene por salvamentos. Identifique o top 3.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</div>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Encontre o padrao</p>
+                <p class="text-neutral-300 text-xs">O que os 3 tem em comum? Mesmo formato? Mesmo estilo de gancho? Mesmo tema? Mesmo tipo de CTA?</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</div>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Replique o padrao com conteudo novo</p>
+                <p class="text-neutral-300 text-xs">Se carrosseis de "X erros" funcionaram, crie: "X mitos", "X segredos", "X ferramentas". Mesmo formato, tema diferente.</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</div>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Itere e melhore</p>
+                <p class="text-neutral-300 text-xs">Cada nova versao deve ser um pouco melhor que a anterior. Melhore o gancho, o design, a profundidade do conteudo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Exemplo pratico</h3>
+          <p class="text-neutral-300 text-sm">Se seu post "5 erros de iniciantes no Instagram" teve 80 saves e seu post "Frase motivacional" teve 5 saves, a mensagem e clara: seu publico quer conteudo pratico em formato de lista. Proximo post: "7 ferramentas gratis para crescer no Instagram". Mesmo padrao, conteudo novo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Relatorio Mensal</h2>
+          <p class="text-neutral-400 mt-1">Template simples para acompanhar sua evolucao mes a mes</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Template de Relatorio Mensal</h3>
+          <p class="text-neutral-300 text-sm mb-4">Preencha este relatorio no ultimo dia de cada mes. Leva 10 minutos e te da clareza total sobre sua evolucao:</p>
+          <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+            <div class="border-b border-dark-600 pb-3">
+              <p class="text-amber-400 font-semibold text-sm">RELATORIO MENSAL - [Mes/Ano]</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Seguidores (inicio do mes)</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Seguidores (fim do mes)</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Crescimento liquido</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Alcance total</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Post campeao (mais saves)</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Post campeao (mais shares)</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Melhor formato</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+              <div>
+                <p class="text-neutral-400 text-xs mb-1">Pior formato</p>
+                <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+              </div>
+            </div>
+            <div>
+              <p class="text-neutral-400 text-xs mb-1">Meta para o proximo mes</p>
+              <div class="bg-dark-600 rounded p-2 text-neutral-300 text-sm">___________</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Por que fazer o relatorio?</h3>
+          <p class="text-neutral-300 text-sm">Sem relatorio, voce trabalha no escuro. Com relatorio, voce vê claramente o que funciona e o que precisa mudar. Em 6 meses de relatorios mensais, voce tera um mapa completo do que seu publico quer - e isso e mais valioso do que qualquer curso.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-amber-900/20 via-dark-800 to-dark-800 rounded-2xl border border-amber-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-4 text-amber-400">Resumo do Modulo 4.4</h2>
+      <p class="text-neutral-300 mb-6">Neste modulo voce aprendeu a analisar seus resultados como um profissional:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">📊 Insights</div>
+          <p class="text-neutral-400 text-sm">4 secoes do Instagram Insights explicadas</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">💼 Business Suite</div>
+          <p class="text-neutral-400 text-sm">Dashboard, agendamento e relatorios</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">🏆 Campeao</div>
+          <p class="text-neutral-400 text-sm">Saves > Shares > Comentarios > Curtidas</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">🔍 Diagnostico</div>
+          <p class="text-neutral-400 text-sm">6 causas de queda de alcance</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">🔄 Replicacao</div>
+          <p class="text-neutral-400 text-sm">Encontre o padrao e replique com conteudo novo</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">📋 Relatorio</div>
+          <p class="text-neutral-400 text-sm">Template mensal para acompanhar evolucao</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="modulo-4-3.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          &larr; Modulo 4.3
+        </a>
+        <a href="modulo-4-5.html" class="inline-flex items-center px-6 py-3 bg-amber-500/20 text-amber-400 font-semibold rounded-lg hover:bg-amber-500/30 transition-colors">
+          Proximo: Modulo 4.5 &rarr;
+        </a>
+        <a href="index.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          Voltar para Trilha 4
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 &bull; <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 3 - Produção na Prática | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode overrides - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores PURPLE */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-purple-400 { color: #7c3aed; }
+
+    /* Light mode - outras cores de trilha no nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-purple-500/20 text-purple-400 text-sm font-semibold rounded-full mb-6">
+        TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🎬 Producao na <span class="text-purple-400">Pratica</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Mao na massa. Aprenda a criar Reels, carrosseis e Stories que viralizam. Use IA e ferramentas gratuitas para escalar sua producao de conteudo.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">5</div>
+          <div class="text-sm text-neutral-400">Modulos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">30</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">~2.5h</div>
+          <div class="text-sm text-neutral-400">Conteudo</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Pratico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MODULOS SIMPLES -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <h2 class="text-2xl font-bold mb-2 text-center">Modulos da Trilha</h2>
+    <p class="text-neutral-400 text-center mb-12">Clique em um modulo para ver o conteudo detalhado</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+
+      <!-- Card 3.1 -->
+      <a href="#modulo-3-1" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 transition-all duration-300 overflow-hidden">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">MODULO 3.1</span>
+            <span class="text-sm text-neutral-500">6 topicos · ~35 min</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">🎬 Dominando os Reels</h3>
+          <p class="text-neutral-400 mb-6">Anatomia completa de um Reel de alta performance - do gancho ao CTA</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Gancho (0-2s), Promessa (3-5s), Conteudo (6-25s), CTA (26-30s)</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>7 formatos de Reels de alta performance</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Linked Reels e Early Access - recursos de marco 2026</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3.2 -->
+      <a href="#modulo-3-2" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 transition-all duration-300 overflow-hidden">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">MODULO 3.2</span>
+            <span class="text-sm text-neutral-500">6 topicos · ~30 min</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">🎠 Carrosseis de Alto Engajamento</h3>
+          <p class="text-neutral-400 mb-6">O formato com maior engajamento organico em 2026 - como criar carrosseis irresistiveis</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>1.92% engajamento vs 1.74% dos Reels</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Estrutura do carrossel perfeito em 8 slides</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Mecanica de segunda chance do algoritmo</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3.3 -->
+      <a href="#modulo-3-3" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 transition-all duration-300 overflow-hidden">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">MODULO 3.3</span>
+            <span class="text-sm text-neutral-500">6 topicos · ~25 min</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">📱 Stories, Threads e Novos Formatos</h3>
+          <p class="text-neutral-400 mb-6">Domine Stories estrategicos, Threads e os novos recursos da Meta em 2026</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Stories estrategicos com enquetes e quiz</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Threads: anuncios globais e Trending Topics</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>IA generativa para Stories e novos recursos</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3.4 -->
+      <a href="#modulo-3-4" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 transition-all duration-300 overflow-hidden">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">MODULO 3.4</span>
+            <span class="text-sm text-neutral-500">6 topicos · ~35 min</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">🤖 Prompts de IA para Criadores</h3>
+          <p class="text-neutral-400 mb-6">+50 prompts prontos para gerar ideias, roteiros, captions e carrosseis com IA</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Estrutura PAPEL + CONTEXTO + TAREFA + FORMATO</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Prompts prontos para Reels, captions e carrosseis</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Analise de tendencias e concorrencia com IA</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 3.5 -->
+      <a href="#modulo-3-5" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-purple-500/30 transition-all duration-300 overflow-hidden md:col-span-2">
+        <div class="bg-gradient-to-br from-purple-900/30 to-dark-800 p-8">
+          <div class="flex items-center justify-between mb-4">
+            <span class="inline-block px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-semibold rounded-full">MODULO 3.5</span>
+            <span class="text-sm text-neutral-500">6 topicos · ~25 min</span>
+          </div>
+          <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">🛠️ Ferramentas Gratuitas para Criadores</h3>
+          <p class="text-neutral-400 mb-6">Stack completo 100% gratuito para design, video, planejamento e analise</p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Canva, Adobe Express, CapCut, VN e DaVinci</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>ChatGPT, Claude e Gemini - quando usar cada um</span>
+            </div>
+            <div class="flex items-center space-x-2 text-neutral-300">
+              <span class="text-purple-400">•</span>
+              <span>Analytics com Metricool e Meta Business Suite</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- ==================== MODULOS DETALHADOS ==================== -->
+
+    <!-- MODULO 3.1 -->
+    <section id="modulo-3-1" class="mb-16 scroll-mt-20">
+      <div class="bg-dark-800 rounded-xl border border-purple-500/30 overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 p-6 border-b border-dark-600">
+          <div class="flex items-center space-x-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm">3.1</span>
+            <div>
+              <h3 class="text-xl font-bold">🎬 Dominando os Reels</h3>
+              <p class="text-neutral-400 text-sm">Anatomia completa de um Reel de alta performance - do gancho ao CTA · ~35 min</p>
+            </div>
+          </div>
+        </div>
+        <div class="divide-y divide-dark-600">
+
+          <!-- Topico 3.1.1 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">1</span>
+              <span class="font-medium">📐 Anatomia de um Reel Viral</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Todo Reel viral segue uma estrutura previsivel de 4 etapas. O <strong>Gancho</strong> (0-2 segundos) e o momento mais critico: voce tem menos de 2 segundos para impedir que a pessoa continue scrollando. Use perguntas provocativas, afirmacoes chocantes ou movimento imediato. A <strong>Promessa</strong> (3-5 segundos) diz ao espectador o que ele vai ganhar ao continuar assistindo. O <strong>Conteudo</strong> (6-25 segundos) entrega o valor prometido de forma dinamica, com cortes a cada 3-5 segundos. O <strong>CTA</strong> (26-30 segundos) fecha com uma chamada clara para acao: seguir, salvar, comentar ou compartilhar.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Segundo dados internos do Instagram em 2026, Reels que mantem mais de 70% dos espectadores apos os 3 primeiros segundos tem 3.2x mais chance de serem distribuidos para o Explore. O gancho forte e responsavel por ate 80% do sucesso de um Reel, pois determina a taxa de retencao inicial que o algoritmo usa para decidir se expande a distribuicao.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Grave 3 versoes de gancho para cada Reel e teste qual funciona melhor. Exemplos de ganchos que funcionam: "Isso ninguem te conta sobre [tema]", "Pare de fazer isso agora" (com gesto), "Em 30 segundos voce vai aprender [resultado]". Use texto na tela nos primeiros 2 segundos para capturar quem assiste sem som (85% dos usuarios).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.1.2 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">2</span>
+              <span class="font-medium">⏱️ Duracao Ideal em 2026</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Em 2026, o Instagram expandiu Reels para ate 20 minutos, mas a duracao ideal depende do seu objetivo. <strong>15-30 segundos</strong> e o sweet spot para alcance maximo e viralidade - o algoritmo favorece Reels que sao assistidos ate o final e recomecados (looping). <strong>60-90 segundos</strong> sao ideais para construir autoridade e gerar saves - conteudo educacional que entrega valor profundo. <strong>3-10 minutos</strong> funcionam para storytelling e tutoriais detalhados, gerando maior tempo de sessao.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">A Meta confirmou em janeiro de 2026 que Reels de 15-30 segundos tem 2.1x mais probabilidade de aparecer no Explore comparado a Reels de mais de 60 segundos. Porem, Reels longos (3+ minutos) geram 4x mais saves e 2.5x mais shares, sinais que o algoritmo pesa fortemente para distribuicao organica.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Use a regra 70/20/10: 70% do seu conteudo em Reels curtos (15-30s) para atrair novos seguidores, 20% em Reels medios (60-90s) para nutrir a audiencia, e 10% em Reels longos (3+ min) para converter em clientes. Monitore a metrica "Percentage Watched" no Insights para calibrar a duracao ideal para o seu nicho.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.1.3 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">3</span>
+              <span class="font-medium">🎵 Estrategias de Audio</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Existem 3 estrategias de audio para Reels: <strong>Trending Audio</strong> - usar musicas e sons populares que estao em alta (o algoritmo prioriza conteudo com audios em tendencia). <strong>Voz Original</strong> - narrar ou falar diretamente na camera, que gera maior conexao e autoridade. <strong>Mescla Inteligente</strong> - combinar voz original com musica de fundo a 10-20% do volume, que e o formato com melhor performance em 2026 para conteudo educacional.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Reels com audio trending recebem em media 30% mais alcance nas primeiras 48 horas. Porem, Reels com voz original geram 2x mais comentarios e 1.5x mais follows. A mescla inteligente (voz + musica) combina ambos os beneficios, resultando em 40% mais tempo de visualizacao medio segundo estudos de 2026.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Verifique audios em tendencia na aba Reels > Audio > Trending. Use a seta ao lado do nome do audio - se aponta para cima, esta crescendo. Para mescla inteligente, grave sua voz primeiro, depois adicione musica trending a 15% no CapCut. Sempre inclua legendas automaticas (85% assistem sem som). Evite musicas com copyright em contas business.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.1.4 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">4</span>
+              <span class="font-medium">🎥 7 Formatos de Reels de Alta Performance</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Os 7 formatos com maior taxa de sucesso em 2026: <strong>1. Tutorial Rapido</strong> - "Como fazer X em Y segundos". <strong>2. POV</strong> - situacao relatavel do ponto de vista do espectador. <strong>3. Antes/Depois</strong> - transformacao visual com transicao. <strong>4. Lista</strong> - "5 coisas que...", "3 erros que...". <strong>5. Controversia</strong> - opiniao forte que gera debate. <strong>6. Micro-Drama</strong> - mini historia com plot twist. <strong>7. Resposta</strong> - responder comentario ou duvida com video.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Tutoriais rapidos tem a maior taxa de saves (8.3% em media). POV e Micro-Drama geram mais shares (5.2%). Controversia gera mais comentarios (4.1%) mas requer cuidado para nao violar diretrizes. Listas sao o formato mais consistente com menor variancia de performance. Respostas a comentarios tem 2.4x mais alcance que Reels normais pois o Instagram prioriza engajamento de comunidade.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Crie um mix semanal: 2 Tutoriais, 2 Listas, 1 POV, 1 Antes/Depois e 1 Resposta a comentario. Grave em batch (lote) - separe 2 horas por semana para gravar 7 Reels de uma vez. Use templates no CapCut para manter consistencia visual. Para Controversia, use a formula "Opiniao impopular: [afirmacao] e aqui esta o porque..." para gerar debate saudavel.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.1.5 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">5</span>
+              <span class="font-medium">🔗 Linked Reels e Early Access</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Linked Reels</strong> e um recurso lancado em marco de 2026 que permite vincular Reels em sequencia, criando series de conteudo. O espectador ve um botao "Proximo" no final do Reel que leva ao seguinte. <strong>Early Access</strong> permite que criadores oferecam Reels exclusivos para assinantes antes do lancamento publico. Ambos os recursos incentivam tempo de sessao e fidelizacao, metricas que o algoritmo prioriza fortemente.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Criadores que usam Linked Reels reportam aumento medio de 45% no tempo de sessao por espectador e 25% mais follows, pois o espectador consome multiplos conteudos em sequencia. O Early Access gera senso de exclusividade e e utilizado por criadores para converter seguidores em assinantes pagos, com taxas de conversao de 3-5% nos primeiros testes.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Crie series de 3-5 Reels vinculados sobre um tema. Exemplo: "Algoritmo em 5 partes" - cada Reel aborda um aspecto e termina com "Parte 2 ja disponivel, toque para ver". Para Early Access, oferta conteudo 48h antes para assinantes com um teaser publico: "Assinantes ja viram isso ontem - assine para ver primeiro". Ative em Configuracoes > Conta > Linked Reels.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.1.6 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">6</span>
+              <span class="font-medium">❌ Erros Tecnicos que Matam o Reel</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Erros tecnicos que reduzem drasticamente o alcance: <strong>Marca d'agua do TikTok</strong> - o Instagram penaliza conteudo com logo de concorrentes, reduzindo distribuicao em ate 80%. <strong>Resolucao baixa</strong> - Reels abaixo de 1080x1920 pixels sao depriorizados. <strong>Formato errado</strong> - qualquer proporcao diferente de 9:16 perde espaco na tela e alcance. <strong>Bordas pretas</strong> - indicam video nao otimizado e o algoritmo reduz distribuicao. <strong>Texto cortado</strong> - nao respeitar safe zones superior e inferior.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">A Meta confirmou oficialmente que Reels com marca d'agua de outras plataformas recebem menos distribuicao. Reels em 1080x1920 (full HD vertical) tem 35% mais alcance que videos em resolucoes menores. O formato 9:16 ocupa 100% da tela do celular, maximizando a atencao do espectador e o tempo de visualizacao.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Checklist tecnico antes de postar: 1) Resolucao 1080x1920 ou superior, 2) Formato 9:16 sem bordas, 3) Sem marca d'agua de outra plataforma (use SnapTik para remover do TikTok), 4) Texto dentro da safe zone (250px do topo e 350px da base), 5) Miniatura (capa) em alta qualidade, 6) Audio limpo sem ruido de fundo. Use o CapCut com preset "Instagram Reels" para garantir especificacoes corretas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-3-1.html')" class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-3-1.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MODULO 3.2 -->
+    <section id="modulo-3-2" class="mb-16 scroll-mt-20">
+      <div class="bg-dark-800 rounded-xl border border-purple-500/30 overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 p-6 border-b border-dark-600">
+          <div class="flex items-center space-x-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm">3.2</span>
+            <div>
+              <h3 class="text-xl font-bold">🎠 Carrosseis de Alto Engajamento</h3>
+              <p class="text-neutral-400 text-sm">O formato com maior engajamento organico em 2026 · ~30 min</p>
+            </div>
+          </div>
+        </div>
+        <div class="divide-y divide-dark-600">
+
+          <!-- Topico 3.2.1 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">1</span>
+              <span class="font-medium">📊 Por que Carrosseis Vencem em 2026</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Carrosseis ultrapassaram Reels em taxa de engajamento organico em 2026. Com taxa media de <strong>1.92%</strong> contra 1.74% dos Reels, os carrosseis se tornaram o formato preferido do algoritmo por gerarem multiplas interacoes: cada swipe conta como engajamento, saves sao 3x maiores que em posts estaticos, e o algoritmo tem multiplas chances de mostrar o conteudo (pode exibir slide 1 ou slide 2 como ponto de entrada).</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Estudo com 11 milhoes de posts do Instagram em 2026 mostra: carrosseis tem 1.92% de engajamento medio, Reels 1.74%, e posts estaticos 1.22%. Carrosseis geram 2.3x mais saves que Reels e 1.8x mais shares. O tempo medio de interacao com um carrossel e 42 segundos, contra 15 segundos de um post estatico, sinalizando ao algoritmo que o conteudo e de alta qualidade.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Inclua pelo menos 3-4 carrosseis por semana no seu calendario editorial. Carrosseis funcionam especialmente bem para: listas de dicas, passo-a-passo, mitos vs verdades, e resumos de conteudo longo. Combine com Reels: transforme seu melhor Reel da semana em um carrossel que aprofunda o tema para maximizar o alcance total.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.2.2 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">2</span>
+              <span class="font-medium">📐 Estrutura do Carrossel Perfeito</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">O carrossel perfeito segue a estrutura de 8 slides: <strong>Slide 1 (Capa/Gancho)</strong> - titulo impactante que faz a pessoa parar e querer deslizar. Use numeros, promessas claras ou perguntas. <strong>Slides 2-7 (Corpo)</strong> - um insight, dica ou ponto por slide. Mantenha texto curto (max 40 palavras por slide) com visual forte. <strong>Slide 8 (CTA)</strong> - chamada para acao clara: "Salve para consultar depois", "Envie para alguem que precisa ver isso", "Siga para mais conteudo como este".</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Carrosseis com 8-10 slides tem 23% mais engajamento que carrosseis com 3-5 slides. O slide 1 determina 90% do sucesso: se a pessoa nao swipa para o slide 2, o carrossel morre. Carrosseis com CTA explicito no ultimo slide geram 2.8x mais saves e 1.5x mais follows que os sem CTA.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Template de capa que funciona: "[Numero] [Coisa] que [Resultado]". Exemplos: "7 erros que destroem seu alcance", "5 ferramentas que todo criador precisa". No corpo, use o padrao: icone/emoji + titulo do ponto + 1-2 frases de explicacao. No CTA, combine pedido de save + share: "Salve este post e envie para um amigo criador". Use Canva com template 1080x1080 ou 1080x1350.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.2.3 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">3</span>
+              <span class="font-medium">📋 5 Tipos de Carrossel</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Os 5 tipos de carrossel com melhor performance: <strong>1. Educacional</strong> - ensina algo passo-a-passo, gera saves. <strong>2. Lista</strong> - "X ferramentas", "X dicas", facil de consumir. <strong>3. Storytelling</strong> - conta uma historia com começo, meio e fim visual. <strong>4. Photo Dump</strong> - colecao curada de fotos com estetica coerente, popular em lifestyle. <strong>5. Comparativo</strong> - "Isso vs Aquilo", "Antes vs Depois", "Certo vs Errado" gera debate e comentarios.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Educacionais geram mais saves (9.1% taxa de save). Listas sao as mais compartilhadas (4.8% share rate). Storytelling tem o maior tempo de visualizacao (58 segundos em media). Photo Dumps geram mais curtidas por slide. Comparativos geram mais comentarios (3.2% comment rate) por provocarem tomada de posicao.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Mix semanal ideal: 2 Educacionais (segunda e quinta), 1 Lista (terca), 1 Comparativo ou Storytelling (quarta). Reserve Photo Dumps para sabados (conteudo mais leve). Para cada tipo, tenha um template no Canva pre-configurado para manter identidade visual e agilizar producao. Reutilize conteudo: transforme um Reel educacional em carrossel lista.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.2.4 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">4</span>
+              <span class="font-medium">🎨 Design para Carrosseis</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Regras de design para carrosseis de alta performance: <strong>Fonte minimo 24pt</strong> - textos menores sao ilegíveis no celular. <strong>Maximo 2 cores principais</strong> - cor da marca + cor de destaque para manter coesao visual. <strong>Elemento que sangra entre slides</strong> - uma linha, seta ou imagem que conecta um slide ao proximo, incentivando o swipe. Use bastante espaco em branco para respiro visual e hierarquia clara com titulo grande + texto menor.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Carrosseis com elemento visual que sangra entre slides tem 37% mais taxa de swipe-through (percentual de pessoas que veem todos os slides). Carrosseis com mais de 3 cores diferentes tem 22% menos engajamento por parecerem amadores. O tamanho ideal de titulo e 32-48pt para ser legivel mesmo em previews pequenas do feed.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">No Canva, crie um Kit de Marca com: 1 fonte para titulos (bold), 1 para corpo, 2 cores (primaria e secundaria), e seu logo. Use o formato 1080x1350 (retrato) para ocupar mais espaco no feed. Para o elemento que sangra, coloque uma seta ou linha na borda direita do slide que continua na borda esquerda do proximo. Salve como template para reutilizar.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.2.5 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">5</span>
+              <span class="font-medium">🔄 Mecanica de Segunda Chance</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">O algoritmo do Instagram da ao carrossel uma <strong>segunda chance</strong> de aparecer no feed. Se o usuario nao interagiu com o slide 1, o algoritmo pode reapresentar o mesmo carrossel dias depois mostrando o <strong>slide 2 como capa</strong>. Isso significa que seu carrossel tem efetivamente 2 oportunidades de capturar atencao. Por isso, o slide 2 deve ser tao forte quanto o slide 1 - funciona como um "gancho alternativo".</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">A Meta confirmou essa mecanica em atualizacao de fevereiro de 2026. Carrosseis recebem em media 1.4x mais impressoes que posts estaticos justamente por causa dessa segunda exibicao. Criadores que otimizam o slide 2 como gancho alternativo reportam aumento de 30-50% no alcance total do carrossel comparado a carrosseis onde slide 2 e apenas conteudo normal.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Trate o slide 2 como uma segunda capa. Se o slide 1 diz "5 erros que matam seu alcance", o slide 2 pode comecar com "Erro #1: Postar sem estrategia" - funciona tanto como continuacao quanto como ponto de entrada independente. Evite que o slide 2 dependa do contexto do slide 1. Use titulos auto-explicativos em cada slide para maximizar essa mecanica.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.2.6 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">6</span>
+              <span class="font-medium">✍️ Prompts para Criar Carrosseis</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Use IA para gerar carrosseis completos em minutos. O prompt ideal segue a estrutura: definir o papel da IA, fornecer contexto do nicho, descrever a tarefa especifica e o formato de saida desejado. Combine com as regras de design: textos curtos por slide, hierarquia visual e CTA no final. A IA gera o conteudo textual; voce aplica o design no Canva.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Criadores que usam IA para gerar estrutura de carrosseis produzem em media 3x mais conteudo por semana sem perda de qualidade. O segredo nao e publicar o texto da IA diretamente, mas usar como base e adicionar sua voz, exemplos pessoais e dados especificos do seu nicho. 78% dos criadores de sucesso em 2026 usam IA como assistente de producao.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Prompt pronto: "Crie carrossel de 8 slides sobre [TEMA]. Slide 1: gancho. Slides 2-7: um insight por slide. Slide 8: CTA forte." Depois de receber o resultado, personalize: substitua exemplos genericos por casos do seu nicho, adicione dados especificos, e adapte o tom de voz. Cole o texto slide a slide no Canva usando seu template padrao. Tempo total: 15-20 minutos por carrossel.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-3-2.html')" class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-3-2.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MODULO 3.3 -->
+    <section id="modulo-3-3" class="mb-16 scroll-mt-20">
+      <div class="bg-dark-800 rounded-xl border border-purple-500/30 overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 p-6 border-b border-dark-600">
+          <div class="flex items-center space-x-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm">3.3</span>
+            <div>
+              <h3 class="text-xl font-bold">📱 Stories, Threads e Novos Formatos</h3>
+              <p class="text-neutral-400 text-sm">Domine Stories estrategicos, Threads e os novos recursos da Meta em 2026 · ~25 min</p>
+            </div>
+          </div>
+        </div>
+        <div class="divide-y divide-dark-600">
+
+          <!-- Topico 3.3.1 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">1</span>
+              <span class="font-medium">📱 Stories Estrategicos</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Stories nao sao diario pessoal - sao ferramentas estrategicas de engajamento. O numero ideal e <strong>5-10 Stories por dia</strong>, distribuidos ao longo do dia. Use stickers interativos em pelo menos 30% deles: <strong>Enquetes</strong> (pergunta com 2 opcoes), <strong>Perguntas</strong> (caixa aberta para respostas), <strong>Quiz</strong> (multipla escolha educativa). Cada interacao com sticker conta como engajamento direto, sinalizando ao algoritmo que seu conteudo e relevante para aquele usuario.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Stories com stickers interativos geram 2.5x mais respostas que Stories sem stickers. Perfis que postam 5-10 Stories diarios tem 15% mais alcance nos posts do feed, pois o algoritmo interpreta consistencia nos Stories como sinal de conta ativa e relevante. A taxa media de visualizacao de Stories e 3-7% dos seguidores, mas sobe para 8-12% com uso estrategico de stickers.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Estrutura diaria de Stories: 1) Bom dia com bastidores (conexao), 2) Enquete sobre tema do dia (engajamento), 3) Conteudo educacional rapido (valor), 4) Compartilhar post do feed com comentario (direcionar trafego), 5) Quiz relacionado ao nicho (interacao), 6-8) Conteudo espontaneo ao longo do dia, 9) CTA para proximo conteudo (antecipacao). Agende Stories recorrentes no Meta Business Suite.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.3.2 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">2</span>
+              <span class="font-medium">🧵 Threads em 2026</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Threads amadureceu significativamente em 2026 com tres recursos chave: <strong>Anuncios Globais</strong> - marcas podem anunciar diretamente no feed do Threads, tornando a plataforma rentavel. <strong>Dear Algo</strong> - recurso que permite ao usuario dar feedback direto ao algoritmo sobre o tipo de conteudo que quer ver. <strong>Trending Topics</strong> - topicos em tendencia que criadores podem usar para surfar ondas de visibilidade. O Threads agora tem 275M+ de usuarios ativos mensais.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">O Threads cresceu 180% em usuarios ativos entre 2025 e 2026. A taxa de engajamento organico no Threads e 3.2x maior que no Instagram para o mesmo conteudo textual. Criadores que postam consistentemente no Threads reportam aumento de 10-15% nos seguidores do Instagram, pois as plataformas estao integradas e o algoritmo cross-promove conteudo.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Poste 2-3 vezes por dia no Threads. Adapte conteudo do Instagram: transforme captions longos em posts de Threads, compartilhe bastidores em texto, e participe de Trending Topics do seu nicho. Use o formato de thread (posts encadeados) para conteudo educacional longo. Sempre inclua link para seu Instagram no perfil do Threads. Monitore o "Dear Algo" para entender o que seu publico quer ver.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.3.3 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">3</span>
+              <span class="font-medium">📡 Lives Estrategicas</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Lives sao o formato com <strong>maior alcance organico no Facebook</strong> em 2026, recebendo prioridade de notificacao e posicionamento no feed. No Instagram, Lives aparecem no topo dos Stories e geram notificacoes push para seguidores. Lives criam conexao profunda com a audiencia: a interacao ao vivo gera reciprocidade e lealdade. O tempo ideal e 30-60 minutos, com estrutura: abertura (esperar audiencia), conteudo principal, Q&A, e CTA final.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Lives no Facebook geram 6x mais interacoes que videos gravados. No Instagram, Lives geram 3x mais comentarios por espectador que Reels. O replay da Live pode gerar engajamento por ate 30 dias. Lives conjuntas (com convidado) tem 2x mais espectadores que Lives solo, pois acessam a audiencia de ambos os participantes.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Faca 1-2 Lives por semana com pauta definida. Anuncie a Live 24h antes nos Stories com sticker de lembrete. Estrutura: 5 min de aquecimento (enquanto pessoas entram), 20-30 min de conteudo, 10-15 min de perguntas, 5 min de CTA. Convide outro criador do seu nicho para Lives conjuntas. Salve a Live e recorte os melhores momentos em Reels. No Facebook, use Lives para grupos e paginas com maior frequencia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.3.4 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">4</span>
+              <span class="font-medium">🤖 AI Transitions e Novos Recursos</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Em 2026, a Meta integrou IA generativa diretamente nos Stories e Reels. <strong>AI Transitions</strong> permite criar transicoes cinematograficas entre cenas usando IA - voce seleciona o estilo e a IA gera a transicao automaticamente. <strong>AI Backgrounds</strong> substitui fundos em tempo real sem tela verde. <strong>AI Stickers</strong> gera figurinhas personalizadas a partir de texto. Esses recursos reduzem drasticamente o tempo de producao e elevam a qualidade visual sem equipamento profissional.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Stories e Reels que usam recursos de IA da Meta recebem boost de distribuicao de 15-20%, pois a plataforma quer incentivar adocao desses novos recursos. Criadores early adopters de AI Transitions reportam aumento de 40% no tempo de visualizacao dos Reels. A Meta investe US$35 bilhoes em IA em 2026, sinalizando que esses recursos serao cada vez mais centrais na plataforma.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Acesse AI Transitions em Reels > Efeitos > AI. Comece com transicoes simples (dissolve, morph) antes de usar estilos complexos. Para AI Backgrounds, grave com iluminacao uniforme para melhor resultado. Use AI Stickers para criar elementos visuais unicos nos Stories. Dica: combine AI Transitions com trending audio para maximizar distribuicao. Sempre que a Meta lanca um recurso novo, use nos primeiros 30 dias para aproveitar o boost algoritmico.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.3.5 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">5</span>
+              <span class="font-medium">🔔 Collabs e Posts Colaborativos</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Posts colaborativos (Collabs) aparecem no feed de ambos os criadores, dobrando o alcance potencial. O ideal e fazer <strong>2-4 collabs por mes</strong> com criadores do mesmo nicho ou nichos complementares. O post aparece com dois nomes de usuario, compartilha curtidas, comentarios e saves. Funciona para Reels, carrosseis e posts estaticos. E a estrategia de crescimento organico mais eficaz em 2026 para contas entre 1K e 100K seguidores.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Posts colaborativos geram em media 2.3x mais alcance que posts individuais. Contas que fazem 2-4 collabs mensais crescem 25% mais rapido em seguidores. O algoritmo prioriza collabs porque geram interacao entre comunidades diferentes, aumentando o tempo de sessao na plataforma. Collabs com criadores de tamanho similar (ratio 1:3 max) tem melhor resultado.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Como encontrar parceiros: busque criadores do seu nicho com 0.5x a 3x seu numero de seguidores. Envie DM direta com proposta de valor clara: "Oi [nome], acompanho seu trabalho sobre [tema]. Que tal fazermos um Reel collab sobre [assunto]? Acho que nossas audiencias se complementam." Para criar: poste normalmente e adicione o colaborador em "Convidar colaborador" antes de publicar. Planeje conteudo que faca sentido para ambas as audiencias.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.3.6 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">6</span>
+              <span class="font-medium">📊 Formatos Comparados</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Cada formato serve a um objetivo especifico: <strong>Reels</strong> - alcance e descoberta (atrair novos seguidores). <strong>Carrosseis</strong> - engajamento e saves (nutrir audiencia). <strong>Stories</strong> - conexao e comunidade (manter relacionamento). <strong>Threads</strong> - autoridade e debate (posicionamento). <strong>Lives</strong> - conversao e confianca (vender e fidelizar). <strong>Posts estaticos</strong> - branding e estetica (identidade visual). O criador estrategico usa todos os formatos de forma integrada.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Distribuicao ideal por objetivo: Para crescimento - 50% Reels, 30% Carrosseis, 20% outros. Para engajamento - 40% Carrosseis, 30% Stories, 30% Reels. Para vendas - 30% Lives, 30% Stories, 20% Reels, 20% Carrosseis. Criadores que usam 3+ formatos diferentes por semana tem 45% mais alcance total que quem usa apenas 1 formato.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Semana tipo do criador completo: Segunda (Reel + 7 Stories), Terca (Carrossel + 5 Stories + 2 Threads), Quarta (Reel + 7 Stories + Live), Quinta (Carrossel + 5 Stories + 2 Threads), Sexta (Reel + 7 Stories), Sabado (Carrossel + 3 Stories), Domingo (descanso ou Stories leves). Adapte conforme seu nicho e capacidade de producao. Comece com Reels + Carrosseis + Stories e adicione os demais gradualmente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-3-3.html')" class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-3-3.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MODULO 3.4 -->
+    <section id="modulo-3-4" class="mb-16 scroll-mt-20">
+      <div class="bg-dark-800 rounded-xl border border-purple-500/30 overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 p-6 border-b border-dark-600">
+          <div class="flex items-center space-x-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm">3.4</span>
+            <div>
+              <h3 class="text-xl font-bold">🤖 Prompts de IA para Criadores</h3>
+              <p class="text-neutral-400 text-sm">+50 prompts prontos para gerar ideias, roteiros, captions e carrosseis com IA · ~35 min</p>
+            </div>
+          </div>
+        </div>
+        <div class="divide-y divide-dark-600">
+
+          <!-- Topico 3.4.1 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">1</span>
+              <span class="font-medium">🧠 Como Usar IA com Eficiencia</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">A chave para usar IA de forma eficaz e a estrutura <strong>PAPEL + CONTEXTO + TAREFA + FORMATO</strong>. <strong>PAPEL</strong>: diga a IA quem ela deve ser ("Voce e um estrategista de conteudo especializado em..."). <strong>CONTEXTO</strong>: forneca informacoes sobre seu nicho, audiencia e objetivo. <strong>TAREFA</strong>: descreva exatamente o que voce precisa. <strong>FORMATO</strong>: especifique como quer a saida (lista, roteiro, tabela, etc). Quanto mais especifico o prompt, melhor o resultado.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Prompts com a estrutura PAPEL+CONTEXTO+TAREFA+FORMATO geram respostas 3x mais uteis que prompts genericos tipo "me de ideias de conteudo". Criadores que dominam prompt engineering produzem conteudo 4x mais rapido. A IA nao substitui a criatividade humana - ela acelera a fase de brainstorm e estruturacao, que consome 60% do tempo de producao.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Exemplo pratico da estrutura: "PAPEL: Voce e um copywriter especializado em Instagram para pequenos negocios. CONTEXTO: Meu nicho e confeitaria artesanal, meu publico sao mulheres 25-45 anos que querem encomendar bolos. TAREFA: Crie 5 ganchos de abertura para Reels sobre meu processo de trabalho. FORMATO: Lista numerada com gancho + explicacao de 1 linha do porque funciona." Salve seus melhores prompts em um documento para reutilizar.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.4.2 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">2</span>
+              <span class="font-medium">💡 Prompts para Ideias de Pauta</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">O bloqueio criativo e o maior inimigo do criador de conteudo. Com o prompt certo, voce gera semanas de ideias em minutos. O segredo e pedir a IA que organize as ideias por formato (Reel, Carrossel, Story) e inclua o gancho de abertura para cada uma, eliminando a barreira entre "ter a ideia" e "comecar a produzir".</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Criadores que planejam conteudo com antecedencia postam 2.5x mais consistentemente do que os que decidem "na hora". Ter um banco de ideias pre-gerado elimina a paralisia de decisao, que e responsavel por 40% das falhas em manter consistencia de publicacao. Ideias geradas por IA e refinadas pelo criador tem performance similar a ideias 100% originais.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Prompt pronto:</strong> "Voce e um estrategista de conteudo especializado em [NICHO]. Gere 15 ideias de conteudo: 5 para Reels, 5 para Carrosseis e 5 para Stories. Para cada ideia, inclua: titulo, formato especifico e gancho de abertura (primeira frase que aparece na tela ou e falada). Foque em temas que geram saves e compartilhamentos. Meu publico-alvo e [DESCREVA]." Execute esse prompt uma vez por semana para ter ideias para os proximos 7 dias.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.4.3 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">3</span>
+              <span class="font-medium">🎬 Prompts para Roteiros de Reels</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Um bom roteiro de Reel inclui nao apenas o texto falado, mas tambem indicacoes de texto na tela (overlay), transicoes entre cenas e direcao visual. O prompt ideal pede a IA que estruture o roteiro por blocos de tempo, com colunas para: tempo, fala, texto na tela, e acao visual. Isso transforma a gravacao em um processo simples de seguir instrucoes.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Reels gravados a partir de roteiro estruturado tem 55% mais retencao (watch time) que Reels improvisados. A razao: roteiros eliminam pausas desnecessarias, garantem gancho forte e mantem ritmo constante. Criadores que usam roteiros gravam em 1/3 do tempo pois nao precisam refazer multiplas vezes.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Prompt pronto:</strong> "Crie um roteiro completo para Reel de 30-45 segundos sobre [TEMA]. Estruture assim: GANCHO (0-3 segundos) - frase de abertura impactante + texto overlay. DESENVOLVIMENTO (4-30 segundos) - 3-4 pontos principais com transicoes sugeridas entre cada um + texto overlay para cada ponto. CTA (ultimos 5 segundos) - chamada para acao clara. Inclua sugestoes de musica de fundo e tom de voz." Adapte o resultado com seus exemplos e estilo pessoal antes de gravar.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.4.4 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">4</span>
+              <span class="font-medium">✏️ Prompts para Captions</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Captions (legendas dos posts) sao onde a conversao acontece. O gancho forte na primeira linha e essencial pois o Instagram trunca o texto apos 125 caracteres - o usuario precisa clicar "mais" para ver o resto. Pedir 3 versoes diferentes a IA permite escolher a melhor abordagem: uma mais emocional, uma mais racional, uma mais provocativa. A caption ideal tem 150-300 palavras, CTA especifico e 3-5 hashtags estrategicas.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Captions com 150-300 palavras geram 23% mais engajamento que captions curtas (menos de 50 palavras). A primeira linha determina se o usuario vai expandir o texto - captions com ganchos fortes tem 4x mais cliques em "mais". CTAs especificos ("Salve este post") geram 2.5x mais saves que CTAs genericos ("Curta e compartilhe"). Hashtags relevantes ainda adicionam 12% mais alcance em 2026.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Prompt pronto:</strong> "Escreva uma caption para Instagram sobre [TEMA]. Requisitos: gancho forte e provocativo na primeira linha (max 125 caracteres), corpo com 150-300 palavras que entregue valor real, CTA especifico no final (pedir save, share ou comentario), 3 hashtags relevantes para o nicho de [NICHO]. Crie 3 versoes: uma com tom emocional/storytelling, uma com tom educacional/dados, e uma com tom provocativo/controverso." Escolha a versao que mais combina com o conteudo visual e adapte com sua voz.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.4.5 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">5</span>
+              <span class="font-medium">🎠 Prompts para Carrosseis Completos</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">O prompt para carrossel completo gera todo o conteudo textual slide a slide, pronto para ser aplicado no Canva. A estrutura ideal pede: titulo de cada slide, texto principal (max 40 palavras), sugestao de elemento visual, e notas de design. Isso transforma a criacao de carrossel de um processo de 1 hora para 15 minutos, mantendo qualidade profissional.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Criadores que usam IA para estruturar carrosseis publicam em media 3x mais carrosseis por semana. A consistencia de publicacao e o fator #1 para crescimento organico em 2026. A IA e especialmente util para carrosseis educacionais e de lista, que sao os formatos com maior taxa de save (9.1% em media). O refinamento humano (adicionar exemplos pessoais, dados do nicho) e o que diferencia um carrossel generico de um excelente.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Prompt pronto:</strong> "Crie um carrossel de 8 slides sobre [TEMA] para Instagram. Slide 1: gancho visual com titulo impactante (max 10 palavras). Slides 2-7: um insight ou dica por slide com titulo curto + explicacao (max 40 palavras) + sugestao de icone ou visual. Slide 8: CTA forte pedindo save e share. Para cada slide, sugira cores de destaque e elemento visual. Meu nicho e [NICHO] e meu publico e [PUBLICO]." Copie slide a slide para o Canva e aplique seu template de marca.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.4.6 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">6</span>
+              <span class="font-medium">🔍 Prompts para Analise e Estrategia</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Alem de criar conteudo, a IA e poderosa para analise estrategica. Use prompts para: analisar tendencias do seu nicho, estudar a concorrencia, identificar gaps de conteudo, e otimizar sua estrategia com base em dados. A IA pode processar grandes volumes de informacao e identificar padroes que seriam dificeis de perceber manualmente, como temas sazonais, formatos que funcionam melhor para seu publico, e oportunidades nao exploradas.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Criadores que fazem analise estrategica mensal com IA identificam 2x mais oportunidades de conteudo que os que operam apenas por intuicao. A analise de concorrencia com IA revela padroes de postagem, formatos preferidos e gaps de conteudo em 10 minutos vs 3-4 horas manualmente. 65% dos criadores que atingiram 100K+ seguidores em 2026 usam IA para planejamento estrategico.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Prompts de analise: 1) "Analise as 5 maiores tendencias de conteudo para o nicho de [NICHO] em marco 2026. Para cada tendencia, sugira 3 ideias de conteudo adaptadas." 2) "Estou no nicho de [NICHO]. Meus 3 melhores posts foram sobre [TEMAS]. Analise o padrao e sugira 10 temas similares que posso explorar." 3) "Compare as estrategias de conteudo destes perfis: [@perfil1, @perfil2]. Identifique o que cada um faz bem e gaps que eu poderia preencher no meu perfil @[seuperfil]." Execute esses prompts mensalmente para ajustar sua estrategia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-3-4.html')" class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-3-4.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MODULO 3.5 -->
+    <section id="modulo-3-5" class="mb-16 scroll-mt-20">
+      <div class="bg-dark-800 rounded-xl border border-purple-500/30 overflow-hidden">
+        <div class="bg-gradient-to-r from-purple-900/30 to-dark-800 p-6 border-b border-dark-600">
+          <div class="flex items-center space-x-3">
+            <span class="flex items-center justify-center w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm">3.5</span>
+            <div>
+              <h3 class="text-xl font-bold">🛠️ Ferramentas Gratuitas para Criadores</h3>
+              <p class="text-neutral-400 text-sm">Stack completo 100% gratuito para design, video, planejamento e analise · ~25 min</p>
+            </div>
+          </div>
+        </div>
+        <div class="divide-y divide-dark-600">
+
+          <!-- Topico 3.5.1 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">1</span>
+              <span class="font-medium">🎨 Design: Canva e Adobe Express</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Canva</strong> e a ferramenta #1 para criadores de conteudo em 2026. O plano gratuito oferece: milhares de templates para Instagram, Kit de Marca (fontes e cores salvas), remocao de fundo com IA, e Magic Write para gerar textos. <strong>Adobe Express</strong> e a alternativa gratuita da Adobe com integracao ao Firefly (IA generativa), templates profissionais e edicao de video basica. Ambas funcionam no navegador e no celular, sem necessidade de instalar software.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">92% dos criadores de conteudo usam Canva como ferramenta principal de design. O Canva gratuito cobre 95% das necessidades de um criador ate 50K seguidores. Adobe Express ganhou 15 milhoes de usuarios em 2026 gracas a integracao com IA Firefly. Criadores que usam templates consistentes tem 30% mais reconhecimento de marca no feed.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Setup no Canva: 1) Crie conta gratuita em canva.com, 2) Configure Kit de Marca com 2 cores + 2 fontes, 3) Crie 4 templates base: Carrossel Educacional, Carrossel Lista, Post Estatico, Capa de Reel, 4) Use "Redimensionar" para adaptar entre formatos. No Adobe Express: use para remocao de fundo com IA (qualidade superior ao Canva) e para gerar elementos visuais com Firefly. Dica: exporte sempre em PNG para imagens e MP4 para videos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.5.2 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">2</span>
+              <span class="font-medium">🎬 Video: CapCut, VN e DaVinci</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm"><strong>CapCut</strong> e o editor de video gratuito mais popular para Reels: legendas automaticas, templates de transicao, remocao de fundo, e efeitos de IA. <strong>VN (Video Editor)</strong> e uma alternativa leve e sem marca d'agua, ideal para edicoes rapidas no celular com timeline profissional. <strong>DaVinci Resolve</strong> e o editor profissional 100% gratuito para desktop, usado em Hollywood, com color grading profissional e edicao de audio avancada. Cada um serve a um nivel diferente de complexidade.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">CapCut tem 500M+ de downloads e e usado por 70% dos criadores de Reels. VN tem 100M+ de downloads e nota 4.8 nas app stores. DaVinci Resolve e usado por estudios profissionais como ferramenta principal de color grading. Os tres sao 100% gratuitos sem marca d'agua. Reels editados com legendas automaticas (CapCut) tem 28% mais watch time pois capturam quem assiste sem som.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Fluxo de trabalho: 1) Grave no celular em 1080x1920 (vertical), 2) Edite no CapCut para Reels rapidos (legendas auto, transicoes, musica trending), 3) Use VN para edicoes mais personalizadas no celular, 4) Use DaVinci Resolve para projetos maiores no desktop. No CapCut: ative "Auto Captions" + estilo "Pop" para legendas animadas. Configure preset de exportacao: 1080x1920, 30fps, qualidade alta. Salve templates de edicao para manter consistencia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.5.3 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">3</span>
+              <span class="font-medium">📅 Planejamento: Meta Business Suite</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Meta Business Suite</strong> e a ferramenta oficial e gratuita da Meta para gerenciar Instagram e Facebook. Permite: agendar posts, Reels e Stories com antecedencia, acessar analytics detalhados (alcance, engajamento, crescimento), gerenciar DMs e comentarios de ambas plataformas em um unico lugar, e criar anuncios. E a unica ferramenta de agendamento que nao perde alcance, pois e a ferramenta oficial da plataforma.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Posts agendados pelo Meta Business Suite tem o mesmo alcance que posts publicados nativamente (diferente de ferramentas terceirizadas que podem perder 5-15% de alcance). O recurso de "Melhor Horario" do MBS tem 82% de precisao em recomendar o horario ideal de postagem baseado na atividade dos seus seguidores. Criadores que usam o calendario de agendamento postam 40% mais consistentemente.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Setup: 1) Acesse business.facebook.com ou baixe o app Meta Business Suite, 2) Conecte sua conta profissional do Instagram, 3) Use "Planejador" para agendar a semana toda no domingo, 4) Configure horarios baseados em "Quando seu publico esta online" nos Insights. Dica: agende posts para os proximos 7 dias de uma vez (batch scheduling). Use a aba "Insights" para identificar seus melhores horarios, formatos e temas. Responda comentarios e DMs diretamente pelo app para manter taxa de resposta alta.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.5.4 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">4</span>
+              <span class="font-medium">🤖 IA: ChatGPT, Claude e Gemini</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm">Cada IA tem pontos fortes diferentes para criadores de conteudo: <strong>ChatGPT</strong> - melhor para brainstorm rapido, gerar variacoes de texto, e criar roteiros criativos. Tem plugins e GPTs especializados em social media. <strong>Claude</strong> - melhor para analise profunda, textos longos com qualidade, e raciocinio estrategico. Ideal para planejamento editorial e analise de concorrencia. <strong>Gemini</strong> - integrado ao Google, melhor para pesquisa de tendencias, analise de dados e conteudo baseado em informacoes atualizadas da web.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Em 2026, 82% dos criadores de conteudo profissionais usam pelo menos uma ferramenta de IA. ChatGPT lidera com 65% de adocao entre criadores, seguido por Claude (28%) e Gemini (22%). Os tres oferecem planos gratuitos suficientes para criadores iniciantes. Criadores que usam IA produzem 3-4x mais conteudo sem perda de qualidade percebida pela audiencia.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Quando usar cada um: <strong>ChatGPT</strong> - ideias de conteudo, roteiros de Reels, variacoes de captions, respostas a comentarios. <strong>Claude</strong> - planejamento editorial mensal, analise de estrategia, textos longos como scripts de Lives ou ebooks. <strong>Gemini</strong> - pesquisar o que esta em tendencia no seu nicho, analisar dados de performance, obter informacoes atualizadas. Dica: use os tres gratuitamente e descubra qual se adapta melhor ao seu fluxo de trabalho. Comece com ChatGPT para tarefas rapidas e Claude para planejamento estrategico.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.5.5 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">5</span>
+              <span class="font-medium">🔍 Pesquisa: Google Trends e Hashtags</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Google Trends</strong> mostra o que as pessoas estao buscando em tempo real, permitindo criar conteudo sobre temas em ascensao antes da concorrencia. <strong>Pesquisa de Hashtags</strong> no Instagram: use a busca do Instagram para verificar volume de cada hashtag e encontrar hashtags de nicho (10K-500K posts) que tem menos competicao. A combinacao de trends + hashtags certas e o que posiciona seu conteudo para ser descoberto por nao-seguidores.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Conteudo sobre temas trending no Google Trends tem 3x mais alcance nas primeiras 48 horas. Hashtags de nicho (10K-500K posts) geram 2.5x mais impressoes de hashtag que hashtags populares (1M+ posts) onde a competicao e altissima. O numero ideal de hashtags em 2026 e 3-5 por post (a Meta confirmou que menos hashtags mais relevantes funcionam melhor que 30 hashtags genericas).</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Rotina semanal: 1) Acesse trends.google.com.br, selecione "Ultimas 24h" ou "Ultimos 7 dias", filtre por categoria do seu nicho. 2) Identifique 2-3 temas em alta que se conectam ao seu conteudo. 3) Crie conteudo rapido (Reel ou carrossel) sobre esses temas nas proximas 24h. Para hashtags: crie 3 grupos de 5 hashtags cada (nicho pequeno, nicho medio, nicho grande) e rotacione entre posts. Salve esses grupos no bloco de notas do celular para copiar rapidamente.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topico 3.5.6 -->
+          <div class="topic-item">
+            <button onclick="toggleTopic(this)" class="w-full flex items-center justify-start p-4 hover:bg-purple-500/10 transition-colors text-left">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-xs mr-4 shrink-0">6</span>
+              <span class="font-medium">📊 Analytics: Metricool e Insights</span>
+              <svg class="w-5 h-5 text-neutral-500 ml-auto shrink-0 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="topic-explanation px-4 pb-4">
+              <div class="bg-dark-700 rounded-lg p-4 ml-12">
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Conceito Principal</h4>
+                  <p class="text-neutral-300 text-sm"><strong>Instagram Insights</strong> (nativo) fornece dados basicos: alcance, impressoes, interacoes, crescimento de seguidores, e horarios de atividade da audiencia. <strong>Metricool</strong> (plano gratuito) oferece analise avancada: comparativo de performance entre periodos, melhor horario por dia da semana, analise de hashtags, benchmark com concorrentes, e relatorios visuais. Juntos, cobrem 100% das necessidades de analytics de um criador ate 100K seguidores.</p>
+                </div>
+                <div class="mb-4">
+                  <h4 class="text-purple-400 font-semibold mb-2">Dados e Evidencias</h4>
+                  <p class="text-neutral-300 text-sm">Criadores que analisam metricas semanalmente crescem 35% mais rapido que os que ignoram analytics. As metricas que mais importam em 2026: taxa de save (indica valor do conteudo), taxa de share (indica viralidade), watch time percentual (indica retencao), e follows por post (indica atratividade do perfil). Metricool gratuito permite monitorar 1 marca com historico de 90 dias.</p>
+                </div>
+                <div>
+                  <h4 class="text-purple-400 font-semibold mb-2">Aplicacao Pratica</h4>
+                  <p class="text-neutral-300 text-sm">Rotina de analytics: 1) Diario: verifique Insights nativo para ver performance do ultimo post (30 segundos). 2) Semanal: abra Metricool e compare esta semana vs anterior em alcance, engajamento e crescimento. 3) Mensal: analise os 5 melhores e 5 piores posts do mes - identifique padroes de tema, formato, horario e gancho. 4) Use esses insights para ajustar o calendario do proximo mes. Crie conta em metricool.com e conecte seu Instagram. Foque em aumentar taxa de save e share, nao curtidas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-3-5.html')" class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-lg hover:bg-purple-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-3-5.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- NAVEGACAO ENTRE TRILHAS -->
+    <section class="mt-20">
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="../trilha2/index.html" class="px-8 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg font-semibold transition-colors text-center">
+          ← Trilha 2: Estrategia
+        </a>
+        <a href="../trilha4/index.html" class="px-8 py-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-semibold transition-colors text-center">
+          Trilha 4: Projeto do Zero →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack do Algoritmo Meta 2026 - <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+    <div class="relative w-full max-w-4xl mx-4">
+      <button onclick="closeModal()" class="absolute -top-10 right-0 text-white hover:text-neutral-300 text-xl">✕ Fechar</button>
+      <div class="bg-dark-800 rounded-xl overflow-hidden aspect-video">
+        <iframe id="modal-iframe" class="w-full h-full" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Topic toggle
+    function toggleTopic(button) {
+      const explanation = button.nextElementSibling;
+      const arrow = button.querySelector('svg');
+      explanation.classList.toggle('active');
+      arrow.style.transform = explanation.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+
+    // Modal
+    function openModal(url) {
+      const modal = document.getElementById('video-modal');
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src = url;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('video-modal');
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src = '';
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    document.getElementById('video-modal').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

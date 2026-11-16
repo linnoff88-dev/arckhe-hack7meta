@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.4 - Prompts de IA para Criadores | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores PURPLE */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-purple-400 { color: #7c3aed; }
+
+    /* Light mode - outras cores de trilha no nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="../trilha3/index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400 font-medium">Modulo 3.4</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-purple-500/20 text-purple-400 text-sm font-semibold rounded-full mb-6">
+        MODULO 3.4 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🤖 Prompts de IA para <span class="text-purple-400">Criadores</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Prompts prontos e testados para gerar ideias, roteiros, captions e carrosseis usando inteligencia artificial. Copie, adapte e publique.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Secoes</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">~35</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Pratico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Producao</div>
+          <div class="text-sm text-neutral-400">Foco</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEUDO PRINCIPAL -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Como Usar IA com Eficiencia</h2>
+          <p class="text-neutral-400 mt-1">A estrutura que transforma prompts mediocres em resultados profissionais</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Formula do Prompt Perfeito</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold text-lg mb-1">PAPEL</div>
+              <p class="text-xs text-neutral-400">Quem a IA deve ser</p>
+              <p class="text-xs text-neutral-300 mt-2">"Voce e um estrategista de conteudo..."</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold text-lg mb-1">CONTEXTO</div>
+              <p class="text-xs text-neutral-400">Informacoes de fundo</p>
+              <p class="text-xs text-neutral-300 mt-2">"Meu nicho e fitness, publico 25-35..."</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold text-lg mb-1">TAREFA</div>
+              <p class="text-xs text-neutral-400">O que deve fazer</p>
+              <p class="text-xs text-neutral-300 mt-2">"Gere 15 ideias de conteudo..."</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold text-lg mb-1">FORMATO</div>
+              <p class="text-xs text-neutral-400">Como entregar</p>
+              <p class="text-xs text-neutral-300 mt-2">"Formato: tabela com colunas..."</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold text-lg mb-1">RESTRICOES</div>
+              <p class="text-xs text-neutral-400">Limites e regras</p>
+              <p class="text-xs text-neutral-300 mt-2">"Maximo 30 palavras por item..."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Regra de Ouro</h3>
+          <p class="text-neutral-300 text-sm">Quanto mais contexto voce fornece, melhor o resultado. Um prompt de 5 palavras gera resultado generico. Um prompt de 50 palavras com contexto, publico e exemplos gera resultado quase pronto para publicar. Invista tempo no prompt e economize tempo na edicao.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Prompts para Ideias de Pauta</h2>
+          <p class="text-neutral-400 mt-1">Gere semanas de conteudo em minutos</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt Completo - Gerador de Ideias</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Voce e um estrategista de conteudo especializado em [NICHO] com 10 anos de experiencia em redes sociais.</p>
+            <p class="mt-2">Meu publico-alvo e [PUBLICO - descreva idade, interesses, dores e desejos].</p>
+            <p class="mt-2">Gere 15 ideias de conteudo para Instagram divididas em:</p>
+            <p>- 5 ideias de Reels (foco em alcance e viralidade)</p>
+            <p>- 5 ideias de Carrosseis (foco em saves e educacao)</p>
+            <p>- 5 ideias de Stories (foco em interacao e relacionamento)</p>
+            <p class="mt-2">Para cada ideia, inclua:</p>
+            <p>Numero | Formato | Pilar de conteudo | Gancho (frase exata que abre o conteudo)</p>
+            <p class="mt-2">Os pilares devem ser: Educacional, Inspiracional, Entretenimento, Vendas e Bastidores.</p>
+            <p class="mt-2">Todas as ideias devem ser relevantes para marco/abril de 2026 e considerar tendencias atuais."</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Como Usar o Resultado</h3>
+          <p class="text-neutral-300 text-sm">Apos gerar as 15 ideias, selecione as 7 melhores para a semana. Distribua: segunda a sexta Reels, terca e quinta carrosseis, Stories diarios. Use as ideias restantes como backup. Regenere semanalmente com novos contextos e tendencias.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">Prompts para Roteiros de Reels</h2>
+          <p class="text-neutral-400 mt-1">Roteiros prontos para gravar imediatamente</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt Completo - Roteiro de Reel</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Crie um roteiro completo para um Reel de Instagram de 30-45 segundos sobre [TEMA].</p>
+            <p class="mt-2">Publico-alvo: [X - descreva detalhadamente].</p>
+            <p>Tom de voz: [Y - ex: educacional e acessivel, provocativo e direto, inspiracional].</p>
+            <p class="mt-2">Estrutura obrigatoria:</p>
+            <p class="mt-1"><strong>GANCHO (0-3 segundos):</strong></p>
+            <p>- Frase exata para falar</p>
+            <p>- Texto na tela (diferente da fala)</p>
+            <p>- Acao visual (gesto, movimento, transicao)</p>
+            <p class="mt-1"><strong>DESENVOLVIMENTO (4-30 segundos):</strong></p>
+            <p>- Divida em 3-5 passos/pontos</p>
+            <p>- Para cada passo: fala + texto na tela + transicao sugerida</p>
+            <p>- Cortes a cada 3-4 segundos</p>
+            <p class="mt-1"><strong>CTA (ultimos 5 segundos):</strong></p>
+            <p>- Frase exata do CTA</p>
+            <p>- Texto na tela do CTA</p>
+            <p>- Acao visual final</p>
+            <p class="mt-2">Inclua tambem: sugestao de audio/musica, tom de narracao (velocidade, enfase), e 3 opcoes de caption para a descricao."</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Dica para Melhor Resultado</h3>
+          <p class="text-neutral-300 text-sm">Apos receber o roteiro, peca a IA para criar 3 versoes alternativas de gancho. O gancho e o fator mais critico - teste diferentes abordagens para encontrar o que funciona melhor com sua audiencia. Grave todas as versoes e poste a que tiver melhor performance nos primeiros testes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">Prompts para Captions</h2>
+          <p class="text-neutral-400 mt-1">Textos persuasivos que geram engajamento e conversao</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt Completo - Caption</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Escreva uma caption para Instagram sobre [TEMA].</p>
+            <p class="mt-2">Contexto: [X - descreva a situacao, o post, o objetivo].</p>
+            <p>Objetivo do post: [Y - gerar saves, comentarios, vendas, awareness].</p>
+            <p>Tom de voz: [Z - educacional, provocativo, emocional, humoristico].</p>
+            <p class="mt-2">Requisitos:</p>
+            <p>- Gancho forte na primeira linha (aparece antes do 'ver mais')</p>
+            <p>- Corpo com 150-300 palavras</p>
+            <p>- Use quebras de linha para facilitar leitura no celular</p>
+            <p>- CTA especifico e claro no final</p>
+            <p>- 3 hashtags estrategicas (1 grande, 1 media, 1 de nicho)</p>
+            <p class="mt-2">Crie 3 versoes diferentes:</p>
+            <p>1. Versao educacional (foca em ensinar)</p>
+            <p>2. Versao storytelling (foca em historia pessoal)</p>
+            <p>3. Versao provocativa (foca em gerar debate)"</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+            <div class="text-purple-400 font-semibold mb-2">Versao Educacional</div>
+            <p class="text-sm text-neutral-400">Melhor para gerar saves. Comece com "Voce sabia que..." ou "A maioria das pessoas erra nisso...". Entregue valor claro e acionavel.</p>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+            <div class="text-purple-400 font-semibold mb-2">Versao Storytelling</div>
+            <p class="text-sm text-neutral-400">Melhor para conexao. Comece com uma situacao: "Semana passada aconteceu algo que mudou minha perspectiva...". Vulnerabilidade gera identificacao.</p>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-dark-600 p-5">
+            <div class="text-purple-400 font-semibold mb-2">Versao Provocativa</div>
+            <p class="text-sm text-neutral-400">Melhor para comentarios. Comece com "Opiniao impopular:" ou "Parem de...". Gera debate saudavel e aumenta o alcance via comentarios.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Prompts para Carrosseis</h2>
+          <p class="text-neutral-400 mt-1">Gere carrosseis completos de 8 slides prontos para design</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt Completo - Carrossel de 8 Slides</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Crie um carrossel de 8 slides para Instagram sobre [TEMA].</p>
+            <p class="mt-2">Publico-alvo: [descreva]. Objetivo: [educar/inspirar/vender].</p>
+            <p class="mt-2">Para cada slide, fornecer:</p>
+            <p>- Titulo (maximo 8 palavras, fonte grande)</p>
+            <p>- Subtitulo/texto de apoio (maximo 20 palavras)</p>
+            <p>- Sugestao de elemento visual (icone, imagem, grafico)</p>
+            <p class="mt-2">Estrutura:</p>
+            <p>Slide 1: Gancho irresistivel com promessa (use numeros especificos)</p>
+            <p>Slide 2: Segundo gancho forte (funciona como capa alternativa)</p>
+            <p>Slides 3-7: Um insight pratico por slide, progressao logica</p>
+            <p>Slide 8: CTA forte pedindo save + compartilhamento + follow</p>
+            <p class="mt-2">Formato de saida: tabela com colunas Slide | Titulo | Texto | Visual</p>
+            <p class="mt-2">Adicione tambem: caption com gancho forte + 3 hashtags."</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Fluxo de Producao com IA</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold mb-1">1. Gere</div>
+              <p class="text-xs text-neutral-400">Use o prompt acima para gerar o conteudo completo do carrossel</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold mb-1">2. Revise</div>
+              <p class="text-xs text-neutral-400">Adicione sua voz pessoal, dados reais e experiencia propria</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold mb-1">3. Design</div>
+              <p class="text-xs text-neutral-400">Aplique o conteudo no Canva usando seu template fixo</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-purple-400 font-bold mb-1">4. Publique</div>
+              <p class="text-xs text-neutral-400">Agende no Meta Business Suite com caption otimizada</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Prompts para Analise</h2>
+          <p class="text-neutral-400 mt-1">Use IA para analisar tendencias e concorrencia</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <!-- Prompt tendencias -->
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt - Analise de Tendencias</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Voce e um analista de tendencias de redes sociais especializado em [NICHO].</p>
+            <p class="mt-2">Identifique as principais tendencias para [NICHO] em marco/abril de 2026, incluindo:</p>
+            <p>- Formatos de conteudo em alta (Reels, carrosseis, stories)</p>
+            <p>- Temas e topicos que estao gerando mais engajamento</p>
+            <p>- Audios e musicas em tendencia para Reels</p>
+            <p>- Gatilhos emocionais que estao funcionando</p>
+            <p>- Mudancas no algoritmo que afetam a estrategia</p>
+            <p class="mt-2">Para cada tendencia identificada, explique:</p>
+            <p>1. O que e a tendencia</p>
+            <p>2. Por que esta funcionando</p>
+            <p>3. Como adaptar ao meu nicho especifico</p>
+            <p>4. Exemplo pratico de conteudo baseado nessa tendencia"</p>
+          </div>
+        </div>
+
+        <!-- Prompt concorrencia -->
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt - Analise de Concorrencia</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Analise a seguinte estrategia de conteudo de um concorrente no meu nicho:</p>
+            <p class="mt-2">[Descreva: tipos de posts, frequencia, tom, formatos usados, tamanho da audiencia, engajamento medio]</p>
+            <p class="mt-2">Com base nessa analise, me diga:</p>
+            <p>1. O que esta funcionando bem na estrategia deles e por que</p>
+            <p>2. Lacunas e oportunidades que eles nao estao explorando</p>
+            <p>3. Como posso me diferenciar sem copiar</p>
+            <p>4. 5 ideias de conteudo que preencham as lacunas identificadas</p>
+            <p>5. Recomendacao de posicionamento para me destacar nesse mercado"</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Importante: IA como Assistente, Nao Substituto</h3>
+          <p class="text-neutral-300 text-sm">A IA gera o rascunho, voce adiciona a alma. Sempre revise, personalize e adicione sua experiencia real. O conteudo que mais engaja e o que combina a eficiencia da IA com a autenticidade humana. Use IA para acelerar a producao, nao para substituir sua voz.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold text-center mb-6">Resumo do Modulo 3.4</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Formula</div>
+          <p class="text-sm text-neutral-400">PAPEL + CONTEXTO + TAREFA + FORMATO + RESTRICOES</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Ideias</div>
+          <p class="text-sm text-neutral-400">15 ideias: 5 Reels + 5 Carrosseis + 5 Stories</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Roteiros</div>
+          <p class="text-sm text-neutral-400">Gancho + Desenvolvimento + CTA com texto na tela</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Captions</div>
+          <p class="text-sm text-neutral-400">3 versoes: educacional, storytelling, provocativa</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Carrosseis</div>
+          <p class="text-sm text-neutral-400">8 slides com titulo, texto e visual sugerido</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Analise</div>
+          <p class="text-sm text-neutral-400">Tendencias do nicho + analise de concorrencia</p>
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <a href="modulo-3-3.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          ← Anterior: Stories e Threads
+        </a>
+        <a href="modulo-3-5.html" class="inline-flex items-center px-6 py-3 bg-purple-500/20 text-purple-400 font-semibold rounded-lg hover:bg-purple-500/30 transition-colors">
+          Proximo: Ferramentas Gratuitas →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 - Curso completo de Instagram e Meta Ads</p>
+      <p class="mt-1">Conteudo exclusivo <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

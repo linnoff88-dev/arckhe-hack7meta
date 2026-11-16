@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 3.2 - Carrosseis de Alto Engajamento | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode overrides - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores PURPLE */
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:bg-purple-500\/30:hover { background-color: rgba(124, 58, 237, 0.18); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-purple-400 { color: #7c3aed; }
+
+    /* Light mode - outras cores de trilha no nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-purple-400 bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-purple-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="../trilha3/index.html" class="hover:text-purple-400 transition-colors">Trilha 3</a>
+      <span>/</span>
+      <span class="text-purple-400 font-medium">Modulo 3.2</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-purple-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-purple-500/20 text-purple-400 text-sm font-semibold rounded-full mb-6">
+        MODULO 3.2 - TRILHA 3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🎠 Carrosseis de Alto <span class="text-purple-400">Engajamento</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        O formato com maior engajamento organico em 2026. Aprenda a criar carrosseis irresistiveis que geram saves, shares e conversoes.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">6</div>
+          <div class="text-sm text-neutral-400">Secoes</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">~30</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Pratico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-purple-500/30">
+          <div class="text-2xl font-bold text-purple-400">Producao</div>
+          <div class="text-sm text-neutral-400">Foco</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEUDO PRINCIPAL -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Por que Carrosseis Vencem em 2026</h2>
+          <p class="text-neutral-400 mt-1">O formato com maior engajamento organico do Instagram</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <!-- Comparativo de engajamento -->
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Taxa de Engajamento por Formato</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-dark-700 rounded-lg p-5 text-center border-2 border-purple-500/30">
+              <div class="text-3xl font-bold text-purple-400 mb-1">1.92%</div>
+              <div class="font-semibold text-neutral-100 mb-1">Carrossel</div>
+              <p class="text-xs text-neutral-400">Maior engajamento organico</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-5 text-center">
+              <div class="text-3xl font-bold text-neutral-300 mb-1">1.74%</div>
+              <div class="font-semibold text-neutral-100 mb-1">Reels</div>
+              <p class="text-xs text-neutral-400">Segundo lugar</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-5 text-center">
+              <div class="text-3xl font-bold text-neutral-300 mb-1">1.26%</div>
+              <div class="font-semibold text-neutral-100 mb-1">Imagem</div>
+              <p class="text-xs text-neutral-400">Menor engajamento</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Por que funciona -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Por que o Algoritmo Favorece Carrosseis</h3>
+          <div class="space-y-3 text-sm text-neutral-300">
+            <p><strong class="text-neutral-100">Cada swipe = evento de engajamento.</strong> Quando o usuario desliza entre slides, o Instagram registra isso como interacao ativa. Um carrossel de 8 slides pode gerar ate 7 eventos de engajamento por usuario, enquanto um Reel gera apenas 1 visualizacao.</p>
+            <p><strong class="text-neutral-100">Mecanica de segunda chance.</strong> Se o usuario nao interagiu na primeira vez que viu o carrossel, o Instagram reapresenta o post com o slide 2 como capa. Isso dobra as chances de engajamento e e exclusivo dos carrosseis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Estrutura Perfeita do Carrossel</h2>
+          <p class="text-neutral-400 mt-1">A formula de 8 slides que maximiza engajamento</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Estrutura Slide a Slide</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm shrink-0">1</span>
+              <div>
+                <h4 class="font-semibold text-neutral-100">GANCHO - Slide de Abertura</h4>
+                <p class="text-sm text-neutral-400 mt-1">Use numeros especificos e nao entregue a resposta. Exemplo: "7 erros que me custaram R$ 50 mil em ads" e mais forte que "Erros em anuncios". O objetivo e criar curiosidade irresistivel.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm shrink-0">2-7</span>
+              <div>
+                <h4 class="font-semibold text-neutral-100">CONTEUDO - Slides de Valor</h4>
+                <p class="text-sm text-neutral-400 mt-1">Um insight por slide, no maximo 3 linhas de texto. Use setas visuais que indiquem "deslize" entre os slides. Cada slide deve ser auto-suficiente mas criar curiosidade para o proximo.</p>
+              </div>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 flex items-start space-x-4">
+              <span class="flex items-center justify-center w-8 h-8 rounded-full bg-purple-500/20 text-purple-400 font-bold text-sm shrink-0">8</span>
+              <div>
+                <h4 class="font-semibold text-neutral-100">CTA - Slide de Fechamento</h4>
+                <p class="text-sm text-neutral-400 mt-1">Chamada para acao clara + peca o save. "Salva esse carrossel para consultar depois" e o CTA mais eficaz porque saves sao o sinal mais forte para o algoritmo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Dica de Ouro</h3>
+          <p class="text-neutral-300 text-sm">Sempre faca o slide 2 tao forte quanto o slide 1. A mecanica de segunda chance do Instagram vai mostrar o slide 2 como capa para quem nao interagiu. Se o slide 2 for fraco, voce perde a segunda oportunidade de capturar a atencao.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">5 Tipos de Carrossel que Funcionam</h2>
+          <p class="text-neutral-400 mt-1">Formatos comprovados para diferentes objetivos</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 ml-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+            <div class="flex items-center space-x-3 mb-3">
+              <span class="text-purple-400 font-bold text-lg">1.</span>
+              <h3 class="font-semibold text-lg">Educacional</h3>
+            </div>
+            <p class="text-neutral-300 text-sm mb-2">Ensina algo pratico passo a passo. Maior taxa de saves.</p>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Exemplo:</strong> "Como dobrar seu alcance organico em 7 dias"</p>
+            </div>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+            <div class="flex items-center space-x-3 mb-3">
+              <span class="text-purple-400 font-bold text-lg">2.</span>
+              <h3 class="font-semibold text-lg">Lista</h3>
+            </div>
+            <p class="text-neutral-300 text-sm mb-2">Formato de checklist ou erros. Facil de consumir e compartilhar.</p>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Exemplo:</strong> "9 erros que parei de cometer e triplicaram meu engajamento"</p>
+            </div>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+            <div class="flex items-center space-x-3 mb-3">
+              <span class="text-purple-400 font-bold text-lg">3.</span>
+              <h3 class="font-semibold text-lg">Storytelling</h3>
+            </div>
+            <p class="text-neutral-300 text-sm mb-2">Narrativa emocional que conecta. Gancho emocional, jornada e licao.</p>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Estrutura:</strong> Gancho emocional → Contexto → Jornada (3-4 slides) → Licao aprendida → CTA</p>
+            </div>
+          </div>
+          <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+            <div class="flex items-center space-x-3 mb-3">
+              <span class="text-purple-400 font-bold text-lg">4.</span>
+              <h3 class="font-semibold text-lg">Photo Dump</h3>
+            </div>
+            <p class="text-neutral-300 text-sm mb-2">Bastidores autenticos do dia a dia. Humaniza a marca.</p>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Dica:</strong> Misture fotos profissionais com momentos espontaneos para gerar autenticidade.</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <div class="flex items-center space-x-3 mb-3">
+            <span class="text-purple-400 font-bold text-lg">5.</span>
+            <h3 class="font-semibold text-lg">Comparativo</h3>
+          </div>
+          <p class="text-neutral-300 text-sm mb-2">Antes vs Depois, Certo vs Errado, Iniciante vs Avancado. Formato visual que gera debate e saves.</p>
+          <div class="bg-dark-700 rounded-lg p-3">
+            <p class="text-sm text-neutral-400"><strong class="text-neutral-300">Exemplo:</strong> "Feed em 2024 vs Feed em 2026 - o que mudou" com comparacoes visuais lado a lado em cada slide.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">Design para Carrosseis</h2>
+          <p class="text-neutral-400 mt-1">Regras visuais para carrosseis profissionais e consistentes</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Regras de Design</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Fundo Consistente</div>
+              <p class="text-sm text-neutral-400">Use o mesmo fundo em todos os slides para criar identidade visual e reconhecimento imediato da marca.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Fonte Minima 24pt</div>
+              <p class="text-sm text-neutral-400">Texto precisa ser legivel no celular. Fontes menores que 24pt sao ignoradas e frustram o usuario.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Contraste Alto</div>
+              <p class="text-sm text-neutral-400">Texto claro em fundo escuro ou texto escuro em fundo claro. Evite texto sobre fotos sem overlay.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Elemento de Continuidade</div>
+              <p class="text-sm text-neutral-400">Crie um elemento visual que "sangra" entre slides, incentivando o swipe para ver o que continua.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Paleta Limitada</div>
+              <p class="text-sm text-neutral-400">Maximo 2 cores base + 1 cor de destaque. Menos e mais. Templates fixos garantem consistencia.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="text-purple-400 font-semibold mb-2">Template Fixo</div>
+              <p class="text-sm text-neutral-400">Crie 2-3 templates base no Canva e reutilize. Isso acelera a producao e cria identidade.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-600">
+            <div class="text-2xl font-bold text-purple-400 mb-2">1080x1080</div>
+            <p class="text-neutral-300 text-sm">Formato quadrado classico para carrosseis no feed. Ocupa boa area visual e funciona bem no grid do perfil.</p>
+          </div>
+          <div class="bg-dark-700 rounded-xl p-6 border border-dark-600">
+            <div class="text-2xl font-bold text-purple-400 mb-2">1080x1350</div>
+            <p class="text-neutral-300 text-sm">Formato 4:5 (retrato). Ocupa mais espaco no feed e tem maior visibilidade. Recomendado para maximizar atencao.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Mecanica de Segunda Chance</h2>
+          <p class="text-neutral-400 mt-1">Como o algoritmo reapresenta carrosseis para dobrar o alcance</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <div class="bg-dark-800 rounded-xl border border-purple-500/30 p-6">
+          <h3 class="text-purple-400 font-semibold mb-4">Como Funciona</h3>
+          <div class="space-y-4 text-sm text-neutral-300">
+            <p>Quando um usuario ve seu carrossel no feed mas <strong class="text-neutral-100">nao interage</strong> (nao desliza, nao curte, nao comenta), o Instagram da uma segunda chance ao seu conteudo.</p>
+            <p>Na proxima vez que o usuario abrir o feed, o Instagram reapresenta o mesmo carrossel, mas agora mostrando o <strong class="text-neutral-100">slide 2 como capa</strong> em vez do slide 1.</p>
+            <p>Isso significa que voce tem <strong class="text-neutral-100">duas oportunidades</strong> de capturar a atencao do usuario. Por isso, o slide 2 deve ser forte o suficiente para funcionar como um segundo gancho independente.</p>
+          </div>
+        </div>
+
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Estrategia para o Slide 2</h3>
+          <div class="space-y-2 text-sm text-neutral-300">
+            <p><strong class="text-neutral-100">Opcao A:</strong> Dado impactante ou estatistica surpreendente que gere curiosidade imediata.</p>
+            <p><strong class="text-neutral-100">Opcao B:</strong> Pergunta provocativa diferente do gancho do slide 1.</p>
+            <p><strong class="text-neutral-100">Opcao C:</strong> Afirmacao contraria ao senso comum que faca a pessoa querer entender o contexto.</p>
+            <p class="mt-3 text-neutral-400">Nunca use o slide 2 apenas como "continuacao" do slide 1. Trate-o como um segundo gancho independente.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20 text-purple-400 font-bold text-lg shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Prompts para Carrosseis</h2>
+          <p class="text-neutral-400 mt-1">Use IA para criar carrosseis de alta performance rapidamente</p>
+        </div>
+      </div>
+
+      <div class="space-y-6 ml-16">
+        <!-- Prompt completo -->
+        <div class="bg-primary/10 border border-primary/40 rounded-xl p-6">
+          <h3 class="text-primary font-semibold mb-3">Prompt Completo para Carrossel de 8 Slides</h3>
+          <div class="bg-dark-800 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+            <p>"Crie um carrossel de 8 slides sobre [TEMA] para Instagram.</p>
+            <p class="mt-2">Meu publico-alvo e [PUBLICO]. O tom deve ser [TOM: educacional/inspiracional/provocativo].</p>
+            <p class="mt-2">Para cada slide, inclua:</p>
+            <p>- Titulo (maximo 8 palavras)</p>
+            <p>- Texto de apoio (maximo 20 palavras)</p>
+            <p>- Sugestao de elemento visual</p>
+            <p class="mt-2">Slide 1: Gancho com promessa irresistivel (use numeros especificos).</p>
+            <p>Slides 2-7: Um insight pratico por slide. O slide 2 deve ser forte o suficiente para funcionar como segundo gancho.</p>
+            <p>Slide 8: CTA forte pedindo save e compartilhamento.</p>
+            <p class="mt-2">Formato de saida: tabela com colunas Slide | Titulo | Texto | Visual."</p>
+          </div>
+        </div>
+
+        <!-- Dicas para o prompt -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-purple-400 font-semibold mb-3">Como Melhorar os Resultados</h3>
+          <div class="space-y-3 text-sm text-neutral-300">
+            <p><strong class="text-neutral-100">Adicione contexto:</strong> Quanto mais detalhes sobre seu nicho, publico e objetivos, melhor o resultado. Inclua exemplos de carrosseis que ja funcionaram para voce.</p>
+            <p><strong class="text-neutral-100">Peca variantes:</strong> Solicite 3 versoes do slide 1 para testar diferentes ganchos. O gancho e o fator mais critico do carrossel.</p>
+            <p><strong class="text-neutral-100">Revise e personalize:</strong> Nunca publique o resultado bruto da IA. Adicione sua voz, experiencia pessoal e dados reais do seu nicho.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-dark-800 rounded-xl border border-purple-500/30 p-8">
+      <h2 class="text-2xl font-bold text-center mb-6">Resumo do Modulo 3.2</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Engajamento</div>
+          <p class="text-sm text-neutral-400">1.92% - maior que Reels (1.74%) e imagens (1.26%)</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Estrutura</div>
+          <p class="text-sm text-neutral-400">Slide 1 gancho + Slides 2-7 insights + Slide 8 CTA</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">5 Tipos</div>
+          <p class="text-sm text-neutral-400">Educacional, Lista, Storytelling, Photo Dump, Comparativo</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Design</div>
+          <p class="text-sm text-neutral-400">Fonte 24pt+, 2 cores + destaque, template fixo</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">Segunda Chance</div>
+          <p class="text-sm text-neutral-400">Slide 2 como segundo gancho independente</p>
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-center">
+          <div class="text-purple-400 font-semibold mb-1">IA</div>
+          <p class="text-sm text-neutral-400">Prompt completo para gerar carrosseis de 8 slides</p>
+        </div>
+      </div>
+      <div class="flex justify-between items-center">
+        <a href="modulo-3-1.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          ← Anterior: Dominando os Reels
+        </a>
+        <a href="modulo-3-3.html" class="inline-flex items-center px-6 py-3 bg-purple-500/20 text-purple-400 font-semibold rounded-lg hover:bg-purple-500/30 transition-colors">
+          Proximo: Stories, Threads e Novos Formatos →
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 - Curso completo de Instagram e Meta Ads</p>
+      <p class="mt-1">Conteudo exclusivo <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

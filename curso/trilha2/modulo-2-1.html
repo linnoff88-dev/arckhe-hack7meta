@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.1 - Os 7 Hacks do Algoritmo | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores BLUE */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+
+    /* Light mode - outras cores */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+
+    /* Light mode - gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400 font-medium">Modulo 2.1</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full mb-6 border border-blue-500/30">
+        MODULO 2.1
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🎯 Os 7 Hacks do <span class="text-blue-400">Algoritmo</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Domine os 7 atalhos estrategicos que fazem o algoritmo da Meta trabalhar a seu favor em 2026. Cada hack e uma alavanca direta para multiplicar alcance e engajamento.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">~35</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Inter.</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Estrat.</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">🌍 Hack 1: Crie para Desconhecidos</h2>
+          <p class="text-neutral-400 text-sm">50% do Feed vem de contas nao seguidas</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Em marco de 2026, aproximadamente 50% do conteudo que aparece no Feed de qualquer usuario vem de contas que ele NAO segue. Isso significa que metade da audiencia disponivel na plataforma esta aberta para voce -- mesmo que tenha apenas 200 seguidores. A era de criar conteudo apenas para quem ja te acompanha acabou. O algoritmo agora funciona como um motor de descoberta: se seu conteudo resolver um problema ou despertar curiosidade em alguem que nunca te viu, o UTIS vai entregar esse conteudo para essa pessoa automaticamente.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Dados e Evidencias</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>50% do Feed</strong> e conteudo de contas nao seguidas (Meta, marco 2026)</li>
+          <li>&#8226; <strong>Alcance organico no Facebook:</strong> apenas 2% dos seguidores veem seus posts -- o restante depende de recomendacao</li>
+          <li>&#8226; <strong>Instagram:</strong> 3-4% de alcance organico entre seguidores -- a tendencia e de queda contínua</li>
+          <li>&#8226; Perfis que criam conteudo autoexplicativo tem <strong>3.2x mais alcance</strong> entre nao-seguidores</li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <p class="text-neutral-300 mb-3">Use este prompt no ChatGPT ou Claude para gerar ganchos que funcionam para desconhecidos:</p>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Atue como estrategista viral. Crie 20 ganchos para posts no Facebook pensados especificamente para prender a atencao de pessoas que NAO me seguem. O nicho e [NICHO]. Cada gancho deve ser autoexplicativo, despertar curiosidade imediata e funcionar sem contexto previo sobre quem eu sou."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Criar ganchos autoexplicativos</li>
+            <li>&#8226; Resolver problemas universais do nicho</li>
+            <li>&#8226; Usar linguagem simples e direta</li>
+            <li>&#8226; Testar se um estranho entenderia o post</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Referencias a posts anteriores</li>
+            <li>&#8226; Piadas internas com seguidores</li>
+            <li>&#8226; Assumir que a pessoa sabe quem voce e</li>
+            <li>&#8226; CTAs tipo "como eu disse ontem..."</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">💬 Hack 2: Comentarios > Curtidas</h2>
+          <p class="text-neutral-400 text-sm">Interacoes profundas vencem metricas rasas</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O like e a interacao mais fraca que existe. Em 2026, curtidas representam apenas 5% do peso no calculo de distribuicao do algoritmo. O que realmente move a agulha sao comentarios (especialmente respostas longas), compartilhamentos via DM, saves e tempo gasto no post. Um unico comentario de 3 linhas vale mais que 50 likes para o algoritmo. E quando voce responde esse comentario, cria uma cadeia de notificacoes que traz o usuario de volta, gerando mais sinais positivos. Sua estrategia de conteudo deve ser desenhada para provocar reacoes, nao apenas aprovacoes passivas.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Peso dos Sinais no Algoritmo</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>Likes:</strong> ~5% do peso total</li>
+          <li>&#8226; <strong>Comentarios:</strong> ~15% (comentarios longos valem 3x mais)</li>
+          <li>&#8226; <strong>Compartilhamentos via DM:</strong> ~25% (o sinal mais forte)</li>
+          <li>&#8226; <strong>Saves:</strong> ~20% (indica valor de longo prazo)</li>
+          <li>&#8226; <strong>Tempo de visualizacao:</strong> ~25% (retencao e pausa)</li>
+          <li>&#8226; <strong>Replays:</strong> ~10% (em Reels, sinal de qualidade alta)</li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <p class="text-neutral-300 mb-3">Gere perguntas que provocam comentarios reais:</p>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Gere 25 perguntas para posts no Facebook que estimulem conversa genuina no nicho [NICHO]. As perguntas devem ser polarizantes o suficiente para gerar debate, mas nao ofensivas. Inclua perguntas de 'escolha entre A ou B', perguntas de experiencia pessoal e perguntas de opiniao."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Terminar posts com perguntas abertas</li>
+            <li>&#8226; Criar enquetes e debates</li>
+            <li>&#8226; Responder TODOS os comentarios em 30 min</li>
+            <li>&#8226; Fazer perguntas do tipo "A ou B?"</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Posts que so pedem "curta se concordar"</li>
+            <li>&#8226; Ignorar comentarios da audiencia</li>
+            <li>&#8226; Conteudo que nao abre espaco para opiniao</li>
+            <li>&#8226; Respostas genericas como "obrigado!"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">🔄 Hack 3: Conteudo Fresco</h2>
+          <p class="text-neutral-400 text-sm">Posts novos recebem prioridade de distribuicao</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O algoritmo da Meta em 2026 tem um vies claro por conteudo recente. Posts publicados nas ultimas 24-48 horas recebem um "boost de novidade" que pode aumentar a distribuicao em ate 40% comparado a conteudo mais antigo. Isso nao significa que voce precisa postar 10 vezes por dia -- significa que consistencia e mais importante que volume. Publicar 1-2 vezes por dia, todos os dias, gera resultados muito superiores a publicar 5 posts em um dia e desaparecer por uma semana. O algoritmo recompensa regularidade porque usuarios que voltam diariamente aumentam o tempo de sessao da plataforma.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Frequencia Ideal por Plataforma</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>Instagram:</strong> 1-2 Reels/dia + 1 carrossel a cada 2 dias + Stories diarios</li>
+          <li>&#8226; <strong>Facebook:</strong> 1-2 posts/dia (variar formatos) + Reels 3-5x/semana</li>
+          <li>&#8226; <strong>Regra de ouro:</strong> consistencia > perfeicao. 1 post bom por dia vence 3 posts mediocres</li>
+          <li>&#8226; Perfis que publicam menos de 3x por semana perdem ate <strong>60% do alcance basal</strong></li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <p class="text-neutral-300 mb-3">Crie um plano de conteudo consistente e sustentavel:</p>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie um plano de postagens detalhado para 30 dias no Facebook para o nicho [NICHO]. Inclua para cada dia: formato do post (Reel, carrossel, texto, imagem), pilar de conteudo (educacional, inspiracional, entretenimento, conversao), gancho sugerido e melhor horario. Alterne os formatos para manter variedade."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Publicar 1-2x por dia consistentemente</li>
+            <li>&#8226; Usar producao em lote (batch content)</li>
+            <li>&#8226; Ter conteudo pre-agendado para 7 dias</li>
+            <li>&#8226; Variar formatos ao longo da semana</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Publicar 5 posts num dia e sumir 5 dias</li>
+            <li>&#8226; Esperar conteudo "perfeito" para postar</li>
+            <li>&#8226; Republicar conteudo antigo sem adaptar</li>
+            <li>&#8226; Ficar mais de 48h sem postar nada</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">🧠 Hack 4: A IA Mede Interesse Real</h2>
+          <p class="text-neutral-400 text-sm">UTIS observa comportamento passivo</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O UTIS (Unified Targeting and Interest System) vai muito alem de curtidas e comentarios. Ele mede sinais passivos que a maioria dos criadores ignora: tempo de pausa sobre um post, velocidade de rolagem (scroll lento = interesse), tempo total de leitura de uma caption, quantas vezes alguem volta ao mesmo conteudo, e ate o padrao de navegacao apos ver seu post. Em 2026, esses sinais passivos representam mais de 60% do peso na decisao de distribuicao. Isso significa que um post sem nenhum like, mas com alto tempo de leitura, pode ter mais alcance do que um post com centenas de curtidas rapidas.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Sinais Passivos que o UTIS Mede</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>Dwell Time:</strong> quanto tempo o usuario para sobre seu conteudo (mais de 3s = interesse)</li>
+          <li>&#8226; <strong>Scroll Velocity:</strong> velocidade do scroll -- scroll lento sobre seu post = sinal forte</li>
+          <li>&#8226; <strong>Read-through Rate:</strong> % da caption que o usuario realmente leu</li>
+          <li>&#8226; <strong>Return Visits:</strong> quantas vezes o usuario voltou ao mesmo conteudo</li>
+          <li>&#8226; <strong>Post-view Behavior:</strong> o que o usuario faz depois de ver seu post (visita perfil = sinal fortissimo)</li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <p class="text-neutral-300 mb-3">Ganchos que capturam atencao nos primeiros 3 segundos:</p>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Gere 30 ganchos movidos por curiosidade para posts no nicho [NICHO]. Cada gancho deve criar um 'loop aberto' que forca a pessoa a parar de rolar e ler o restante. Use padroes como: numeros especificos, contradicoes, segredos revelados, erros comuns e comparacoes surpreendentes."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Abrir com gancho forte nos 3 primeiros segundos</li>
+            <li>&#8226; Criar "loops abertos" que geram curiosidade</li>
+            <li>&#8226; Escrever captions longas e valiosas</li>
+            <li>&#8226; Usar storytelling que mantem a pessoa lendo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Comecar com "Bom dia, gente!"</li>
+            <li>&#8226; Captions de 1 linha sem valor</li>
+            <li>&#8226; Primeiros frames de video sem impacto</li>
+            <li>&#8226; Revelar tudo no titulo (sem loop aberto)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">✍️ Hack 5: Originalidade Recompensada</h2>
+          <p class="text-neutral-400 text-sm">Conteudo autoral ganha distribuicao privilegiada</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Em 2026, a Meta implementou sistemas avancados de deteccao de originalidade. Conteudo reciclado, repostado de outros criadores ou gerado inteiramente por IA sem curadoria humana recebe penalizacao ativa na distribuicao. Por outro lado, conteudo autoral -- experiencias reais, opinioes genuinas, historias vividas, perspectivas unicas -- recebe um boost de ate 30% na distribuicao. O algoritmo usa analise de similaridade semantica para identificar conteudo duplicado ou excessivamente derivativo. A mensagem e clara: sua voz autentica e sua maior vantagem competitiva.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">O que o Algoritmo Classifica como Original</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>Experiencia pessoal:</strong> historias vividas, aprendizados reais, bastidores</li>
+          <li>&#8226; <strong>Opiniao propria:</strong> posicionamento claro sobre temas do nicho</li>
+          <li>&#8226; <strong>Dados originais:</strong> pesquisas, testes, resultados proprios</li>
+          <li>&#8226; <strong>Formato unico:</strong> abordagem visual ou narrativa diferenciada</li>
+          <li>&#8226; <strong>Penalizacao:</strong> conteudo copiado perde ate 70% do alcance potencial</li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <p class="text-neutral-300 mb-3">Extraia historias originais da sua propria experiencia:</p>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Gere 20 ideias de posts baseados em historias pessoais para o nicho [NICHO]. Para cada ideia, inclua: o gancho da historia, o conflito ou desafio enfrentado, a licao aprendida e como transformar isso em conteudo educativo. Foque em experiencias que qualquer profissional do nicho pode se identificar."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Compartilhar experiencias reais e bastidores</li>
+            <li>&#8226; Dar sua opiniao genuina sobre tendencias</li>
+            <li>&#8226; Mostrar resultados proprios (prints, dados)</li>
+            <li>&#8226; Usar IA como assistente, nao como autor</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Copiar posts virais de outros criadores</li>
+            <li>&#8226; Repostar conteudo sem adicionar valor</li>
+            <li>&#8226; Publicar texto 100% gerado por IA</li>
+            <li>&#8226; Usar mesma abordagem que todos usam</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">📱 Hack 6+7: Reels + Conteudo Util</h2>
+          <p class="text-neutral-400 text-sm">Os dois formatos que dominam a distribuicao</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Dois hacks finais que se complementam perfeitamente. <strong>Hack 6 - Reels:</strong> em 2026, Reels sao o formato padrao da Meta. Videos verticais de ate 20 minutos recebem distribuicao privilegiada em todas as superficies (Feed, Reels, Explorar, Facebook Watch). Reels curtos (15-30s) geram maior taxa de replay, enquanto Reels longos (3-10 min) geram maior tempo total de visualizacao. <strong>Hack 7 - Conteudo Util:</strong> conteudo que ensina, resolve ou informa gera saves (o sinal mais valioso depois de compartilhamentos). Carrosseis educativos tem taxa media de engajamento de 1.92% -- a mais alta entre todos os formatos estaticos.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Dados de Performance por Formato</h4>
+        <ul class="text-neutral-300 space-y-2">
+          <li>&#8226; <strong>Reels curtos (15-30s):</strong> maior taxa de replay, ideal para alcance</li>
+          <li>&#8226; <strong>Reels medios (1-3 min):</strong> equilibrio entre alcance e retencao</li>
+          <li>&#8226; <strong>Reels longos (3-10 min):</strong> maior tempo total de visualizacao, ideal para autoridade</li>
+          <li>&#8226; <strong>Carrosseis:</strong> 1.92% de engajamento medio -- formato com mais saves</li>
+          <li>&#8226; <strong>Conteudo educativo:</strong> gera 2.5x mais saves que conteudo de entretenimento</li>
+          <li>&#8226; <strong>Reels agora suportam ate 20 minutos</strong> de duracao</li>
+        </ul>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompts para IA</h4>
+        <p class="text-neutral-300 mb-3">Dois prompts essenciais para alimentar sua producao:</p>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono mb-3">
+          <strong class="text-blue-400">Prompt 1 - Reels:</strong><br>
+          "Gere 30 ideias de Reels curtos (15-30 segundos) para o nicho [NICHO]. Cada ideia deve incluir: o gancho dos primeiros 3 segundos, o conteudo central, o CTA final e o formato sugerido (talking head, B-roll, texto na tela, tutorial rapido)."
+        </div>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          <strong class="text-blue-400">Prompt 2 - Conteudo Educativo:</strong><br>
+          "Gere 25 ideias de posts educativos para o nicho [NICHO] que gerem saves. Cada ideia deve resolver um problema especifico, incluir dados ou passo a passo, e terminar com CTA para salvar. Varie entre carrossel, Reel tutorial, post lista e infografico."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Priorizar Reels como formato principal</li>
+            <li>&#8226; Criar carrosseis educativos com CTA de save</li>
+            <li>&#8226; Misturar Reels curtos (alcance) com longos (autoridade)</li>
+            <li>&#8226; Incluir valor pratico em cada conteudo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Postar apenas fotos estaticas</li>
+            <li>&#8226; Reels sem gancho nos primeiros 3 segundos</li>
+            <li>&#8226; Conteudo raso que nao ensina nada</li>
+            <li>&#8226; Ignorar carrosseis (melhor formato para saves)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-8 mb-12">
+      <h3 class="text-2xl font-bold text-blue-400 mb-4">Resumo do Modulo 2.1</h3>
+      <div class="space-y-3 text-neutral-300">
+        <p>&#8226; <strong>Hack 1:</strong> Crie para desconhecidos -- 50% do Feed vem de contas nao seguidas</p>
+        <p>&#8226; <strong>Hack 2:</strong> Comentarios e compartilhamentos vencem curtidas -- likes sao apenas 5% do peso</p>
+        <p>&#8226; <strong>Hack 3:</strong> Conteudo fresco recebe prioridade -- publique 1-2x por dia com consistencia</p>
+        <p>&#8226; <strong>Hack 4:</strong> O UTIS mede interesse real via sinais passivos -- tempo de pausa, scroll, leitura</p>
+        <p>&#8226; <strong>Hack 5:</strong> Originalidade e recompensada -- conteudo autoral ganha ate 30% mais distribuicao</p>
+        <p>&#8226; <strong>Hack 6+7:</strong> Reels sao o formato padrao e conteudo util gera os saves que o algoritmo ama</p>
+      </div>
+    </section>
+
+    <!-- NAVEGACAO -->
+    <div class="flex items-center justify-between">
+      <a href="index.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Trilha 2
+      </a>
+      <a href="modulo-2-2.html" class="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/30 transition-colors border border-blue-500/30">
+        Modulo 2.2 →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 text-center text-neutral-500 text-sm">
+    <p>Hack Meta 2026 - INEMA.CLUB</p>
+  </footer>
+
+  <!-- THEME TOGGLE JS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

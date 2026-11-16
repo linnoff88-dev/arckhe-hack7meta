@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 4.3 - Primeiro Mês Completo | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores AMBER */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* Light mode - outras cores do nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-green-400 { color: #15803d; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-amber-400 transition-colors">Hack Meta 2026</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-amber-400 transition-colors">Trilha 4</a>
+      <span>/</span>
+      <span class="text-amber-400">Modulo 4.3</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-900 to-dark-800 py-12 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-400 text-sm font-semibold rounded-full mb-4">
+        MODULO 4.3
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold mb-4">
+        📆 Primeiro Mes <span class="text-amber-400">Completo</span>
+      </h1>
+      <p class="text-lg text-neutral-400 max-w-3xl mb-6">
+        Planejamento semana a semana para seus primeiros 30 dias. Da fundacao a primeira conversao.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">~35 min</span>
+          <span class="text-neutral-400 text-sm ml-1">de conteudo</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Iniciante</span>
+          <span class="text-neutral-400 text-sm ml-1">nivel</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">6</span>
+          <span class="text-neutral-400 text-sm ml-1">secoes</span>
+        </div>
+        <div class="bg-dark-800 rounded-lg px-4 py-2 border border-dark-600">
+          <span class="text-amber-400 font-bold">Planejamento</span>
+          <span class="text-neutral-400 text-sm ml-1">tipo</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- SECAO 1 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">Semana 1: Fundacao</h2>
+          <p class="text-neutral-400 mt-1">Estabelecer presenca e definir o nicho com clareza</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Objetivo da Semana 1</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Na primeira semana, voce esta plantando a semente. O algoritmo ainda nao sabe nada sobre voce. Cada post que voce publica e uma informacao que o Instagram usa para entender quem e seu publico e para quem mostrar seu conteudo. Por isso, e fundamental que TODOS os posts sejam do mesmo nicho.
+          </p>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-amber-400 font-semibold text-sm mb-2">Meta da Semana 1:</p>
+            <p class="text-neutral-100 text-lg font-bold">50-200 novos seguidores</p>
+            <p class="text-neutral-400 text-xs mt-1">Numero pode variar dependendo do nicho e da qualidade do conteudo</p>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Plano da Semana 1</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-100 font-semibold text-sm">5 posts no feed</span>
+                <span class="text-amber-400 text-xs bg-amber-500/20 px-2 py-0.5 rounded-full">Obrigatorio</span>
+              </div>
+              <p class="text-neutral-300 text-xs">Conforme planejado no Modulo 4.2: apresentacao, reel, carrossel educativo, engajamento, reel tendencia.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-100 font-semibold text-sm">Stories diarios</span>
+                <span class="text-amber-400 text-xs bg-amber-500/20 px-2 py-0.5 rounded-full">Obrigatorio</span>
+              </div>
+              <p class="text-neutral-300 text-xs">Minimo 3-5 Stories por dia. Misture conteudo, bastidores e interacao (enquetes, perguntas).</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-neutral-100 font-semibold text-sm">Engajamento ativo</span>
+                <span class="text-amber-400 text-xs bg-amber-500/20 px-2 py-0.5 rounded-full">Recomendado</span>
+              </div>
+              <p class="text-neutral-300 text-xs">Comente em 10-15 posts de perfis do mesmo nicho por dia. Comentarios genuinos, nao spam. Isso aumenta sua visibilidade.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">Semana 2: Educacao</h2>
+          <p class="text-neutral-400 mt-1">Conteudo de valor que posiciona voce como autoridade</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Foco: Gerar Saves</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Na segunda semana, seu objetivo e criar conteudo tao util que as pessoas precisem salvar. Saves sao o sinal mais forte que voce pode dar ao algoritmo. Um post com muitos saves e distribuido para 5-10x mais pessoas.
+          </p>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            Formatos que mais geram saves: carrosseis com listas de dicas, tutoriais passo a passo, infograficos, checklists e resumos.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Calendario da Semana 2</h3>
+          <div class="space-y-3">
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[50px]">Seg</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Carrossel: "7 dicas de [nicho] para iniciantes"</p>
+                <p class="text-neutral-400 text-xs">Formato: 9 slides. Objetivo: saves. Gancho: "Salva isso antes que desapareca"</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[50px]">Ter</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Reel tutorial: "Como fazer [tarefa] em 3 passos"</p>
+                <p class="text-neutral-400 text-xs">Formato: 30-60s. Objetivo: compartilhamentos. Gancho: "Isso muda tudo sobre [tema]"</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[50px]">Qua</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Carrossel: "Antes vs Depois de aplicar [tecnica]"</p>
+                <p class="text-neutral-400 text-xs">Formato: 6-8 slides. Objetivo: saves + shares. Gancho: "A diferenca e absurda"</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[50px]">Qui</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Reel: "3 ferramentas gratis para [resultado]"</p>
+                <p class="text-neutral-400 text-xs">Formato: 20-40s. Objetivo: saves. Gancho: "Voce nao precisa gastar nada"</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3 bg-dark-700 rounded-lg p-4">
+              <span class="text-amber-400 font-bold text-sm min-w-[50px]">Sex</span>
+              <div>
+                <p class="text-neutral-100 font-semibold text-sm">Carrossel checklist: "Tudo que voce precisa saber sobre [tema]"</p>
+                <p class="text-neutral-400 text-xs">Formato: 10 slides. Objetivo: saves. Gancho: "O guia completo em 1 post"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Prompt para IA</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-neutral-300 text-sm font-mono">"Crie um calendario da semana 2 com 5 posts educativos para o nicho [NICHO]. Para cada post inclua: formato (carrossel ou reel), gancho de abertura, objetivo principal (saves, shares ou comentarios), e um breve resumo do conteudo de cada slide ou segmento do video."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">Semana 3: Engajamento</h2>
+          <p class="text-neutral-400 mt-1">Criar conversa, comunidade e conexoes estrategicas</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Foco: Gerar conversa</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Na terceira semana, o foco muda de ensinar para conversar. Voce ja tem conteudo educativo no perfil. Agora precisa transformar seguidores passivos em uma comunidade ativa. Posts que geram debate, perguntas que dividem opinioes e enquetes que provocam reflexao.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Estrategias de engajamento</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-2">Posts que geram conversa</h4>
+              <ul class="text-neutral-300 text-sm space-y-1">
+                <li>&#9679; "Concordo ou discordo: [opiniao polemica no nicho]"</li>
+                <li>&#9679; "Qual voce prefere: [opcao A] ou [opcao B]?"</li>
+                <li>&#9679; "Me conta: como voce comecou no [nicho]?"</li>
+                <li>&#9679; "Mito ou verdade: [afirmacao comum no nicho]"</li>
+              </ul>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-2">Responder TODOS os comentarios</h4>
+              <p class="text-neutral-300 text-sm">Cada comentario que voce responde conta como uma interacao adicional. Se um post tem 20 comentarios e voce responde todos, o algoritmo ve 40 interacoes. Alem disso, quando voce responde, a pessoa recebe notificacao e muitas vezes volta para responder de novo.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4">
+              <h4 class="text-neutral-100 font-semibold text-sm mb-2">2-3 Collabs na semana</h4>
+              <p class="text-neutral-300 text-sm">Encontre 2-3 perfis do mesmo nicho e tamanho similar. Proponha collabs: live juntos, post colaborativo, troca de Stories. O publico de um se torna publico do outro.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Como abordar para collabs</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-amber-400 text-xs font-bold mb-2">MODELO DE MENSAGEM:</p>
+            <p class="text-neutral-300 text-sm italic">"Oi [nome]! Sigo seu trabalho sobre [tema] e admiro muito. Tenho um perfil sobre [seu nicho] com [X] seguidores e estava pensando se voce toparia fazer um post colaborativo ou uma live juntos. Acho que nossos publicos iam curtir muito! O que acha?"</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">Semana 4: Conversao</h2>
+          <p class="text-neutral-400 mt-1">Transformar seguidores em contatos e leads</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Primeiro CTA para Lead Magnet</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed mb-4">
+            Na quarta semana, voce ja tem conteudo, engajamento e credibilidade. E hora de dar o proximo passo: capturar contatos. Ofereca algo gratuito e valioso em troca do WhatsApp ou e-mail da pessoa. Isso e um lead magnet.
+          </p>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">O que oferecer como lead magnet</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📋</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Checklist</h4>
+              <p class="text-neutral-400 text-xs">Lista pratica de tarefas. Ex: "Checklist de lancamento de perfil"</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📄</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Template</h4>
+              <p class="text-neutral-400 text-xs">Modelo pronto para usar. Ex: "Template de calendario de conteudo"</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <div class="text-3xl mb-2">📖</div>
+              <h4 class="text-neutral-100 font-semibold text-sm mb-1">Mini-guia</h4>
+              <p class="text-neutral-400 text-xs">PDF curto (5-10 pgs). Ex: "Guia de 7 dias para iniciantes"</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Como entregar o lead magnet</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-100 font-semibold text-sm">Via WhatsApp (mais simples)</p>
+              <p class="text-neutral-300 text-xs">Post: "Comenta QUERO que eu te mando por DM" → Na DM, envia o link do WhatsApp → No WhatsApp, envia o material automaticamente ou manualmente.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-3">
+              <p class="text-neutral-100 font-semibold text-sm">Via link na bio</p>
+              <p class="text-neutral-300 text-xs">Adicione uma pagina de captura no Linktree/Beacons que peça nome e e-mail em troca do download.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Prompt para IA</h3>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="text-neutral-300 text-sm font-mono">"Crie 3 ideias de lead magnet gratuito para o nicho [NICHO] que possam ser entregues por WhatsApp. Para cada ideia inclua: titulo atrativo, descricao curta do conteudo (5 linhas), formato (PDF, checklist, planilha) e o texto do post que vai promover esse material."</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">Metricas do Primeiro Mes</h2>
+          <p class="text-neutral-400 mt-1">O que esperar e como interpretar seus numeros</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Numeros realistas para o primeiro mes</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-amber-400">200-500</p>
+              <p class="text-neutral-300 text-sm">seguidores novos</p>
+              <p class="text-neutral-500 text-xs mt-1">Pode variar muito dependendo do nicho</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-amber-400">5-10%</p>
+              <p class="text-neutral-300 text-sm">taxa de engajamento</p>
+              <p class="text-neutral-500 text-xs mt-1">Alta no inicio (poucos seguidores, mas engajados)</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-amber-400">20+</p>
+              <p class="text-neutral-300 text-sm">posts publicados</p>
+              <p class="text-neutral-500 text-xs mt-1">5 por semana no feed + Stories diarios</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-amber-400">1-2</p>
+              <p class="text-neutral-300 text-sm">posts de destaque</p>
+              <p class="text-neutral-500 text-xs mt-1">Pelo menos 1 post vai performar muito acima da media</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-6">
+          <h3 class="text-amber-400 font-semibold mb-2">Nao se compare</h3>
+          <p class="text-neutral-300 text-sm">Perfis grandes ja passaram por essa fase. Eles nao comecaram com 100K seguidores. Voce esta nos primeiros 30 dias - o mais importante e manter a consistencia e aprender com os dados, nao com as emocoes. Se voce publicou todo dia e analisou os resultados, voce ja esta na frente de 90% das pessoas que tentam.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 -->
+    <section class="mb-16">
+      <div class="flex items-start space-x-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">Ajustando a Rota</h2>
+          <p class="text-neutral-400 mt-1">Analisar resultados e otimizar para o segundo mes</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Perguntas-chave para analise</h3>
+          <div class="space-y-3">
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <p class="text-neutral-100 font-semibold text-sm">Qual formato funcionou melhor?</p>
+              <p class="text-neutral-300 text-xs mt-1">Compare carrosseis vs reels vs imagens unicas. Qual teve mais alcance e saves? Dobre nesse formato no mes 2.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <p class="text-neutral-100 font-semibold text-sm">Qual pilar gerou mais saves?</p>
+              <p class="text-neutral-300 text-xs mt-1">Se posts de dicas praticas tiveram 3x mais saves que posts de motivacao, foque em dicas praticas.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <p class="text-neutral-100 font-semibold text-sm">Qual horario teve mais alcance?</p>
+              <p class="text-neutral-300 text-xs mt-1">Verifique nos Insights quando seu publico esta online. Publique nos 3 melhores horarios.</p>
+            </div>
+            <div class="bg-dark-700 rounded-lg p-4 border-l-4 border-amber-400">
+              <p class="text-neutral-100 font-semibold text-sm">O que parar de fazer?</p>
+              <p class="text-neutral-300 text-xs mt-1">Se um tipo de conteudo consistentemente nao funciona, pare. Nao insista em formatos que nao geram resultado.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-dark-800 rounded-xl border border-dark-600 p-6">
+          <h3 class="text-amber-400 font-semibold mb-3">Regra de ouro: dobrar no que funciona</h3>
+          <p class="text-neutral-300 text-sm leading-relaxed">
+            O maior erro dos iniciantes e tentar coisas novas toda semana. Quando voce encontra um formato, estilo de gancho ou tema que funciona bem, a estrategia correta e REPETIR. Nao e repetir o mesmo post - e repetir o mesmo PADRAO. Se carrosseis de "5 erros" funcionaram, faça "7 mitos", "3 segredos", "10 dicas". Mesmo formato, conteudo diferente.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-amber-900/20 via-dark-800 to-dark-800 rounded-2xl border border-amber-500/30 p-8">
+      <h2 class="text-2xl font-bold mb-4 text-amber-400">Resumo do Modulo 4.3</h2>
+      <p class="text-neutral-300 mb-6">Seu primeiro mes completo, semana a semana:</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Semana 1 - Fundacao</div>
+          <p class="text-neutral-400 text-sm">Apresentacao + nicho definido. Meta: 50-200 seguidores</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Semana 2 - Educacao</div>
+          <p class="text-neutral-400 text-sm">Conteudo de valor focado em saves</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Semana 3 - Engajamento</div>
+          <p class="text-neutral-400 text-sm">Conversa, comunidade e collabs</p>
+        </div>
+        <div class="bg-dark-800/50 rounded-lg p-4 border border-dark-600">
+          <div class="text-amber-400 font-bold mb-1">Semana 4 - Conversao</div>
+          <p class="text-neutral-400 text-sm">Lead magnet e captura de contatos</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="modulo-4-2.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          &larr; Modulo 4.2
+        </a>
+        <a href="modulo-4-4.html" class="inline-flex items-center px-6 py-3 bg-amber-500/20 text-amber-400 font-semibold rounded-lg hover:bg-amber-500/30 transition-colors">
+          Proximo: Modulo 4.4 &rarr;
+        </a>
+        <a href="index.html" class="inline-flex items-center px-6 py-3 bg-dark-700 text-neutral-300 font-semibold rounded-lg hover:bg-dark-600 transition-colors">
+          Voltar para Trilha 4
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 &bull; <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.3 - Conteúdo Recomendável vs Comum | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400 transition-colors">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.3</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full mb-6 border border-emerald-500/30">
+        MODULO 1.3
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        ✨ Conteudo <span class="text-emerald-400">Recomendavel vs Comum</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        O que faz o algoritmo decidir recomendar seu conteudo para milhares de desconhecidos? Entenda os filtros e como passa-los.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">~25</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Basico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- TOPICO 1 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">1</div>
+        <h2 class="text-2xl font-bold">🎯 Os 3 Filtros de Recomendacao</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Para que seu conteudo seja recomendado a nao-seguidores (Explorar, Reels sugeridos, Feed recomendado), ele precisa passar por tres filtros fundamentais do algoritmo. Falhar em qualquer um deles significa que seu conteudo fica restrito ao circulo de seguidores — com alcance organico de apenas 3-4%.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-4">💡 Os 3 Filtros</h3>
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center flex-shrink-0 text-lg">1</div>
+            <div>
+              <p class="font-bold text-emerald-400">Retencao</p>
+              <p class="text-neutral-300 text-sm">Mais de 50% dos espectadores passam dos 3 primeiros segundos. O conteudo prende atenção. Retencao geral acima de 40%.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 text-lg">2</div>
+            <div>
+              <p class="font-bold text-blue-400">Acao</p>
+              <p class="text-neutral-300 text-sm">O conteudo gera acoes de alto valor: saves, shares, DM sends. Nao basta ser assistido — precisa provocar comportamento.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center flex-shrink-0 text-lg">3</div>
+            <div>
+              <p class="font-bold text-purple-400">Originalidade</p>
+              <p class="text-neutral-300 text-sm">Conteudo nativo da plataforma, sem marca d'agua de outras redes, sem reciclagem obvia. Criado originalmente para Instagram/Facebook.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados dos Filtros</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Retencao 3s:</strong> 50%+ e o minimo; 70%+ para recomendacao forte</li>
+          <li>• <strong>Save rate:</strong> acima de 1% para passar o filtro de acao</li>
+          <li>• <strong>Send rate:</strong> acima de 0.5% para indicar compartilhabilidade</li>
+          <li>• <strong>Originalidade:</strong> conteudo com marca d'agua perde ate 80% do alcance potencial</li>
+          <li>• <strong>Apenas ~15% dos conteudos</strong> passam nos 3 filtros e sao recomendados amplamente</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Antes de postar, passe seu conteudo pelo checklist mental dos 3 filtros: (1) Os primeiros 3 segundos prendem? (2) Alguem salvaria ou enviaria isso? (3) E conteudo original, sem marcas de outras plataformas? Se um dos tres falhar, ajuste antes de publicar.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Testar gancho nos 3 primeiros segundos antes de postar</li>
+            <li>• Criar conteudo que gera acao (save, send, comentario)</li>
+            <li>• Produzir conteudo nativo para a plataforma</li>
+            <li>• Usar o checklist dos 3 filtros em cada publicacao</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Publicar sem verificar se passa nos filtros</li>
+            <li>• Conteudo que so gera curtidas mas nenhuma acao real</li>
+            <li>• Repostar de outras plataformas com marca d'agua</li>
+            <li>• Ignorar as metricas de retencao apos publicar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">2</div>
+        <h2 class="text-2xl font-bold">🚫 Conteudo Reciclado e Penalizado</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        A Meta investe bilhoes em deteccao automatica de conteudo reciclado. Em 2026, o sistema identifica com alta precisao videos baixados do TikTok, exportados do CapCut com marca d'agua, ou simplesmente repostados de outras contas. Conteudo reciclado sofre penalizacao severa no alcance.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 O que a Meta Detecta</h3>
+        <div class="space-y-3 text-neutral-300">
+          <p>O sistema de deteccao analisa multiplos sinais simultaneamente:</p>
+          <ul class="space-y-2 text-sm">
+            <li>• <strong>Marca d'agua visual:</strong> logo do TikTok, CapCut, ou qualquer outra plataforma</li>
+            <li>• <strong>Fingerprint de video:</strong> hash digital que identifica videos ja publicados em outras plataformas</li>
+            <li>• <strong>Metadados:</strong> informacoes do arquivo que indicam a origem</li>
+            <li>• <strong>Comparacao de frames:</strong> IA que compara quadros com banco de dados global</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Box Alerta -->
+      <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-red-400 font-bold text-lg mb-3">⚠️ Penalizacoes por Reciclagem</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Reducao de alcance:</strong> ate 80% menos distribuicao</li>
+          <li>• <strong>Bloqueio de recomendacao:</strong> conteudo nao aparece no Explorar ou Reels sugeridos</li>
+          <li>• <strong>Penalizacao do perfil:</strong> reincidencia afeta o alcance de TODOS os posts futuros</li>
+          <li>• <strong>Shadowban temporario:</strong> em casos graves, o perfil inteiro perde visibilidade</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Se voce produz conteudo para multiplas plataformas, grave uma vez e exporte separadamente para cada rede. Use CapCut Premium (sem marca d'agua) ou outro editor que nao adiciona watermark. Nunca baixe do TikTok para repostar no Instagram — grave o video original no seu celular e poste nativamente.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Exportar sem marca d'agua de qualquer editor</li>
+            <li>• Postar nativamente em cada plataforma</li>
+            <li>• Adaptar levemente o conteudo para cada rede</li>
+            <li>• Usar editores profissionais sem watermark</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Baixar video do TikTok e repostar no Instagram</li>
+            <li>• Usar versao gratuita do CapCut (com marca d'agua)</li>
+            <li>• Repostar conteudo de outras contas sem permissao</li>
+            <li>• Ignorar marcas d'agua antes de publicar</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">3</div>
+        <h2 class="text-2xl font-bold">🎭 Autenticidade vs Producao Polida</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Uma das maiores mudancas de 2026: conteudo autentico, de camera frontal, imperfeito e direto esta superando consistentemente conteudo com producao elaborada. O publico esta saturado de conteudo "perfeito" e busca conexao real. O algoritmo reflete isso, priorizando conteudo que gera engajamento genuino.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Era da Autenticidade</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          A tendencia nao e "producao ruim" — e "producao honesta". Um video de camera frontal com boa iluminacao natural e conteudo relevante performa melhor que um video com transicoes elaboradas mas sem substancia. O publico quer sentir que esta conversando com uma pessoa real, nao assistindo a um comercial. Autenticidade nao e desculpa para ser desleixado — e permissao para ser humano.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre Autenticidade vs Producao</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Videos camera frontal:</strong> 40% mais retencao que videos com producao pesada</li>
+          <li>• <strong>Conteudo "imperfeito":</strong> 2x mais comentarios profundos</li>
+          <li>• <strong>Stories bastidores:</strong> 60% mais respostas que Stories editados</li>
+          <li>• <strong>Conteudo UGC (user-generated):</strong> 4x mais confianca do publico vs anuncios polidos</li>
+          <li>• <strong>Tendencia 2026:</strong> creators com producao "lo-fi" crescem 3x mais rapido</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Encontre o equilibrio: use boa iluminacao natural (luz de janela), camera frontal do celular, fale diretamente para a camera como se estivesse falando com um amigo. Nao decore texto — use bullet points como guia e fale naturalmente. Se voce errar, deixe o erro (ou corte simples). A imperfeicao humaniza.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Camera frontal com boa iluminacao natural</li>
+            <li>• Falar diretamente, como em uma conversa</li>
+            <li>• Mostrar bastidores e processo real</li>
+            <li>• Deixar pequenas imperfeicoes naturais</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Producao tao polida que parece comercial de TV</li>
+            <li>• Decorar texto e parecer robotico</li>
+            <li>• Usar filtros pesados que distorcem a realidade</li>
+            <li>• Sacrificar autenticidade por "perfeicao"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">4</div>
+        <h2 class="text-2xl font-bold">📐 Formato 9:16 Vertical</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Em 2026, 90% do inventario de conteudo consumido nas plataformas da Meta e vertical (9:16). O formato horizontal nao e proibido, mas perde eficiencia de CPM em anuncios e alcance organico. Resolucao minima recomendada: 1080x1920 pixels.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Por que 9:16 Domina</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          O formato vertical ocupa a tela inteira do celular, eliminando distracoes. O usuario fica imerso no conteudo, o que aumenta retencao e tempo de visualizacao. Em Reels, o formato vertical e obrigatorio para alcance maximo. No Feed, posts verticais (4:5 ou 9:16) ocupam mais espaco na tela e recebem mais atencao que posts quadrados (1:1) ou horizontais (16:9).
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre Formatos</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-dark-800 rounded-lg p-4 text-center border border-emerald-500/30">
+            <div class="text-2xl font-bold text-emerald-400">9:16</div>
+            <div class="text-sm text-emerald-400 mt-1">Vertical (Reels)</div>
+            <div class="text-xs text-neutral-400 mt-1">1080x1920px - Melhor performance</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4 text-center border border-blue-500/30">
+            <div class="text-2xl font-bold text-blue-400">4:5</div>
+            <div class="text-sm text-blue-400 mt-1">Vertical (Feed)</div>
+            <div class="text-xs text-neutral-400 mt-1">1080x1350px - Otimo para carrosseis</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4 text-center border border-dark-600">
+            <div class="text-2xl font-bold text-neutral-500">1:1</div>
+            <div class="text-sm text-neutral-500 mt-1">Quadrado</div>
+            <div class="text-xs text-neutral-500 mt-1">1080x1080px - Menor impacto</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Sempre grave com o celular na vertical. Se usar camera profissional, configure para 9:16. Em carrosseis, use 4:5 (ligeiramente mais largo) para maximizar espaco no Feed. Evite formato horizontal em qualquer situacao — mesmo conteudo educativo que "parece melhor" na horizontal performa pior em alcance e engajamento.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Gravar sempre na vertical (9:16)</li>
+            <li>• Resolucao minima de 1080x1920 pixels</li>
+            <li>• Usar 4:5 para carrosseis no Feed</li>
+            <li>• Manter zona segura para textos (longe das bordas)</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Formato horizontal (16:9) em Reels</li>
+            <li>• Resolucao abaixo de 720p</li>
+            <li>• Videos com barras pretas nas laterais</li>
+            <li>• Textos muito proximos as bordas (cortados pela UI)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">5</div>
+        <h2 class="text-2xl font-bold">🔍 SEO Social</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Instagram e Facebook estao se tornando mecanismos de busca. Em 2026, o Google indexa conteudo publico dessas plataformas, e os usuarios usam a barra de busca do Instagram para encontrar solucoes. Palavras-chave na legenda, narracao do video e texto na tela impactam diretamente a descoberta do seu conteudo.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 O que e SEO Social</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          SEO Social e a otimizacao do seu conteudo para ser encontrado nas buscas dentro das plataformas sociais e tambem no Google. Diferente do SEO tradicional, aqui voce otimiza legendas, texto na tela, narracao falada, alt text de imagens e ate hashtags. O objetivo e que quando alguem buscar "como fazer pao caseiro" no Instagram, o seu conteudo apareca nos resultados.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Onde Colocar Palavras-chave</h3>
+        <div class="space-y-3 text-neutral-300 text-sm">
+          <div class="flex items-start gap-3">
+            <span class="text-emerald-400 font-bold text-lg">1.</span>
+            <div>
+              <p class="font-semibold">Legenda (Caption)</p>
+              <p class="text-neutral-400">Inclua palavras-chave naturalmente nas primeiras 2 linhas. "Como fazer pao caseiro: 5 dicas praticas"</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-blue-400 font-bold text-lg">2.</span>
+            <div>
+              <p class="font-semibold">Texto na Tela</p>
+              <p class="text-neutral-400">O algoritmo le texto nos videos. Inclua palavras-chave visuais nos primeiros segundos.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-purple-400 font-bold text-lg">3.</span>
+            <div>
+              <p class="font-semibold">Narracao Falada</p>
+              <p class="text-neutral-400">A IA transcreve o audio automaticamente. Diga as palavras-chave em voz alta no video.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-amber-400 font-bold text-lg">4.</span>
+            <div>
+              <p class="font-semibold">Alt Text e Hashtags</p>
+              <p class="text-neutral-400">Use alt text descritivo e 3-5 hashtags de nicho (nao genericas).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Antes de criar conteudo, pesquise na barra de busca do Instagram o que as pessoas buscam no seu nicho. Use essas mesmas palavras na legenda, na narracao e no texto na tela. Exemplo: se "receita facil de bolo" e muito buscado, use exatamente essas palavras, nao variacoes criativas como "delicia de confeitaria".
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Pesquisar termos de busca do seu nicho no Instagram</li>
+            <li>• Usar palavras-chave na legenda, voz e texto na tela</li>
+            <li>• Preencher alt text em imagens e carrosseis</li>
+            <li>• Usar 3-5 hashtags de nicho especificas</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Legendas vagas sem palavras-chave ("novo post!")</li>
+            <li>• Hashtags genericas (#love #instagood #photooftheday)</li>
+            <li>• Ignorar o texto na tela como fator de busca</li>
+            <li>• Nao usar alt text em imagens</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">6</div>
+        <h2 class="text-2xl font-bold">🌟 Conteudo Compartilhavel</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        O objetivo final nao e ser curtido — e ser enviado. Conteudo compartilhavel e aquele que faz o espectador pensar em outra pessoa. "Isso e a cara do fulano", "Preciso mandar isso pra minha mae", "Meu chefe precisa ver isso". Crie para ser enviado, nao apenas consumido.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 O Framework da Compartilhabilidade</h3>
+        <p class="text-neutral-300 leading-relaxed mb-4">
+          Antes de publicar, faca essas 3 perguntas:
+        </p>
+        <div class="space-y-3">
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-emerald-400 font-semibold">1. "Esse conteudo faz querer marcar alguem?"</p>
+            <p class="text-neutral-400 text-sm">Se sim, e compartilhavel por identificacao.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-blue-400 font-semibold">2. "Esse conteudo faz querer enviar para um amigo?"</p>
+            <p class="text-neutral-400 text-sm">Se sim, e compartilhavel por utilidade.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-purple-400 font-semibold">3. "Esse conteudo faz querer repostar nos Stories?"</p>
+            <p class="text-neutral-400 text-sm">Se sim, e compartilhavel por identidade (a pessoa se identifica com a mensagem).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Categorias de Conteudo Compartilhavel</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Humor relatable:</strong> "quando voce..." — situacoes do dia a dia que todos vivem</li>
+          <li>• <strong>Informacao surpreendente:</strong> dados, fatos, revelacoes que geram "eu nao sabia disso"</li>
+          <li>• <strong>Utilidade pratica:</strong> dicas, hacks, tutoriais que resolvem problemas reais</li>
+          <li>• <strong>Emocao forte:</strong> conteudo que emociona, inspira ou indigna (positivamente)</li>
+          <li>• <strong>Identificacao:</strong> "isso e muito eu" — conteudo que reflete a identidade do publico</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Crie "conteudo ponte" — conteudo que conecta duas pessoas. Exemplo: "Manda pra aquele amigo que sempre faz isso", "Marca alguem que precisa ouvir isso", "Envia pra pessoa que esta passando por isso". O CTA de compartilhamento funciona melhor quando especifica QUEM receber o conteudo.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Usar o framework das 3 perguntas antes de postar</li>
+            <li>• Criar conteudo que conecta pessoas</li>
+            <li>• Usar CTAs especificos de compartilhamento</li>
+            <li>• Misturar humor, utilidade e emocao no conteudo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Conteudo auto-centrado demais ("olha o que EU fiz")</li>
+            <li>• CTAs genericos ("compartilha ai")</li>
+            <li>• Conteudo que so interessa a voce</li>
+            <li>• Ignorar a metrica de compartilhamentos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-emerald-400">📋 Resumo do Modulo 1.3</h2>
+
+        <div class="space-y-3 mb-8">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi os 3 filtros de recomendacao: Retencao, Acao e Originalidade</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que conteudo reciclado/com marca d'agua e severamente penalizado</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Compreendi que autenticidade supera producao polida em 2026</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que formato 9:16 vertical e obrigatorio para performance maxima</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi SEO Social e como otimizar para busca com palavras-chave</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei criar conteudo compartilhavel usando o framework das 3 perguntas</span>
+          </label>
+        </div>
+
+        <div class="border-t border-emerald-500/30 pt-6">
+          <p class="text-neutral-400 mb-4">
+            <strong class="text-emerald-400">Proximo Modulo:</strong> 1.4 - Metricas e KPIs que Importam
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="modulo-1-2.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              ← Modulo Anterior
+            </a>
+            <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              Voltar para Trilha
+            </a>
+            <a href="modulo-1-4.html" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 rounded-lg transition-colors font-semibold">
+              Proximo Modulo →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 — Um curso <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    if (html.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

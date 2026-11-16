@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.4 - Métricas e KPIs | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400 transition-colors">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.4</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full mb-6 border border-emerald-500/30">
+        MODULO 1.4
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        📈 Metricas e <span class="text-emerald-400">KPIs que Importam</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Pare de olhar para curtidas. Aprenda a ler os dados que realmente guiam decisoes e mostram se seu conteudo esta funcionando.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">~30</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Interm.</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Pratica</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- TOPICO 1 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">1</div>
+        <h2 class="text-2xl font-bold">🏔️ Piramide das Metricas</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Nem todas as metricas tem o mesmo valor. A Piramide das Metricas organiza os dados em 3 niveis: Vaidade (base), Engajamento Real (meio) e Negocio (topo). A maioria dos criadores fica presa na base, olhando curtidas e seguidores, enquanto o que realmente importa esta no meio e no topo.
+      </p>
+
+      <!-- Box Conceito - Piramide Visual -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-4">💡 A Piramide das Metricas</h3>
+        <div class="space-y-4">
+          <!-- Topo -->
+          <div class="bg-emerald-500/20 border border-emerald-500/30 rounded-lg p-4 max-w-md mx-auto">
+            <p class="text-emerald-400 font-bold text-center mb-1">NIVEL 3 — NEGOCIO</p>
+            <p class="text-neutral-300 text-sm text-center">Leads, vendas, ROI, receita, cliques no link</p>
+            <p class="text-neutral-400 text-xs text-center mt-1">Mais dificil de medir, mais valioso</p>
+          </div>
+          <!-- Meio -->
+          <div class="bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 max-w-lg mx-auto">
+            <p class="text-blue-400 font-bold text-center mb-1">NIVEL 2 — ENGAJAMENTO REAL</p>
+            <p class="text-neutral-300 text-sm text-center">Saves, shares, DM sends, retencao, comentarios profundos</p>
+            <p class="text-neutral-400 text-xs text-center mt-1">O que o algoritmo realmente mede</p>
+          </div>
+          <!-- Base -->
+          <div class="bg-dark-700 border border-dark-600 rounded-lg p-4 max-w-xl mx-auto">
+            <p class="text-neutral-400 font-bold text-center mb-1">NIVEL 1 — VAIDADE</p>
+            <p class="text-neutral-300 text-sm text-center">Curtidas, seguidores, impressoes, visualizacoes</p>
+            <p class="text-neutral-500 text-xs text-center mt-1">Mais visivel, menos importante</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Por que a Piramide Importa</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>80% dos criadores</strong> analisam apenas metricas de vaidade</li>
+          <li>• <strong>Perfis com mais saves/sends</strong> tem 5x mais crescimento organico</li>
+          <li>• <strong>Metricas de negocio</strong> sao as unicas que mostram retorno financeiro real</li>
+          <li>• <strong>Regra pratica:</strong> gaste 20% do tempo em vaidade, 50% em engajamento, 30% em negocio</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Toda semana, antes de olhar curtidas e seguidores, abra o Insights e va direto para saves, sends e retencao. Anote esses numeros. So depois olhe curtidas e seguidores. Esse habito muda como voce pensa sobre conteudo — voce comeca a criar para gerar acao, nao para gerar numeros bonitos.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Priorizar metricas de engajamento e negocio</li>
+            <li>• Anotar saves, sends e retencao semanalmente</li>
+            <li>• Tomar decisoes baseadas em dados reais</li>
+            <li>• Conectar metricas sociais com resultados de negocio</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Obsecar com numero de seguidores</li>
+            <li>• Medir sucesso por curtidas</li>
+            <li>• Comprar seguidores (destroi todas as metricas)</li>
+            <li>• Ignorar metricas de negocio (leads, vendas)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">2</div>
+        <h2 class="text-2xl font-bold">📊 Taxa de Engajamento</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        A taxa de engajamento e A metrica central para avaliar se seu conteudo esta funcionando. Ela mede a proporcao de pessoas que tomaram alguma acao em relacao ao total que viu o conteudo. A formula correta usa ALCANCE (nao seguidores) como base.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Formula da Taxa de Engajamento</h3>
+        <div class="bg-dark-700 rounded-lg p-6 text-center border border-dark-600">
+          <p class="text-2xl font-bold text-emerald-400 mb-2">
+            (Curtidas + Comentarios + Saves + Shares) / Alcance x 100
+          </p>
+          <p class="text-neutral-400 text-sm">Resultado em percentual — meta: acima de 3%</p>
+        </div>
+        <div class="mt-4 text-neutral-300 text-sm">
+          <p><strong>Importante:</strong> use Alcance (pessoas unicas que viram), NAO impressoes (total de vezes exibido). Alcance e o denominador correto porque cada pessoa conta uma vez, dando uma visao real de quantos dos que viram realmente interagiram.</p>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Benchmarks de Taxa de Engajamento</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-red-500/30">
+            <div class="text-xl font-bold text-red-400">< 1%</div>
+            <div class="text-xs text-neutral-500 mt-1">Critico</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-amber-500/30">
+            <div class="text-xl font-bold text-amber-400">1-3%</div>
+            <div class="text-xs text-neutral-400 mt-1">Medio</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-emerald-500/30">
+            <div class="text-xl font-bold text-emerald-400">3-6%</div>
+            <div class="text-xs text-neutral-400 mt-1">Bom</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-blue-500/30">
+            <div class="text-xl font-bold text-blue-400">> 6%</div>
+            <div class="text-xs text-neutral-400 mt-1">Excelente</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Calcule a taxa de engajamento de cada post e identifique padroes. Quais temas geram mais engajamento? Quais formatos? Quais horarios? Use essas informacoes para criar mais conteudo do tipo que funciona. Compare posts entre si, nao com outros perfis — cada nicho tem benchmarks diferentes.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Calcular por alcance, nao por seguidores</li>
+            <li>• Comparar seus posts entre si para encontrar padroes</li>
+            <li>• Buscar taxa acima de 3% como meta minima</li>
+            <li>• Incluir saves e shares no calculo (nao so likes)</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Calcular engajamento por seguidores (metrica distorcida)</li>
+            <li>• Comparar com perfis de nichos diferentes</li>
+            <li>• Ignorar a formula e "sentir" se esta bom</li>
+            <li>• Nao calcular regularmente</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">3</div>
+        <h2 class="text-2xl font-bold">🔖 Taxa de Salvamento e Compartilhamento</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Alem da taxa de engajamento geral, existem duas metricas especificas que merecem atenção individual: a taxa de salvamento (save rate) e a taxa de compartilhamento (share rate). Sao as metricas que mais impactam a recomendacao do algoritmo.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Formulas</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-600">
+            <p class="text-emerald-400 font-bold mb-2">Save Rate</p>
+            <p class="text-neutral-300 text-sm font-mono">Saves / Alcance x 100</p>
+            <p class="text-neutral-400 text-xs mt-2">Meta: acima de 1%</p>
+            <p class="text-emerald-400 text-xs">Excelente: acima de 3%</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4 border border-dark-600">
+            <p class="text-blue-400 font-bold mb-2">Share Rate</p>
+            <p class="text-neutral-300 text-sm font-mono">Shares / Alcance x 100</p>
+            <p class="text-neutral-400 text-xs mt-2">Meta: acima de 0.5%</p>
+            <p class="text-blue-400 text-xs">Viral: acima de 2%</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 O que os Numeros Significam</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Save Rate < 0.5%:</strong> conteudo nao e visto como referencia — repensar formato</li>
+          <li>• <strong>Save Rate 1-3%:</strong> conteudo valioso que pessoas querem rever — otimo</li>
+          <li>• <strong>Save Rate > 3%:</strong> conteudo de referencia — analise o que fez diferente e replique</li>
+          <li>• <strong>Share Rate < 0.3%:</strong> conteudo nao e compartilhavel — falta "fator enviar"</li>
+          <li>• <strong>Share Rate > 2%:</strong> potencial viral — o conteudo esta se espalhando organicamente</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Crie uma planilha simples com: Data | Post | Alcance | Saves | Save Rate | Shares | Share Rate. Preencha toda semana. Em 30 dias voce tera dados suficientes para identificar exatamente qual tipo de conteudo gera mais saves e shares — e criar mais dele.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Monitorar save rate e share rate separadamente</li>
+            <li>• Criar planilha de acompanhamento semanal</li>
+            <li>• Buscar save rate > 1% e share rate > 0.5%</li>
+            <li>• Analisar quais posts tem mais saves/shares e replicar</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Ignorar essas metricas no Insights</li>
+            <li>• Nao calcular as taxas (olhar numeros absolutos)</li>
+            <li>• Nao comparar posts entre si</li>
+            <li>• Achar que "pouco save" e normal</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">4</div>
+        <h2 class="text-2xl font-bold">⏱️ Retencao de Video</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Para Reels e videos, a retencao e a metrica mais importante de todas. Ela mostra qual percentual do video as pessoas assistiram em media. Uma retencao alta significa que o conteudo e envolvente do inicio ao fim — exatamente o que o algoritmo quer recomendar.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Formula da Retencao</h3>
+        <div class="bg-dark-700 rounded-lg p-6 text-center border border-dark-600">
+          <p class="text-2xl font-bold text-emerald-400 mb-2">
+            Tempo Medio Assistido / Duracao Total x 100
+          </p>
+          <p class="text-neutral-400 text-sm">Resultado em percentual — meta minima: 40% | Ideal: acima de 60%</p>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Benchmarks de Retencao</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-red-500/30">
+            <div class="text-xl font-bold text-red-400">< 25%</div>
+            <div class="text-xs text-neutral-500 mt-1">Critico</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-amber-500/30">
+            <div class="text-xl font-bold text-amber-400">25-40%</div>
+            <div class="text-xs text-neutral-400 mt-1">Abaixo da media</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-emerald-500/30">
+            <div class="text-xl font-bold text-emerald-400">40-60%</div>
+            <div class="text-xs text-neutral-400 mt-1">Bom</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-3 text-center border border-blue-500/30">
+            <div class="text-xl font-bold text-blue-400">> 60%</div>
+            <div class="text-xs text-neutral-400 mt-1">Excelente</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica: Como Aumentar Retencao</h3>
+        <div class="space-y-2 text-neutral-300 text-sm">
+          <p>• <strong>Gancho forte:</strong> prenda nos primeiros 2 segundos</p>
+          <p>• <strong>Ritmo rapido:</strong> cortes a cada 3-5 segundos, sem paradas longas</p>
+          <p>• <strong>Promessa e entrega:</strong> faca uma promessa no inicio e entregue no final</p>
+          <p>• <strong>Loop:</strong> conecte o final com o inicio para gerar re-assistencia</p>
+          <p>• <strong>Suspense progressivo:</strong> revele informacao gradualmente</p>
+          <p>• <strong>Duracao certa:</strong> nao estique o conteudo — se cabe em 15s, nao faca 60s</p>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Analisar curva de retencao no Insights</li>
+            <li>• Identificar onde as pessoas abandonam</li>
+            <li>• Testar duracoes diferentes (15s, 30s, 60s)</li>
+            <li>• Buscar retencao acima de 40% como minimo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Videos longos sem ritmo (esticar conteudo)</li>
+            <li>• Entregar tudo no inicio sem criar expectativa</li>
+            <li>• Ignorar a curva de retencao</li>
+            <li>• Nao variar ritmo e dinamica do video</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">5</div>
+        <h2 class="text-2xl font-bold">💰 Metricas de Negocio</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        No topo da piramide estao as metricas que realmente pagam as contas: cliques no link, DMs iniciados, leads gerados, vendas atribuidas, custo por lead e ROI. Sao as mais dificeis de medir, mas as mais importantes para quem usa redes sociais como ferramenta de negocio.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 As 6 Metricas de Negocio Essenciais</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-emerald-400 font-semibold">🔗 Cliques no Link</p>
+            <p class="text-neutral-400">Quantas pessoas clicaram no link da bio ou Stories</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-blue-400 font-semibold">💬 DMs Iniciados</p>
+            <p class="text-neutral-400">Quantas pessoas mandaram mensagem por interesse</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-purple-400 font-semibold">📋 Leads Gerados</p>
+            <p class="text-neutral-400">Contatos qualificados capturados (email, telefone)</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-amber-400 font-semibold">💰 Vendas Atribuidas</p>
+            <p class="text-neutral-400">Vendas que vieram diretamente das redes sociais</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-red-400 font-semibold">📉 Custo por Lead</p>
+            <p class="text-neutral-400">Quanto voce gasta (tempo + dinheiro) por lead gerado</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <p class="text-emerald-400 font-semibold">📈 ROI</p>
+            <p class="text-neutral-400">(Receita - Investimento) / Investimento x 100</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Como Rastrear Metricas de Negocio</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Link na bio:</strong> use ferramentas como Linktree com rastreamento UTM</li>
+          <li>• <strong>DMs:</strong> conte manualmente ou use automacao (ManyChat, etc.)</li>
+          <li>• <strong>Leads:</strong> formulario conectado a CRM ou planilha</li>
+          <li>• <strong>Vendas:</strong> pergunte "como voce nos encontrou?" + rastreie UTMs</li>
+          <li>• <strong>ROI:</strong> some todo investimento (horas + ferramentas + ads) vs receita gerada</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Nao precisa de ferramentas caras para comecar. Uma planilha simples do Google Sheets com as colunas: Semana | Cliques Link | DMs | Leads | Vendas | Receita ja e suficiente. O importante e medir consistentemente, nao perfeitamente. Dados imperfeitos sao infinitamente melhores que nenhum dado.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Rastrear cliques, DMs, leads e vendas toda semana</li>
+            <li>• Calcular ROI mensal do esforco em redes sociais</li>
+            <li>• Perguntar a cada cliente como te encontrou</li>
+            <li>• Usar UTM em todos os links</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar conteudo sem objetivo de negocio claro</li>
+            <li>• Nao rastrear de onde vem os clientes</li>
+            <li>• Achar que "nao da pra medir"</li>
+            <li>• Investir sem calcular retorno</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">6</div>
+        <h2 class="text-2xl font-bold">📋 Dashboard Semanal</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Toda segunda-feira, antes de planejar a semana de conteudo, abra o Insights e anote 6 metricas-chave. Esse ritual de 10 minutos transforma suas decisoes de "intuicao" para "dados". Em 4 semanas, voce tera uma visao clara do que funciona e do que precisa mudar.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 As 6 Metricas do Dashboard Semanal</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <span class="text-emerald-400 font-bold text-lg w-8">1</span>
+            <div>
+              <p class="font-semibold text-neutral-200">Alcance Total da Semana</p>
+              <p class="text-neutral-400 text-sm">Quantas pessoas unicas viram seu conteudo</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <span class="text-emerald-400 font-bold text-lg w-8">2</span>
+            <div>
+              <p class="font-semibold text-neutral-200">Post com Mais Saves</p>
+              <p class="text-neutral-400 text-sm">Qual post foi mais salvo e por que</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <span class="text-emerald-400 font-bold text-lg w-8">3</span>
+            <div>
+              <p class="font-semibold text-neutral-200">Post com Mais Shares</p>
+              <p class="text-neutral-400 text-sm">Qual post foi mais compartilhado e por que</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <span class="text-emerald-400 font-bold text-lg w-8">4</span>
+            <div>
+              <p class="font-semibold text-neutral-200">Retencao Media dos Reels</p>
+              <p class="text-neutral-400 text-sm">Media de retencao de todos os Reels da semana</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <span class="text-emerald-400 font-bold text-lg w-8">5</span>
+            <div>
+              <p class="font-semibold text-neutral-200">Novos Seguidores</p>
+              <p class="text-neutral-400 text-sm">Quantos novos seguidores e de onde vieram</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 bg-dark-700 rounded-lg p-3 border border-dark-600">
+            <span class="text-emerald-400 font-bold text-lg w-8">6</span>
+            <div>
+              <p class="font-semibold text-neutral-200">Cliques/DMs</p>
+              <p class="text-neutral-400 text-sm">Cliques no link da bio + DMs recebidos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Template de Dashboard</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-dark-600">
+                <th class="text-left p-2 text-neutral-400">Metrica</th>
+                <th class="text-center p-2 text-neutral-400">Sem 1</th>
+                <th class="text-center p-2 text-neutral-400">Sem 2</th>
+                <th class="text-center p-2 text-neutral-400">Sem 3</th>
+                <th class="text-center p-2 text-neutral-400">Sem 4</th>
+              </tr>
+            </thead>
+            <tbody class="text-neutral-300">
+              <tr class="border-b border-dark-700"><td class="p-2">Alcance Total</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td></tr>
+              <tr class="border-b border-dark-700"><td class="p-2">Top Save Post</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td></tr>
+              <tr class="border-b border-dark-700"><td class="p-2">Top Share Post</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td></tr>
+              <tr class="border-b border-dark-700"><td class="p-2">Retencao Media</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td></tr>
+              <tr class="border-b border-dark-700"><td class="p-2">Novos Seguidores</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td></tr>
+              <tr><td class="p-2">Cliques/DMs</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td><td class="text-center p-2">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Crie um alarme para toda segunda-feira as 9h: "Preencher Dashboard Semanal". Abra o Instagram Insights, anote os 6 numeros, e compare com a semana anterior. Em 5 minutos voce sabe exatamente o que funcionou, o que nao funcionou, e o que mudar nesta semana. Consistencia na analise e mais importante que profundidade.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar ritual semanal de analise (toda segunda)</li>
+            <li>• Anotar as 6 metricas em planilha</li>
+            <li>• Comparar semana a semana para ver evolucao</li>
+            <li>• Usar dados para decidir proximo conteudo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• "Olhar" metricas sem anotar</li>
+            <li>• Analisar so quando lembra</li>
+            <li>• Nao comparar com semanas anteriores</li>
+            <li>• Criar conteudo por intuicao ignorando dados</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-emerald-400">📋 Resumo do Modulo 1.4</h2>
+
+        <div class="space-y-3 mb-8">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi a Piramide: Vaidade (base) < Engajamento (meio) < Negocio (topo)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei calcular Taxa de Engajamento por Alcance (meta: >3%)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei calcular Save Rate (>1%) e Share Rate (>0.5%)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Compreendi retencao de video e como melhorar (meta: >40%)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei quais metricas de negocio rastrear (cliques, DMs, leads, vendas, ROI)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Vou implementar o Dashboard Semanal com 6 metricas toda segunda</span>
+          </label>
+        </div>
+
+        <div class="border-t border-emerald-500/30 pt-6">
+          <p class="text-neutral-400 mb-4">
+            <strong class="text-emerald-400">Proximo Modulo:</strong> 1.5 - Erros que Matam seu Alcance
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="modulo-1-3.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              ← Modulo Anterior
+            </a>
+            <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              Voltar para Trilha
+            </a>
+            <a href="modulo-1-5.html" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 rounded-lg transition-colors font-semibold">
+              Proximo Modulo →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 — Um curso <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    if (html.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

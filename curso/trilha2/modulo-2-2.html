@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.2 - Frameworks de Copywriting | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores BLUE */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+
+    /* Light mode - outras cores */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+
+    /* Light mode - gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400 font-medium">Modulo 2.2</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full mb-6 border border-blue-500/30">
+        MODULO 2.2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        ✏️ Frameworks de <span class="text-blue-400">Copywriting</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Os frameworks comprovados para escrever textos que param o scroll, prendem a atencao e convertem seguidores em clientes. Aprenda AIDA, PAS, HSO e mais.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">~30</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Inter.</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Estrat.</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 - AIDA -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">🎯 Framework AIDA</h2>
+          <p class="text-neutral-400 text-sm">Atencao - Interesse - Desejo - Acao</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">AIDA e o framework mais classico do marketing e funciona perfeitamente para redes sociais em 2026. Cada letra representa uma etapa que seu conteudo deve percorrer: <strong>Atencao</strong> (um gancho que para o scroll), <strong>Interesse</strong> (por que isso importa para a pessoa), <strong>Desejo</strong> (o que ela ganha ao continuar) e <strong>Acao</strong> (um CTA claro e especifico). A beleza do AIDA e que ele funciona para qualquer formato: caption de Instagram, Reel, carrossel, post de Facebook ou ate Stories.</p>
+      </div>
+
+      <!-- Box Dados - Template preenchido -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Template AIDA Preenchido</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">A - ATENCAO (Gancho)</span>
+            <p class="mt-1">"90% dos criadores de conteudo cometem esse erro no primeiro slide e perdem 80% do alcance."</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">I - INTERESSE (Contexto)</span>
+            <p class="mt-1">"O algoritmo da Meta em 2026 analisa os primeiros 3 segundos do seu conteudo para decidir se vai distribuir ou enterrar. Se seu gancho nao prende, voce perdeu antes de comecar."</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">D - DESEJO (Beneficio)</span>
+            <p class="mt-1">"Com uma simples mudanca na estrutura do seu primeiro slide, voce pode triplicar seu alcance em menos de 7 dias. Eu testei com 3 perfis diferentes e funcionou em todos."</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">A - ACAO (CTA)</span>
+            <p class="mt-1">"Salva esse post e aplica no seu proximo carrossel. Depois me conta nos comentarios qual foi o resultado."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Escreva 10 captions para Instagram usando o framework AIDA para o nicho [NICHO]. Cada caption deve ter: Atencao (gancho de 1 linha que para o scroll), Interesse (2-3 linhas de contexto), Desejo (2-3 linhas de beneficio com prova) e Acao (CTA especifico que gere comentario ou save)."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Gancho com numero ou dado especifico</li>
+            <li>&#8226; Transicao suave entre cada etapa</li>
+            <li>&#8226; CTA unico e claro (nao 3 CTAs)</li>
+            <li>&#8226; Testar diferentes ganchos para o mesmo conteudo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Gancho generico ("Voce sabia que...")</li>
+            <li>&#8226; Pular direto da Atencao para a Acao</li>
+            <li>&#8226; Promessas que voce nao pode provar</li>
+            <li>&#8226; CTA vago como "me segue"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 - PAS -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">🔥 Framework PAS</h2>
+          <p class="text-neutral-400 text-sm">Problema - Agitacao - Solucao</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">PAS e provavelmente o framework mais eficaz para redes sociais porque comeca com a dor do publico. <strong>Problema:</strong> identifique uma frustracao real que seu publico sente. <strong>Agitacao:</strong> amplifique essa dor mostrando as consequencias de nao resolver. <strong>Solucao:</strong> apresente a saida. Funciona porque as pessoas sao mais motivadas a fugir da dor do que a buscar prazer. Ideal para: primeiro slide de carrossel, abertura de Reel, caption completa.</p>
+      </div>
+
+      <!-- Box Dados - Exemplo Pratico -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Exemplo PAS Completo</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-red-400 font-semibold text-sm">P - PROBLEMA</span>
+            <p class="mt-1">"Voce posta todo dia e seu alcance so cai? Sente que esta gritando no vazio?"</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-amber-400 font-semibold text-sm">A - AGITACAO</span>
+            <p class="mt-1">"Enquanto voce trabalha horas criando conteudo, o algoritmo esconde seus posts. Seus concorrentes com metade do esforco aparecem para 10x mais pessoas. E a cada dia que passa, o buraco fica mais fundo."</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">S - SOLUCAO</span>
+            <p class="mt-1">"Existe um ajuste simples na estrutura dos seus posts que triplica o alcance. Nao e truque, nao e hack obscuro -- e entender como o algoritmo pensa em 2026. Neste post eu te mostro exatamente como."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Escreva 10 captions usando o framework PAS (Problema-Agitacao-Solucao) para o nicho [NICHO]. Para cada uma: Problema (frustracao real do publico em 1-2 linhas), Agitacao (consequencias de nao resolver em 2-3 linhas, use linguagem emocional) e Solucao (apresente a saida em 2-3 linhas com CTA)."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Ideal para</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Primeiro slide de carrossel</li>
+            <li>&#8226; Abertura de Reel (0-5 segundos)</li>
+            <li>&#8226; Caption de post de venda</li>
+            <li>&#8226; Stories com sequencia de telas</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Agitacao exagerada que soa falsa</li>
+            <li>&#8226; Problema que seu publico nao reconhece</li>
+            <li>&#8226; Solucao vaga sem proximo passo claro</li>
+            <li>&#8226; Tom negativo sem oferecer esperanca</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 - HSO -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">📖 Framework HSO</h2>
+          <p class="text-neutral-400 text-sm">Hook - Story - Offer (Gancho - Historia - Oferta)</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">HSO e o framework mais poderoso para Reels e conteudo em video. <strong>Hook (0-3s):</strong> uma frase ou visual que para o scroll instantaneamente. <strong>Story:</strong> uma narrativa com contexto, conflito e prova social que cria conexao emocional. <strong>Offer:</strong> o que a pessoa deve fazer agora (seguir, salvar, clicar, comentar). O poder do HSO esta na historia -- seres humanos sao biologicamente programados para prestar atencao em narrativas. Um Reel com historia real gera 4x mais retencao do que um Reel puramente informativo.</p>
+      </div>
+
+      <!-- Box Dados - Exemplo -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Exemplo HSO para Reel</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">H - HOOK (0-3 segundos)</span>
+            <p class="mt-1">"Perdi 12 mil seguidores em uma semana. E foi a melhor coisa que me aconteceu."</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">S - STORY (3-45 segundos)</span>
+            <p class="mt-1">"Em janeiro eu tinha 45 mil seguidores e 200 likes por post. Meu engajamento era de 0.4%. Eu estava criando conteudo generico tentando agradar todo mundo. Decidi mudar: apaguei posts que nao tinham a ver comigo, foquei em um unico nicho e comecei a compartilhar experiencias reais. Perdi 12 mil seguidores em 7 dias. Mas nos 30 dias seguintes, meu engajamento subiu para 5.8% e minhas vendas triplicaram."</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-emerald-400 font-semibold text-sm">O - OFFER (ultimos 5 segundos)</span>
+            <p class="mt-1">"Se voce quer aprender exatamente o que eu fiz, salva esse Reel e segue para a parte 2 amanha."</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie 10 roteiros de Reel usando o framework HSO para o nicho [NICHO]. Para cada roteiro inclua: Hook (frase impactante de 1 linha para os primeiros 3 segundos), Story (narrativa de 30-45 segundos com conflito e resolucao) e Offer (CTA claro). As historias devem ser baseadas em situacoes reais e identificaveis do nicho."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Hook com contradicao ou surpresa</li>
+            <li>&#8226; Historia com conflito real e vulnerabilidade</li>
+            <li>&#8226; Dados especificos (numeros exatos)</li>
+            <li>&#8226; Offer que cria continuidade</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Hook que nao cumpre a promessa</li>
+            <li>&#8226; Historia inventada ou exagerada</li>
+            <li>&#8226; Narrativa sem conflito (so resultado)</li>
+            <li>&#8226; Pular a historia e ir direto para venda</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 - 4 U's -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">💡 Os 4 U's para Ganchos</h2>
+          <p class="text-neutral-400 text-sm">Urgente - Unico - Ultra-especifico - Util</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Todo gancho eficaz possui pelo menos 3 dos 4 U's. <strong>Urgente:</strong> cria senso de que a pessoa precisa ver agora, nao depois. <strong>Unico:</strong> apresenta uma perspectiva ou dado que a pessoa nunca viu. <strong>Ultra-especifico:</strong> usa numeros, prazos e detalhes concretos (nao "muito", mas "347%"). <strong>Util:</strong> promete resolver um problema real que a pessoa enfrenta. Esse filtro funciona como checklist: antes de publicar qualquer conteudo, passe o gancho pelo teste dos 4 U's. Se nao atingir pelo menos 3, reescreva.</p>
+      </div>
+
+      <!-- Box Dados - Exemplos -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Exemplos com Analise dos 4 U's</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="font-semibold mb-2">"Em 7 dias, esse ajuste simples dobrou meu alcance no Instagram"</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Urgente (7 dias)</span>
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Ultra-especifico (7 dias, dobrou)</span>
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Util (ajuste para alcance)</span>
+              <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">3/4 U's</span>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="font-semibold mb-2">"90% dos criadores cometem esse erro no primeiro slide (e perdem 80% do alcance)"</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Urgente (voce pode estar errando)</span>
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Ultra-especifico (90%, 80%)</span>
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Util (evitar erro)</span>
+              <span class="bg-emerald-500/20 text-emerald-400 px-2 py-1 rounded">Unico (erro especifico)</span>
+              <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">4/4 U's</span>
+            </div>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <p class="font-semibold mb-2 text-red-400">"Dicas de marketing digital" (gancho fraco)</p>
+            <div class="flex flex-wrap gap-2 text-xs">
+              <span class="bg-red-500/20 text-red-400 px-2 py-1 rounded">Nao Urgente</span>
+              <span class="bg-red-500/20 text-red-400 px-2 py-1 rounded">Nao Unico</span>
+              <span class="bg-red-500/20 text-red-400 px-2 py-1 rounded">Nao Especifico</span>
+              <span class="bg-red-500/20 text-red-400 px-2 py-1 rounded">0/4 U's</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Gere 20 ganchos para posts no nicho [NICHO] que atendam pelo menos 3 dos 4 U's (Urgente, Unico, Ultra-especifico, Util). Para cada gancho, indique quais U's estao presentes e por que funciona. Use numeros especificos, prazos reais e promessas verificaveis."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Usar numeros especificos (347%, 7 dias, 3 passos)</li>
+            <li>&#8226; Criar senso de urgencia real</li>
+            <li>&#8226; Prometer algo unico e comprovavel</li>
+            <li>&#8226; Testar gancho antes de produzir o conteudo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Ganchos vagos ("dicas incriveis")</li>
+            <li>&#8226; Urgencia falsa ("so ate amanha!")</li>
+            <li>&#8226; Promessas impossiveis de cumprir</li>
+            <li>&#8226; Publicar sem passar pelo checklist 4U</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 - StoryBrand -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">🗣️ StoryBrand Social</h2>
+          <p class="text-neutral-400 text-sm">Posicione o seguidor como heroi, nao voce</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Baseado no livro "Building a StoryBrand" de Donald Miller, adaptado para redes sociais. O principio fundamental: <strong>seu seguidor e o heroi da historia, voce e o guia</strong>. A maioria dos criadores erra ao se posicionar como protagonista ("eu fiz isso", "eu conquistei aquilo"). O conteudo que gera conexao real posiciona o seguidor como protagonista e voce como o mentor que vai ajuda-lo a chegar la. Isso muda completamente a forma como voce escreve captions, roteiros e ate sua bio.</p>
+      </div>
+
+      <!-- Box Dados - Comparacao -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Transformacoes de Linguagem</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+              <span class="text-red-400 font-semibold text-sm block mb-1">Errado (voce como heroi)</span>
+              <p class="text-sm">"Eu tenho 10 anos de experiencia em marketing digital"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+              <span class="text-emerald-400 font-semibold text-sm block mb-1">Certo (seguidor como heroi)</span>
+              <p class="text-sm">"Voce vai aprender em 2 minutos o que eu levei 10 anos para descobrir"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+              <span class="text-red-400 font-semibold text-sm block mb-1">Errado</span>
+              <p class="text-sm">"Meu metodo ja ajudou mais de 500 alunos"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+              <span class="text-emerald-400 font-semibold text-sm block mb-1">Certo</span>
+              <p class="text-sm">"500 pessoas como voce ja aplicaram e viram resultado em 30 dias"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-4">
+              <span class="text-red-400 font-semibold text-sm block mb-1">Errado</span>
+              <p class="text-sm">"Eu faturei R$100K com infoprodutos"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+              <span class="text-emerald-400 font-semibold text-sm block mb-1">Certo</span>
+              <p class="text-sm">"O passo a passo que pode te levar aos primeiros R$10K com infoprodutos"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Reescreva estas 10 frases de marketing no nicho [NICHO] usando o principio StoryBrand: posicione o seguidor como heroi e o criador como guia. Para cada frase original, forneca a versao transformada e explique por que funciona melhor. [Cole suas frases aqui]"
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Usar "voce" mais do que "eu"</li>
+            <li>&#8226; Focar na transformacao do seguidor</li>
+            <li>&#8226; Se posicionar como guia/mentor</li>
+            <li>&#8226; Mostrar empatia com os desafios do publico</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Listar suas conquistas como se fosse curriculo</li>
+            <li>&#8226; Conteudo que so fala de voce</li>
+            <li>&#8226; Bio que parece autopromocao</li>
+            <li>&#8226; Ignorar os problemas reais do publico</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 - CTAs -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">⚡ CTAs que Convertem em 2026</h2>
+          <p class="text-neutral-400 text-sm">Chamadas para acao que realmente funcionam</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">CTAs genericos morreram. "Me segue para mais dicas" nao funciona mais porque nao da um motivo especifico para a acao. Em 2026, CTAs eficazes sao: <strong>especificos</strong> (dizem exatamente o que fazer), <strong>contextuais</strong> (relacionados ao conteudo do post), <strong>valiosos</strong> (mostram o que a pessoa ganha ao agir) e <strong>unicos</strong> (pedem UMA acao, nao tres). O CTA ideal faz o algoritmo trabalhar a seu favor: pedir saves gera sinais de valor, pedir comentarios com restricao ("comente UMA palavra") reduz a friccao e aumenta a taxa de resposta.</p>
+      </div>
+
+      <!-- Box Dados - Comparacoes -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">CTAs Antigos vs CTAs que Funcionam</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+              <span class="text-red-400 text-xs font-semibold">ANTIGO</span>
+              <p class="text-sm mt-1">"Me segue para mais dicas!"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3">
+              <span class="text-emerald-400 text-xs font-semibold">2026</span>
+              <p class="text-sm mt-1">"Segue para ver a parte 2 amanha -- vou mostrar o passo a passo completo"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+              <span class="text-red-400 text-xs font-semibold">ANTIGO</span>
+              <p class="text-sm mt-1">"Comenta o que achou"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3">
+              <span class="text-emerald-400 text-xs font-semibold">2026</span>
+              <p class="text-sm mt-1">"Comenta com UMA palavra: qual e seu maior desafio com conteudo?"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+              <span class="text-red-400 text-xs font-semibold">ANTIGO</span>
+              <p class="text-sm mt-1">"Salva esse post!"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3">
+              <span class="text-emerald-400 text-xs font-semibold">2026</span>
+              <p class="text-sm mt-1">"Salva esse post para consultar quando for criar seu proximo carrossel"</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="bg-red-500/10 border border-red-500/30 rounded-lg p-3">
+              <span class="text-red-400 text-xs font-semibold">ANTIGO</span>
+              <p class="text-sm mt-1">"Compartilha com um amigo!"</p>
+            </div>
+            <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3">
+              <span class="text-emerald-400 text-xs font-semibold">2026</span>
+              <p class="text-sm mt-1">"Envia para aquele amigo que reclama que o alcance caiu"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie 20 CTAs para posts no nicho [NICHO] que sigam as regras de 2026: especificos, contextuais, valiosos e unicos. Inclua 5 CTAs para saves, 5 para comentarios, 5 para compartilhamentos e 5 para seguir. Cada CTA deve dar um motivo claro para a pessoa agir."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Um CTA por post (nao dois ou tres)</li>
+            <li>&#8226; Dar motivo especifico para a acao</li>
+            <li>&#8226; Reduzir friccao ("comente 1 palavra")</li>
+            <li>&#8226; Conectar o CTA ao conteudo do post</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; "Curte, comenta, salva e compartilha!"</li>
+            <li>&#8226; CTAs sem contexto ou motivo</li>
+            <li>&#8226; Pedir acao que nao tem a ver com o post</li>
+            <li>&#8226; CTAs que soam como ordem ou desespero</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-8 mb-12">
+      <h3 class="text-2xl font-bold text-blue-400 mb-4">Resumo do Modulo 2.2</h3>
+      <div class="space-y-3 text-neutral-300">
+        <p>&#8226; <strong>AIDA:</strong> Atencao → Interesse → Desejo → Acao -- o classico que funciona para qualquer formato</p>
+        <p>&#8226; <strong>PAS:</strong> Problema → Agitacao → Solucao -- o mais eficaz porque comeca com a dor real</p>
+        <p>&#8226; <strong>HSO:</strong> Hook → Story → Offer -- o mais poderoso para Reels e video</p>
+        <p>&#8226; <strong>4 U's:</strong> Todo gancho precisa ser Urgente, Unico, Ultra-especifico e Util (minimo 3/4)</p>
+        <p>&#8226; <strong>StoryBrand:</strong> O seguidor e o heroi, voce e o guia -- mude o foco de "eu" para "voce"</p>
+        <p>&#8226; <strong>CTAs 2026:</strong> Especificos, contextuais, valiosos e unicos -- um CTA por post</p>
+      </div>
+    </section>
+
+    <!-- NAVEGACAO -->
+    <div class="flex items-center justify-between">
+      <a href="modulo-2-1.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Modulo 2.1
+      </a>
+      <a href="modulo-2-3.html" class="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/30 transition-colors border border-blue-500/30">
+        Modulo 2.3 →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 text-center text-neutral-500 text-sm">
+    <p>Hack Meta 2026 - INEMA.CLUB</p>
+  </footer>
+
+  <!-- THEME TOGGLE JS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>

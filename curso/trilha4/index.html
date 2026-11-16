@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 4 - Projeto do Zero | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores AMBER */
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:bg-amber-500\/30:hover { background-color: rgba(217, 119, 6, 0.18); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-amber-400 { color: #92400e; }
+
+    /* Light mode - outras cores do nav */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estratégia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Produção</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-amber-400 bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-amber-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-amber-500/20 text-amber-400 text-sm font-semibold rounded-full mb-6">
+        TRILHA 4
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🚀 Projeto do <span class="text-amber-400">Zero</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Comece do absoluto zero. Configure seu perfil, publique sua primeira semana, analise resultados e escale até 10K seguidores com um plano comprovado.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-amber-400">5</div>
+          <div class="text-sm text-neutral-400">Módulos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-amber-400">30</div>
+          <div class="text-sm text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-amber-400">~2.5h</div>
+          <div class="text-sm text-neutral-400">Conteúdo</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-amber-400">Iniciante</div>
+          <div class="text-sm text-neutral-400">Nível</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MÓDULOS - Cards Simples -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <h2 class="text-2xl font-bold mb-2 text-center">Módulos da Trilha</h2>
+    <p class="text-neutral-400 text-center mb-12">Clique em um módulo para ver o conteúdo detalhado</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <a href="#modulo-4-1" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-amber-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.1</span>
+          <span class="text-sm text-neutral-500">~25 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2 group-hover:text-amber-400 transition-colors">⚙️ Configurando seu Perfil Profissional</h3>
+        <p class="text-neutral-400 text-sm">Setup completo do zero - foto, bio, destaques e identidade visual</p>
+      </a>
+
+      <a href="#modulo-4-2" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-amber-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.2</span>
+          <span class="text-sm text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2 group-hover:text-amber-400 transition-colors">📝 Sua Primeira Semana de Conteúdo</h3>
+        <p class="text-neutral-400 text-sm">7 dias de conteúdo planejado com templates, roteiros e prompts prontos</p>
+      </a>
+
+      <a href="#modulo-4-3" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-amber-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.3</span>
+          <span class="text-sm text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2 group-hover:text-amber-400 transition-colors">📆 Seu Primeiro Mês Completo</h3>
+        <p class="text-neutral-400 text-sm">Calendário editorial de 30 dias com todas as postagens planejadas</p>
+      </a>
+
+      <a href="#modulo-4-4" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-amber-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center justify-between mb-3">
+          <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.4</span>
+          <span class="text-sm text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2 group-hover:text-amber-400 transition-colors">🔍 Analisando Resultados e Ajustando</h3>
+        <p class="text-neutral-400 text-sm">Leia seus dados como um profissional e tome decisões baseadas em evidências</p>
+      </a>
+
+      <a href="#modulo-4-5" class="group block bg-dark-800 rounded-xl border border-dark-600 hover:border-amber-500/30 transition-all duration-300 p-6 md:col-span-2">
+        <div class="flex items-center justify-between mb-3">
+          <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.5</span>
+          <span class="text-sm text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-2 group-hover:text-amber-400 transition-colors">🚀 Escalando: De 0 a 10K Seguidores</h3>
+        <p class="text-neutral-400 text-sm">O plano de 90 dias para sair do zero e construir uma audiência real</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- MÓDULOS DETALHADOS -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+
+    <!-- MÓDULO 4.1 -->
+    <section id="modulo-4-1" class="mb-16 scroll-mt-20">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.1</span>
+        <span class="text-sm text-neutral-500">~25 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">⚙️ Configurando seu Perfil Profissional</h2>
+      <p class="text-neutral-400 mb-8">Setup completo do zero - foto, bio, destaques e identidade visual</p>
+
+      <div class="space-y-3">
+        <!-- Tópico 4.1.1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t411')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📸 Foto de Perfil Estratégica</h3>
+              <p class="text-sm text-neutral-400">Rosto visível, fundo limpo, cores consistentes</p>
+            </div>
+            <svg id="arrow-t411" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t411" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Sua foto de perfil é a primeira impressão que qualquer pessoa tem ao encontrar seu perfil. Em telas pequenas (Stories, comentários, Explore), ela aparece com apenas 32px - por isso precisa ser clara, com rosto visível e sem poluição visual. Uma foto estratégica transmite profissionalismo e gera confiança imediata.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Perfis com foto profissional têm 2x mais cliques no perfil vindos de comentários e Explore. O algoritmo não "vê" sua foto, mas ela influencia diretamente a taxa de clique que as pessoas dão quando veem seu nome - e isso afeta seu alcance indiretamente. Uma foto ruim faz as pessoas passarem direto.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Rosto visível:</strong> Enquadre do peito para cima, rosto ocupando 60-70% da foto</li>
+                  <li>- <strong>Fundo limpo:</strong> Use fundo liso ou desfocado - evite cenários poluídos</li>
+                  <li>- <strong>Cores consistentes:</strong> Use as mesmas 2 cores da sua identidade visual</li>
+                  <li>- <strong>Iluminação natural:</strong> Posicione-se de frente para uma janela, nunca contra a luz</li>
+                  <li>- <strong>Teste de miniatura:</strong> Reduza a foto para 32x32px e veja se ainda reconhece o rosto</li>
+                  <li>- <strong>Ferramenta gratuita:</strong> Use Remove.bg para tirar fundo e Canva para adicionar borda colorida</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.1.2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t412')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">✏️ Bio que Converte</h3>
+              <p class="text-sm text-neutral-400">Fórmula: Quem sou + O que faço + Para quem + CTA</p>
+            </div>
+            <svg id="arrow-t412" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t412" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A bio do Instagram são 150 caracteres que definem quem você é, o que faz e por que alguém deveria te seguir. É o "pitch de elevador" do seu perfil. A fórmula que mais converte segue o padrão: "[Emoji] Quem sou | O que faço | Para quem | CTA". Cada linha tem uma função estratégica.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">A bio é responsável por converter visitantes em seguidores. De cada 100 pessoas que visitam seu perfil, uma bio otimizada pode converter 30-40%, enquanto uma bio genérica converte apenas 10-15%. É a diferença entre crescer rápido ou estagnar mesmo com bom conteúdo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Fórmula da bio:</strong> "[Emoji] Quem sou | O que faço | Para quem | CTA"</li>
+                  <li>- <strong>Exemplo pronto:</strong> "📈 Estrategista Digital | Te ensino a crescer no Instagram | Dicas diárias | Link abaixo 👇"</li>
+                  <li>- <strong>Linha 1:</strong> Sua credencial ou identidade (ex: "Nutricionista CRN 12345")</li>
+                  <li>- <strong>Linha 2:</strong> Transformação que você oferece (ex: "Te ajudo a emagrecer sem dieta")</li>
+                  <li>- <strong>Linha 3:</strong> Prova social ou diferencial (ex: "+5.000 alunos transformados")</li>
+                  <li>- <strong>Linha 4:</strong> CTA claro (ex: "Baixe o guia grátis 👇" ou "Agende sua consulta 👇")</li>
+                  <li>- <strong>Palavras-chave:</strong> Inclua termos que seu público buscaria no Instagram Search</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.1.3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t413')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">🔗 Link na Bio Otimizado</h3>
+              <p class="text-sm text-neutral-400">Linktree, Beacons ou link direto para WhatsApp</p>
+            </div>
+            <svg id="arrow-t413" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t413" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O link na bio é o único lugar clicável do seu perfil no Instagram (fora dos Stories com link). É onde você direciona tráfego para WhatsApp, site, produto ou material gratuito. Ferramentas como Linktree e Beacons permitem criar uma página com múltiplos links organizados de forma visual.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Todo o trabalho de criação de conteúdo precisa ter um destino. Se você não otimizar seu link na bio, está perdendo conversões todos os dias. Perfis que usam link otimizado com CTA claro na bio geram 3-5x mais cliques do que perfis com link genérico ou sem link.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Linktree (grátis):</strong> Página simples com múltiplos links - ideal para começar</li>
+                  <li>- <strong>Beacons (grátis):</strong> Mais visual, permite vender produtos diretamente</li>
+                  <li>- <strong>Link direto WhatsApp:</strong> wa.me/5511999999999?text=Olá - leva direto para conversa</li>
+                  <li>- <strong>Regra dos 3 links:</strong> Não coloque mais que 3-5 links - muitas opções geram paralisia</li>
+                  <li>- <strong>Link principal no topo:</strong> O primeiro link deve ser sua ação mais importante (venda, lead, contato)</li>
+                  <li>- <strong>UTM tracking:</strong> Adicione ?utm_source=instagram para rastrear de onde vem o tráfego</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.1.4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t414')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">⭐ Destaques dos Stories</h3>
+              <p class="text-sm text-neutral-400">Os 5 destaques essenciais para qualquer perfil</p>
+            </div>
+            <svg id="arrow-t414" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t414" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Os Destaques (Highlights) são Stories fixados no perfil, logo abaixo da bio. Funcionam como uma vitrine permanente do seu conteúdo. São a segunda coisa que um visitante vê depois da bio - e muitas vezes decidem se a pessoa vai te seguir ou não. Cada destaque deve ter uma capa visual consistente.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Destaques bem organizados funcionam como um "site" dentro do Instagram. Visitantes que assistem pelo menos 1 destaque têm 40% mais chance de seguir o perfil. É onde você coloca informações que não cabem na bio: quem é você, depoimentos, produtos, FAQ e bastidores.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Destaque 1 - Sobre Mim:</strong> Quem é você, sua história, por que seguidores devem confiar</li>
+                  <li>- <strong>Destaque 2 - Dicas/Conteúdo:</strong> Melhores dicas organizadas por tema</li>
+                  <li>- <strong>Destaque 3 - Depoimentos:</strong> Prints de resultados, feedbacks e provas sociais</li>
+                  <li>- <strong>Destaque 4 - Produtos/Serviços:</strong> O que você oferece, preços, como contratar</li>
+                  <li>- <strong>Destaque 5 - FAQ:</strong> Perguntas frequentes respondidas - economiza seu tempo</li>
+                  <li>- <strong>Capas no Canva:</strong> Crie capas com ícones minimalistas nas cores da sua marca (template: 1080x1920px)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.1.5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t415')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">5</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">🎨 Identidade Visual Básica</h3>
+              <p class="text-sm text-neutral-400">2 cores, 1 fonte, templates consistentes no Canva</p>
+            </div>
+            <svg id="arrow-t415" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t415" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Identidade visual é o conjunto de elementos visuais que tornam seu perfil reconhecível: cores, fontes e estilo de design. No Instagram, você não precisa de um designer - basta definir 2 cores principais, 1 fonte e usar templates consistentes no Canva. A consistência visual faz seu conteúdo ser reconhecido no feed antes mesmo de ser lido.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Perfis com identidade visual consistente parecem mais profissionais e geram mais confiança. Quando alguém vê seu post no feed e reconhece pelas cores e estilo, a chance de parar e engajar aumenta significativamente. Além disso, ter templates prontos acelera sua produção - o que levava 1h passa a levar 15 minutos.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>2 cores:</strong> Uma cor principal (ex: azul #2563EB) e uma de destaque (ex: amarelo #FACC15)</li>
+                  <li>- <strong>1 fonte:</strong> Escolha uma fonte legível no Canva (Montserrat, Poppins ou Inter funcionam bem)</li>
+                  <li>- <strong>Kit de marca Canva:</strong> Configure suas cores e fontes em "Kit de Marca" para aplicar em 1 clique</li>
+                  <li>- <strong>3 templates base:</strong> Crie 1 template de carrossel, 1 de post único e 1 de capa de Reel</li>
+                  <li>- <strong>Feed harmonioso:</strong> Alterne entre posts claros e escuros para criar ritmo visual</li>
+                  <li>- <strong>Coolors.co:</strong> Use esta ferramenta gratuita para gerar paletas de cores harmoniosas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.1.6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t416')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">6</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📋 Checklist de Lançamento</h3>
+              <p class="text-sm text-neutral-400">Tudo que verificar antes de começar a postar</p>
+            </div>
+            <svg id="arrow-t416" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t416" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O Checklist de Lançamento é a lista completa de tudo que seu perfil precisa ter antes de começar a publicar conteúdo consistente. Lançar sem checklist é como abrir uma loja sem vitrine - você perde visitantes que nunca mais voltam. Este checklist garante que cada pessoa que chegar ao seu perfil encontre um ambiente profissional e convidativo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Os primeiros 100 visitantes do seu perfil são cruciais. Se eles chegam e encontram um perfil incompleto, vão embora e dificilmente voltam. Completar 100% do checklist antes de começar a divulgar garante que sua taxa de conversão de visitante para seguidor esteja no máximo desde o dia 1.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Foto profissional:</strong> Rosto visível, fundo limpo, cores da marca</li>
+                  <li>- <strong>Bio com CTA:</strong> Fórmula completa aplicada, link na bio funcionando</li>
+                  <li>- <strong>Link na bio:</strong> Linktree/Beacons configurado com 3-5 links essenciais</li>
+                  <li>- <strong>5 destaques:</strong> Sobre Mim, Dicas, Depoimentos, Produtos, FAQ - com capas</li>
+                  <li>- <strong>9 posts iniciais:</strong> Publique 9 posts antes de divulgar - o grid 3x3 precisa estar completo</li>
+                  <li>- <strong>Identidade visual:</strong> Cores definidas, fontes escolhidas, 3 templates prontos no Canva</li>
+                  <li>- <strong>Conta profissional:</strong> Mude para conta Criador ou Business para acessar Insights</li>
+                  <li>- <strong>Nome otimizado:</strong> Use palavras-chave no nome (não no @) para aparecer nas buscas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-4-1.html')" class="px-4 py-2 bg-amber-500/20 text-amber-400 rounded-lg hover:bg-amber-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-4-1.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MÓDULO 4.2 -->
+    <section id="modulo-4-2" class="mb-16 scroll-mt-20">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.2</span>
+        <span class="text-sm text-neutral-500">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">📝 Sua Primeira Semana de Conteúdo</h2>
+      <p class="text-neutral-400 mb-8">7 dias de conteúdo planejado com templates, roteiros e prompts prontos</p>
+
+      <div class="space-y-3">
+        <!-- Tópico 4.2.1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t421')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dia 1 (Segunda): Post de Apresentação</h3>
+              <p class="text-sm text-neutral-400">Quem é você e o que vai compartilhar</p>
+            </div>
+            <svg id="arrow-t421" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t421" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O post de apresentação é seu "olá, mundo" no Instagram. É um carrossel ou Reel onde você se apresenta, conta sua história e explica o que as pessoas vão encontrar no seu perfil. Esse post deve ser autêntico, mostrar vulnerabilidade e criar conexão emocional imediata com seu público-alvo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">O post de apresentação é um dos mais salvos e compartilhados em qualquer perfil. Quando feito corretamente, ele fica fixado no topo e serve como "carta de vendas" permanente. Seguidores antigos recompartilham, novos seguidores entendem quem você é. É o conteúdo com maior vida útil do seu perfil.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Formato ideal:</strong> Carrossel de 5-7 slides ou Reel de 30-60 segundos</li>
+                  <li>- <strong>Slide 1 (Gancho):</strong> "Se você quer [resultado], precisa conhecer minha história"</li>
+                  <li>- <strong>Slide 2-3 (História):</strong> De onde você veio, qual problema enfrentou, como resolveu</li>
+                  <li>- <strong>Slide 4-5 (Proposta):</strong> O que você vai compartilhar aqui e para quem é</li>
+                  <li>- <strong>Slide 6 (CTA):</strong> "Salve este post e me siga para [benefício]"</li>
+                  <li>- <strong>Legenda:</strong> Conte a versão longa da história na legenda - use parágrafos curtos</li>
+                  <li>- <strong>Fixar no topo:</strong> Após publicar, fixe este post no topo do grid</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.2.2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t422')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dia 2 (Terça): Primeiro Reel</h3>
+              <p class="text-sm text-neutral-400">Roteiro pronto para seu primeiro vídeo</p>
+            </div>
+            <svg id="arrow-t422" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t422" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Seu primeiro Reel não precisa ser perfeito - precisa existir. É um vídeo curto (15-30 segundos) onde você se apresenta e dá um gostinho do valor que vai entregar. O roteiro pronto elimina a "paralisia do perfeccionismo" que impede 80% dos criadores de começar.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Reels têm 2-3x mais alcance que posts estáticos no Instagram em 2026. Quanto antes você começar a gravar, mais rápido vai desenvolver naturalidade em frente à câmera. O primeiro Reel é sempre o mais difícil - depois dele, todos os próximos ficam mais fáceis.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Roteiro pronto (30s):</strong></li>
+                  <li class="ml-4">[0-3s] "Olá! Eu sou [nome] e vou te ajudar a [resultado]"</li>
+                  <li class="ml-4">[4-20s] "Aqui vão 3 coisas que você vai aprender comigo: 1... 2... 3..."</li>
+                  <li class="ml-4">[21-30s] "Me segue para não perder o próximo conteúdo"</li>
+                  <li>- <strong>Gravação:</strong> Luz natural de frente, celular na vertical, olhe para a câmera</li>
+                  <li>- <strong>Edição mínima:</strong> Use o editor do próprio Instagram - adicione legenda automática</li>
+                  <li>- <strong>Áudio:</strong> Use áudio original (sua voz) + música trending baixa de fundo</li>
+                  <li>- <strong>Capa do Reel:</strong> Escolha o frame com seu rosto ou crie capa no Canva</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.2.3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t423')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dia 3 (Quarta): Carrossel Educativo</h3>
+              <p class="text-sm text-neutral-400">Template de 8 slides com gancho</p>
+            </div>
+            <svg id="arrow-t423" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t423" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O carrossel educativo é o formato com maior taxa de salvamento no Instagram. São 8-10 slides que ensinam algo prático e acionável. O template de 8 slides segue uma estrutura comprovada: gancho, problema, solução em passos, e CTA. Cada slide deve ter no máximo 30 palavras para manter a leitura fluida.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Carrosséis educativos são os reis do "save" - a métrica mais valiosa para o algoritmo em 2026. Um carrossel bem feito pode continuar gerando alcance por semanas, diferente de Reels que têm pico rápido. Saves sinalizam ao algoritmo que seu conteúdo tem valor de longo prazo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Slide 1 (Capa):</strong> Gancho irresistível - "5 erros que te impedem de [resultado]"</li>
+                  <li>- <strong>Slide 2 (Contexto):</strong> Por que esse tema importa - crie urgência</li>
+                  <li>- <strong>Slides 3-7 (Conteúdo):</strong> Um ponto por slide, título + explicação em 2 linhas</li>
+                  <li>- <strong>Slide 8 (CTA):</strong> "Salve para consultar depois" + "Compartilhe com quem precisa"</li>
+                  <li>- <strong>Design no Canva:</strong> Use template 1080x1350px (4:5) - tamanho ideal para feed</li>
+                  <li>- <strong>Fórmula do gancho:</strong> Número + Problema/Resultado + "que você precisa saber"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.2.4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t424')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dia 4 (Quinta): Post de Engajamento</h3>
+              <p class="text-sm text-neutral-400">Pergunta que gera comentários</p>
+            </div>
+            <svg id="arrow-t424" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t424" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O post de engajamento é projetado especificamente para gerar comentários. Pode ser uma pergunta polarizante ("Você prefere postar diário ou 3x por semana?"), um "isso ou aquilo", ou uma declaração controversa que provoca resposta. Comentários são o sinal social mais forte para o algoritmo distribuir seu conteúdo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Comentários pesam 4x mais que curtidas no algoritmo do Instagram. Um post com 50 comentários alcança mais pessoas que um post com 500 curtidas. Além disso, cada comentário que você responde cria uma "conversa" que conta como múltiplas interações - potencializando o alcance exponencialmente.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Pergunta aberta:</strong> "Qual o maior desafio que você enfrenta com [tema do nicho]?"</li>
+                  <li>- <strong>Isso ou aquilo:</strong> "Reels ou Carrosséis? Comenta 🎬 ou 📚"</li>
+                  <li>- <strong>Complete a frase:</strong> "Eu comecei a criar conteúdo porque ____"</li>
+                  <li>- <strong>Opinião controversa:</strong> "Postar todo dia é perda de tempo. Concorda ou discorda?"</li>
+                  <li>- <strong>Responda TODOS:</strong> Responda cada comentário com uma pergunta para criar conversa</li>
+                  <li>- <strong>Timing:</strong> Publique entre 18h-20h quando seu público está mais ativo e propenso a comentar</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.2.5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t425')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">5</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dia 5 (Sexta): Reel de Entretenimento</h3>
+              <p class="text-sm text-neutral-400">Tendência adaptada ao nicho</p>
+            </div>
+            <svg id="arrow-t425" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t425" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O Reel de entretenimento usa uma tendência viral (áudio trending, meme ou formato popular) adaptada ao seu nicho. A ideia é pegar algo que já está performando bem no Explore e recriar com seu tema. Isso combina a viralidade da tendência com a relevância do seu conteúdo - criando alcance máximo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Conteúdo de entretenimento é o que mais gera compartilhamentos (shares) - e shares são o novo "save" em importância para o algoritmo em 2026. Um Reel que alguém envia para um amigo via DM vale mais que 10 curtidas. Além disso, surfar tendências dá impulso inicial ao seu Reel pela associação com o áudio/formato popular.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Onde achar tendências:</strong> Aba Reels > seta de áudio trending > "Ver reels" para inspiração</li>
+                  <li>- <strong>Adaptação ao nicho:</strong> Pegue o formato e substitua o conteúdo pelo seu tema</li>
+                  <li>- <strong>Exemplo:</strong> Tendência "POV" + seu nicho = "POV: você descobriu que postar de manhã não funciona"</li>
+                  <li>- <strong>Timing:</strong> Use a tendência nos primeiros 3-5 dias - depois ela satura</li>
+                  <li>- <strong>Duração:</strong> Mantenha entre 7-15 segundos para entretenimento - quanto mais curto, mais replays</li>
+                  <li>- <strong>Hashtags:</strong> Use 3-5 hashtags do nicho + 1-2 hashtags da tendência</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.2.6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t426')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">6</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dias 6-7: Stories e Análise</h3>
+              <p class="text-sm text-neutral-400">Bastidores + revisão do que funcionou</p>
+            </div>
+            <svg id="arrow-t426" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t426" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O fim de semana é dedicado a duas atividades: publicar Stories de bastidores (mostrando seu processo criativo, dia a dia e personalidade) e analisar os resultados dos 5 posts da semana. Stories de bastidores humanizam sua marca e criam conexão, enquanto a análise te mostra o que repetir e o que ajustar na semana seguinte.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Stories são onde a conversão acontece. Enquanto o feed gera alcance e atrai seguidores novos, os Stories nutrem relacionamento com quem já segue. Perfis que postam Stories diariamente têm 2x mais engajamento no feed. E a análise semanal é o que separa criadores amadores de profissionais - sem dados, você está no escuro.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Stories de bastidores:</strong> Mostre como você criou o conteúdo da semana, erros, aprendizados</li>
+                  <li>- <strong>Sequência de Stories:</strong> 3-7 Stories por vez, com enquete ou caixa de perguntas no último</li>
+                  <li>- <strong>Análise semanal:</strong> Abra o Insights e anote: qual post teve mais alcance, saves e comentários</li>
+                  <li>- <strong>3 perguntas-chave:</strong> 1) Qual post performou melhor? 2) Por quê? 3) Como replicar?</li>
+                  <li>- <strong>Planilha simples:</strong> Data | Tipo | Alcance | Saves | Comentários | Nota (1-5)</li>
+                  <li>- <strong>Ajuste para semana 2:</strong> Faça mais do que funcionou e menos do que não funcionou</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-4-2.html')" class="px-4 py-2 bg-amber-500/20 text-amber-400 rounded-lg hover:bg-amber-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-4-2.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MÓDULO 4.3 -->
+    <section id="modulo-4-3" class="mb-16 scroll-mt-20">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.3</span>
+        <span class="text-sm text-neutral-500">~35 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">📆 Seu Primeiro Mês Completo</h2>
+      <p class="text-neutral-400 mb-8">Calendário editorial de 30 dias com todas as postagens planejadas</p>
+
+      <div class="space-y-3">
+        <!-- Tópico 4.3.1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t431')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📋 Semana 1: Fundação</h3>
+              <p class="text-sm text-neutral-400">Apresentação e primeiras impressões</p>
+            </div>
+            <svg id="arrow-t431" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t431" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A Semana 1 é a semana de fundação - seu objetivo é estabelecer quem você é, o que faz e por que as pessoas deveriam prestar atenção. Foque em posts de apresentação, seus valores e as primeiras promessas de conteúdo. Não se preocupe com alcance ainda; foque em qualidade e consistência.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">A primeira semana define o tom do seu perfil para o algoritmo. O Instagram analisa seus primeiros posts para entender sobre o que é seu conteúdo e para quem deve distribuir. Posts consistentes e de qualidade na semana 1 "treinam" o algoritmo a te categorizar corretamente desde o início.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Dia 1:</strong> Post de apresentação (carrossel) - fixar no topo do grid</li>
+                  <li>- <strong>Dia 2:</strong> Reel de apresentação - roteiro de 30 segundos</li>
+                  <li>- <strong>Dia 3:</strong> Carrossel educativo - primeiro conteúdo de valor do nicho</li>
+                  <li>- <strong>Dia 4:</strong> Post de engajamento - pergunta para gerar comentários</li>
+                  <li>- <strong>Dia 5:</strong> Reel de entretenimento - tendência adaptada ao nicho</li>
+                  <li>- <strong>Dias 6-7:</strong> Stories de bastidores + análise da semana</li>
+                  <li>- <strong>Meta da semana:</strong> 5 posts no feed + Stories diários + primeiros seguidores orgânicos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.3.2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t432')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📋 Semana 2: Educação</h3>
+              <p class="text-sm text-neutral-400">Conteúdo de valor para gerar saves</p>
+            </div>
+            <svg id="arrow-t432" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t432" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A Semana 2 é focada em conteúdo educativo de alto valor. Aqui você vai publicar carrosséis com dicas práticas, listas, tutoriais e "how-to" que resolvem problemas reais do seu público. O objetivo é gerar saves - a métrica que mais impulsiona alcance orgânico a longo prazo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Conteúdo educativo é o pilar de autoridade do seu perfil. Quando alguém salva seu post, está dizendo ao algoritmo "isso é tão bom que quero ver de novo". Saves têm peso enorme na distribuição e conteúdo educativo é, de longe, o tipo mais salvo no Instagram. A semana 2 constrói sua reputação.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Dia 8:</strong> Carrossel "5 erros de iniciante em [nicho]" - conteúdo de dor</li>
+                  <li>- <strong>Dia 9:</strong> Reel tutorial - "Como fazer [algo] em 3 passos simples"</li>
+                  <li>- <strong>Dia 10:</strong> Carrossel lista - "7 ferramentas gratuitas para [resultado]"</li>
+                  <li>- <strong>Dia 11:</strong> Post de mito vs realidade - desmistifique crenças do nicho</li>
+                  <li>- <strong>Dia 12:</strong> Reel com dica rápida - 15 segundos, direto ao ponto</li>
+                  <li>- <strong>Dias 13-14:</strong> Stories com enquetes sobre dúvidas + análise da semana 2</li>
+                  <li>- <strong>CTA em todo post:</strong> "Salve para consultar depois 🔖" - sempre peça o save</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.3.3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t433')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📋 Semana 3: Engajamento</h3>
+              <p class="text-sm text-neutral-400">Posts que geram conversa e comunidade</p>
+            </div>
+            <svg id="arrow-t433" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t433" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A Semana 3 foca em construir comunidade. O objetivo é gerar conversas nos comentários, DMs e Stories. Posts de engajamento incluem perguntas, enquetes, declarações polêmicas e convites para interação. Aqui você transforma seguidores passivos em uma comunidade ativa que defende e compartilha seu conteúdo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">O algoritmo do Instagram em 2026 valoriza profundamente "meaningful interactions" - interações significativas. Um perfil com 500 seguidores engajados alcança mais pessoas que um com 5.000 seguidores passivos. A semana 3 é onde você constrói seu "exército" de fãs que vão impulsionar tudo que você postar depois.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Dia 15:</strong> Post "concordo ou discordo" - opinião forte sobre tema do nicho</li>
+                  <li>- <strong>Dia 16:</strong> Reel respondendo dúvida de seguidor - use caixa de perguntas dos Stories</li>
+                  <li>- <strong>Dia 17:</strong> Carrossel storytelling - conte uma história pessoal com aprendizado</li>
+                  <li>- <strong>Dia 18:</strong> Post "complete a frase" ou "marque alguém que precisa ver isso"</li>
+                  <li>- <strong>Dia 19:</strong> Reel de bastidores - mostre seu processo criativo real</li>
+                  <li>- <strong>Dias 20-21:</strong> Stories com caixa de perguntas + Live de 15min respondendo</li>
+                  <li>- <strong>Regra de ouro:</strong> Responda 100% dos comentários nas primeiras 2 horas após postar</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.3.4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t434')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📋 Semana 4: Conversão</h3>
+              <p class="text-sm text-neutral-400">Primeiro CTA e captura de leads</p>
+            </div>
+            <svg id="arrow-t434" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t434" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A Semana 4 é onde você faz a primeira tentativa de conversão. Após 3 semanas entregando valor gratuito, seu público confia em você o suficiente para dar o próximo passo. Aqui você oferece um material gratuito (lead magnet), direciona para o WhatsApp ou faz a primeira oferta suave de produto/serviço.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Criar conteúdo sem estratégia de conversão é hobby, não negócio. A semana 4 é onde você valida se seu conteúdo está atraindo o público certo. Se pessoas clicam no link, baixam seu material e entram em contato, você está no caminho certo. Se não, é hora de ajustar o público-alvo ou a oferta.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Dia 22:</strong> Carrossel com conteúdo premium - melhor post do mês, alto valor</li>
+                  <li>- <strong>Dia 23:</strong> Reel anunciando material gratuito - "Criei um guia grátis para vocês"</li>
+                  <li>- <strong>Dia 24:</strong> Post de prova social - resultados seus ou de quem já aplicou suas dicas</li>
+                  <li>- <strong>Dia 25:</strong> Stories com link para material gratuito + depoimentos</li>
+                  <li>- <strong>Dia 26:</strong> Reel com CTA para WhatsApp - "Me chama no WhatsApp para [benefício]"</li>
+                  <li>- <strong>Dias 27-28:</strong> Análise completa do mês + planejamento do mês 2</li>
+                  <li>- <strong>Lead magnet:</strong> Crie um PDF simples (checklist, guia, template) no Canva - é grátis</li>
+                  <li>- <strong>Captura:</strong> Use Google Forms para coletar email em troca do material gratuito</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.3.5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t435')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">5</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📊 Métricas do Primeiro Mês</h3>
+              <p class="text-sm text-neutral-400">O que esperar e como interpretar</p>
+            </div>
+            <svg id="arrow-t435" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t435" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">As métricas do primeiro mês são os números de referência (benchmarks) que você deve esperar como iniciante. Saber o que é "normal" evita frustração e expectativas irreais. Ninguém faz 10K seguidores no primeiro mês - e quem diz isso está mentindo. Entender seus números reais te dá clareza para melhorar progressivamente.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">90% dos criadores desistem no primeiro mês por expectativas irreais. Se você sabe que 100-300 seguidores no mês 1 é excelente para um perfil novo, não vai se frustrar com números "baixos". Métricas realistas são o antídoto contra a desistência precoce e te mantêm motivado para continuar.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Seguidores mês 1:</strong> Expectativa realista: 100-500 (depende do nicho e frequência)</li>
+                  <li>- <strong>Alcance por post:</strong> 50-200 contas para perfis novos é normal</li>
+                  <li>- <strong>Taxa de engajamento:</strong> 5-15% é excelente para perfis pequenos (cai conforme cresce)</li>
+                  <li>- <strong>Saves por post:</strong> 3-15 saves por post educativo é uma boa meta inicial</li>
+                  <li>- <strong>Melhor métrica:</strong> Taxa de saves (saves / alcance) - se for acima de 3%, seu conteúdo é ouro</li>
+                  <li>- <strong>Não compare:</strong> Compare com você mesmo da semana passada, nunca com perfis grandes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.3.6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t436')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">6</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">🔄 Ajustando a Rota</h3>
+              <p class="text-sm text-neutral-400">Como pivotar com base nos dados</p>
+            </div>
+            <svg id="arrow-t436" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t436" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Ajustar a rota significa analisar os dados do primeiro mês e fazer mudanças estratégicas para o mês 2. Nenhum plano sobrevive ao contato com a realidade - e isso é bom. Os dados vão te mostrar qual conteúdo seu público realmente quer (vs. o que você achava que eles queriam). Pivotar com base em dados é o que separa amadores de profissionais.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Os criadores que mais crescem não são os que acertam de primeira - são os que ajustam mais rápido. Se após 30 dias você percebe que Reels performam 3x melhor que carrosséis no seu perfil, o plano do mês 2 deve ter mais Reels. Rigidez no plano é inimiga do crescimento.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Top 3 posts:</strong> Identifique os 3 posts com melhor performance - o que eles têm em comum?</li>
+                  <li>- <strong>Bottom 3 posts:</strong> Os 3 piores - o que eles têm em comum? Pare de fazer isso</li>
+                  <li>- <strong>Formato vencedor:</strong> Reels, carrosséis ou estáticos? Dobre a aposta no que funciona</li>
+                  <li>- <strong>Horário ideal:</strong> Quando seus posts tiveram mais alcance? Replique esse horário</li>
+                  <li>- <strong>Tema campeão:</strong> Qual sub-tema do nicho gerou mais engajamento? Aprofunde nele</li>
+                  <li>- <strong>Regra 70/30:</strong> 70% do conteúdo do mês 2 deve ser baseado no que funcionou, 30% testes novos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-4-3.html')" class="px-4 py-2 bg-amber-500/20 text-amber-400 rounded-lg hover:bg-amber-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-4-3.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MÓDULO 4.4 -->
+    <section id="modulo-4-4" class="mb-16 scroll-mt-20">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.4</span>
+        <span class="text-sm text-neutral-500">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">🔍 Analisando Resultados e Ajustando</h2>
+      <p class="text-neutral-400 mb-8">Leia seus dados como um profissional e tome decisões baseadas em evidências</p>
+
+      <div class="space-y-3">
+        <!-- Tópico 4.4.1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t441')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📊 Instagram Insights na Prática</h3>
+              <p class="text-sm text-neutral-400">Onde encontrar cada métrica</p>
+            </div>
+            <svg id="arrow-t441" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t441" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Instagram Insights é a ferramenta nativa de análise do Instagram, disponível apenas para contas Profissionais (Criador ou Business). Ela mostra dados sobre alcance, impressões, engajamento, seguidores e performance de cada post. Saber navegar nos Insights é o primeiro passo para tomar decisões baseadas em dados ao invés de intuição.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">A maioria dos criadores nunca abre o Insights - e os que abrem não sabem interpretar. Dominar essa ferramenta te dá vantagem competitiva enorme. Você saberá exatamente o que funciona, quando funciona e para quem funciona, enquanto seus concorrentes continuam postando no escuro.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Como acessar:</strong> Perfil > Menu (3 linhas) > Insights (precisa conta Profissional)</li>
+                  <li>- <strong>Visão Geral:</strong> Alcance, impressões, visitas ao perfil nos últimos 7/30/90 dias</li>
+                  <li>- <strong>Conteúdo:</strong> Performance individual de cada post, Reel e Story</li>
+                  <li>- <strong>Público:</strong> Idade, gênero, localização e horários ativos dos seus seguidores</li>
+                  <li>- <strong>Alcance vs Impressões:</strong> Alcance = pessoas únicas; Impressões = total de visualizações (inclui repetidas)</li>
+                  <li>- <strong>Filtro por métrica:</strong> Em "Conteúdo", filtre por saves, shares ou comentários para achar seus melhores posts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.4.2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t442')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📈 Meta Business Suite</h3>
+              <p class="text-sm text-neutral-400">Dashboard completo e relatórios</p>
+            </div>
+            <svg id="arrow-t442" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t442" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O Meta Business Suite é a plataforma profissional da Meta para gerenciar Instagram e Facebook. Disponível via web (business.facebook.com) e app, oferece recursos superiores ao Insights nativo: agendamento de posts, relatórios detalhados, gestão de DMs centralizada e análise comparativa entre períodos. É a ferramenta que social media managers profissionais usam.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">O Business Suite permite agendar posts (grátis), ver relatórios mais detalhados que o app e exportar dados. Para quem quer tratar o Instagram como negócio, é indispensável. Também permite programar até 75 posts de uma vez - o que significa que você pode planejar um mês inteiro em um dia.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Acesso:</strong> business.facebook.com ou app "Meta Business Suite" (grátis)</li>
+                  <li>- <strong>Agendamento:</strong> Crie e agende posts, Reels e Stories com antecedência</li>
+                  <li>- <strong>Relatórios:</strong> Compare períodos (ex: esta semana vs anterior) para ver tendências</li>
+                  <li>- <strong>Inbox unificado:</strong> Gerencie DMs do Instagram e Facebook em um só lugar</li>
+                  <li>- <strong>Horários sugeridos:</strong> A plataforma sugere melhores horários baseado nos seus dados reais</li>
+                  <li>- <strong>Exportar dados:</strong> Baixe relatórios em PDF ou planilha para análise aprofundada</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.4.3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t443')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">🏆 Identificando seu Conteúdo Campeão</h3>
+              <p class="text-sm text-neutral-400">O post com mais saves é seu ouro</p>
+            </div>
+            <svg id="arrow-t443" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t443" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Conteúdo campeão é o post que teve performance significativamente acima da média do seu perfil. Pode ser medido por saves (conteúdo de valor), shares (conteúdo viral), comentários (engajamento) ou alcance (distribuição). Identificar o campeão e entender POR QUE ele funcionou é a habilidade mais valiosa de um criador de conteúdo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Seu conteúdo campeão contém a "fórmula" do que seu público quer. Se um post teve 10x mais saves que a média, ele tem algo especial - um tema, formato, gancho ou abordagem que ressoou. Descobrir esse padrão e replicar sistematicamente é como encontrar ouro: você para de adivinhar e começa a produzir resultados previsíveis.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Ordenar por saves:</strong> Insights > Conteúdo > Filtrar por "Salvamentos" > Ver top posts</li>
+                  <li>- <strong>Análise do campeão:</strong> Qual o tema? Formato? Gancho? Horário? Estilo visual?</li>
+                  <li>- <strong>Padrão de saves:</strong> Posts com listas, templates e checklists são os mais salvos</li>
+                  <li>- <strong>Padrão de shares:</strong> Posts com humor, opinião forte ou insight surpreendente são os mais compartilhados</li>
+                  <li>- <strong>Regra 10x:</strong> Se um post tem 10x mais de alguma métrica, ele é um campeão - analise obsessivamente</li>
+                  <li>- <strong>Recriar não é copiar:</strong> Faça variações do tema campeão (ex: "5 erros" funcionou? Faça "7 erros" e "3 acertos")</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.4.4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t444')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📉 Diagnóstico de Queda de Alcance</h3>
+              <p class="text-sm text-neutral-400">Checklist para identificar o problema</p>
+            </div>
+            <svg id="arrow-t444" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t444" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Queda de alcance é quando seus posts começam a atingir menos pessoas do que o normal. Pode acontecer por mudanças no algoritmo, queda na qualidade do conteúdo, inconsistência na frequência ou uso de práticas penalizadas. O diagnóstico sistemático identifica a causa raiz para que você possa corrigir rapidamente ao invés de entrar em pânico.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Todo criador vai enfrentar quedas de alcance - é parte do jogo. A diferença entre quem cresce e quem desiste é saber diagnosticar e resolver. Sem um checklist de diagnóstico, a reação natural é postar mais (o que pode piorar) ou desistir. Com o checklist, você identifica a causa em 10 minutos e ajusta em 24 horas.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Check 1 - Frequência:</strong> Você parou de postar ou reduziu? O algoritmo penaliza inconsistência</li>
+                  <li>- <strong>Check 2 - Qualidade:</strong> Compare a qualidade dos últimos posts com seus campeões</li>
+                  <li>- <strong>Check 3 - Hashtags:</strong> Está usando hashtags banidas ou muito genéricas?</li>
+                  <li>- <strong>Check 4 - Engajamento:</strong> Você está respondendo comentários? Interagindo com outros perfis?</li>
+                  <li>- <strong>Check 5 - Shadow ban:</strong> Peça para 3 pessoas não-seguidoras buscarem seu perfil</li>
+                  <li>- <strong>Check 6 - Algoritmo global:</strong> Outros criadores do nicho também caíram? Pode ser mudança geral</li>
+                  <li>- <strong>Solução rápida:</strong> Volte ao básico - poste seu melhor tipo de conteúdo, responda tudo, faça Stories</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.4.5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t445')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">5</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">🔄 O Método de Replicação</h3>
+              <p class="text-sm text-neutral-400">Encontrar o padrão e replicar sistematicamente</p>
+            </div>
+            <svg id="arrow-t445" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t445" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O Método de Replicação é um processo sistemático de 4 passos para transformar um sucesso isolado em um padrão repetível. Em vez de torcer para que cada post funcione, você analisa seus campeões, extrai os elementos que funcionaram, cria variações e testa. É engenharia reversa aplicada ao conteúdo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Criadores iniciantes tratam cada post como independente. Profissionais tratam como experimentos em série. O Método de Replicação transforma seu perfil numa máquina previsível: você sabe que tipo de conteúdo vai performar porque já testou e validou o padrão. Isso elimina a ansiedade de "será que vai funcionar?".</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Passo 1 - Identificar:</strong> Ache seus top 5 posts por saves + shares nos últimos 30 dias</li>
+                  <li>- <strong>Passo 2 - Decompor:</strong> Liste: tema, formato, gancho, visual, horário, legenda, CTA</li>
+                  <li>- <strong>Passo 3 - Padrão:</strong> O que 3+ dos top 5 têm em comum? Esse é seu padrão</li>
+                  <li>- <strong>Passo 4 - Replicar:</strong> Crie 3 novos conteúdos seguindo o padrão, variando apenas o tema específico</li>
+                  <li>- <strong>Ciclo de 2 semanas:</strong> Teste as 3 variações em 2 semanas e analise os resultados</li>
+                  <li>- <strong>Evolução:</strong> Se 2/3 variações funcionaram, você encontrou seu "formato proprietário"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.4.6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t446')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">6</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📝 Relatório Mensal Simples</h3>
+              <p class="text-sm text-neutral-400">Template para acompanhar evolução</p>
+            </div>
+            <svg id="arrow-t446" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t446" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O Relatório Mensal Simples é um template de 1 página (pode ser uma planilha ou documento) que resume a performance do mês. Inclui métricas gerais, top posts, aprendizados e plano de ação para o próximo mês. Leva 30 minutos para preencher e te dá clareza total sobre sua evolução.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Sem um relatório mensal, os meses se confundem e você perde a noção de progresso. Um relatório simples mostra tendências que são invisíveis dia a dia: "meu alcance cresceu 40% em 3 meses" ou "minha taxa de saves dobrou". Essas tendências te motivam e te guiam. É como uma bússola para seu crescimento.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Seção 1 - Números:</strong> Seguidores (início/fim), posts publicados, alcance total, engajamento médio</li>
+                  <li>- <strong>Seção 2 - Top 3:</strong> Os 3 melhores posts do mês com screenshot e análise</li>
+                  <li>- <strong>Seção 3 - Aprendizados:</strong> 3 coisas que aprendi este mês sobre meu público/conteúdo</li>
+                  <li>- <strong>Seção 4 - Plano:</strong> 3 ações específicas para o próximo mês baseadas nos dados</li>
+                  <li>- <strong>Ferramenta:</strong> Google Sheets gratuito - crie uma aba por mês</li>
+                  <li>- <strong>Quando fazer:</strong> Todo dia 1 do mês, reserve 30 minutos para preencher o relatório do mês anterior</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-4-4.html')" class="px-4 py-2 bg-amber-500/20 text-amber-400 rounded-lg hover:bg-amber-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-4-4.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+    <!-- MÓDULO 4.5 -->
+    <section id="modulo-4-5" class="mb-16 scroll-mt-20">
+      <div class="flex items-center space-x-3 mb-6">
+        <span class="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-full">MÓDULO 4.5</span>
+        <span class="text-sm text-neutral-500">~35 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-2">🚀 Escalando: De 0 a 10K Seguidores</h2>
+      <p class="text-neutral-400 mb-8">O plano de 90 dias para sair do zero e construir uma audiência real</p>
+
+      <div class="space-y-3">
+        <!-- Tópico 4.5.1 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t451')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">1</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dias 1-30: Fundação</h3>
+              <p class="text-sm text-neutral-400">Consistência, nicho e primeiros seguidores orgânicos</p>
+            </div>
+            <svg id="arrow-t451" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t451" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A fase de Fundação (dias 1-30) é onde você constrói os alicerces. O foco é 100% em consistência: 1 post por dia, todos os dias, sem exceção. O algoritmo está te "avaliando" como criador neste período. Ele precisa ver que você é confiável e consistente antes de começar a distribuir seu conteúdo para mais pessoas.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Os primeiros 30 dias são os mais difíceis e os mais importantes. É onde 90% das pessoas desistem porque os números são baixos. Mas é exatamente esse período que "treina" o algoritmo a confiar em você. Criadores que mantêm consistência por 30 dias têm 5x mais chance de atingir 10K do que os que falham na frequência.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Frequência:</strong> 1 post/dia no feed + Stories diários - sem falhar</li>
+                  <li>- <strong>Nicho definido:</strong> Fale sobre 1 tema só - nada de "um pouco de tudo"</li>
+                  <li>- <strong>Meta de seguidores:</strong> 0-500 seguidores é realista para o mês 1</li>
+                  <li>- <strong>Engajamento ativo:</strong> Comente em 10-20 perfis do seu nicho por dia (comentários genuínos)</li>
+                  <li>- <strong>Formatos:</strong> Alterne entre Reels (alcance), carrosséis (saves) e estáticos (engajamento)</li>
+                  <li>- <strong>Mentalidade:</strong> Não olhe números diariamente - analise semanalmente. Foque em publicar</li>
+                  <li>- <strong>Produção em lote:</strong> Reserve 1 dia por semana para criar 7 posts - não crie no dia de publicar</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.5.2 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t452')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">2</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dias 31-60: Aceleração</h3>
+              <p class="text-sm text-neutral-400">O algoritmo começa a confiar na consistência</p>
+            </div>
+            <svg id="arrow-t452" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t452" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A fase de Aceleração (dias 31-60) é onde o crescimento começa a ficar visível. Após 30 dias consistentes, o algoritmo "confia" que você é um criador sério e começa a testar seu conteúdo com audiências maiores. É hora de aumentar a frequência para 1-2 posts por dia e começar estratégias de crescimento ativo como collabs e tendências.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">O mês 2 é onde a mágica acontece - se você souber aproveitar. O algoritmo começa a distribuir seus Reels para o Explore e testar com não-seguidores. Cada Reel que performa bem "desbloqueia" mais distribuição. É o efeito bola de neve - mas só funciona se você mantiver a consistência e aplicar os dados do mês 1.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Frequência:</strong> 1-2 posts/dia + Stories 2-3x por dia</li>
+                  <li>- <strong>Meta de seguidores:</strong> 500-3.000 seguidores é o alvo para o mês 2</li>
+                  <li>- <strong>Collabs:</strong> Faça 2-3 collabs com criadores do mesmo tamanho no seu nicho</li>
+                  <li>- <strong>Tendências:</strong> Surfe 2-3 tendências por semana - aproveite o impulso do áudio viral</li>
+                  <li>- <strong>Conteúdo validado:</strong> 70% dos posts devem seguir os padrões que funcionaram no mês 1</li>
+                  <li>- <strong>Comunidade:</strong> Crie um grupo no Telegram/WhatsApp para seus seguidores mais engajados</li>
+                  <li>- <strong>DMs estratégicas:</strong> Agradeça novos seguidores com mensagem personalizada (não automática)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.5.3 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t453')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">3</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">📅 Dias 61-90: Escala</h3>
+              <p class="text-sm text-neutral-400">Crescimento exponencial com conteúdo validado</p>
+            </div>
+            <svg id="arrow-t453" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t453" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">A fase de Escala (dias 61-90) é onde o crescimento pode se tornar exponencial. Você já tem dados de 60 dias, sabe o que funciona e tem um público engajado. Agora é hora de escalar: produzir mais do que funciona, investir nos primeiros impulsionamentos pagos e criar "conteúdo viral" com base nos padrões validados.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">O mês 3 é onde tudo se conecta. Você tem a habilidade (mês 1), os dados (mês 2) e agora aplica ambos em escala. Perfis que chegam ao mês 3 consistentes frequentemente experimentam "viral moments" - posts que explodem e trazem milhares de seguidores de uma vez. Mas isso só acontece porque a fundação está sólida.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Meta de seguidores:</strong> 3.000-10.000 seguidores é o alvo para o mês 3</li>
+                  <li>- <strong>Conteúdo validado em escala:</strong> Seu formato campeão deve representar 80% dos posts</li>
+                  <li>- <strong>Tendências agressivas:</strong> Surfe toda tendência relevante nos primeiros 48h</li>
+                  <li>- <strong>Séries de conteúdo:</strong> Crie uma série semanal (ex: "Dica de [nicho] toda terça")</li>
+                  <li>- <strong>Cross-posting:</strong> Publique seus melhores Reels no TikTok e YouTube Shorts</li>
+                  <li>- <strong>Email list:</strong> Comece a coletar emails - seguidores são emprestados, lista de email é sua</li>
+                  <li>- <strong>Impulsionamento:</strong> Invista R$50 nos 2 melhores Reels do mês para acelerar o crescimento</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.5.4 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t454')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">4</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">💡 5 Estratégias de Crescimento Orgânico</h3>
+              <p class="text-sm text-neutral-400">Collabs, tendências, SEO, comunidade, consistência</p>
+            </div>
+            <svg id="arrow-t454" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t454" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">As 5 estratégias de crescimento orgânico são os pilares comprovados para crescer no Instagram sem gastar dinheiro com anúncios. Cada estratégia ataca um aspecto diferente do crescimento: collabs ampliam audiência, tendências pegam carona em viralidade, SEO traz tráfego de busca, comunidade retém seguidores e consistência mantém o algoritmo te favorecendo.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Depender de uma única estratégia é arriscado - se ela parar de funcionar, seu crescimento para. Combinar 5 estratégias cria um sistema robusto e previsível. Mesmo que uma delas fique fraca temporariamente, as outras 4 mantêm seu crescimento. É diversificação aplicada ao marketing digital.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>1. Collabs:</strong> Use o recurso "Collab" do Instagram para postar com outro criador - ambos ganham alcance do público do outro</li>
+                  <li>- <strong>2. Tendências:</strong> Fique atento a áudios trending e formatos virais - adapte ao seu nicho nas primeiras 48h</li>
+                  <li>- <strong>3. SEO do Instagram:</strong> Use palavras-chave na bio, legendas e alt-text - o Instagram virou um motor de busca</li>
+                  <li>- <strong>4. Comunidade:</strong> Responda comentários, faça Lives, crie grupos - seguidores engajados trazem mais seguidores</li>
+                  <li>- <strong>5. Consistência:</strong> Poste no mínimo 5x por semana - perfis consistentes têm prioridade no algoritmo</li>
+                  <li>- <strong>Combinação:</strong> Use todas as 5 simultaneamente - o efeito combinado é maior que a soma das partes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.5.5 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t455')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">5</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">⚡ Impulsionamento Estratégico</h3>
+              <p class="text-sm text-neutral-400">Quando e como investir os primeiros R$50</p>
+            </div>
+            <svg id="arrow-t455" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t455" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">Impulsionamento estratégico é investir uma pequena quantia (R$25-50) para amplificar um post que já está performando bem organicamente. A regra de ouro: NUNCA impulsione um post que está indo mal - impulsione os que já estão indo bem. Isso é como colocar combustível num foguete que já está decolando, ao invés de tentar empurrar um carro quebrado.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">R$50 investidos corretamente podem trazer 500-2.000 novos seguidores. R$50 investidos errado trazem zero. A diferença é saber QUAL post impulsionar, QUANDO impulsionar e PARA QUEM. Impulsionamento inteligente é o atalho mais barato para acelerar crescimento - mas precisa de dados para funcionar.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Quando impulsionar:</strong> Após 60 dias orgânicos - nunca antes. Você precisa de dados primeiro</li>
+                  <li>- <strong>Qual post:</strong> O Reel com maior taxa de saves/shares das últimas 2 semanas</li>
+                  <li>- <strong>Orçamento inicial:</strong> R$25 por Reel, 2 Reels por mês = R$50/mês</li>
+                  <li>- <strong>Duração:</strong> 3-5 dias por impulsionamento - não espalhe o orçamento demais</li>
+                  <li>- <strong>Público:</strong> Use "Automático" na primeira vez - o algoritmo da Meta é bom em encontrar público</li>
+                  <li>- <strong>Objetivo:</strong> Escolha "Mais visitas ao perfil" (não "curtidas" - curtidas não convertem)</li>
+                  <li>- <strong>Métrica de sucesso:</strong> Custo por seguidor abaixo de R$0,10 é excelente para iniciantes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 4.5.6 -->
+        <div class="bg-dark-800 rounded-xl border border-dark-600 overflow-hidden">
+          <button onclick="toggleTopic('t456')" class="w-full flex items-center justify-start p-4 hover:bg-amber-500/10 transition-colors">
+            <div class="w-8 h-8 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center text-sm font-bold mr-4 flex-shrink-0">6</div>
+            <div class="text-left flex-1">
+              <h3 class="font-semibold">🎯 O Plano Pós-10K</h3>
+              <p class="text-sm text-neutral-400">Próximos passos: monetização, comunidade e autoridade</p>
+            </div>
+            <svg id="arrow-t456" class="w-5 h-5 text-neutral-400 transform transition-transform flex-shrink-0 ml-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="t456" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-6 space-y-4">
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">O que é</h4>
+                <p class="text-neutral-300 text-sm">O Plano Pós-10K é o roteiro de evolução após atingir seus primeiros 10.000 seguidores. A partir desse marco, novas oportunidades se abrem: monetização via parcerias, criação de produtos digitais, construção de comunidade paga e consolidação como autoridade no nicho. É a transição de "criador de conteúdo" para "negócio digital".</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Por que aprender</h4>
+                <p class="text-neutral-300 text-sm">Muitos criadores atingem 10K e não sabem o que fazer depois. Continuam postando sem monetizar, sem construir assets e sem estratégia de longo prazo. Ter o plano pós-10K desde o início te dá direção e motivação. Você não está só crescendo seguidores - está construindo um negócio com fundação sólida.</p>
+              </div>
+              <div>
+                <h4 class="text-amber-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="text-neutral-300 text-sm space-y-2">
+                  <li>- <strong>Monetização:</strong> Com 10K, marcas começam a te procurar - crie um media kit profissional</li>
+                  <li>- <strong>Produto digital:</strong> Crie um e-book ou mini-curso baseado nos seus conteúdos campeões (R$27-97)</li>
+                  <li>- <strong>Comunidade paga:</strong> Grupo VIP no Telegram/WhatsApp por R$29-49/mês com conteúdo exclusivo</li>
+                  <li>- <strong>Email marketing:</strong> Construa uma lista de email - é o ativo mais valioso de um criador</li>
+                  <li>- <strong>Autoridade:</strong> Participe de podcasts, lives de outros criadores e eventos do nicho</li>
+                  <li>- <strong>Próxima meta:</strong> De 10K a 50K, foque em SEO do Instagram + Reels virais + parcerias estratégicas</li>
+                  <li>- <strong>Diversifique:</strong> Não dependa só do Instagram - expanda para YouTube, TikTok e newsletter</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-4-5.html')" class="px-4 py-2 bg-amber-500/20 text-amber-400 rounded-lg hover:bg-amber-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-4-5.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack do Algoritmo Meta 2026 - <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <!-- MODAL -->
+  <div id="video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/80 backdrop-blur-sm">
+    <div class="relative w-full max-w-4xl mx-4">
+      <button onclick="closeModal()" class="absolute -top-10 right-0 text-white hover:text-amber-400 transition-colors">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+      <div class="bg-dark-800 rounded-xl overflow-hidden">
+        <iframe id="modal-iframe" class="w-full aspect-video" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Topic Toggle
+    function toggleTopic(id) {
+      const el = document.getElementById(id);
+      const arrow = document.getElementById('arrow-' + id);
+      el.classList.toggle('active');
+      if (el.classList.contains('active')) {
+        arrow.style.transform = 'rotate(180deg)';
+      } else {
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Modal
+    function openModal(url) {
+      const modal = document.getElementById('video-modal');
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src = url;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('video-modal');
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src = '';
+      modal.classList.remove('flex');
+      modal.classList.add('hidden');
+    }
+
+    document.getElementById('video-modal').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

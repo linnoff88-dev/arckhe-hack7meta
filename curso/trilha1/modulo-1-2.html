@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 1.2 - Os Sinais que Realmente Importam | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+    html:not(.dark) .text-red-400 { color: #dc2626; }
+    html:not(.dark) .bg-red-500\/10 { background-color: rgba(220, 38, 38, 0.08); }
+    html:not(.dark) .border-red-500\/30 { border-color: rgba(220, 38, 38, 0.25); }
+
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-emerald-400 bg-emerald-500/10">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-blue-400 hover:bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-emerald-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-emerald-400 transition-colors">Trilha 1</a>
+      <span>/</span>
+      <span class="text-emerald-400">Modulo 1.2</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-emerald-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 text-sm font-semibold rounded-full mb-6 border border-emerald-500/30">
+        MODULO 1.2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        📊 Os Sinais que <span class="text-emerald-400">Realmente Importam</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Descubra os pesos reais do algoritmo e pare de perder tempo com metricas que nao fazem diferenca. Foque no que gera resultado.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">~25</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Basico</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-emerald-400">Teoria</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- TOPICO 1 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">1</div>
+        <h2 class="text-2xl font-bold">⚖️ Hierarquia de Sinais</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Nem todos os sinais de engajamento tem o mesmo peso para o algoritmo. Em 2026, a hierarquia e clara: curtidas sao praticamente decorativas, enquanto compartilhamentos por DM e tempo de visualizacao sao os reis. Entender essa hierarquia muda completamente como voce cria conteudo.
+      </p>
+
+      <!-- Box Dados - Tabela de Pesos -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-4">📊 Tabela de Pesos dos Sinais</h3>
+        <div class="space-y-3">
+          <div class="flex items-center gap-4">
+            <span class="text-emerald-400 font-bold w-14 text-right">35%</span>
+            <div class="flex-1 bg-dark-700 rounded-full h-6 overflow-hidden">
+              <div class="bg-emerald-500/40 h-full rounded-full flex items-center pl-3" style="width: 100%">
+                <span class="text-xs font-semibold text-emerald-400">Watch Time</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-blue-400 font-bold w-14 text-right">20%</span>
+            <div class="flex-1 bg-dark-700 rounded-full h-6 overflow-hidden">
+              <div class="bg-blue-500/40 h-full rounded-full flex items-center pl-3" style="width: 57%">
+                <span class="text-xs font-semibold text-blue-400">DM Sends</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-purple-400 font-bold w-14 text-right">Alto</span>
+            <div class="flex-1 bg-dark-700 rounded-full h-6 overflow-hidden">
+              <div class="bg-purple-500/40 h-full rounded-full flex items-center pl-3" style="width: 50%">
+                <span class="text-xs font-semibold text-purple-400">Saves</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-amber-400 font-bold w-14 text-right">Alto</span>
+            <div class="flex-1 bg-dark-700 rounded-full h-6 overflow-hidden">
+              <div class="bg-amber-500/40 h-full rounded-full flex items-center pl-3" style="width: 43%">
+                <span class="text-xs font-semibold text-amber-400">Comentarios</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-neutral-500 font-bold w-14 text-right">5%</span>
+            <div class="flex-1 bg-dark-700 rounded-full h-6 overflow-hidden">
+              <div class="bg-neutral-500/40 h-full rounded-full flex items-center pl-3" style="width: 14%">
+                <span class="text-xs font-semibold text-neutral-400">Likes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Mudanca Fundamental</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          A era do "curtir por educacao" acabou. Em 2026, curtidas representam apenas ~5% do peso algoritmico. O que realmente importa e o que as pessoas FAZEM com seu conteudo: assistem ate o fim? Enviam para alguem? Salvam para ver depois? Escrevem comentarios longos? Essas acoes exigem mais esforço do usuario, e por isso o algoritmo as valoriza muito mais.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Otimizar para watch time: ganchos fortes, ritmo envolvente</li>
+            <li>• Criar conteudo que as pessoas queiram enviar por DM</li>
+            <li>• Incentivar saves com conteudo de referencia</li>
+            <li>• Monitorar as metricas que realmente pesam</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Pedir "curte ai" como principal CTA</li>
+            <li>• Medir sucesso apenas por numero de curtidas</li>
+            <li>• Ignorar sends e saves no Insights</li>
+            <li>• Criar conteudo que gera likes mas nao acao real</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 2 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">2</div>
+        <h2 class="text-2xl font-bold">💬 Compartilhamentos Diretos (DM Sends)</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        O sinal mais poderoso do algoritmo em 2026. Quando alguem envia seu conteudo por DM para outra pessoa, a plataforma interpreta isso como "esse conteudo e bom demais para nao compartilhar". E uma recomendacao pessoal, privada, de alto valor — muito mais forte do que uma curtida publica.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Por que DM Sends sao tao Poderosos</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Enviar um conteudo por DM exige tres coisas: (1) o usuario viu e gostou, (2) ele pensou em alguem especifico que tambem gostaria, (3) ele tomou a acao de enviar. Isso e muito mais esforço do que dar dois toques para curtir. O algoritmo sabe que quanto mais esforço uma acao exige, mais genuina ela e. Um DM send vale, na pratica, o equivalente a dezenas de curtidas.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre DM Sends</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Peso no algoritmo:</strong> 20% — segundo sinal mais forte</li>
+          <li>• <strong>Multiplicador:</strong> cada send pode gerar 2-5 novos espectadores</li>
+          <li>• <strong>Posts com alto send rate:</strong> 3-5x mais alcance que media</li>
+          <li>• <strong>Tipo de conteudo com mais sends:</strong> humor relatable, dicas uteis, comparacoes</li>
+          <li>• <strong>Meta:</strong> acima de 0.5% sends/alcance = excelente</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica: Crie para Enviar</h3>
+        <p class="text-neutral-300 leading-relaxed mb-3">
+          Antes de postar, faca o "teste do DM": esse conteudo faria alguem pensar em uma pessoa especifica e querer enviar? Conteudos altamente enviaveis incluem:
+        </p>
+        <ul class="text-neutral-300 space-y-1 text-sm">
+          <li>• <strong>"Isso e a gente"</strong> — conteudo relatable que pessoas enviam para amigos</li>
+          <li>• <strong>"Voce precisa ver isso"</strong> — informacao surpreendente ou util</li>
+          <li>• <strong>"Olha o que eu achei"</strong> — descobertas, hacks, produtos</li>
+          <li>• <strong>"Lembra disso?"</strong> — nostalgia, referencias culturais</li>
+        </ul>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar conteudo que faz pensar "tenho que mandar pra fulano"</li>
+            <li>• Usar humor relatable e situacoes do dia a dia</li>
+            <li>• Incluir CTAs como "manda pra quem precisa ver isso"</li>
+            <li>• Monitorar send rate no Insights</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Conteudo generico demais que ninguem envia</li>
+            <li>• Conteudo tao nichado que so faz sentido para voce</li>
+            <li>• Ignorar a metrica de compartilhamentos</li>
+            <li>• Focar apenas em curtidas como indicador de sucesso</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 3 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">3</div>
+        <h2 class="text-2xl font-bold">🔖 Saves: O Termometro de Valor</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Saves indicam que seu conteudo tem valor duradouro — alguem quer voltar a ele depois. E um dos sinais mais fortes de qualidade para o algoritmo, porque demonstra utilidade real. Conteudo salvavel e conteudo que resolve problemas, ensina algo concreto ou serve como referencia.
+      </p>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Metas de Save Rate</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="bg-dark-800 rounded-lg p-4 text-center border border-dark-600">
+            <div class="text-2xl font-bold text-neutral-400">< 1%</div>
+            <div class="text-sm text-neutral-500 mt-1">Abaixo da media</div>
+            <div class="text-xs text-neutral-500">Precisa melhorar</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4 text-center border border-emerald-500/30">
+            <div class="text-2xl font-bold text-emerald-400">1-3%</div>
+            <div class="text-sm text-emerald-400 mt-1">Bom</div>
+            <div class="text-xs text-neutral-400">Conteudo valioso</div>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4 text-center border border-blue-500/30">
+            <div class="text-2xl font-bold text-blue-400">> 3%</div>
+            <div class="text-sm text-blue-400 mt-1">Referencia</div>
+            <div class="text-xs text-neutral-400">Conteudo excepcional</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Tipos de Conteudo Salvavel</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-neutral-300 text-sm">
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">📝</span>
+            <span><strong>Tutoriais passo a passo</strong> — processos completos que o usuario quer repetir</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">📋</span>
+            <span><strong>Listas e checklists</strong> — "10 ferramentas", "5 erros", "7 passos"</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">📐</span>
+            <span><strong>Templates e modelos</strong> — estruturas prontas para usar</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">📊</span>
+            <span><strong>Dados e estatisticas</strong> — informacao de referencia</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">🎨</span>
+            <span><strong>Inspiracoes visuais</strong> — paletas, layouts, referencias</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-emerald-400">💡</span>
+            <span><strong>Dicas praticas</strong> — atalhos, hacks, solucoes rapidas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Inclua um CTA de save natural no conteudo: "Salva esse post pra consultar depois" ou "Guarda essa lista — voce vai precisar". O CTA funciona melhor quando vem apos entregar valor real, nao no inicio. Primeiro entregue a informacao, depois sugira o save.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Criar conteudo que funciona como referencia futura</li>
+            <li>• Incluir CTAs de save naturais apos entregar valor</li>
+            <li>• Usar carrosseis para conteudo denso e salvavel</li>
+            <li>• Monitorar save rate por tipo de conteudo</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Conteudo efemero que nao tem valor para rever</li>
+            <li>• Pedir save sem entregar valor real primeiro</li>
+            <li>• Ignorar quais posts tem mais saves no Insights</li>
+            <li>• Nao adaptar formato ao tipo de informacao</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 4 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">4</div>
+        <h2 class="text-2xl font-bold">💭 Comentarios com Profundidade</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Nem todo comentario e igual para o algoritmo. Um "lindo! 😍" vale muito menos que um comentario de 20 palavras com opiniao ou experiencia pessoal. Em 2026, o algoritmo mede a profundidade dos comentarios — comentarios com mais de 4 palavras tem peso significativamente maior.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 Profundidade vs Quantidade</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          O algoritmo analisa o comprimento e a substancia dos comentarios. Um post com 50 comentarios de uma palavra ("lindo", "top", emojis) tem menos peso algoritmico do que um post com 20 comentarios de 10+ palavras com opinioes, perguntas e historias pessoais. A qualidade da conversa importa mais que o volume.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados sobre Comentarios</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Comentarios com 4+ palavras:</strong> peso 3x maior que comentarios curtos</li>
+          <li>• <strong>Perguntas abertas no post:</strong> geram 2x mais comentarios longos</li>
+          <li>• <strong>Perguntas sim/nao:</strong> geram volume mas nao profundidade</li>
+          <li>• <strong>Responder comentarios:</strong> cada resposta do criador conta como engajamento adicional</li>
+          <li>• <strong>Threads de conversa:</strong> quando um comentario gera respostas, peso extra</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica: Perguntas que Geram Conversa</h3>
+        <p class="text-neutral-300 leading-relaxed mb-3">Use perguntas abertas que exigem reflexao:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+          <div class="bg-emerald-500/10 rounded-lg p-3 border border-emerald-500/30">
+            <p class="text-emerald-400 font-semibold mb-1">✅ Perguntas abertas</p>
+            <p class="text-neutral-300">"Qual foi o maior desafio que voce enfrentou com isso?"</p>
+          </div>
+          <div class="bg-red-500/10 rounded-lg p-3 border border-red-500/30">
+            <p class="text-red-400 font-semibold mb-1">❌ Perguntas fechadas</p>
+            <p class="text-neutral-300">"Voce concorda? Sim ou nao?"</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Terminar posts com perguntas abertas e reflexivas</li>
+            <li>• Responder todos os comentarios com substancia</li>
+            <li>• Criar conteudo polemico (saudavel) que gera debate</li>
+            <li>• Fazer perguntas que pedem experiencia pessoal</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Perguntas de sim/nao que geram comentarios de 1 palavra</li>
+            <li>• Ignorar comentarios do publico</li>
+            <li>• Comprar comentarios falsos ou usar pods</li>
+            <li>• Responder apenas com emojis</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 5 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">5</div>
+        <h2 class="text-2xl font-bold">⏱️ Retencao nos 3 Primeiros Segundos</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        Os primeiros 3 segundos do seu Reel sao o filtro primario do algoritmo. Se menos de 50% dos espectadores passam dessa marca, o Reel e classificado como "nao interessante" e a distribuicao e drasticamente reduzida. E o teste de porteiro mais importante do ecossistema.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 O Filtro de 3 Segundos</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          O algoritmo usa os primeiros 3 segundos como teste de qualidade. Se um percentual alto de pessoas pula seu Reel nesse periodo, ele entende que o conteudo nao e atraente o suficiente e para de distribui-lo. Isso acontece antes mesmo de avaliar watch time total, sends ou saves. Os primeiros 3 segundos sao o "porteiro" que decide se seu conteudo entra na festa ou fica do lado de fora.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados de Retencao</h3>
+        <ul class="text-neutral-300 space-y-2">
+          <li>• <strong>Retencao minima:</strong> 50% precisam passar dos 3s para o Reel ter chance</li>
+          <li>• <strong>Retencao ideal:</strong> 70%+ nos primeiros 3 segundos</li>
+          <li>• <strong>Reels virais:</strong> media de 80% de retencao nos 3s iniciais</li>
+          <li>• <strong>Tempo medio de decisao:</strong> usuario decide em 1.3 segundos se continua ou pula</li>
+          <li>• <strong>Impacto:</strong> ganho de 10% na retencao de 3s = ~30% mais alcance</li>
+        </ul>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Tecnicas de Gancho nos 3 Primeiros Segundos</h3>
+        <div class="space-y-3 text-neutral-300 text-sm">
+          <div class="flex items-start gap-2">
+            <span class="text-primary font-bold">1.</span>
+            <span><strong>Gancho textual:</strong> "Voce esta fazendo isso errado" — texto na tela nos primeiros frames</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary font-bold">2.</span>
+            <span><strong>Gancho visual:</strong> Movimento, corte rapido ou imagem impactante logo no inicio</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary font-bold">3.</span>
+            <span><strong>Gancho de voz:</strong> Comece falando imediatamente, sem "oi gente" — va direto ao ponto</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary font-bold">4.</span>
+            <span><strong>Gancho de curiosidade:</strong> "O terceiro item dessa lista vai te surpreender" — promessa especifica</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-primary font-bold">5.</span>
+            <span><strong>Gancho de dor:</strong> "Se voce luta com X, preste atencao" — identifique o problema do publico</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Comecar com gancho textual + visual no frame 1</li>
+            <li>• Ir direto ao ponto, sem introducao desnecessaria</li>
+            <li>• Testar diferentes ganchos e comparar retencao</li>
+            <li>• Analisar a curva de retencao no Insights</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Comecar com "Oi gente, tudo bem?"</li>
+            <li>• Logos ou intros animadas nos primeiros segundos</li>
+            <li>• Silencio ou tela preta no inicio</li>
+            <li>• Revelar a conclusao antes de criar curiosidade</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOPICO 6 -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 text-xl font-bold flex items-center justify-center flex-shrink-0 border border-emerald-500/30">6</div>
+        <h2 class="text-2xl font-bold">📈 Perfil Pequeno vs Grande</h2>
+      </div>
+      <p class="text-neutral-300 mb-6 text-lg leading-relaxed">
+        O tamanho do perfil nao importa mais como antes. Com o modelo Interest Media, um perfil pequeno com alto engajamento real pode superar consistentemente um perfil grande com seguidores desengajados. O algoritmo nao olha quantos seguidores voce tem — ele olha como as pessoas reagem ao seu conteudo.
+      </p>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-emerald-400 font-bold text-lg mb-3">💡 A Democratizacao do Alcance</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Em 2026, o campo de jogo esta mais nivelado do que nunca. O algoritmo avalia cada conteudo individualmente, quase independente do perfil que o publicou. Um Reel de uma conta com 500 seguidores e testado com o mesmo rigor que um Reel de uma conta com 5 milhoes. Se o conteudo pequeno gera mais retencao, saves e sends, ele sera mais distribuido. Isso e revolucionario — e significa que a qualidade do conteudo importa mais que o historico do perfil.
+        </p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 mb-6">
+        <h3 class="text-blue-400 font-bold text-lg mb-3">📊 Dados Comparativos</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+            <p class="text-emerald-400 font-bold mb-2">Perfil Pequeno Engajado</p>
+            <ul class="text-neutral-300 space-y-1 text-sm">
+              <li>• 2K seguidores</li>
+              <li>• 8% taxa de engajamento</li>
+              <li>• 3% save rate</li>
+              <li>• Alcance: 50K-500K por post viral</li>
+            </ul>
+          </div>
+          <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+            <p class="text-red-400 font-bold mb-2">Perfil Grande Desengajado</p>
+            <ul class="text-neutral-300 space-y-1 text-sm">
+              <li>• 500K seguidores</li>
+              <li>• 0.5% taxa de engajamento</li>
+              <li>• 0.2% save rate</li>
+              <li>• Alcance: 5K-15K por post</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-6">
+        <h3 class="text-primary font-bold text-lg mb-3">⚡ Dica Pratica</h3>
+        <p class="text-neutral-300 leading-relaxed">
+          Se voce tem um perfil pequeno, nao se intimide. Foque 100% em criar o melhor conteudo possivel para seu nicho. Cada Reel e uma nova oportunidade de alcançar milhares. Se voce tem um perfil grande, nao se acomode — seus seguidores antigos podem estar desengajados e prejudicando seu alcance. Qualidade de audiencia > quantidade de audiencia.
+        </p>
+      </div>
+
+      <!-- Grid Fazer vs Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-6">
+          <h3 class="text-emerald-400 font-bold mb-3">✅ Fazer</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Focar em engajamento real, nao em numero de seguidores</li>
+            <li>• Tratar cada post como oportunidade de ir viral</li>
+            <li>• Construir comunidade engajada desde o inicio</li>
+            <li>• Celebrar saves e sends, nao apenas followers</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
+          <h3 class="text-red-400 font-bold mb-3">❌ Evitar</h3>
+          <ul class="text-neutral-300 space-y-2 text-sm">
+            <li>• Comprar seguidores (destroi engajamento)</li>
+            <li>• Fazer sorteios para ganhar seguidores nao qualificados</li>
+            <li>• Comparar seu perfil de 1K com um de 100K</li>
+            <li>• Desistir por ter "poucos seguidores"</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="mb-16">
+      <div class="bg-gradient-to-r from-emerald-900/30 to-dark-800 border border-emerald-500/30 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-6 text-emerald-400">📋 Resumo do Modulo 1.2</h2>
+
+        <div class="space-y-3 mb-8">
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi a hierarquia: Watch Time (35%) > Sends (20%) > Saves > Comentarios > Likes (5%)</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que DM Sends sao o sinal mais poderoso e como criar conteudo enviavel</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Compreendi que save rate acima de 1% e bom e acima de 3% e excepcional</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que comentarios com 4+ palavras valem mais e como estimula-los</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Entendi que 50%+ devem passar dos 3 primeiros segundos para o Reel sobreviver</span>
+          </label>
+          <label class="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox" class="mt-1 w-4 h-4 rounded border-dark-600 text-emerald-500 focus:ring-emerald-500">
+            <span class="text-neutral-300">Sei que perfil pequeno com engajamento real pode superar perfil grande</span>
+          </label>
+        </div>
+
+        <div class="border-t border-emerald-500/30 pt-6">
+          <p class="text-neutral-400 mb-4">
+            <strong class="text-emerald-400">Proximo Modulo:</strong> 1.3 - Conteudo Recomendavel vs Comum
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="modulo-1-1.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              ← Modulo Anterior
+            </a>
+            <a href="index.html" class="inline-flex items-center justify-center px-6 py-3 bg-dark-700 hover:bg-dark-600 text-neutral-300 rounded-lg transition-colors font-semibold">
+              Voltar para Trilha
+            </a>
+            <a href="modulo-1-3.html" class="inline-flex items-center justify-center px-6 py-3 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 rounded-lg transition-colors font-semibold">
+              Proximo Modulo →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-dark-600 py-8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack Meta 2026 — Um curso <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('theme') === 'light') {
+      html.classList.remove('dark');
+    }
+
+    if (html.classList.contains('dark')) {
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha 2 - Estratégia de Conteúdo | Hack Meta 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+    .topic-explanation { display: none; }
+    .topic-explanation.active { display: block; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores BLUE */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:bg-blue-500\/30:hover { background-color: rgba(37, 99, 235, 0.18); }
+
+    /* Light mode - outras trilhas */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .hover\:text-emerald-400:hover { color: #059669; }
+    html:not(.dark) .hover\:bg-emerald-500\/10:hover { background-color: rgba(5, 150, 105, 0.08); }
+
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .hover\:text-purple-400:hover { color: #7c3aed; }
+    html:not(.dark) .hover\:bg-purple-500\/10:hover { background-color: rgba(124, 58, 237, 0.08); }
+
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .hover\:text-amber-400:hover { color: #92400e; }
+    html:not(.dark) .hover\:bg-amber-500\/10:hover { background-color: rgba(217, 119, 6, 0.08); }
+
+    /* Light mode - remove gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10 transition-colors">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estratégia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Produção</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full mb-6">
+        TRILHA 2
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        📐 Estratégia de <span class="text-blue-400">Conteúdo</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Monte sua estratégia completa. Dos 7 hacks do algoritmo ao calendário editorial, passando por copywriting e monetização.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">5</div>
+          <div class="text-sm text-neutral-400">Módulos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">30</div>
+          <div class="text-sm text-neutral-400">Tópicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">~2.5h</div>
+          <div class="text-sm text-neutral-400">Conteúdo</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Intermediário</div>
+          <div class="text-sm text-neutral-400">Nível</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- CARDS SIMPLES - GRID 2 COLS -->
+    <h2 class="text-2xl font-bold mb-2 text-center">Módulos da Trilha</h2>
+    <p class="text-neutral-400 text-center mb-12">Clique em um módulo para ir direto ao conteúdo detalhado</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+      <a href="#modulo-2-1" class="block bg-dark-800 rounded-xl border border-dark-600 hover:border-blue-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-blue-400 font-bold">2.1</span>
+          <span class="text-sm text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1">🎯 Os 7 Hacks do Algoritmo</h3>
+        <p class="text-neutral-400 text-sm">Os 7 hacks comprovados para dominar o algoritmo do Facebook e Instagram em 2026</p>
+      </a>
+      <a href="#modulo-2-2" class="block bg-dark-800 rounded-xl border border-dark-600 hover:border-blue-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-blue-400 font-bold">2.2</span>
+          <span class="text-sm text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1">✏️ Frameworks de Copywriting</h3>
+        <p class="text-neutral-400 text-sm">Os frameworks de escrita que param o scroll e geram ação</p>
+      </a>
+      <a href="#modulo-2-3" class="block bg-dark-800 rounded-xl border border-dark-600 hover:border-blue-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-blue-400 font-bold">2.3</span>
+          <span class="text-sm text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1">📅 Calendário Editorial Estratégico</h3>
+        <p class="text-neutral-400 text-sm">Monte um calendário que transforma conteúdo de reativo para estratégico</p>
+      </a>
+      <a href="#modulo-2-4" class="block bg-dark-800 rounded-xl border border-dark-600 hover:border-blue-500/30 transition-all duration-300 p-6">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-blue-400 font-bold">2.4</span>
+          <span class="text-sm text-neutral-500">~30 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1">🏗️ Pilares de Conteúdo Escalável</h3>
+        <p class="text-neutral-400 text-sm">Sistema de pilares para criar dezenas de posts a partir de poucas ideias centrais</p>
+      </a>
+      <a href="#modulo-2-5" class="block bg-dark-800 rounded-xl border border-dark-600 hover:border-blue-500/30 transition-all duration-300 p-6 md:col-span-2">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="text-blue-400 font-bold">2.5</span>
+          <span class="text-sm text-neutral-500">~35 min</span>
+        </div>
+        <h3 class="text-lg font-bold mb-1">💰 Monetização: De Seguidor a Cliente</h3>
+        <p class="text-neutral-400 text-sm">Transforme seguidores em receita com 6 fontes de monetização</p>
+      </a>
+    </div>
+
+    <!-- DIVISOR -->
+    <div class="flex items-center gap-4 mb-16">
+      <div class="flex-1 h-px bg-dark-600"></div>
+      <span class="text-neutral-500 text-sm font-medium">Conteúdo Detalhado</span>
+      <div class="flex-1 h-px bg-dark-600"></div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MÓDULO 2.1 -->
+    <!-- ============================================================ -->
+    <div id="modulo-2-1" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-blue-400 font-bold text-sm">MÓDULO 2.1</span>
+        <span class="text-neutral-500 text-sm">~35 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">🎯 Os 7 Hacks do Algoritmo</h2>
+      <p class="text-neutral-400 mb-8">Os 7 hacks comprovados para dominar o algoritmo do Facebook e Instagram em 2026</p>
+
+      <div class="space-y-4">
+
+        <!-- Tópico 2.1.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-1-1')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+            <span class="font-medium">🌍 Hack 1: Crie para Desconhecidos - 50% do Feed é de contas não seguidas</span>
+          </button>
+          <div id="t2-1-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Em 2026, a Meta confirmou que aproximadamente 50% do conteúdo exibido no Feed do Instagram e 40% no Facebook vem de contas que o usuário não segue. Isso significa que o algoritmo não prioriza mais apenas quem você já segue - ele busca ativamente conteúdo relevante de criadores desconhecidos para mostrar aos usuários. O sistema de recomendação por IA analisa padrões de comportamento (o que o usuário assiste, salva, compartilha) e cruza com milhões de posts para encontrar matches de interesse, mesmo de criadores que o usuário nunca viu antes.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Este hack muda completamente a forma como você cria conteúdo. Se metade do seu alcance potencial vem de pessoas que não te seguem, você não pode criar conteúdo "interno" cheio de referências que só seus seguidores entendem. Cada post precisa funcionar sozinho, como uma vitrine para novos públicos. Criadores que entenderam isso em 2025-2026 viram seu alcance orgânico aumentar entre 3x e 10x, porque passaram a criar conteúdo "autocontido" - que qualquer pessoa pode entender e se beneficiar ao ver pela primeira vez.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Conteúdo autocontido:</strong> Cada post deve ter contexto suficiente para ser entendido por quem nunca viu seu perfil antes</li>
+                  <li><strong>Unconnected reach:</strong> Métrica da Meta que mede alcance entre não-seguidores - busque que pelo menos 30-50% do seu alcance venha de fora</li>
+                  <li><strong>Hook universal:</strong> Comece com problemas universais do nicho, não com "como vocês pediram" ou "continuando o assunto"</li>
+                  <li><strong>Perfil-vitrine:</strong> Bio, foto e destaques devem converter visitantes em 3 segundos, já que novos visitantes chegam constantemente</li>
+                  <li><strong>Teste de desconhecido:</strong> Antes de publicar, pergunte: "Se alguém que nunca me viu assistir isso, vai entender e querer mais?"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.1.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-1-2')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+            <span class="font-medium">💬 Hack 2: Comentários > Curtidas - Sinais de interação significativa vencem</span>
+          </button>
+          <div id="t2-1-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O algoritmo da Meta em 2026 utiliza um sistema de pesos para rankear conteúdo, e as interações significativas (comentários, compartilhamentos, saves, DMs) valem entre 5x e 10x mais que curtidas simples. Um comentário com mais de 4 palavras pesa aproximadamente 7x mais que um like. Um share via DM pesa cerca de 10x. Isso porque a Meta quer reduzir o "engagement vazio" (curtir sem pensar) e premiar interações que demonstram que o conteúdo realmente impactou alguém a ponto de ela parar, digitar e responder.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Se você ainda mede sucesso por curtidas, está usando a métrica errada. Um post com 200 curtidas e 5 comentários pode ter menos alcance que um post com 50 curtidas e 30 comentários. Ao entender esse peso, você redesenha seu conteúdo para provocar respostas reais: perguntas controversas (mas respeitosas), pedidos de opinião, enquetes nos Stories que levam à caixa de comentários, e CTAs que pedem "comente X se..." ao invés de "curta se concorda".</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Hierarquia de sinais:</strong> Share/DM (10x) > Save (8x) > Comentário 4+ palavras (7x) > Comentário curto (3x) > Curtida (1x)</li>
+                  <li><strong>Engagement bait vs. engagement real:</strong> "Marque um amigo" é penalizado; "Qual dessas estratégias você já usa?" gera debate genuíno</li>
+                  <li><strong>Loop de comentários:</strong> Responda TODOS os comentários nos primeiros 60 minutos - isso dobra o sinal de interação significativa</li>
+                  <li><strong>Perguntas abertas:</strong> Termine posts com perguntas que exijam reflexão, não apenas sim/não</li>
+                  <li><strong>DM como métrica oculta:</strong> Conteúdo compartilhado via DM é o sinal mais forte - crie conteúdo que as pessoas queiram enviar para amigos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.1.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-1-3')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+            <span class="font-medium">🔄 Hack 3: Conteúdo Fresco - Consistência supera perfeição</span>
+          </button>
+          <div id="t2-1-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O algoritmo da Meta em 2026 aplica um "freshness score" - um fator de recência que prioriza conteúdo novo sobre conteúdo antigo. Posts publicados nas últimas 24-48 horas recebem um boost significativo de distribuição. Além disso, contas que publicam consistentemente (pelo menos 3-5x por semana) recebem um multiplicador de alcance que pode chegar a 2x comparado a contas que postam esporadicamente. A consistência sinaliza ao algoritmo que você é um criador ativo e confiável, merecedor de mais distribuição.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Muitos criadores caem na armadilha do perfeccionismo: passam 3 dias editando um Reel "perfeito" e publicam apenas 1x por semana. Enquanto isso, criadores que publicam 5 Reels "bons o suficiente" por semana têm 5x mais chances de um deles viralizar, além de receber o multiplicador de consistência. A matemática é simples: 5 posts com 80% de qualidade geram mais resultado que 1 post com 100% de qualidade. O algoritmo recompensa volume consistente porque isso mantém os usuários na plataforma.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Freshness score:</strong> Posts das últimas 24h recebem prioridade; após 48h, a distribuição cai 60-70%</li>
+                  <li><strong>Regra 80/20 de qualidade:</strong> 80% bom o suficiente publicado é melhor que 100% perfeito nunca publicado</li>
+                  <li><strong>Frequência mínima:</strong> Instagram: 4-5 Reels + 2-3 Stories/dia; Facebook: 1 post/dia + 2-3 Stories</li>
+                  <li><strong>Batching de produção:</strong> Grave 5-7 Reels no mesmo dia, edite em lote, agende para a semana toda</li>
+                  <li><strong>Consistency streak:</strong> O algoritmo reconhece padrões - postar 30 dias seguidos cria momentum exponencial</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.1.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-1-4')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+            <span class="font-medium">🧠 Hack 4: A IA Mede Interesse Real - Watch time, pausa e rolagem</span>
+          </button>
+          <div id="t2-1-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>A IA da Meta em 2026 vai muito além de contar curtidas e comentários. Ela analisa sinais passivos de interesse que o usuário nem percebe que está gerando: quanto tempo assistiu ao vídeo (watch time), se pausou para ler, se voltou para rever, se diminuiu a velocidade de rolagem ao passar pelo post, se expandiu a legenda, e até quanto tempo ficou no perfil depois de ver o conteúdo. Esses micro-sinais comportamentais representam aproximadamente 35% do peso total na decisão do algoritmo, tornando-os os sinais mais importantes individualmente.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Este hack é revolucionário porque significa que mesmo pessoas que nunca curtem ou comentam ainda estão "votando" no seu conteúdo. Se alguém assiste seu Reel de 30 segundos inteiro, o algoritmo registra isso como um sinal forte de interesse - equivalente a várias curtidas. Ao entender isso, você otimiza para retenção (manter as pessoas assistindo) ao invés de apenas pedir engajamento visível. Técnicas como loops de curiosidade, revelações progressivas e informação densa que exige pausa se tornam suas armas mais poderosas.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Watch time retention:</strong> Busque que 60%+ dos espectadores assistam pelo menos 75% do vídeo - isso ativa distribuição exponencial</li>
+                  <li><strong>Scroll velocity:</strong> A IA detecta se o usuário desacelerou ao passar pelo seu post - textos com dados surpreendentes causam esse efeito</li>
+                  <li><strong>Re-watch rate:</strong> Vídeos assistidos 2x ou mais recebem boost de até 3x no alcance</li>
+                  <li><strong>Dwell time:</strong> Tempo gasto em carrosséis e posts estáticos (média ideal: 15-30 segundos por slide)</li>
+                  <li><strong>Profile visit signal:</strong> Se após ver o conteúdo o usuário visita seu perfil, o algoritmo entende que você é "discovery-worthy"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.1.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-1-5')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+            <span class="font-medium">✍️ Hack 5: Originalidade Recompensada - Conteúdo autoral recebe prioridade</span>
+          </button>
+          <div id="t2-1-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>A Meta implementou em 2025-2026 um sistema robusto de detecção de originalidade. A IA analisa o conteúdo buscando sinais de criação original: rosto do criador aparecendo, voz própria (não TTS genérica), ângulos únicos de câmera, e textos que não são cópias de outros posts. Conteúdo identificado como repost, compilação ou cópia recebe uma penalidade que pode reduzir seu alcance em até 80%. Por outro lado, conteúdo original comprovado recebe um bonus de distribuição, especialmente se o criador consistentemente produz material autoral.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>A era de repostar memes e vídeos virais de outros acabou. Em 2026, a Meta rastreia a origem do conteúdo e direciona o crédito (e o alcance) para o criador original. Isso é uma oportunidade gigante para quem cria conteúdo próprio: a concorrência diminuiu porque "recicladores" foram penalizados. Ao aparecer no vídeo, usar sua voz, compartilhar suas experiências e perspectivas únicas, você ativa o selo de originalidade que multiplica seu alcance. O algoritmo quer diversidade de vozes, não ecos da mesma mensagem.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Originality score:</strong> A IA avalia de 0 a 1 a originalidade de cada post - conteúdo acima de 0.7 recebe boost de distribuição</li>
+                  <li><strong>Face-on-camera:</strong> Vídeos com o rosto do criador recebem 2x mais distribuição do que vídeos com texto+música apenas</li>
+                  <li><strong>Perspectiva única:</strong> Mesmo temas populares ganham distribuição se você adicionar opinião própria, dados novos ou ângulo diferente</li>
+                  <li><strong>Penalidade de repost:</strong> Conteúdo detectado como repost perde até 80% do alcance potencial - nunca reposte sem adicionar valor original</li>
+                  <li><strong>Voz autoral:</strong> Desenvolva um estilo visual e narrativo reconhecível - o algoritmo identifica e valoriza consistência autoral</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.1.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-1-6')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+            <span class="font-medium">📱 Hack 6 e 7: Reels + Conteúdo Útil - Formatos e valor que o algoritmo ama</span>
+          </button>
+          <div id="t2-1-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Hack 6: A Meta declarou oficialmente em 2026 que Reels é o formato com maior potencial de alcance orgânico, recebendo até 3x mais distribuição que posts estáticos e 2x mais que carrosséis. Reels entre 15-60 segundos têm a melhor performance, com o sweet spot entre 20-35 segundos. Hack 7: Conteúdo classificado como "útil" pela IA - que ensina algo, resolve um problema ou fornece informação acionável - recebe prioridade sobre conteúdo puramente de entretenimento. A Meta quer ser vista como plataforma de aprendizado, não apenas de diversão.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Combinando os dois hacks, a fórmula ideal fica clara: Reels úteis são o formato mais poderoso para crescer em 2026. Se você grava um Reel de 25 segundos ensinando algo prático ("3 passos para X"), você está ativando simultaneamente o boost de formato (Reels) e o boost de valor (conteúdo útil). Criadores que migraram para este formato reportam crescimento de 500% a 2000% no alcance comparado com posts estáticos de imagem. A chave é combinar entretenimento com utilidade - o que a Meta chama de "edu-tainment".</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Sweet spot de duração:</strong> Reels de 20-35 segundos têm a melhor taxa de retenção e, portanto, o melhor alcance</li>
+                  <li><strong>Edu-tainment:</strong> Conteúdo que educa de forma divertida - "Aprenda X em 30 segundos" com edição dinâmica e humor</li>
+                  <li><strong>Classificação de utilidade:</strong> A IA categoriza posts como útil/entretenimento/informação - posts "úteis" ganham mais distribuição no Explore</li>
+                  <li><strong>Reels verticais nativos:</strong> Use 9:16, grave direto no app quando possível, evite marcas d'água de TikTok (penalidade de -30% alcance)</li>
+                  <li><strong>Fórmula 3-S:</strong> Show (mostre), Simplify (simplifique), Solve (resolva) - estrutura para Reels educativos de alto impacto</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-2-1.html')" class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-2-1.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MÓDULO 2.2 -->
+    <!-- ============================================================ -->
+    <div id="modulo-2-2" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-blue-400 font-bold text-sm">MÓDULO 2.2</span>
+        <span class="text-neutral-500 text-sm">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">✏️ Frameworks de Copywriting</h2>
+      <p class="text-neutral-400 mb-8">Os frameworks de escrita que param o scroll e geram ação</p>
+
+      <div class="space-y-4">
+
+        <!-- Tópico 2.2.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-2-1')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+            <span class="font-medium">🎯 Framework AIDA - Atenção, Interesse, Desejo, Ação na prática</span>
+          </button>
+          <div id="t2-2-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>AIDA é o framework de copywriting mais clássico e eficaz, adaptado para redes sociais em 2026. A = Atenção (os primeiros 1-3 segundos do Reel ou a primeira linha da legenda), I = Interesse (expanda o gancho com dados ou história), D = Desejo (mostre a transformação ou benefício), A = Ação (CTA claro e específico). Em um Reel, a Atenção é o hook visual/verbal dos primeiros 2 segundos. Em um carrossel, é a capa. Em uma legenda, é a primeira frase. Exemplo prático: "Eu ganhei R$12K em uma semana com Instagram (A) usando uma técnica que 99% dos criadores ignoram (I). O resultado? Saí do CLT e vivo de conteúdo desde 2024 (D). Salva esse post e aplica amanhã (A)."</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>AIDA funciona porque espelha a jornada psicológica natural do consumidor: primeiro você precisa interromper o scroll (Atenção), depois justificar por que a pessoa deve continuar consumindo (Interesse), então criar o desejo pela transformação que você oferece (Desejo), e finalmente guiar para a ação desejada (Ação). Sem AIDA, a maioria dos posts falha logo na primeira etapa - não conseguem parar o scroll. Com AIDA, você tem um checklist mental que garante que cada elemento do post cumpre uma função específica na jornada de conversão.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Atenção (2s):</strong> Use números, perguntas provocativas, afirmações contrárias. Ex: "Postar todo dia está DESTRUINDO seu alcance"</li>
+                  <li><strong>Interesse (5-10s):</strong> Dados surpreendentes, "o que poucos sabem", revelação parcial. Ex: "O algoritmo de 2026 pesa watch time 7x mais que curtidas"</li>
+                  <li><strong>Desejo (10-20s):</strong> Prove a transformação: antes/depois, resultados reais, depoimentos. Ex: "Com isso, meu alcance foi de 500 para 50K em 30 dias"</li>
+                  <li><strong>Ação (final):</strong> CTA único e claro. Ex: "Salva para aplicar amanhã" ou "Comenta HACK para receber o guia completo"</li>
+                  <li><strong>AIDA para Reels:</strong> Hook visual (A) nos 2s iniciais, contexto (I) até 10s, prova/benefício (D) até 25s, CTA (A) nos 5s finais</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.2.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-2-2')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+            <span class="font-medium">🔥 Framework PAS - Problema, Agitação, Solução para redes sociais</span>
+          </button>
+          <div id="t2-2-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>PAS é o framework mais poderoso para conteúdo que vende ou converte. P = Problema (identifique uma dor real do seu público), A = Agitação (intensifique essa dor mostrando consequências e urgência), S = Solução (apresente sua solução como alívio). Exemplo em legenda: "Você posta todos os dias e ninguém vê (P). Enquanto isso, criadores com metade do seu esforço têm 10x mais alcance. Cada post ignorado é tempo perdido que nunca volta (A). Existe um sistema de 7 hacks que inverte isso em 30 dias - e eu vou te mostrar agora (S)." PAS funciona porque ativa o viés de aversão à perda, que é 2x mais forte que o desejo de ganho.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>PAS é especialmente eficaz em redes sociais porque a dor é o maior interruptor de scroll que existe. Quando alguém lê "Você está perdendo seguidores toda semana e nem sabe" e se identifica, é impossível não parar para ler mais. A Agitação amplifica esse efeito, criando urgência e FOMO. E a Solução chega como alívio emocional, fazendo o leitor se sentir grato por ter encontrado aquele conteúdo. PAS é o framework ideal para posts de venda, lançamento de produtos e conteúdo de conversão.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Problema específico:</strong> Quanto mais específica a dor, mais poderoso o gancho. "Seu alcance caiu 40% este mês" > "Seu alcance está baixo"</li>
+                  <li><strong>Agitação ética:</strong> Intensifique sem manipular. Mostre consequências reais, não medos inventados. Ex: "A cada mês sem estratégia, o algoritmo te enterra mais"</li>
+                  <li><strong>Solução gradual:</strong> Não entregue tudo de uma vez. Mostre que a solução existe, dê um gostinho, e direcione para o conteúdo completo</li>
+                  <li><strong>PAS para Reels:</strong> Problema no hook (0-3s), agitação visual com texto na tela (3-15s), solução com prova (15-30s)</li>
+                  <li><strong>PAS para Stories:</strong> Story 1 = Problema (enquete), Story 2 = Agitação (dados), Story 3 = Solução (link/CTA)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.2.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-2-3')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+            <span class="font-medium">📖 Framework HSO - Hook, Story, Offer para Reels e conversão</span>
+          </button>
+          <div id="t2-2-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>HSO é o framework perfeito para Reels e vídeos curtos. H = Hook (gancho irresistível nos primeiros 2 segundos), S = Story (conte uma mini-história com tensão e resolução), O = Offer (oferta ou CTA no final). Funciona porque o cérebro humano é programado para histórias - quando ouvimos "Eu estava prestes a desistir do Instagram quando..." nosso cérebro entra em modo narrativo e precisa saber o desfecho. Exemplo: "Eu perdi 2.000 seguidores em uma semana (H). Tentei tudo: postar mais, usar hashtags, até pagar por anúncios. Nada funcionava. Até que descobri que estava cometendo 3 erros fatais no hook dos meus Reels (S). Salva esse vídeo e aplica essas 3 correções amanhã (O)."</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>HSO é o framework mais natural para vídeo porque ele usa storytelling, que é a forma mais antiga e eficaz de transmitir informação. Enquanto AIDA e PAS são mais "técnicos", HSO se sente como uma conversa com um amigo. Isso gera mais confiança, mais watch time (as pessoas assistem para saber o final da história) e mais conexão emocional. Em 2026, com a IA medindo interesse real, storytelling gera os sinais passivos mais fortes: as pessoas assistem até o final, rewatcham e compartilham via DM.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Hook de 2 segundos:</strong> Comece in media res (no meio da ação). "Eu quase fui demitido por causa de um post..." > "Olá pessoal, hoje vou falar sobre..."</li>
+                  <li><strong>Story com tensão:</strong> Toda boa história tem conflito. Mostre o obstáculo antes da solução. A jornada do fracasso ao sucesso é universal</li>
+                  <li><strong>Offer natural:</strong> A oferta deve ser consequência natural da história. "Se isso funcionou pra mim, imagina com o guia completo" > "Compre agora"</li>
+                  <li><strong>HSO para carrossel:</strong> Slide 1 = Hook (capa impactante), Slides 2-8 = Story (desenvolvimento), Slide 9-10 = Offer (CTA)</li>
+                  <li><strong>Mini-histórias de 15s:</strong> Não precisa de 60s para contar uma história. Estrutura: "Eu era X, fiz Y, agora sou Z" funciona em 15 segundos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.2.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-2-4')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+            <span class="font-medium">💡 Os 4 U's para Ganchos - Urgente, Único, Ultra-específico, Útil</span>
+          </button>
+          <div id="t2-2-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Os 4 U's são um checklist para avaliar a qualidade de qualquer gancho (hook) antes de publicar. Todo gancho ideal deve ter pelo menos 2 dos 4 U's: Urgente (cria senso de tempo - "antes que o algoritmo mude de novo"), Único (diferente de tudo que a pessoa já viu - "o hack que nem os gurus conhecem"), Ultra-específico (números e detalhes concretos - "como ganhei 3.847 seguidores em 14 dias"), Útil (resolve um problema imediato - "copie esse template de legenda agora"). Ganchos com 3-4 U's são praticamente impossíveis de ignorar.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>O gancho é responsável por 80% do sucesso de qualquer conteúdo em redes sociais. Se o hook não funciona, ninguém vê o resto - não importa quão bom seja o conteúdo. Os 4 U's dão um método objetivo para avaliar ganchos. Ao invés de "achar" que o hook está bom, você passa pelo checklist: tem urgência? é único? é específico? é útil? Se marca apenas 1 U, reescreva. Se marca 2+, publique com confiança. Essa metodologia elimina a subjetividade e aumenta drasticamente a taxa de acerto dos seus hooks.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Urgente:</strong> "O Instagram vai mudar isso em abril" / "Última chance de usar essa estratégia" / "Pare o que está fazendo e veja isso"</li>
+                  <li><strong>Único:</strong> "Ninguém está falando sobre isso" / "A estratégia proibida do algoritmo" / "O oposto do que os gurus ensinam"</li>
+                  <li><strong>Ultra-específico:</strong> "Exatamente R$4.237 em 21 dias" / "3 palavras que triplicam comentários" / "O post das 18h47 de terça"</li>
+                  <li><strong>Útil:</strong> "Copie e cole esse template" / "Faça isso nos próximos 5 minutos" / "O checklist que uso todo dia"</li>
+                  <li><strong>Teste dos 4 U's:</strong> Antes de publicar, dê nota 0-3 para cada U. Total abaixo de 4? Reescreva. Acima de 6? Hook forte. 8+? Potencial viral</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.2.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-2-5')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+            <span class="font-medium">🗣️ StoryBrand Social - O seguidor é o herói, não você</span>
+          </button>
+          <div id="t2-2-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O framework StoryBrand, criado por Donald Miller, adaptado para redes sociais posiciona o seguidor como o herói da história e você como o guia. Na jornada clássica: o herói (seguidor) tem um problema, encontra um guia (você) que tem um plano, chama para ação e o leva ao sucesso, evitando o fracasso. Na prática para redes sociais: ao invés de "Eu sou especialista em marketing", você diz "Você quer viver de conteúdo mas não sabe por onde começar? Eu já ajudei 200 criadores a sair do zero. Aqui está o caminho de 3 passos." A mudança de "eu" para "você" transforma completamente a conexão com o público.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>O erro mais comum de criadores é fazer do perfil um currículo pessoal: "Eu fiz X, eu conquistei Y, eu sou Z". O problema é que as pessoas não se importam com você - elas se importam com elas mesmas. StoryBrand inverte isso: seu conteúdo fala das dores, sonhos e jornada do seguidor, não da sua. Isso cria uma conexão emocional profunda porque o seguidor pensa "essa pessoa me entende". E quando alguém sente que é entendido, a confiança dispara - e confiança é a base de toda conversão.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Herói = Seguidor:</strong> Toda comunicação começa com o problema do seguidor, não com suas conquistas. Use "você" 3x mais que "eu"</li>
+                  <li><strong>Guia = Você:</strong> Mostre empatia ("Eu sei como é frustrante") e autoridade ("Ajudei 200 criadores") em 1-2 frases, não em 10 parágrafos</li>
+                  <li><strong>Plano simples:</strong> Dê passos claros: "Passo 1: Defina seus pilares. Passo 2: Crie 5 Reels. Passo 3: Analise resultados em 7 dias"</li>
+                  <li><strong>Sucesso vs. Fracasso:</strong> Mostre os dois caminhos: "Com esse método: 10K seguidores em 90 dias. Sem ele: mais 6 meses postando para ninguém"</li>
+                  <li><strong>Bio StoryBrand:</strong> Reescreva sua bio no formato: "Ajudo [herói] a [conquista desejada] sem [maior objeção]"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.2.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-2-6')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+            <span class="font-medium">⚡ CTAs que Convertem - Exemplos de calls-to-action para 2026</span>
+          </button>
+          <div id="t2-2-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>CTA (Call-to-Action) é a instrução que diz ao seguidor exatamente o que fazer depois de consumir seu conteúdo. Em 2026, CTAs genéricos como "curta e compartilhe" não funcionam mais - o algoritmo detecta engagement bait e penaliza. CTAs eficazes em 2026 são específicos, naturais e alinhados ao conteúdo. Existem 5 categorias de CTAs: Save CTA ("Salva para consultar depois"), Comment CTA ("Comenta qual desses você já usa"), Share CTA ("Manda para alguém que precisa ouvir isso"), DM CTA ("Me manda HACK no direct"), e Profile CTA ("Segue para mais estratégias como essa todo dia").</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Um post sem CTA é como uma loja sem caixa registradora: o cliente entra, olha, gosta e vai embora. O CTA direciona a energia que o conteúdo gerou para uma ação específica que beneficia tanto o seguidor quanto você. Posts com CTA claro têm em média 3x mais interações que posts sem CTA. E o tipo de CTA muda o resultado: pedir para salvar gera mais saves (peso 8x), pedir para comentar gera mais comentários (peso 7x), pedir para enviar via DM gera shares (peso 10x). Escolha o CTA baseado no sinal que você quer maximizar.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>CTA único:</strong> Nunca peça 3 coisas ("curta, comenta, salva e compartilha"). Escolha UMA ação. Múltiplos CTAs = nenhuma ação</li>
+                  <li><strong>CTA contextual:</strong> "Salva esse checklist" (post educativo) / "Comenta sua maior dúvida" (post de debate) / "Envia pro sócio" (post de negócios)</li>
+                  <li><strong>CTA de DM:</strong> "Comenta TEMPLATE e eu te mando no direct" - gera comentário + DM, ativando 2 sinais fortes simultaneamente</li>
+                  <li><strong>CTA visual em Reels:</strong> Texto na tela + fala + gesto apontando para botão de salvar/compartilhar nos últimos 3 segundos</li>
+                  <li><strong>Micro-CTAs ao longo do conteúdo:</strong> "Presta atenção nessa parte" / "Anota isso" / "Pausa e relê" - mantêm engajamento durante o consumo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-2-2.html')" class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-2-2.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MÓDULO 2.3 -->
+    <!-- ============================================================ -->
+    <div id="modulo-2-3" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-blue-400 font-bold text-sm">MÓDULO 2.3</span>
+        <span class="text-neutral-500 text-sm">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">📅 Calendário Editorial Estratégico</h2>
+      <p class="text-neutral-400 mb-8">Monte um calendário que transforma conteúdo de reativo para estratégico</p>
+
+      <div class="space-y-4">
+
+        <!-- Tópico 2.3.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-3-1')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+            <span class="font-medium">📊 Por que o Calendário é Estratégico - O algoritmo pune inconsistência</span>
+          </button>
+          <div id="t2-3-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Um calendário editorial não é apenas uma lista de "o que postar". É um sistema estratégico que alinha seus pilares de conteúdo, formatos, horários e objetivos de negócio em um plano executável. Em 2026, o algoritmo da Meta monitora padrões de publicação e penaliza inconsistência: se você posta 5x em uma semana e 0x na seguinte, perde o "consistency boost" que pode representar até 2x mais alcance. Um calendário garante que você nunca perca esse boost, além de distribuir seus pilares de conteúdo (educacional, inspiracional, entretenimento, conversão) nas proporções ideais ao longo da semana.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Criadores sem calendário operam no modo "reativo": acordam, pensam "o que vou postar hoje?", perdem 2 horas decidindo e publicam algo medíocre. Criadores com calendário operam no modo "estratégico": sabem exatamente o que publicar, em qual formato, a que horas, e qual pilar de conteúdo estão fortalecendo. A diferença nos resultados é gritante: criadores com calendário publicam em média 4x mais, com 2x mais qualidade e 3x mais alcance, porque cada post tem propósito definido e é produzido com antecedência em lote.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Consistency boost:</strong> O algoritmo dá até 2x mais alcance para criadores que mantêm frequência estável por 4+ semanas consecutivas</li>
+                  <li><strong>Modo reativo vs. estratégico:</strong> Reativo = "o que posto hoje?". Estratégico = "já sei o que posto até sexta, posso focar em qualidade"</li>
+                  <li><strong>Distribuição de pilares:</strong> 40% educacional, 25% entretenimento, 20% inspiracional, 15% conversão - equilibre ao longo da semana</li>
+                  <li><strong>Planejamento semanal:</strong> Domingo: planejar a semana. Segunda: gravar em lote. Terça-sexta: publicar e engajar. Sábado: analisar métricas</li>
+                  <li><strong>Buffer de conteúdo:</strong> Tenha sempre 5-7 posts prontos de reserva para semanas em que imprevistos acontecem</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.3.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-3-2')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+            <span class="font-medium">📝 Os 7 Campos Essenciais - Estrutura profissional de planejamento</span>
+          </button>
+          <div id="t2-3-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Todo post planejado profissionalmente deve preencher 7 campos antes de ser produzido: (1) Data e horário de publicação, (2) Plataforma (Instagram, Facebook ou ambos), (3) Formato (Reel, carrossel, Story, post estático), (4) Pilar de conteúdo (educacional, inspiracional, entretenimento, conversão), (5) Tema/Título do conteúdo, (6) Hook/Gancho principal, (7) CTA específico. Esses 7 campos transformam uma ideia vaga ("falar sobre algoritmo") em um plano executável ("Terça 18h, Instagram, Reel 25s, pilar educacional, '3 hacks do algoritmo que ninguém usa', hook: 'Pare de postar assim', CTA: 'Salva para aplicar amanhã'").</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Os 7 campos eliminam a procrastinação porque removem decisões do momento de produção. Quando você senta para gravar um Reel e já sabe o tema, o hook e o CTA, a gravação leva 5 minutos ao invés de 2 horas. Além disso, os campos garantem diversificação: ao preencher o calendário da semana, você visualiza se está equilibrando pilares (não pode ser tudo educacional) e formatos (não pode ser tudo Reel). Essa visão panorâmica é impossível sem um sistema estruturado.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Campo 1 - Data/Hora:</strong> Defina com base nos melhores horários do seu nicho. Use o Insights do Instagram para refinar</li>
+                  <li><strong>Campo 2 - Plataforma:</strong> Instagram e Facebook têm públicos diferentes. Adapte a linguagem mesmo que o tema seja o mesmo</li>
+                  <li><strong>Campo 3 - Formato:</strong> Alterne: segunda Reel, terça carrossel, quarta Story, quinta Reel, sexta post estático</li>
+                  <li><strong>Campo 4 - Pilar:</strong> Marque com cores: azul (educacional), verde (inspiracional), amarelo (entretenimento), vermelho (conversão)</li>
+                  <li><strong>Campos 5-7 - Conteúdo:</strong> O trio tema+hook+CTA deve ser definido ANTES da produção. Isso economiza 70% do tempo de criação</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.3.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-3-3')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+            <span class="font-medium">📆 Template Semanal Completo - Segunda a domingo, formato e pilar</span>
+          </button>
+          <div id="t2-3-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O template semanal completo distribui conteúdo ao longo de 7 dias, alternando formatos e pilares para maximizar alcance e engajamento. Template recomendado para 2026: Segunda - Reel educacional (pilar educacional, 40%) "Dica rápida da semana" 18h. Terça - Carrossel educacional (pilar educacional) "Tutorial passo a passo" 12h. Quarta - Reel entretenimento (pilar entretenimento, 25%) "Trend adaptada ao nicho" 19h. Quinta - Post inspiracional (pilar inspiracional, 20%) "História/bastidores" 18h. Sexta - Reel educacional (pilar educacional) "Os X erros/hacks" 17h. Sábado - Stories interativos (pilar entretenimento) enquetes e Q&A. Domingo - Post de conversão (pilar conversão, 15%) oferta/produto/serviço 10h.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Ter um template fixo elimina a decisão mais difícil: "o que postar?". Quando você sabe que segunda é sempre Reel educativo, só precisa escolher o tema. Ao longo de 4 semanas, esse template gera 20+ posts diversificados que cobrem todos os pilares e formatos. Além disso, seus seguidores criam expectativa ("toda quarta tem conteúdo engraçado") e o algoritmo reconhece o padrão de consistência. O template pode ser adaptado ao seu nicho, mas a estrutura base funciona para 90% dos criadores.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Segunda (Educacional):</strong> Reel 20-30s com dica prática. Hook: número ou dado surpreendente. CTA: salva</li>
+                  <li><strong>Terça (Educacional):</strong> Carrossel 7-10 slides com tutorial. Capa impactante. CTA: compartilha</li>
+                  <li><strong>Quarta (Entretenimento):</strong> Reel com trend do momento adaptada ao nicho. CTA: marca alguém que faz isso</li>
+                  <li><strong>Quinta (Inspiracional):</strong> Bastidores, história pessoal, antes/depois. CTA: comenta sua experiência</li>
+                  <li><strong>Sexta (Educacional):</strong> Reel "Top X" ou "Erros comuns". CTA: salva esse checklist</li>
+                  <li><strong>Sábado (Entretenimento):</strong> Stories com enquetes, quiz, caixa de perguntas - gera dados para conteúdo da semana seguinte</li>
+                  <li><strong>Domingo (Conversão):</strong> Post com oferta direta, depoimento de cliente, CTA de venda</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.3.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-3-4')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+            <span class="font-medium">⏰ Melhores Horários 2026 - Quando postar no Instagram e Facebook</span>
+          </button>
+          <div id="t2-3-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Os melhores horários de publicação em 2026 foram mapeados com base em dados de milhões de posts no Brasil. Instagram: segunda a sexta, os picos são às 7h-8h (manhã, durante transporte), 12h-13h (almoço) e 18h-20h (pós-trabalho). Sábado: 10h-12h. Domingo: 9h-11h e 19h-21h. Facebook: os padrões são similares mas com diferenças importantes - o público do Facebook é mais ativo durante o horário comercial (9h-15h) e menos no fim de noite. Para ambas as plataformas, o horário ideal específico depende do seu público - use o Instagram Insights para descobrir quando seus seguidores estão online.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Publicar no horário certo pode aumentar seu alcance inicial em 30-50%. O algoritmo dá um boost de distribuição nos primeiros 30-60 minutos após a publicação - se nesse período muitas pessoas estão online e interagem, o post entra no ciclo de distribuição expandida. Postar às 3h da manhã, quando seu público dorme, significa perder essa janela de ouro. Mas atenção: horários genéricos são pontos de partida. Seu horário ideal pode ser diferente. O segredo é testar por 2-4 semanas em horários variados e analisar qual gera mais alcance para o SEU público.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Instagram - Semana:</strong> Melhores: 7h-8h, 12h-13h, 18h-20h. Evitar: 22h-6h e 14h-16h (baixa atividade)</li>
+                  <li><strong>Instagram - Fim de semana:</strong> Sábado 10h-12h, Domingo 9h-11h e 19h-21h. Menor concorrência = mais alcance por post</li>
+                  <li><strong>Facebook - Semana:</strong> Melhores: 9h-11h e 13h-15h (horário comercial). Público mais velho e profissional</li>
+                  <li><strong>Janela de ouro:</strong> Os primeiros 30-60 minutos determinam se o post será distribuído amplamente. Maximize interações nesse período</li>
+                  <li><strong>Teste A/B de horários:</strong> Por 4 semanas, poste no mesmo dia em horários diferentes. Compare alcance. Seu horário ideal pode surpreender</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.3.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-3-5')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+            <span class="font-medium">🏭 Produção em Lote - Grave 5 Reels e crie 3 carrosséis no mesmo dia</span>
+          </button>
+          <div id="t2-3-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Produção em lote (batching) é o método de criar todo o conteúdo da semana em 1-2 sessões concentradas, ao invés de criar e publicar diariamente. O processo: (1) Domingo: planejamento (30 min) - defina temas, hooks e CTAs para todos os posts da semana usando o calendário editorial. (2) Segunda: gravação de Reels em lote (2-3 horas) - monte o cenário uma vez, troque roupas entre gravações, grave 5-7 Reels seguidos. (3) Segunda à noite ou terça: edição em lote (2-3 horas) - edite todos os vídeos, crie as capas dos carrosséis, escreva todas as legendas. (4) Agende tudo usando Meta Business Suite ou ferramentas como Later/Buffer.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>O batching funciona porque elimina o custo de "troca de contexto". Cada vez que você para o que está fazendo para gravar um Reel, leva 15-20 minutos para entrar no "modo criativo". Se grava 1 por dia, perde 1h30 por semana só em transição. Ao gravar 5 de uma vez, essa transição acontece uma única vez. Criadores que adotam batching relatam economizar 5-8 horas por semana, com qualidade igual ou superior. Além disso, ter conteúdo pronto e agendado elimina o estresse diário e garante consistência mesmo em semanas difíceis.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Bloco de gravação:</strong> Reserve 2-3h ininterruptas. Monte cenário, iluminação e áudio uma vez. Troque roupas entre takes para parecer dias diferentes</li>
+                  <li><strong>Roteiro pré-gravação:</strong> Cada Reel deve ter: hook escrito, 3-5 bullet points do conteúdo e CTA. Não improvise - leia do teleprompter</li>
+                  <li><strong>Edição em lote:</strong> Use templates no CapCut/InShot. Aplique o mesmo estilo visual em todos os vídeos da semana para manter consistência</li>
+                  <li><strong>Agendamento:</strong> Meta Business Suite permite agendar Reels, posts e Stories gratuitamente. Agende tudo para a semana e foque em engajar</li>
+                  <li><strong>Kit de produção mínimo:</strong> Celular + ring light + tripé + fone de lapela = setup de R$200 que produz conteúdo profissional</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.3.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-3-6')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+            <span class="font-medium">📈 Análise Semanal - O ritual de toda segunda-feira</span>
+          </button>
+          <div id="t2-3-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>A análise semanal é um ritual de 30 minutos toda segunda-feira onde você revisa os resultados da semana anterior para ajustar a estratégia da semana seguinte. O processo: (1) Abra o Instagram Insights e anote o alcance, engajamento e seguidores novos de cada post. (2) Identifique o post TOP 1 (maior alcance) e o PIOR (menor alcance). (3) Analise o que diferencia os dois: formato? horário? pilar? hook? (4) Replique elementos do TOP 1 na semana seguinte. (5) Corrija ou elimine padrões do PIOR. (6) Registre tudo em uma planilha simples para acompanhar tendências ao longo de meses.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Sem análise, você está voando às cegas. Pode estar repetindo erros semana após semana sem perceber. A análise semanal cria um loop de melhoria contínua: publicar → medir → aprender → melhorar → publicar novamente. Em 4-8 semanas, esse ciclo transforma completamente seus resultados porque cada semana é otimizada com base em dados reais, não em achismos. Criadores que fazem análise semanal consistente crescem em média 3x mais rápido que os que não analisam.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Métricas-chave:</strong> Alcance (quantos viram), Taxa de engajamento (interações/alcance), Saves e Shares (sinais de qualidade), Seguidores novos</li>
+                  <li><strong>Análise TOP 1 vs. PIOR:</strong> Compare formato, horário, pilar, hook e CTA. Padrões emergem depois de 3-4 semanas de dados</li>
+                  <li><strong>Planilha de registro:</strong> Colunas: Data, Formato, Pilar, Horário, Alcance, Engajamento, Saves, Shares, Seguidores novos, Observações</li>
+                  <li><strong>Regra do dobro:</strong> Se um tema/formato teve 2x mais alcance que a média, crie uma variação dele na semana seguinte</li>
+                  <li><strong>Tendências mensais:</strong> A cada 4 semanas, analise a planilha para encontrar tendências: quais pilares performam melhor? Quais horários? Quais formatos?</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-2-3.html')" class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-2-3.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MÓDULO 2.4 -->
+    <!-- ============================================================ -->
+    <div id="modulo-2-4" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-blue-400 font-bold text-sm">MÓDULO 2.4</span>
+        <span class="text-neutral-500 text-sm">~30 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">🏗️ Pilares de Conteúdo Escalável</h2>
+      <p class="text-neutral-400 mb-8">Sistema de pilares para criar dezenas de posts a partir de poucas ideias centrais</p>
+
+      <div class="space-y-4">
+
+        <!-- Tópico 2.4.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-4-1')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+            <span class="font-medium">🎓 Pilar Educacional (40%) - Ensinar gera saves e shares</span>
+          </button>
+          <div id="t2-4-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O pilar educacional deve representar 40% do seu conteúdo total e é o mais poderoso para crescimento orgânico. Este pilar inclui: tutoriais passo a passo, dicas práticas, explicações de conceitos, erros comuns a evitar, comparativos, checklists e guias rápidos. Conteúdo educacional gera os sinais mais valiosos para o algoritmo: saves (pessoas salvam para consultar depois, peso 8x) e shares (pessoas compartilham com quem precisa, peso 10x). Em 2026, posts educacionais têm em média 3x mais saves que posts de entretenimento e 2x mais shares que posts inspiracionais.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>O pilar educacional constrói autoridade e confiança, que são os fundamentos de qualquer monetização futura. Quando você ensina algo valioso gratuitamente, o seguidor pensa: "Se o conteúdo gratuito é tão bom, imagina o pago". Além disso, conteúdo educacional tem vida longa - um tutorial de "como editar Reels" continua gerando saves e alcance meses depois. É o pilar com melhor ROI de tempo porque cada post educativo trabalha para você indefinidamente, sendo redescoberto pelo algoritmo quando alguém busca sobre o tema.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Formatos educacionais:</strong> Reel tutorial (20-30s), carrossel passo a passo (7-10 slides), post com lista numerada, Story com quiz</li>
+                  <li><strong>Estrutura "Como fazer":</strong> Problema → Por que é importante → 3-5 passos → Resultado esperado → CTA (salva para lembrar)</li>
+                  <li><strong>Micro-ensino:</strong> Ensine UMA coisa por post. "3 passos para editar Reels" > "Guia completo de produção de conteúdo"</li>
+                  <li><strong>Dados e números:</strong> Posts educacionais com dados específicos ("aumento de 47%") têm 2x mais credibilidade e saves</li>
+                  <li><strong>Série educacional:</strong> Crie séries: "Hack #1", "Hack #2"... isso gera follow para acompanhar a sequência</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.4.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-4-2')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+            <span class="font-medium">💖 Pilar Inspiracional (20%) - Histórias que geram DMs e conexão</span>
+          </button>
+          <div id="t2-4-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O pilar inspiracional deve representar 20% do seu conteúdo e é responsável por criar conexão emocional profunda com o público. Inclui: sua história pessoal (fracassos e superações), bastidores da sua rotina, antes e depois da sua jornada, reflexões sobre desafios do nicho, depoimentos de alunos/clientes, e momentos vulneráveis (compartilhar erros e aprendizados). Este pilar gera o sinal mais valioso de todos: DMs. Quando alguém se identifica com sua história, ela manda mensagem privada dizendo "passei pela mesma coisa" - e DMs são o sinal de interação significativa com maior peso no algoritmo (10x).</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Conteúdo educacional te posiciona como especialista. Conteúdo inspiracional te posiciona como humano. A combinação dos dois cria uma relação de confiança que nenhum concorrente pode copiar. Seus tutoriais podem ser replicados, mas sua história de vida não. Quando um seguidor conhece suas lutas, seus fracassos e como você superou, ele desenvolve lealdade emocional. Essa lealdade se traduz em: maior taxa de abertura de Stories, mais respostas em enquetes, mais cliques em links e, crucialmente, mais disposição para comprar seus produtos/serviços quando você oferece.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Vulnerabilidade estratégica:</strong> Compartilhe fracassos com aprendizado. "Eu perdi R$5K em anúncios até entender que..." humaniza e ensina</li>
+                  <li><strong>Antes/Depois:</strong> Mostre a transformação: captura de tela de métricas antigas vs. atuais, setup antigo vs. atual, primeira tentativa vs. resultado final</li>
+                  <li><strong>Bastidores reais:</strong> Mostre o caos, não apenas o resultado polido. Seu escritório bagunçado, takes errados, bloqueio criativo</li>
+                  <li><strong>Depoimentos como prova:</strong> Compartilhe mensagens de seguidores que aplicaram suas dicas e tiveram resultados (com permissão)</li>
+                  <li><strong>Frequência:</strong> 1-2 posts inspiracionais por semana. Muita vulnerabilidade cansa; pouca parece distante. Equilibre com educacional</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.4.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-4-3')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+            <span class="font-medium">😄 Pilar Entretenimento (25%) - Alcance orgânico para não-seguidores</span>
+          </button>
+          <div id="t2-4-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O pilar de entretenimento deve representar 25% do seu conteúdo e é o motor de alcance para públicos que ainda não te seguem. Inclui: trends adaptadas ao seu nicho, memes relevantes, humor sobre situações do dia a dia do público, comparações engraçadas, POVs (point of view), sketches curtos e conteúdo "relatable" (situações que todo mundo do nicho vive). Entretenimento é o pilar com maior potencial de viralização porque é o mais compartilhável - as pessoas enviam memes e vídeos engraçados para amigos constantemente, gerando shares (peso 10x) e levando seu perfil para audiências completamente novas.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Sem entretenimento, seu perfil se torna uma enciclopédia seca. As pessoas seguem criadores que as fazem rir E aprender. O entretenimento funciona como "porta de entrada": alguém descobre você por um meme viral, visita o perfil, vê que você também tem conteúdo educacional de qualidade, e segue. É a estratégia de funil invertida: entretenimento traz topo (alcance), educacional retém meio (valor) e conversão fecha fundo (venda). Criadores que ignoram entretenimento crescem mais devagar porque dependem apenas de busca e descoberta orgânica do Explore.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Trend + nicho:</strong> Nunca use uma trend sem adaptá-la ao seu nicho. "Som viral + humor sobre marketing" > "Som viral genérico"</li>
+                  <li><strong>Humor relatable:</strong> "POV: quando o cliente pede alterações no domingo" - situações que o público vive geram identificação instantânea</li>
+                  <li><strong>Memes do nicho:</strong> Crie templates de meme com situações específicas da sua área. Memes nichados viralizam dentro da comunidade</li>
+                  <li><strong>Edu-tainment:</strong> O formato mais poderoso combina educação + entretenimento. Ensine algo útil de forma divertida</li>
+                  <li><strong>Timing de trends:</strong> Use trends nos primeiros 3-5 dias. Depois disso, o algoritmo já saturou e a distribuição cai drasticamente</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.4.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-4-4')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+            <span class="font-medium">💰 Pilar Conversão (15%) - CTAs diretos e ofertas que vendem</span>
+          </button>
+          <div id="t2-4-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O pilar de conversão deve representar 15% do seu conteúdo e é onde você transforma audiência em receita. Inclui: apresentação de produtos/serviços, provas sociais (depoimentos, resultados), ofertas com prazo, demonstrações do produto em ação, FAQ sobre objeções comuns, e comparativos (gratuito vs. pago, seu produto vs. concorrente). Os 15% são estratégicos: se você vende demais (30%+), o público se cansa e deixa de seguir. Se vende de menos (5%), ninguém sabe que você tem algo para oferecer. 15% é o sweet spot onde você monetiza sem perder seguidores.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Muitos criadores têm medo de vender nas redes sociais e ficam presos no ciclo de "dar conteúdo gratuito para sempre". Outros vendem a cada post e perdem seguidores. O pilar de conversão a 15% é o equilíbrio: a cada 6-7 posts de valor (educacional/inspiracional/entretenimento), 1 post de venda é natural e bem recebido. O público pensa: "Essa pessoa me deu tanto valor gratuito que merece que eu pelo menos veja o que está oferecendo". A chave é que os 85% de conteúdo de valor criam a confiança necessária para que os 15% de conversão funcionem.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Regra 85/15:</strong> 85% valor gratuito, 15% oferta. Na prática: 1 post de venda para cada 6 de valor. Nunca mais de 2 posts de venda na mesma semana</li>
+                  <li><strong>Prova social:</strong> Depoimentos em vídeo são 3x mais eficazes que texto. Mostre resultados reais de clientes/alunos com métricas antes/depois</li>
+                  <li><strong>Oferta irresistível:</strong> Não venda o produto - venda a transformação. "Curso de marketing" < "Saia do zero e ganhe R$5K/mês com conteúdo em 90 dias"</li>
+                  <li><strong>Urgência real:</strong> Vagas limitadas, bônus por tempo, turma com data de início. Urgência falsa é detectada e destrói confiança</li>
+                  <li><strong>CTA de conversão:</strong> "Link na bio para garantir sua vaga" / "Comenta EU QUERO e te mando o link" / "Últimas 5 vagas - não volta tão cedo"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.4.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-4-5')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+            <span class="font-medium">♻️ Sistema de Reaproveitamento - Uma ideia, 6 formatos diferentes</span>
+          </button>
+          <div id="t2-4-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O sistema de reaproveitamento transforma uma única ideia central em 6 ou mais peças de conteúdo em formatos diferentes. Exemplo prático: a ideia "Os 7 Hacks do Algoritmo" pode virar: (1) Reel de 30s com os 7 hacks resumidos. (2) Carrossel de 9 slides com 1 hack por slide. (3) Live de 15 min detalhando cada hack. (4) 7 Stories, um por hack, com enquete. (5) Post estático com infográfico dos 7 hacks. (6) 7 Reels individuais, um para cada hack. (7) Thread no Facebook com explicação detalhada. Uma ideia gerou 7+ peças de conteúdo, cada uma otimizada para um formato e audiência diferente.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>O maior gargalo de criadores não é falta de ideias - é achar que cada post precisa de uma ideia nova. Na realidade, seu público não vê todos os seus posts (o alcance médio é 10-20% dos seguidores). Então a mesma ideia, apresentada em formatos diferentes, atinge pessoas diferentes a cada vez. Além disso, repetição gera memorização: quando alguém vê "7 Hacks do Algoritmo" no Reel, depois no carrossel e depois no Story, ela fixa a mensagem - e associa você como referência no assunto. O sistema de reaproveitamento multiplica sua produção por 6x sem multiplicar seu esforço.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Pirâmide de conteúdo:</strong> Comece com 1 conteúdo pilar (artigo/live detalhada) e desmembre em 6+ peças menores para a semana</li>
+                  <li><strong>Mesmo tema, formatos diferentes:</strong> Reel (visual/rápido), carrossel (detalhado), Story (interativo), post (reflexivo), live (profundo)</li>
+                  <li><strong>Intervalo de repetição:</strong> Reposte a mesma ideia com 2-3 semanas de intervalo. Seu público não lembra - e novos seguidores nunca viram</li>
+                  <li><strong>Adaptação de linguagem:</strong> Instagram: visual e direto. Facebook: mais texto e contexto. Stories: casual e interativo</li>
+                  <li><strong>Banco de ideias:</strong> Mantenha uma lista com 20-30 ideias centrais do seu nicho. Cada ideia rende 1 mês de conteúdo em diferentes formatos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.4.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-4-6')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+            <span class="font-medium">📊 Frequência Ideal por Plataforma - Instagram vs Facebook em 2026</span>
+          </button>
+          <div id="t2-4-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Em 2026, cada plataforma da Meta tem frequências ideais diferentes baseadas em como o algoritmo distribui conteúdo. Instagram: 4-5 Reels/semana (formato prioritário), 2-3 carrosséis/semana, 1-2 posts estáticos/semana, 5-10 Stories/dia. Total: 7-10 posts no feed + Stories diários. Facebook: 1-2 posts/dia no feed (texto+imagem ou vídeo), 2-3 Reels/semana, 2-3 Stories/dia, 1 live/semana (o Facebook ainda prioriza lives mais que o Instagram). A diferença-chave: Instagram favorece Reels curtos com frequência alta; Facebook favorece posts de texto mais longos com frequência moderada.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Publicar a quantidade errada em cada plataforma desperdiça tempo ou suboptimiza alcance. Postar 10x/dia no Instagram pode saturar seus seguidores e reduzir o alcance individual de cada post. Postar 1x/semana no Facebook faz o algoritmo esquecer de você. A frequência ideal equilibra o consistency boost do algoritmo com a capacidade de absorção do público. Além disso, o conteúdo deve ser adaptado: o mesmo Reel pode ir para Instagram e Facebook, mas a legenda no Facebook deve ser mais longa e contextual, enquanto no Instagram deve ser mais direta.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Instagram - Frequência ideal:</strong> 4-5 Reels + 2-3 carrosséis + Stories diários. Total no feed: 7-10 posts/semana. Não ultrapasse 2 posts/dia</li>
+                  <li><strong>Facebook - Frequência ideal:</strong> 1-2 posts/dia no feed + 2-3 Reels/semana + 1 live/semana. Textos longos performam melhor que no Instagram</li>
+                  <li><strong>Cross-posting inteligente:</strong> Use o mesmo Reel em ambas, mas adapte legendas. Facebook aceita legendas de 300+ palavras; Instagram ideal é 150-200</li>
+                  <li><strong>Stories:</strong> Instagram: 5-10/dia (mix de enquetes, bastidores, dicas). Facebook: 2-3/dia (menos Stories mas mais impacto por Story)</li>
+                  <li><strong>Diminuir antes de aumentar:</strong> Se está postando 3x/semana, vá para 5x antes de tentar 7x. Aumente gradualmente para manter qualidade</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-2-4.html')" class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-2-4.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MÓDULO 2.5 -->
+    <!-- ============================================================ -->
+    <div id="modulo-2-5" class="bg-dark-800 rounded-xl border border-dark-600 p-8 mb-8">
+      <div class="flex items-center space-x-3 mb-1">
+        <span class="text-blue-400 font-bold text-sm">MÓDULO 2.5</span>
+        <span class="text-neutral-500 text-sm">~35 min</span>
+      </div>
+      <h2 class="text-2xl font-bold mb-3">💰 Monetização: De Seguidor a Cliente</h2>
+      <p class="text-neutral-400 mb-8">Transforme seguidores em receita com 6 fontes de monetização</p>
+
+      <div class="space-y-4">
+
+        <!-- Tópico 2.5.1 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-5-1')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">1</span>
+            <span class="font-medium">💡 A Mentalidade de Monetização - 2K seguidores engajados > 100K dispersos</span>
+          </button>
+          <div id="t2-5-1" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>A mentalidade de monetização é a compreensão de que o número de seguidores não determina sua receita - a qualidade do engajamento e a relação de confiança sim. Uma conta com 2.000 seguidores altamente engajados (taxa de engajamento de 8-15%, público-alvo preciso, nicho definido) pode gerar R$5.000-15.000/mês. Enquanto uma conta com 100.000 seguidores dispersos (taxa de 1-2%, público genérico, nicho indefinido) pode gerar menos de R$1.000/mês. A diferença está na monetizabilidade: seguidores engajados confiam em você, respondem suas recomendações e compram seus produtos.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>A maioria dos criadores atrasa a monetização esperando "ter seguidores suficientes". Essa mentalidade é o maior erro possível. Você pode (e deve) começar a monetizar a partir de 500-1.000 seguidores, desde que sejam do nicho certo e engajados. A mentalidade correta é: construir audiência qualificada desde o dia 1, nutrir relacionamento com conteúdo de valor, e converter naturalmente quando a confiança estiver estabelecida. Não espere 10K seguidores - comece com o que tem e escale a partir da receita, não dos números.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Seguidores qualificados:</strong> 100 seguidores que são seu público-alvo exato valem mais que 10.000 que não são. Foque em atrair o perfil certo</li>
+                  <li><strong>Taxa de conversão:</strong> Com audiência qualificada, espere 1-3% de conversão. 2.000 seguidores x 2% = 40 clientes potenciais por oferta</li>
+                  <li><strong>RPF (Revenue Per Follower):</strong> Sua métrica principal. Se ganha R$5.000/mês com 2.000 seguidores, seu RPF é R$2,50 - excelente para micro-criadores</li>
+                  <li><strong>Tempo para monetizar:</strong> Com estratégia, 90-120 dias de conteúdo consistente são suficientes para a primeira venda</li>
+                  <li><strong>Escalabilidade:</strong> Primeiro R$1.000/mês é o mais difícil. Depois disso, escalar para R$5K-10K é questão de repetir o que funciona</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.5.2 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-5-2')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">2</span>
+            <span class="font-medium">🏆 Monetização Nativa Meta - Reels Bonus, Stars, Badges</span>
+          </button>
+          <div id="t2-5-2" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>A Meta oferece programas nativos de monetização que pagam criadores diretamente pela plataforma: (1) Reels Play Bonus/Programa de Bônus de Reels: pagamento por performance de Reels (disponível por convite, baseado em plays e engajamento). (2) Stars: espectadores compram "estrelas" e enviam durante lives ou Reels - cada estrela vale R$0,05-0,10 para o criador. (3) Badges: durante lives no Instagram, seguidores compram badges para apoiar o criador. (4) Assinaturas: seguidores pagam mensalidade para conteúdo exclusivo (Stories, Reels, lives e chats exclusivos). Em 2026, a Meta expandiu esses programas para mais criadores no Brasil.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Monetização nativa é "dinheiro fácil" no sentido de que você não precisa criar produto ou gerenciar vendas - a plataforma paga pelo conteúdo que você já está criando. É a fonte de receita com menor barreira de entrada. O Programa de Bônus pode pagar entre R$500 e R$10.000/mês dependendo da performance dos seus Reels. Stars e Badges geram receita extra durante lives. E Assinaturas criam receita recorrente (mensal). A estratégia ideal é usar monetização nativa como renda base enquanto constrói fontes de renda maiores (produtos próprios, parcerias).</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Reels Bonus:</strong> Convite baseado em performance. Para aumentar chances: poste 5+ Reels/semana com boa retenção e engajamento consistente</li>
+                  <li><strong>Stars em Reels:</strong> Ative a opção de Stars nos seus Reels. Peça gentilmente: "Se esse conteúdo te ajudou, manda uma estrela"</li>
+                  <li><strong>Lives com Badges:</strong> Faça lives semanais de 30-60min com conteúdo exclusivo. Reconheça quem envia badges ao vivo</li>
+                  <li><strong>Assinaturas Instagram:</strong> Ofereça conteúdo exclusivo: Stories para assinantes, Reels antecipados, chat privado, lives exclusivas</li>
+                  <li><strong>Requisitos:</strong> Geralmente 500+ seguidores, conta profissional, cumprir políticas de monetização, residir em país elegível (Brasil incluído)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.5.3 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-5-3')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">3</span>
+            <span class="font-medium">🤝 Parcerias com Marcas - Tabela de valores e como fechar contratos</span>
+          </button>
+          <div id="t2-5-3" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Parcerias com marcas (brand deals/publiposts) são acordos comerciais onde uma marca paga para você criar conteúdo promovendo seu produto ou serviço. Em 2026, a tabela de valores no Brasil segue estas faixas: Nano influenciadores (1K-10K seguidores): R$200-800 por post/Reel. Micro influenciadores (10K-50K): R$800-3.000 por post/Reel. Médio influenciadores (50K-200K): R$3.000-10.000 por post/Reel. Macro influenciadores (200K-1M): R$10.000-50.000. Mega influenciadores (1M+): R$50.000+. Valores variam por nicho, taxa de engajamento e formato (Stories são mais baratos que Reels permanentes).</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Parcerias com marcas são a segunda maior fonte de receita para criadores depois de produtos próprios. E diferente de produtos próprios, você não precisa criar, entregar ou dar suporte a nada - apenas criar conteúdo, que já é sua habilidade. O erro de 90% dos criadores é esperar que marcas venham até eles. Na realidade, criadores proativos que enviam mídia kits e propostas fecham 3-5x mais parcerias. Com 5.000 seguidores engajados em um nicho definido, você já pode cobrar R$300-500 por post e fechar 2-4 parcerias por mês (R$600-2.000 extras).</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Tabela de valores 2026:</strong> Nano R$200-800 | Micro R$800-3K | Médio R$3K-10K | Macro R$10K-50K. Ajuste +30% para nichos premium (finanças, tech, saúde)</li>
+                  <li><strong>Mídia Kit:</strong> PDF de 3-5 páginas com: bio, métricas (alcance, engajamento, demografia), cases anteriores, tabela de preços, contato</li>
+                  <li><strong>Prospecção ativa:</strong> Liste 20 marcas do seu nicho, encontre o responsável por marketing/influenciadores, envie proposta personalizada por email/DM</li>
+                  <li><strong>Contrato essencial:</strong> Sempre formalize: escopo (quantidade e formato), prazo, valor, direitos de uso da imagem, exclusividade</li>
+                  <li><strong>Taxa de engajamento:</strong> Marcas pagam mais por engajamento alto. 5% de engajamento com 5K seguidores pode valer mais que 1% com 50K</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.5.4 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-5-4')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">4</span>
+            <span class="font-medium">📦 Produtos e Serviços Próprios - Infoprodutos, consultoria, templates</span>
+          </button>
+          <div id="t2-5-4" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Produtos e serviços próprios são a fonte de receita mais lucrativa e escalável para criadores. As categorias principais em 2026 são: (1) Infoprodutos: e-books (R$27-97), mini-cursos (R$97-297), cursos completos (R$297-997), mentorias em grupo (R$997-2.997). (2) Serviços: consultoria individual (R$200-1.000/hora), mentoria 1:1 (R$1.500-5.000/mês), gestão de redes sociais (R$2.000-8.000/mês). (3) Templates e ferramentas: templates de Canva (R$17-67), planilhas prontas (R$27-97), presets de edição (R$17-47), packs de conteúdo (R$47-197). A margem de lucro em produtos digitais é de 85-95% porque não há custo de estoque ou entrega física.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Produtos próprios são o jogo final da monetização porque você captura 100% do valor (menos taxas de plataforma). Com parcerias, a marca dita o que você fala e quanto ganha. Com produtos próprios, você define preço, formato e frequência. Um criador com 3.000 seguidores que lança um e-book de R$47 e converte 2% do público (60 vendas) ganha R$2.820 em um único lançamento. Um curso de R$297 com as mesmas 60 vendas gera R$17.820. E o produto fica disponível para sempre, gerando vendas recorrentes sem esforço adicional.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Escada de produtos:</strong> Comece com produto barato (e-book R$27-47) para gerar primeira venda. Depois ofereça upgrade (curso R$297). Depois premium (mentoria R$1.500+)</li>
+                  <li><strong>MVP digital:</strong> Não gaste meses criando o curso perfeito. Crie um e-book em 1 semana, valide com vendas reais, depois expanda</li>
+                  <li><strong>Plataformas:</strong> Hotmart, Eduzz, Kiwify para infoprodutos. Gumroad para templates. Calendly para consultoria. Zoom para mentoria</li>
+                  <li><strong>Consultoria como validação:</strong> Antes de criar um curso, ofereça consultoria 1:1. As perguntas dos clientes revelam exatamente o que o curso deve conter</li>
+                  <li><strong>Templates são ouro:</strong> Menor esforço de criação, alta demanda, ticket baixo que vende fácil. Packs de templates de Canva podem gerar R$1K-5K/mês passivos</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.5.5 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-5-5')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">5</span>
+            <span class="font-medium">🔗 Marketing de Afiliados - Hotmart, Amazon e comissões</span>
+          </button>
+          <div id="t2-5-5" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>Marketing de afiliados é recomendar produtos de terceiros usando seu link personalizado e receber comissão por cada venda realizada através dele. As principais plataformas em 2026: Hotmart (comissões de 20-80% em infoprodutos), Amazon Associates (comissões de 1-10% em produtos físicos), Shopee Afiliados (5-15%), Magazine Luiza Partners (3-12%), e programas diretos de ferramentas (Canva, Semrush, etc., com comissões recorrentes de 20-40%). A vantagem: você não precisa criar, entregar ou dar suporte ao produto. Sua única função é recomendar de forma autêntica e direcionar tráfego para o link.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Afiliados são a fonte de receita com menor barreira de entrada: não precisa criar produto, não precisa de muitos seguidores, não precisa de capital inicial. Com 500 seguidores e um link de afiliado bem posicionado, você pode gerar suas primeiras comissões. A chave é a autenticidade: só recomende produtos que você realmente usa e confia. Criadores que recomendam qualquer coisa por comissão destroem sua credibilidade em semanas. Criadores que recomendam seletivamente e com transparência constroem uma fonte de receita passiva que cresce com o público.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Hotmart/Infoprodutos:</strong> Comissões de 30-80%. Encontre cursos do seu nicho com boa página de vendas e comissão acima de 40%</li>
+                  <li><strong>Amazon Associates:</strong> Comissões baixas (1-10%) mas alta conversão. Ideal para reviews de equipamentos (câmeras, ring lights, microfones)</li>
+                  <li><strong>Ferramentas SaaS:</strong> Canva Pro, editores de vídeo, ferramentas de agendamento. Comissões recorrentes mensais de 20-40% por assinante</li>
+                  <li><strong>Conteúdo de afiliado:</strong> Reviews honestos, comparativos "X vs Y", listas "Meus 5 favoritos", tutoriais usando a ferramenta</li>
+                  <li><strong>Transparência:</strong> SEMPRE declare que é link de afiliado. "Esse é meu link de afiliado, não paga nada a mais por isso e me ajuda a manter o conteúdo gratuito"</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tópico 2.5.6 -->
+        <div class="border border-dark-600 rounded-lg overflow-hidden">
+          <button onclick="toggleTopic('t2-5-6')" class="w-full flex items-center space-x-3 p-4 hover:bg-blue-500/10 transition-colors text-left">
+            <span class="w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-bold flex-shrink-0">6</span>
+            <span class="font-medium">🔄 O Funil de Conversão - Da consciência à venda em 4 fases</span>
+          </button>
+          <div id="t2-5-6" class="topic-explanation px-4 pb-4">
+            <div class="bg-dark-700 rounded-lg p-4 space-y-4 text-sm text-neutral-300">
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">O que é</h4>
+                <p>O funil de conversão em redes sociais tem 4 fases que levam um desconhecido a se tornar cliente: (1) Consciência: a pessoa descobre sua existência através de Reels virais, Explore, hashtags ou compartilhamentos. Conteúdo: entretenimento e edu-tainment para alcance máximo. (2) Consideração: a pessoa visita seu perfil, consome vários posts, começa a seguir. Conteúdo: educacional e inspiracional para gerar valor e confiança. (3) Intenção: a pessoa interage regularmente (comenta, responde Stories, manda DM), demonstra interesse ativo. Conteúdo: provas sociais, depoimentos, bastidores do produto. (4) Conversão: a pessoa compra seu produto/serviço ou contrata você. Conteúdo: oferta direta com CTA, urgência real, garantia de satisfação.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Por que aprender</h4>
+                <p>Sem entender o funil, criadores cometem dois erros fatais: (1) Tentam vender para quem acabou de te descobrir (pulam da Consciência para Conversão). (2) Nunca vendem, ficando presos na fase de Consideração para sempre. O funil mostra que cada tipo de conteúdo tem uma função específica. Reels virais não são para vender - são para atrair. Carrosséis educacionais não são para viralizar - são para nutrir. Posts de venda não são para alcance - são para converter. Quando você alinha o tipo de conteúdo à fase do funil, a conversão acontece naturalmente.</p>
+              </div>
+              <div>
+                <h4 class="text-blue-400 font-semibold mb-2">Conceitos-chave</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li><strong>Consciência (topo):</strong> Objetivo: alcance. Formato: Reels de entretenimento, trends, conteúdo shareable. Métrica: impressões e alcance de não-seguidores</li>
+                  <li><strong>Consideração (meio-topo):</strong> Objetivo: follow e confiança. Formato: carrosséis educacionais, tutoriais, listas. Métrica: follows, saves, tempo no perfil</li>
+                  <li><strong>Intenção (meio-fundo):</strong> Objetivo: qualificar. Formato: Stories interativos, lives, provas sociais. Métrica: DMs, respostas a Stories, cliques no link</li>
+                  <li><strong>Conversão (fundo):</strong> Objetivo: vender. Formato: oferta direta, depoimentos, FAQs, urgência. Métrica: cliques no link, vendas, receita</li>
+                  <li><strong>Tempo médio do funil:</strong> Consciência → Conversão leva em média 7-30 dias para produtos baratos (R$47) e 30-90 dias para caros (R$997+)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Botões -->
+      <div class="flex items-center justify-start space-x-3 mt-6">
+        <button onclick="openModal('modulo-2-5.html')" class="px-4 py-2 bg-blue-500/20 text-blue-400 rounded-lg hover:bg-blue-500/30 transition-colors text-sm font-medium">Ver em Modal</button>
+        <a href="modulo-2-5.html" class="px-4 py-2 bg-dark-700 text-neutral-300 rounded-lg hover:bg-dark-600 transition-colors text-sm font-medium">Ver Completo</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- MODAL -->
+  <div id="content-modal" class="fixed inset-0 z-[100] hidden">
+    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+    <div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+      <div class="bg-dark-800 rounded-xl border border-dark-600 w-full max-w-5xl h-[90vh] flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b border-dark-600">
+          <span class="text-blue-400 font-semibold">Visualização do Módulo</span>
+          <button onclick="closeModal()" class="text-neutral-400 hover:text-neutral-100 text-2xl leading-none">&times;</button>
+        </div>
+        <iframe id="modal-iframe" class="flex-1 w-full rounded-b-xl" src=""></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-neutral-500 text-sm">
+      <p>Hack do Algoritmo Meta 2026 - <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300">INEMA.CLUB</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle topic expansion
+    function toggleTopic(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.toggle('active');
+      }
+    }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && !html.classList.contains('dark'))) {
+      themeToggleDarkIcon.classList.remove('hidden');
+      html.classList.remove('dark');
+    } else {
+      themeToggleLightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      themeToggleDarkIcon.classList.toggle('hidden');
+      themeToggleLightIcon.classList.toggle('hidden');
+      html.classList.toggle('dark');
+      localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // Modal
+    function openModal(url) {
+      const modal = document.getElementById('content-modal');
+      const iframe = document.getElementById('modal-iframe');
+      iframe.src = url;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('content-modal');
+      const iframe = document.getElementById('modal-iframe');
+      modal.classList.add('hidden');
+      iframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>

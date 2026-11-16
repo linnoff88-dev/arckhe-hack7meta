@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modulo 2.4 - Pilares de Conteudo | Hack Meta 2026 | INEMA.CLUB</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FACC15',
+            dark: { 900: '#111827', 800: '#1f2937', 700: '#374151', 600: '#4b5563' }
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #111827; }
+
+    /* Light mode - base */
+    html:not(.dark) body { background-color: #f8fafc; }
+    html:not(.dark) .bg-dark-900 { background-color: #ffffff; }
+    html:not(.dark) .bg-dark-800 { background-color: #f9fafb; }
+    html:not(.dark) .bg-dark-700 { background-color: #f3f4f6; }
+    html:not(.dark) .bg-dark-600 { background-color: #e5e7eb; }
+    html:not(.dark) .text-neutral-100 { color: #111827; }
+    html:not(.dark) .text-neutral-300 { color: #4b5563; }
+    html:not(.dark) .text-neutral-400 { color: #6b7280; }
+    html:not(.dark) .text-neutral-500 { color: #9ca3af; }
+    html:not(.dark) .border-dark-600 { border-color: #d1d5db; }
+    html:not(.dark) .border-dark-700 { border-color: #e5e7eb; }
+
+    /* Light mode - cores BLUE */
+    html:not(.dark) .text-blue-400 { color: #2563eb; }
+    html:not(.dark) .bg-blue-500\/20 { background-color: rgba(37, 99, 235, 0.12); }
+    html:not(.dark) .bg-blue-500\/10 { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .border-blue-500\/30 { border-color: rgba(37, 99, 235, 0.25); }
+    html:not(.dark) .hover\:text-blue-400:hover { color: #2563eb; }
+    html:not(.dark) .hover\:bg-blue-500\/10:hover { background-color: rgba(37, 99, 235, 0.08); }
+    html:not(.dark) .group:hover .group-hover\:text-blue-400 { color: #2563eb; }
+
+    /* Light mode - outras cores */
+    html:not(.dark) .text-emerald-400 { color: #059669; }
+    html:not(.dark) .bg-emerald-500\/20 { background-color: rgba(5, 150, 105, 0.12); }
+    html:not(.dark) .bg-emerald-500\/10 { background-color: rgba(5, 150, 105, 0.08); }
+    html:not(.dark) .border-emerald-500\/30 { border-color: rgba(5, 150, 105, 0.25); }
+    html:not(.dark) .text-purple-400 { color: #7c3aed; }
+    html:not(.dark) .bg-purple-500\/20 { background-color: rgba(124, 58, 237, 0.12); }
+    html:not(.dark) .bg-purple-500\/10 { background-color: rgba(124, 58, 237, 0.08); }
+    html:not(.dark) .border-purple-500\/30 { border-color: rgba(124, 58, 237, 0.25); }
+    html:not(.dark) .text-amber-400 { color: #92400e; }
+    html:not(.dark) .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.12); }
+    html:not(.dark) .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.08); }
+    html:not(.dark) .border-amber-500\/30 { border-color: rgba(217, 119, 6, 0.25); }
+
+    /* Light mode - gradientes */
+    html:not(.dark) [class*="bg-gradient-to"] { background-image: none !important; }
+
+    /* Light mode - cores especiais */
+    html:not(.dark) .text-primary { color: #a16207; }
+    html:not(.dark) .bg-primary\/10 { background-color: rgba(161, 98, 7, 0.08); }
+    html:not(.dark) .border-primary\/40 { border-color: rgba(161, 98, 7, 0.25); }
+    html:not(.dark) .text-sky-400 { color: #0369a1; }
+    html:not(.dark) .text-yellow-400 { color: #a16207; }
+    html:not(.dark) .hover\:text-sky-300:hover { color: #0284c7; }
+    html:not(.dark) .hover\:text-yellow-300:hover { color: #854d0e; }
+
+    /* Light mode - nav */
+    html:not(.dark) .bg-dark-900\/95 { background-color: rgba(255, 255, 255, 0.95); }
+  </style>
+</head>
+<body class="bg-dark-900 text-neutral-100 min-h-screen">
+
+  <!-- NAVIGATION -->
+  <nav class="sticky top-0 z-50 bg-dark-900/95 backdrop-blur-sm border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14">
+        <div class="flex items-center space-x-4">
+          <a href="../../index.html" class="flex items-center space-x-2 text-yellow-400 hover:text-yellow-300">
+            <span class="text-2xl">🎯</span>
+            <span class="font-bold text-lg hidden sm:inline">Hack Meta 2026</span>
+          </a>
+          <span class="text-neutral-600">|</span>
+          <a href="https://inema.club" target="_blank" class="text-sky-400 hover:text-sky-300 text-sm font-medium">INEMA.CLUB</a>
+        </div>
+        <div class="flex items-center space-x-1 sm:space-x-2">
+          <a href="../trilha1/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-emerald-400 hover:bg-emerald-500/10 transition-colors">
+            <span class="sm:hidden">T1</span>
+            <span class="hidden sm:inline">Fundamentos</span>
+          </a>
+          <a href="../trilha2/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-blue-400 bg-blue-500/10">
+            <span class="sm:hidden">T2</span>
+            <span class="hidden sm:inline">Estrategia</span>
+          </a>
+          <a href="../trilha3/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-purple-400 hover:bg-purple-500/10 transition-colors">
+            <span class="sm:hidden">T3</span>
+            <span class="hidden sm:inline">Producao</span>
+          </a>
+          <a href="../trilha4/index.html" class="px-3 py-1.5 rounded-lg text-sm font-semibold text-neutral-400 hover:text-amber-400 hover:bg-amber-500/10 transition-colors">
+            <span class="sm:hidden">T4</span>
+            <span class="hidden sm:inline">Projeto</span>
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-lg bg-dark-700 hover:bg-dark-600 transition-colors ml-2">
+            <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+            </svg>
+            <svg id="theme-toggle-light-icon" class="hidden w-5 h-5 text-neutral-300" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex items-center space-x-2 text-sm text-neutral-400">
+      <a href="../../index.html" class="hover:text-blue-400 transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="index.html" class="hover:text-blue-400 transition-colors">Trilha 2</a>
+      <span>/</span>
+      <span class="text-blue-400 font-medium">Modulo 2.4</span>
+    </nav>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-gradient-to-br from-blue-900/30 via-dark-900 to-dark-800 py-16 border-b border-dark-600">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 text-sm font-semibold rounded-full mb-6 border border-blue-500/30">
+        MODULO 2.4
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold mb-6">
+        🏗️ Pilares de <span class="text-blue-400">Conteudo</span>
+      </h1>
+      <p class="text-xl text-neutral-400 max-w-3xl mx-auto mb-8">
+        Construa a base da sua estrategia com os 4 pilares que equilibram crescimento, engajamento, autoridade e conversao. Mais: como reaproveitar e definir frequencia ideal.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto mt-10">
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">6</div>
+          <div class="text-sm text-neutral-400">Topicos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">~30</div>
+          <div class="text-sm text-neutral-400">Minutos</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Inter.</div>
+          <div class="text-sm text-neutral-400">Nivel</div>
+        </div>
+        <div class="bg-dark-800 rounded-lg p-4 border border-dark-600">
+          <div class="text-2xl font-bold text-blue-400">Estrat.</div>
+          <div class="text-sm text-neutral-400">Tipo</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+    <!-- SECAO 1 - Educacional -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">1</div>
+        <div>
+          <h2 class="text-2xl font-bold">📚 Pilar Educacional (40%)</h2>
+          <p class="text-neutral-400 text-sm">Ensinar, resolver duvidas, explicar conceitos</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O pilar educacional e a espinha dorsal da sua estrategia e deve representar cerca de 40% do seu conteudo. E o tipo que mais gera <strong>saves</strong> (o sinal mais valioso para o algoritmo depois de compartilhamentos) e <strong>shares</strong> (quando alguem envia para um amigo que precisa daquela informacao). Conteudo educacional constroi autoridade e confianca -- as duas fundacoes para qualquer monetizacao futura. Quando alguem aprende algo valioso com voce de graca, a percepcao de valor do seu conteudo pago se multiplica.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Formatos e Metricas</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Carrossel (Melhor formato para saves)</span>
+            <p class="text-sm mt-1">Listas, passo a passo, comparacoes, "X coisas que voce precisa saber". Taxa de engajamento media: 1.92%. Ideal: 7-10 slides com gancho forte no primeiro e CTA no ultimo.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Reel Tutorial</span>
+            <p class="text-sm mt-1">Demonstracoes praticas, "como fazer", antes/depois. Duracao ideal: 30-90 segundos. Gancho nos primeiros 3 segundos mostrando o resultado final.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Post com Lista</span>
+            <p class="text-sm mt-1">"5 erros que matam seu alcance", "7 ferramentas gratuitas para criadores". Formato simples mas muito compartilhavel. Funciona bem como imagem unica com texto.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Gere 20 ideias de conteudo educacional para o nicho [NICHO] que gerem saves. Para cada ideia inclua: o titulo/gancho, o formato ideal (carrossel, Reel tutorial, post lista), os 3-5 pontos principais a cobrir e o CTA sugerido. Foque em resolver problemas especificos que meu publico enfrenta diariamente."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Resolver UM problema por post</li>
+            <li>&#8226; Dar valor pratico aplicavel imediatamente</li>
+            <li>&#8226; Incluir CTA de save ("salva para consultar")</li>
+            <li>&#8226; Usar dados e exemplos concretos</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Conteudo generico sem profundidade</li>
+            <li>&#8226; Informacao que qualquer Google da</li>
+            <li>&#8226; Excesso de jargao tecnico</li>
+            <li>&#8226; Post educacional sem CTA</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 2 - Inspiracional -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">2</div>
+        <div>
+          <h2 class="text-2xl font-bold">✨ Pilar Inspiracional (20%)</h2>
+          <p class="text-neutral-400 text-sm">Historias, bastidores, vulnerabilidade autentica</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O pilar inspiracional (20% do conteudo) e o que cria conexao emocional profunda. E aqui que voce compartilha sua jornada, seus erros, seus bastidores e suas vulnerabilidades autenticas. Em 2026, o publico esta saturado de conteudo "perfeito" e polido -- o que realmente gera conexao e autenticidade. Conteudo inspiracional gera <strong>DMs</strong> (pessoas que se identificam com sua historia) e <strong>comentarios longos</strong> (compartilhando experiencias similares). Esses sinais de engajamento profundo sao extremamente valiosos para o algoritmo.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Formatos Ideais</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Reel Narrativo</span>
+            <p class="text-sm mt-1">Historias pessoais contadas olhando para a camera. "Como eu passei de 0 a 10K seguidores", "O dia que quase desisti". Duracao ideal: 60-180 segundos. Formato talking head com emocao real.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Stories Sequencia</span>
+            <p class="text-sm mt-1">Serie de 5-8 Stories contando um bastidor ou desafio do dia. Use enquetes e caixas de perguntas para aumentar interacao. Formato informal e autentico.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Post Texto Longo</span>
+            <p class="text-sm mt-1">Caption de 200-500 palavras com historia pessoal. Funciona muito bem no Facebook e como caption de imagem no Instagram. Use paragrafos curtos e espacamento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Me ajude a identificar 15 historias da minha jornada profissional no nicho [NICHO] que posso transformar em conteudo inspiracional. Para cada historia, sugira: o gancho emocional, o conflito ou desafio, a licao aprendida e o formato ideal (Reel narrativo, Stories sequencia, post texto). Foque em momentos de fracasso que geraram aprendizado."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Compartilhar fracassos e aprendizados</li>
+            <li>&#8226; Mostrar bastidores reais (imperfeitos)</li>
+            <li>&#8226; Ser vulneravel sem ser vitimista</li>
+            <li>&#8226; Conectar a historia com uma licao pratica</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Inventar historias para parecer interessante</li>
+            <li>&#8226; Ostentacao disfarçada de inspiracao</li>
+            <li>&#8226; Historias sem proposito ou licao</li>
+            <li>&#8226; Exagerar dificuldades para ganhar simpatia</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 3 - Entretenimento -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">3</div>
+        <div>
+          <h2 class="text-2xl font-bold">🎭 Pilar Entretenimento (25%)</h2>
+          <p class="text-neutral-400 text-sm">Humor, curiosidades, tendencias adaptadas</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Entretenimento e o pilar que gera alcance massivo entre nao-seguidores. Representa 25% do seu conteudo e e seu "cavalo de Troia" para crescimento. Humor, curiosidades do nicho, tendencias adaptadas e memes relevantes tem as maiores taxas de compartilhamento -- e compartilhamento via DM e o sinal mais forte para o algoritmo em 2026. O segredo e adaptar tendencias de entretenimento ao seu nicho, nao simplesmente copiar o que esta viral. Um meme sobre marketing digital tem mais valor do que um meme generico para um perfil de marketing.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Formatos e Performance</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Reel Curto (ate 30s) - Maior alcance</span>
+            <p class="text-sm mt-1">Humor rapido, tendencias com twist do nicho, "POV" adaptado. Alta taxa de replay = mais distribuicao. Ideal para viralizar e atrair novos seguidores.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Meme Adaptado ao Nicho</span>
+            <p class="text-sm mt-1">Pegue um formato de meme popular e adapte para seu nicho. "Expectativa vs Realidade de [profissao]", comparacoes comicas. Alto compartilhamento via DM.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Curiosidades e Fatos Surpreendentes</span>
+            <p class="text-sm mt-1">"Voce sabia que 50% do Feed vem de contas que voce nao segue?". Dados surpreendentes geram saves e shares. Formato: imagem com dado + caption explicativa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Gere 15 ideias de conteudo de entretenimento para o nicho [NICHO]. Inclua: 5 ideias de humor/memes adaptados ao nicho, 5 curiosidades surpreendentes com dados reais, e 5 ideias de tendencias que posso adaptar. Para cada ideia, sugira o formato (Reel curto, imagem, carrossel) e o gancho."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Adaptar tendencias ao seu nicho</li>
+            <li>&#8226; Humor que seu publico-alvo entende</li>
+            <li>&#8226; Curiosidades com dados reais</li>
+            <li>&#8226; Reels curtos (15-30s) para maximo alcance</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Humor que pode ofender seu publico</li>
+            <li>&#8226; Memes genericos sem conexao com nicho</li>
+            <li>&#8226; Copiar tendencia sem adaptar</li>
+            <li>&#8226; Entretenimento que dilui sua autoridade</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 4 - Conversao -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">4</div>
+        <div>
+          <h2 class="text-2xl font-bold">💰 Pilar Conversao (15%)</h2>
+          <p class="text-neutral-400 text-sm">CTA direto, oferta, depoimento, prova social</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">O pilar de conversao representa apenas 15% do conteudo, mas e onde a monetizacao acontece. E o conteudo que move o seguidor para uma acao comercial: comprar, agendar, clicar no link, entrar na lista. O erro mais comum e fazer conteudo 100% de venda ou 0% de venda -- ambos sao desastrosos. Com 15%, voce vende sem saturar. A chave e que os outros 85% (educacional + inspiracional + entretenimento) ja construiram confianca suficiente para que o CTA de venda seja natural, nao invasivo.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Formatos de Conversao</h4>
+        <div class="space-y-3 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Carrossel com CTA</span>
+            <p class="text-sm mt-1">Slides 1-6: conteudo educativo de alto valor. Slide 7: depoimento de cliente. Slide 8: CTA claro para compra/agendamento. O valor entregue antes justifica a venda.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Reel com Oferta</span>
+            <p class="text-sm mt-1">Use framework HSO: Hook que gera identificacao, Story com resultado de cliente, Offer com link na bio. Duracao: 30-60 segundos. Nao pareca anuncio -- pareca conteudo.</p>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold text-sm">Depoimento + Prova Social</span>
+            <p class="text-sm mt-1">Print de resultado de cliente, antes/depois, mensagem de agradecimento. O melhor conteudo de venda e o que outra pessoa faz por voce. Compartilhe resultados reais.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Crie 10 ideias de conteudo de conversao para [PRODUTO/SERVICO] no nicho [NICHO]. Cada ideia deve vender sem parecer anuncio: comece com valor, inclua prova social e termine com CTA natural. Varie entre carrossel com CTA, Reel com oferta sutil, post de depoimento e Stories com link. Cada CTA deve dar um motivo claro para agir."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Entregar valor antes de pedir acao</li>
+            <li>&#8226; Usar prova social (depoimentos reais)</li>
+            <li>&#8226; CTA claro e unico por post</li>
+            <li>&#8226; Limitar a 15% do conteudo total</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Vender em todos os posts</li>
+            <li>&#8226; CTA sem valor entregue antes</li>
+            <li>&#8226; Depoimentos falsos ou exagerados</li>
+            <li>&#8226; Ignorar objecoes do publico</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 5 - Reaproveitamento -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">5</div>
+        <div>
+          <h2 class="text-2xl font-bold">🔄 Reaproveitamento de Conteudo</h2>
+          <p class="text-neutral-400 text-sm">Uma ideia central, 6+ formatos diferentes</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">Voce nao precisa de 30 ideias diferentes por mes -- precisa de 5-8 ideias centrais bem reaproveitadas. Uma unica ideia de conteudo pode gerar 6 ou mais pecas em formatos diferentes, cada uma otimizada para uma superficie especifica. Isso nao e "reciclagem" (que o algoritmo penaliza) -- e adaptacao. Cada formato atinge um publico diferente, em um contexto diferente. O Reel atinge quem rola o Feed. O carrossel atinge quem busca profundidade. Os Stories atingem quem ja te segue. O e-mail atinge quem confia em voce o suficiente para dar o e-mail.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">1 Ideia → 6+ Formatos</h4>
+        <p class="text-neutral-400 text-sm mb-4">Exemplo: ideia central = "Os 3 erros que matam seu alcance no Instagram"</p>
+        <div class="space-y-2 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-3 flex items-center gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded flex-shrink-0">1</span>
+            <span><strong>Reel 30s:</strong> Versao rapida com os 3 erros em formato dinamico</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 flex items-center gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded flex-shrink-0">2</span>
+            <span><strong>Carrossel 8 slides:</strong> Cada erro detalhado com solucao + CTA de save</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 flex items-center gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded flex-shrink-0">3</span>
+            <span><strong>Stories 5 telas:</strong> Enquete "voce comete algum desses?" + revelacao</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 flex items-center gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded flex-shrink-0">4</span>
+            <span><strong>Post texto:</strong> Caption longa no Facebook com historia pessoal sobre os erros</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 flex items-center gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded flex-shrink-0">5</span>
+            <span><strong>Live 15 min:</strong> Aprofundamento com perguntas ao vivo sobre cada erro</span>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-3 flex items-center gap-3">
+            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded flex-shrink-0">6</span>
+            <span><strong>E-mail:</strong> Newsletter com os erros + bonus exclusivo para a lista</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Prompt para IA</h4>
+        <div class="bg-dark-700 rounded-lg p-4 text-sm text-neutral-300 font-mono">
+          "Tenho a seguinte ideia de conteudo para o nicho [NICHO]: [DESCREVA A IDEIA]. Transforme essa unica ideia em 6 pecas de conteudo diferentes: 1) Reel curto (30s), 2) Carrossel (7-10 slides), 3) Sequencia de Stories (5 telas), 4) Post texto longo (Facebook), 5) Roteiro para Live (15 min), 6) E-mail para newsletter. Cada formato deve ser otimizado para sua plataforma."
+        </div>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Adaptar linguagem e formato para cada plataforma</li>
+            <li>&#8226; Espacar publicacoes (nao postar tudo no mesmo dia)</li>
+            <li>&#8226; Adicionar angulo unico em cada versao</li>
+            <li>&#8226; Comecar pelo formato que gera mais resultado</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Copiar/colar o mesmo texto em todos os formatos</li>
+            <li>&#8226; Publicar 6 versoes no mesmo dia</li>
+            <li>&#8226; Reaproveitar sem adaptar para o formato</li>
+            <li>&#8226; Repostar conteudo identico (algoritmo penaliza)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECAO 6 - Frequencia -->
+    <section class="mb-16">
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl font-bold flex-shrink-0">6</div>
+        <div>
+          <h2 class="text-2xl font-bold">📈 Frequencia Ideal por Plataforma</h2>
+          <p class="text-neutral-400 text-sm">Quanto postar em cada rede em 2026</p>
+        </div>
+      </div>
+
+      <!-- Box Conceito -->
+      <div class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Conceito Central</h4>
+        <p class="text-neutral-300 leading-relaxed">A frequencia ideal depende da plataforma, do seu nicho e da sua capacidade de producao. Os numeros abaixo sao baseados em dados de performance de criadores brasileiros em 2026. A regra de ouro: e melhor postar 3x por semana com qualidade do que 7x com conteudo mediano. O algoritmo prioriza qualidade consistente sobre volume puro. Encontre seu ritmo sustentavel e mantenha por pelo menos 90 dias antes de avaliar resultados.</p>
+      </div>
+
+      <!-- Box Dados -->
+      <div class="bg-dark-800 border border-blue-500/30 rounded-xl p-6 mb-4">
+        <h4 class="text-blue-400 font-semibold mb-3">Frequencia Recomendada 2026</h4>
+        <div class="space-y-4 text-neutral-300">
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Instagram</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Reels:</strong> 3-5 por semana (formato prioritario)</li>
+              <li>&#8226; <strong>Carrosseis:</strong> 2-3 por semana (melhor para saves)</li>
+              <li>&#8226; <strong>Stories:</strong> Diarios, 3-7 por dia (mantem conexao)</li>
+              <li>&#8226; <strong>Lives:</strong> 1-2 por mes (aprofundamento + DMs)</li>
+              <li>&#8226; <strong>Posts estaticos:</strong> 1-2 por semana (complementar)</li>
+            </ul>
+          </div>
+          <div class="bg-dark-700 rounded-lg p-4">
+            <span class="text-blue-400 font-semibold">Facebook</span>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>&#8226; <strong>Posts:</strong> 1-2 por dia (Feed tem mais espaco)</li>
+              <li>&#8226; <strong>Reels:</strong> 3-5 por semana (crescimento acelerado)</li>
+              <li>&#8226; <strong>Lives:</strong> 1-2 por semana (Facebook prioriza Lives)</li>
+              <li>&#8226; <strong>Grupos:</strong> 3-5 interacoes por dia (se tiver grupo proprio)</li>
+              <li>&#8226; <strong>Stories:</strong> Diarios, 3-5 por dia</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Box Dica Pratica -->
+      <div class="bg-primary/10 border border-primary/40 rounded-xl p-6 mb-4">
+        <h4 class="text-primary font-semibold mb-3">Dica Pratica - Comece Pequeno</h4>
+        <p class="text-neutral-300 mb-3">Se voce esta comecando, nao tente fazer tudo de uma vez. Use esta progressao:</p>
+        <ul class="text-neutral-300 space-y-2 text-sm">
+          <li>&#8226; <strong>Semanas 1-2:</strong> 3 posts/semana + Stories diarios</li>
+          <li>&#8226; <strong>Semanas 3-4:</strong> 5 posts/semana + Stories diarios</li>
+          <li>&#8226; <strong>Mes 2:</strong> 7 posts/semana + Stories + 1 Live</li>
+          <li>&#8226; <strong>Mes 3+:</strong> Ritmo completo conforme recomendado acima</li>
+        </ul>
+      </div>
+
+      <!-- Box Fazer/Evitar -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded-xl p-5">
+          <h4 class="text-emerald-400 font-semibold mb-3">Fazer</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Encontrar ritmo sustentavel</li>
+            <li>&#8226; Priorizar Reels em ambas plataformas</li>
+            <li>&#8226; Stories todos os dias (mantem algoritmo ativo)</li>
+            <li>&#8226; Manter por 90 dias antes de mudar estrategia</li>
+          </ul>
+        </div>
+        <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-5">
+          <h4 class="text-red-400 font-semibold mb-3">Evitar</h4>
+          <ul class="text-neutral-300 text-sm space-y-2">
+            <li>&#8226; Comecar com ritmo impossivel de manter</li>
+            <li>&#8226; Priorizar quantidade sobre qualidade</li>
+            <li>&#8226; Abandonar apos 2 semanas sem resultado</li>
+            <li>&#8226; Copiar frequencia de criadores com equipe</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUMO FINAL -->
+    <section class="bg-gradient-to-br from-blue-500/10 to-dark-800 border border-blue-500/30 rounded-xl p-8 mb-12">
+      <h3 class="text-2xl font-bold text-blue-400 mb-4">Resumo do Modulo 2.4</h3>
+      <div class="space-y-3 text-neutral-300">
+        <p>&#8226; <strong>Educacional (40%):</strong> Ensina e resolve -- gera saves e autoridade (carrossel, tutorial, lista)</p>
+        <p>&#8226; <strong>Inspiracional (20%):</strong> Conecta emocionalmente -- gera DMs e comentarios longos (Reel narrativo, Stories)</p>
+        <p>&#8226; <strong>Entretenimento (25%):</strong> Alcance massivo -- gera shares e novos seguidores (Reel curto, meme)</p>
+        <p>&#8226; <strong>Conversao (15%):</strong> Monetiza -- CTA direto com prova social (carrossel com oferta, depoimento)</p>
+        <p>&#8226; <strong>Reaproveitamento:</strong> 1 ideia → 6+ formatos adaptados para cada plataforma</p>
+        <p>&#8226; <strong>Frequencia:</strong> Instagram 3-5 Reels + 2-3 carrosseis + Stories diarios / Facebook 1-2 posts/dia + Reels</p>
+      </div>
+    </section>
+
+    <!-- NAVEGACAO -->
+    <div class="flex items-center justify-between">
+      <a href="modulo-2-3.html" class="px-6 py-3 bg-dark-700 text-neutral-300 rounded-lg font-semibold hover:bg-dark-600 transition-colors">
+        ← Modulo 2.3
+      </a>
+      <a href="modulo-2-5.html" class="px-6 py-3 bg-blue-500/20 text-blue-400 rounded-lg font-semibold hover:bg-blue-500/30 transition-colors border border-blue-500/30">
+        Modulo 2.5 →
+      </a>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-dark-600 py-8 text-center text-neutral-500 text-sm">
+    <p>Hack Meta 2026 - INEMA.CLUB</p>
+  </footer>
+
+  <!-- THEME TOGGLE JS -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    if (localStorage.getItem('color-theme') === 'light' || (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      document.documentElement.classList.remove('dark');
+      darkIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.add('dark');
+      lightIcon.classList.remove('hidden');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      darkIcon.classList.toggle('hidden');
+      lightIcon.classList.toggle('hidden');
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    });
+  </script>
+
+</body>
+</html>
